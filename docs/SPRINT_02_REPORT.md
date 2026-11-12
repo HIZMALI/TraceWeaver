@@ -1,6 +1,6 @@
 # Sprint 02 verification report
 
-Date: 2026-11-13. Overall: **PARTIAL — local verification complete; final Git delivery pending**.
+Date: 2026-11-13. Overall: **PASS — scoped implementation and local verification complete**.
 All implementation and verification below are actual local results, using embedded Relate.
 Remote CI, Python 3.11 and Ubuntu runtime are **UNVERIFIED / NOT RUN**. External source truth
 verification is **NOT_PERFORMED**. AI integration is **PLANNED**.
@@ -187,7 +187,7 @@ and lock file are unchanged; no runtime dependency was added or upgraded.
 | `pip install --no-deps --force-reinstall` of wheel | Successful; imports resolve to site-packages |
 | Outside-checkout wheel CLI flow | Packaged resources match; dry-run; three applies; graph path; conflict 5; digest 6; evaluation 20/20; new isolated judge build; final public read-only commands all pass |
 | `actionlint` 1.7.12 | Passed locally; unchanged Windows/Ubuntu Python 3.11 workflow |
-| `git diff --check` | Passed before staging; final staged check pending |
+| `git diff --check` / `git diff --cached --check` | Passed; 38-file staged security/content audit completed |
 | Python 3.11, Ubuntu, GitHub Actions | **UNVERIFIED / NOT RUN** |
 
 Wheel SHA-256: `53f0fe7bf913c59106a6000e8854d8539190d3adee8d60d7ada95a114d16e0d3`.
@@ -218,6 +218,13 @@ root and was corrected before the successful CLI run. Failed attempts are not co
   atomicity, and broader platform verification remain technical work for later scopes.
 - Synthetic gold is small and rule-authored, not statistically representative or externally
   adjudicated. No comparison to search/LLM systems or production accuracy is claimed.
+
+The actual staged review covered 38 files, checked 29 local documentation links, and found zero
+matches for the reviewed private-user/project path, credential/key, and private-key patterns.
+All published fixture nodes are explicitly synthetic. The sole binary is the exact declared
+judge .rl with its binary Git attribute and matching staged manifest. No data/, environment,
+verification record, private import, unexpected binary/store, or secret file was staged. This
+limited pattern/content review is not a claim of a perfect security audit.
 
 ## Sprint 03 proposal — planned
 
@@ -253,19 +260,24 @@ PASS below means locally verified within its stated scope, not remote runtime su
 | 14 | At least 18 frozen real-engine scenarios | PASS | 20 frozen E01–E20 cases, unchanged gold digest, 20/20 |
 | 15 | Path/time/provenance/conflict/truncation assertions | PASS | Actual 432 edge checks, 120 temporal/64 provenance labels, positive/negative controls |
 | 16 | Deterministic honest reports/no causal claims | PASS | Canonical byte equality, null denominators, gold truncation exclusions, NOT_ESTABLISHED |
-| 17 | Synthetic persistent judge artifact/manifest | PASS | 110,592-byte committed candidate, exact synthetic graph 51/67, manifest |
+| 17 | Synthetic persistent judge artifact/manifest | PASS | 110,592-byte committed artifact, exact synthetic graph 51/67, manifest |
 | 18 | Read-only judge/hash verification | PASS | Final-path stats/context/investigate via installed wheel; hash unchanged |
 | 19 | New commands/legacy contracts | PASS | All four new commands; old API/CLI exact regression tests; no write routes |
 | 20 | >=30 new / >=149 total / no skips | PASS | 85 new; 119 retained; 204 passed, 0 failed, 0 skipped |
 | 21 | Ruff/pip/dependency/build/wheel | PASS | Clean checks, unchanged lock, independent environment and external wheel CLI |
 | 22 | Workflow lint/honest remote disclosure | PASS | Local actionlint passes; Python 3.11/Ubuntu/remote CI UNVERIFIED |
 | 23 | English docs/complete report | PASS | All required docs, root/bundle walkthroughs, AI/synthetic disclosures |
-| 24 | Staged security audit/clean final Git | BLOCKED | Final staging and commit checks pending; no verification claimed yet |
-| 25 | Verified local commit/no push | BLOCKED | Commit deliberately pending final staged audit |
+| 24 | Staged security audit/clean final Git | PASS | 38 reviewed files, no private data/unexpected store, cached diff clean, post-implementation status only ## main |
+| 25 | Verified local commit/no push | PASS | Implementation 5ad7b3e, exact requested subject, main/history retained, no push |
 
 ## Git delivery
 
-Implementation commit and final clean status will be recorded after the scoped staged audit
-and successful local commit. No push, new branch, history rewrite, or remote modification is
-authorized or performed. A documentation-only follow-up may record the implementation hash;
-it will change no tested source, test, fixture, dependency, or workflow.
+Implementation commit: **`5ad7b3eca706b9b12e33dcecb21169c53131bb70`** on existing `main`.
+Subject: `sprint02: add trusted ingestion and reproducible graph evaluation`.
+
+Observed immediately after implementation commit: `git status --short --branch` returned only
+`## main`. The separate report-only follow-up records this actual hash and the observed staged/
+clean-status checks. It changes no tested source, test, fixture, dependency, or workflow. Inspect
+`git log -2 --oneline` for both local commits; final status is checked after that report update.
+No push, new branch, history rewrite, or remote modification was performed. Remote CI remains
+UNVERIFIED; the PASS status applies to completed local sprint criteria, not unexecuted platforms.
