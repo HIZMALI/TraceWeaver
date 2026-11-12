@@ -333,9 +333,11 @@ is not asserted.
 
 The implementation is committed locally on `main` with the requested subject:
 `sprint01: add temporal and evidence-grounded incident investigation`.
-Its actual hash is recorded after commit creation in the delivery update below. A separate
-documentation-only commit records that hash, avoiding a report that falsely claims its own
-self-referential commit identity. No remote, new branch, force push, database commit, or push
-is created. Final Git status is checked after the documentation update.
+Implementation commit: **`aec6d72017df8ae478ed0e06f495f80770771d59`**.
 
-Implementation commit: pending the final local commit and actual-hash recording.
+Observed immediately after that commit: `git status --short --branch` returned only `## main`.
+A separate documentation-only commit records this actual implementation hash, avoiding a
+self-referential report identity. It changes no application, test, fixture, dependency, or CI
+code from the tested implementation. Inspect `git log -2 --oneline` for both local commits.
+Final Git status is checked after the documentation update. No remote, new branch, force push,
+database commit, or push was created.
