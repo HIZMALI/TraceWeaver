@@ -20,3 +20,11 @@
 - Keep seed writes finite and transactional. API connections must be read-only and must open,
   execute, and close in the same worker thread; Relate connections are thread-affine.
 - Do not add runtime dependencies on the Relate CLI, paid services, API keys, or Docker.
+- Normalize explicit-offset event timestamps to UTC and preserve originals. Missing, naive,
+  invalid, or ambiguous times remain UNKNOWN; never substitute ingestion time or guess onset.
+- Keep provenance quality separate from source truth verification. TRACEABLE is not VERIFIED.
+- Compare contradictions only in structured, graph-grounded matching contexts and time windows.
+- Keep causal_conclusion NOT_ESTABLISHED until a separately scoped inference contract exists.
+- Bound graph reads and output lists, detect actual truncation with lookahead, and report gaps.
+- Preserve the legacy fixture, API/CLI contracts, and existing tests. Add synthetic cases only
+  with explicit opt-in import into isolated stores; never seed or migrate an existing user store.

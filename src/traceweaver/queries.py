@@ -54,6 +54,34 @@ RETURN DISTINCT i.id AS incident_id, s.id AS affected_service_id,
 ORDER BY affected_service_id, dependency_service_id, deployment_id, change_id LIMIT $limit
 """
 
+# Sprint 01 reads deliberately retain raw metadata: invalid timestamps are audit data,
+# rather than validation failures in the legacy context entity models.
+INVESTIGATION_CANDIDATES = """
+MATCH p=(i:Incident {id: $incident_id})-[:AFFECTS]->(:Service)
+        -[:DEPENDS_ON*0..3]->(target:Service)<-[:TARGETS]-(d:Deployment)
+WHERE all(n IN nodes(p) WHERE single(m IN nodes(p) WHERE elementId(m) = elementId(n)))
+WITH d, target, min([length(p), [n IN nodes(p) | n.id]]) AS chosen_path
+RETURN properties(d) AS deployment, properties(target) AS target,
+       chosen_path[0] - 2 AS dependency_depth, chosen_path[1] AS node_ids
+ORDER BY deployment.id, target.id LIMIT $limit
+"""
+INVESTIGATION_CHANGES = """
+MATCH (d:Deployment)-[:INCLUDES_CHANGE]->(c:Change)
+WHERE d.id IN $deployment_ids
+RETURN DISTINCT d.id AS deployment_id, properties(c) AS change
+ORDER BY deployment_id, change.id LIMIT $limit
+"""
+INVESTIGATION_EVIDENCE = """
+MATCH (:Incident {id: $incident_id})-[:HAS_EVIDENCE]->(e:Evidence)
+RETURN DISTINCT properties(e) AS evidence ORDER BY evidence.id LIMIT $limit
+"""
+INVESTIGATION_OBSERVATIONS = """
+MATCH (:Incident {id: $incident_id})-[:HAS_EVIDENCE]->(e:Evidence)-[:OBSERVED_ON]->(s:Service)
+WHERE e.id IN $evidence_ids
+RETURN DISTINCT e.id AS evidence_id, s.id AS service_id
+ORDER BY evidence_id, service_id LIMIT $limit
+"""
+
 
 class IncidentNotFound(LookupError):
     """No incident with the given ID exists in this store."""

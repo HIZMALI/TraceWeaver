@@ -1,0 +1,666 @@
+{
+  "incident_id": "INC-001",
+  "is_demo": true,
+  "incident": {
+    "dataset_id": "traceweaver-sprint00-demo-v1",
+    "demo": true,
+    "environment": "demo",
+    "id": "INC-001",
+    "severity": "high",
+    "status": "investigating",
+    "summary": "Demo payment failures correlated with authentication errors; cause unverified.",
+    "timestamp": "2026-11-10T10:05:00Z",
+    "title": "Payment API 5xx error spike"
+  },
+  "incident_started_at": "2026-11-10T10:05:00Z",
+  "incident_time": {
+    "source_field": "timestamp",
+    "original": "2026-11-10T10:05:00Z",
+    "utc": "2026-11-10T10:05:00Z",
+    "warning_code": null
+  },
+  "window": {
+    "pre_minutes": 120,
+    "post_minutes": 30
+  },
+  "limits": {
+    "max_candidates": 100,
+    "max_evidence": 100,
+    "dependency_depth": 3,
+    "auxiliary_lists": 100
+  },
+  "affected_services": [
+    {
+      "dataset_id": "traceweaver-sprint00-demo-v1",
+      "demo": true,
+      "description": "Demo payment request handler",
+      "environment": "demo",
+      "id": "SVC-PAYMENT",
+      "name": "Payment API"
+    }
+  ],
+  "candidates": [
+    {
+      "temporal_classification": "BEFORE",
+      "temporal_reason": "Inside the inclusive pre-window lower bound and strictly before onset.",
+      "deployment_id": "DEP-002",
+      "target_service_id": "SVC-PAYMENT",
+      "change_ids": [
+        "CHG-002"
+      ],
+      "changes": [
+        {
+          "change_id": "CHG-002",
+          "properties": {
+            "dataset_id": "traceweaver-sprint00-demo-v1",
+            "demo": true,
+            "description": "Demo response log sampling changed; no causal claim is made.",
+            "environment": "demo",
+            "id": "CHG-002",
+            "name": "Payment log sampling",
+            "source": "demo-change-audit",
+            "source_ref": "demo://changes/CHG-002",
+            "timestamp": "2026-11-10T09:45:00Z"
+          },
+          "graph_path": {
+            "node_ids": [
+              "INC-001",
+              "SVC-PAYMENT",
+              "DEP-002",
+              "CHG-002"
+            ],
+            "edges": [
+              {
+                "type": "AFFECTS",
+                "source_id": "INC-001",
+                "target_id": "SVC-PAYMENT",
+                "traversal_direction": "FORWARD"
+              },
+              {
+                "type": "TARGETS",
+                "source_id": "DEP-002",
+                "target_id": "SVC-PAYMENT",
+                "traversal_direction": "REVERSE"
+              },
+              {
+                "type": "INCLUDES_CHANGE",
+                "source_id": "DEP-002",
+                "target_id": "CHG-002",
+                "traversal_direction": "FORWARD"
+              }
+            ]
+          }
+        }
+      ],
+      "dependency_depth": 0,
+      "deployment_occurred_at": {
+        "source_field": "timestamp",
+        "original": "2026-11-10T09:58:00Z",
+        "utc": "2026-11-10T09:58:00Z",
+        "warning_code": null
+      },
+      "candidate_assessment": "INVESTIGATE",
+      "assessment_reason": "Pre-window topology merits review; causation is not established.",
+      "graph_paths": [
+        {
+          "node_ids": [
+            "INC-001",
+            "SVC-PAYMENT",
+            "DEP-002"
+          ],
+          "edges": [
+            {
+              "type": "AFFECTS",
+              "source_id": "INC-001",
+              "target_id": "SVC-PAYMENT",
+              "traversal_direction": "FORWARD"
+            },
+            {
+              "type": "TARGETS",
+              "source_id": "DEP-002",
+              "target_id": "SVC-PAYMENT",
+              "traversal_direction": "REVERSE"
+            }
+          ]
+        }
+      ],
+      "properties": {
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "demo": true,
+        "description": "Demo payment deployment, another candidate context for investigation.",
+        "environment": "demo",
+        "id": "DEP-002",
+        "name": "Payment response logging rollout",
+        "source": "demo-release-audit",
+        "source_ref": "demo://deployments/DEP-002",
+        "timestamp": "2026-11-10T09:58:00Z"
+      }
+    },
+    {
+      "temporal_classification": "BEFORE",
+      "temporal_reason": "Inside the inclusive pre-window lower bound and strictly before onset.",
+      "deployment_id": "DEP-001",
+      "target_service_id": "SVC-AUTH",
+      "change_ids": [
+        "CHG-001"
+      ],
+      "changes": [
+        {
+          "change_id": "CHG-001",
+          "properties": {
+            "dataset_id": "traceweaver-sprint00-demo-v1",
+            "demo": true,
+            "description": "Demo token key overlap changed from 15 minutes to 2 minutes.",
+            "environment": "demo",
+            "id": "CHG-001",
+            "name": "Token rotation configuration",
+            "source": "demo-change-audit",
+            "source_ref": "demo://changes/CHG-001",
+            "timestamp": "2026-11-10T09:40:00Z"
+          },
+          "graph_path": {
+            "node_ids": [
+              "INC-001",
+              "SVC-PAYMENT",
+              "SVC-AUTH",
+              "DEP-001",
+              "CHG-001"
+            ],
+            "edges": [
+              {
+                "type": "AFFECTS",
+                "source_id": "INC-001",
+                "target_id": "SVC-PAYMENT",
+                "traversal_direction": "FORWARD"
+              },
+              {
+                "type": "DEPENDS_ON",
+                "source_id": "SVC-PAYMENT",
+                "target_id": "SVC-AUTH",
+                "traversal_direction": "FORWARD"
+              },
+              {
+                "type": "TARGETS",
+                "source_id": "DEP-001",
+                "target_id": "SVC-AUTH",
+                "traversal_direction": "REVERSE"
+              },
+              {
+                "type": "INCLUDES_CHANGE",
+                "source_id": "DEP-001",
+                "target_id": "CHG-001",
+                "traversal_direction": "FORWARD"
+              }
+            ]
+          }
+        }
+      ],
+      "dependency_depth": 1,
+      "deployment_occurred_at": {
+        "source_field": "timestamp",
+        "original": "2026-11-10T09:55:00Z",
+        "utc": "2026-11-10T09:55:00Z",
+        "warning_code": null
+      },
+      "candidate_assessment": "INVESTIGATE",
+      "assessment_reason": "Pre-window topology merits review; causation is not established.",
+      "graph_paths": [
+        {
+          "node_ids": [
+            "INC-001",
+            "SVC-PAYMENT",
+            "SVC-AUTH",
+            "DEP-001"
+          ],
+          "edges": [
+            {
+              "type": "AFFECTS",
+              "source_id": "INC-001",
+              "target_id": "SVC-PAYMENT",
+              "traversal_direction": "FORWARD"
+            },
+            {
+              "type": "DEPENDS_ON",
+              "source_id": "SVC-PAYMENT",
+              "target_id": "SVC-AUTH",
+              "traversal_direction": "FORWARD"
+            },
+            {
+              "type": "TARGETS",
+              "source_id": "DEP-001",
+              "target_id": "SVC-AUTH",
+              "traversal_direction": "REVERSE"
+            }
+          ]
+        }
+      ],
+      "properties": {
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "demo": true,
+        "description": "Demo auth deployment preceding INC-001; causation is unverified.",
+        "environment": "demo",
+        "id": "DEP-001",
+        "name": "Auth token rotation rollout",
+        "source": "demo-release-audit",
+        "source_ref": "demo://deployments/DEP-001",
+        "timestamp": "2026-11-10T09:55:00Z"
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "temporal_classification": "AT_ONSET",
+      "temporal_reason": "Exactly the incident onset; not a preceding event.",
+      "evidence_id": "EVD-001",
+      "source": "demo-metrics",
+      "source_ref": "demo://evidence/EVD-001",
+      "evidence_observed_at": {
+        "source_field": "timestamp",
+        "original": "2026-11-10T10:05:00Z",
+        "utc": "2026-11-10T10:05:00Z",
+        "warning_code": null
+      },
+      "observed_service_ids": [
+        "SVC-PAYMENT"
+      ],
+      "graph_paths": [
+        {
+          "node_ids": [
+            "INC-001",
+            "EVD-001",
+            "SVC-PAYMENT"
+          ],
+          "edges": [
+            {
+              "type": "HAS_EVIDENCE",
+              "source_id": "INC-001",
+              "target_id": "EVD-001",
+              "traversal_direction": "FORWARD"
+            },
+            {
+              "type": "OBSERVED_ON",
+              "source_id": "EVD-001",
+              "target_id": "SVC-PAYMENT",
+              "traversal_direction": "FORWARD"
+            }
+          ]
+        }
+      ],
+      "is_demo": true,
+      "provenance_status": "TRACEABLE",
+      "verification_status": "SYNTHETIC",
+      "warnings": [],
+      "properties": {
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "demo": true,
+        "description": "Demo five-minute error ratio rose from 0.2 percent to 12 percent.",
+        "environment": "demo",
+        "id": "EVD-001",
+        "source": "demo-metrics",
+        "source_ref": "demo://evidence/EVD-001",
+        "summary": "Payment 5xx rate at 12 percent",
+        "timestamp": "2026-11-10T10:05:00Z"
+      }
+    },
+    {
+      "temporal_classification": "AFTER",
+      "temporal_reason": "After onset and within the inclusive post-window; not a preceding trigger.",
+      "evidence_id": "EVD-002",
+      "source": "demo-application-logs",
+      "source_ref": "demo://evidence/EVD-002",
+      "evidence_observed_at": {
+        "source_field": "timestamp",
+        "original": "2026-11-10T10:05:30Z",
+        "utc": "2026-11-10T10:05:30Z",
+        "warning_code": null
+      },
+      "observed_service_ids": [
+        "SVC-PAYMENT"
+      ],
+      "graph_paths": [
+        {
+          "node_ids": [
+            "INC-001",
+            "EVD-002",
+            "SVC-PAYMENT"
+          ],
+          "edges": [
+            {
+              "type": "HAS_EVIDENCE",
+              "source_id": "INC-001",
+              "target_id": "EVD-002",
+              "traversal_direction": "FORWARD"
+            },
+            {
+              "type": "OBSERVED_ON",
+              "source_id": "EVD-002",
+              "target_id": "SVC-PAYMENT",
+              "traversal_direction": "FORWARD"
+            }
+          ]
+        }
+      ],
+      "is_demo": true,
+      "provenance_status": "TRACEABLE",
+      "verification_status": "SYNTHETIC",
+      "warnings": [],
+      "properties": {
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "demo": true,
+        "description": "Demo payment logs contain token validation failures from the auth dependency.",
+        "environment": "demo",
+        "id": "EVD-002",
+        "source": "demo-application-logs",
+        "source_ref": "demo://evidence/EVD-002",
+        "summary": "Payment upstream auth failures",
+        "timestamp": "2026-11-10T10:05:30Z"
+      }
+    },
+    {
+      "temporal_classification": "BEFORE",
+      "temporal_reason": "Inside the inclusive pre-window lower bound and strictly before onset.",
+      "evidence_id": "EVD-003",
+      "source": "demo-auth-logs",
+      "source_ref": "demo://evidence/EVD-003",
+      "evidence_observed_at": {
+        "source_field": "timestamp",
+        "original": "2026-11-10T10:04:45Z",
+        "utc": "2026-11-10T10:04:45Z",
+        "warning_code": null
+      },
+      "observed_service_ids": [
+        "SVC-AUTH"
+      ],
+      "graph_paths": [
+        {
+          "node_ids": [
+            "INC-001",
+            "EVD-003",
+            "SVC-AUTH"
+          ],
+          "edges": [
+            {
+              "type": "HAS_EVIDENCE",
+              "source_id": "INC-001",
+              "target_id": "EVD-003",
+              "traversal_direction": "FORWARD"
+            },
+            {
+              "type": "OBSERVED_ON",
+              "source_id": "EVD-003",
+              "target_id": "SVC-AUTH",
+              "traversal_direction": "FORWARD"
+            }
+          ]
+        }
+      ],
+      "is_demo": true,
+      "provenance_status": "TRACEABLE",
+      "verification_status": "SYNTHETIC",
+      "warnings": [],
+      "properties": {
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "demo": true,
+        "description": "Demo auth logs show unknown token key IDs during the incident.",
+        "environment": "demo",
+        "id": "EVD-003",
+        "source": "demo-auth-logs",
+        "source_ref": "demo://evidence/EVD-003",
+        "summary": "Auth rejects recently issued tokens",
+        "timestamp": "2026-11-10T10:04:45Z"
+      }
+    },
+    {
+      "temporal_classification": "AFTER",
+      "temporal_reason": "After onset and within the inclusive post-window; not a preceding trigger.",
+      "evidence_id": "EVD-004",
+      "source": "demo-distributed-tracing",
+      "source_ref": "demo://evidence/EVD-004",
+      "evidence_observed_at": {
+        "source_field": "timestamp",
+        "original": "2026-11-10T10:06:00Z",
+        "utc": "2026-11-10T10:06:00Z",
+        "warning_code": null
+      },
+      "observed_service_ids": [
+        "SVC-AUTH"
+      ],
+      "graph_paths": [
+        {
+          "node_ids": [
+            "INC-001",
+            "EVD-004",
+            "SVC-AUTH"
+          ],
+          "edges": [
+            {
+              "type": "HAS_EVIDENCE",
+              "source_id": "INC-001",
+              "target_id": "EVD-004",
+              "traversal_direction": "FORWARD"
+            },
+            {
+              "type": "OBSERVED_ON",
+              "source_id": "EVD-004",
+              "target_id": "SVC-AUTH",
+              "traversal_direction": "FORWARD"
+            }
+          ]
+        }
+      ],
+      "is_demo": true,
+      "provenance_status": "TRACEABLE",
+      "verification_status": "SYNTHETIC",
+      "warnings": [],
+      "properties": {
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "demo": true,
+        "description": "Demo distributed trace shows delayed auth key refresh; cause remains unverified.",
+        "environment": "demo",
+        "id": "EVD-004",
+        "source": "demo-distributed-tracing",
+        "source_ref": "demo://evidence/EVD-004",
+        "summary": "Auth key refresh latency",
+        "timestamp": "2026-11-10T10:06:00Z"
+      }
+    }
+  ],
+  "provenance_audit": {
+    "scope": "RETURNED_EVIDENCE",
+    "total_evidence": 4,
+    "traceable_count": 4,
+    "incomplete_count": 0,
+    "invalid_count": 0,
+    "unverified_external_count": 0,
+    "warnings": [],
+    "warnings_may_be_truncated": false
+  },
+  "contradictions": [],
+  "contradiction_audit": {
+    "evaluable_evidence_count": 0,
+    "not_evaluable_count": 4,
+    "comparable_pair_count": 0,
+    "conflict_count": 0,
+    "undetermined_count": 0,
+    "warnings": [
+      {
+        "code": "MISSING_STRUCTURED_SIGNAL",
+        "message": "Evidence is not evaluable for structured comparisons.",
+        "entity_ids": [
+          "EVD-001"
+        ],
+        "count": 1
+      },
+      {
+        "code": "MISSING_STRUCTURED_SIGNAL",
+        "message": "Evidence is not evaluable for structured comparisons.",
+        "entity_ids": [
+          "EVD-002"
+        ],
+        "count": 1
+      },
+      {
+        "code": "MISSING_STRUCTURED_SIGNAL",
+        "message": "Evidence is not evaluable for structured comparisons.",
+        "entity_ids": [
+          "EVD-003"
+        ],
+        "count": 1
+      },
+      {
+        "code": "MISSING_STRUCTURED_SIGNAL",
+        "message": "Evidence is not evaluable for structured comparisons.",
+        "entity_ids": [
+          "EVD-004"
+        ],
+        "count": 1
+      }
+    ]
+  },
+  "timeline": [
+    {
+      "temporal_classification": "BEFORE",
+      "temporal_reason": "Inside the inclusive pre-window lower bound and strictly before onset.",
+      "kind": "DEPLOYMENT",
+      "entity_id": "DEP-001",
+      "target_service_id": "SVC-AUTH",
+      "timestamp": {
+        "source_field": "timestamp",
+        "original": "2026-11-10T09:55:00Z",
+        "utc": "2026-11-10T09:55:00Z",
+        "warning_code": null
+      }
+    },
+    {
+      "temporal_classification": "BEFORE",
+      "temporal_reason": "Inside the inclusive pre-window lower bound and strictly before onset.",
+      "kind": "DEPLOYMENT",
+      "entity_id": "DEP-002",
+      "target_service_id": "SVC-PAYMENT",
+      "timestamp": {
+        "source_field": "timestamp",
+        "original": "2026-11-10T09:58:00Z",
+        "utc": "2026-11-10T09:58:00Z",
+        "warning_code": null
+      }
+    },
+    {
+      "temporal_classification": "BEFORE",
+      "temporal_reason": "Inside the inclusive pre-window lower bound and strictly before onset.",
+      "kind": "EVIDENCE",
+      "entity_id": "EVD-003",
+      "target_service_id": null,
+      "timestamp": {
+        "source_field": "timestamp",
+        "original": "2026-11-10T10:04:45Z",
+        "utc": "2026-11-10T10:04:45Z",
+        "warning_code": null
+      }
+    },
+    {
+      "temporal_classification": "AT_ONSET",
+      "temporal_reason": "Exactly the incident onset; not a preceding event.",
+      "kind": "EVIDENCE",
+      "entity_id": "EVD-001",
+      "target_service_id": null,
+      "timestamp": {
+        "source_field": "timestamp",
+        "original": "2026-11-10T10:05:00Z",
+        "utc": "2026-11-10T10:05:00Z",
+        "warning_code": null
+      }
+    },
+    {
+      "temporal_classification": "AT_ONSET",
+      "temporal_reason": "Exactly the incident onset; not a preceding event.",
+      "kind": "INCIDENT",
+      "entity_id": "INC-001",
+      "target_service_id": null,
+      "timestamp": {
+        "source_field": "timestamp",
+        "original": "2026-11-10T10:05:00Z",
+        "utc": "2026-11-10T10:05:00Z",
+        "warning_code": null
+      }
+    },
+    {
+      "temporal_classification": "AFTER",
+      "temporal_reason": "After onset and within the inclusive post-window; not a preceding trigger.",
+      "kind": "EVIDENCE",
+      "entity_id": "EVD-002",
+      "target_service_id": null,
+      "timestamp": {
+        "source_field": "timestamp",
+        "original": "2026-11-10T10:05:30Z",
+        "utc": "2026-11-10T10:05:30Z",
+        "warning_code": null
+      }
+    },
+    {
+      "temporal_classification": "AFTER",
+      "temporal_reason": "After onset and within the inclusive post-window; not a preceding trigger.",
+      "kind": "EVIDENCE",
+      "entity_id": "EVD-004",
+      "target_service_id": null,
+      "timestamp": {
+        "source_field": "timestamp",
+        "original": "2026-11-10T10:06:00Z",
+        "utc": "2026-11-10T10:06:00Z",
+        "warning_code": null
+      }
+    }
+  ],
+  "data_quality": {
+    "status": "COMPLETE",
+    "unknown_timestamp_count": 0,
+    "provenance_issue_count": 0,
+    "structured_evidence_not_evaluable_count": 4
+  },
+  "investigation_status": "PARTIAL_CONTEXT",
+  "status_reasons": [
+    "STRUCTURED_SIGNAL_GAPS"
+  ],
+  "causal_conclusion": "NOT_ESTABLISHED",
+  "limitations": [
+    {
+      "code": "STRUCTURED_SIGNAL_GAPS",
+      "message": "Structured signal comparisons cannot evaluate these observations.",
+      "entity_ids": [
+        "EVD-001",
+        "EVD-002",
+        "EVD-003",
+        "EVD-004"
+      ],
+      "count": 4
+    }
+  ],
+  "evidence_gaps": [
+    {
+      "code": "STRUCTURED_SIGNAL_GAPS",
+      "message": "Structured signal comparisons cannot evaluate these observations.",
+      "entity_ids": [
+        "EVD-001",
+        "EVD-002",
+        "EVD-003",
+        "EVD-004"
+      ],
+      "count": 4
+    }
+  ],
+  "next_checks": [
+    "Resolve STRUCTURED_SIGNAL_GAPS for EVD-001, EVD-002, EVD-003, EVD-004: Structured signal comparisons cannot evaluate these observations."
+  ],
+  "truncation": {
+    "candidates": false,
+    "evidence": false,
+    "affected_services": false,
+    "changes": false,
+    "observations": false,
+    "timeline": false,
+    "contradictions": false,
+    "provenance_warnings": false
+  },
+  "results_may_be_truncated": false,
+  "interpretation": "Deterministic graph context only. BEFORE means temporal suitability, not causation. TRACEABLE means metadata can be traced, not that an external source was verified.",
+  "demo_notice": "Synthetic demo data; no real incident or causal finding."
+}

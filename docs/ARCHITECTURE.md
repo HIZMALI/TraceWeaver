@@ -1,4 +1,4 @@
-# Architecture — Sprint 00
+# Architecture — Sprints 00 and 01
 
 ## Scope and boundaries
 
@@ -98,6 +98,53 @@ Real-engine tests cover persistence in another process, idempotency, preservatio
 constraints, topology, parameter attacks, HTTP failures, concurrent requests, and exact file
 immutability after API reads. No mocked graph repository is used.
 
-Future work should add a versioned ingestion contract, time-aware graph selection, provenance
-checks, and explicit uncertainty before introducing AI investigation. Keep the real Relate
-engine and finite-writer/read-only-reader boundary until requirements justify changing it.
+Sprint 01 adds the deterministic pipeline below. AI investigation remains planned. Keep the
+real Relate engine and finite-writer/read-only-reader boundary until requirements justify changing it.
+
+## Sprint 01 investigation pipeline
+
+```text
+API / CLI -> validated options -> one read-only worker-local GraphStore
+  -> incident lookup + bounded candidate/evidence/affected-service Cypher
+  -> batched change and observation edges (at most six queries)
+  -> UTC classification + provenance audit + structured observation comparisons
+  -> uncertainty/gaps, actual lookahead truncation, deterministic timeline
+  -> shared Investigation Pydantic response -> JSON
+```
+
+`investigation_models.py` is separate from the original strict demo models. Invalid/missing
+metadata can therefore be returned honestly without breaking legacy context validation.
+`temporal.py` maps documented `timestamp` semantics to event times, preserves originals, and
+normalizes explicit offsets to UTC. Explicit semantic fields override the legacy mapping;
+`ingested_at` never supplies an event time. Comparisons use deltas to avoid date-boundary overflow.
+
+Candidate discovery remains in Cypher: AFFECTS, zero to three DEPENDS_ON edges, then reverse
+TARGETS. A simple-node-path predicate excludes cycles. A reducing minimum selects the shortest
+lexicographically stable node sequence per deployment/target pair. Python formats that returned
+sequence and the known matched edge directions; it does not traverse an in-memory adjacency map.
+Change links and observations are fetched in two batches, not one query per candidate/evidence.
+HAS_EVIDENCE always scopes observations, including when two incidents share a service.
+
+All graph lists use LIMIT N+1. Candidate and evidence caps are user-configurable up to 100;
+affected services, global change links, and global observation links have a cap of 100 each.
+Timeline, findings, and contradictory/undetermined pairs are bounded separately. Missing auxiliary
+links caused by truncation are not proof of absence, and their global truncation flags remain visible.
+The legacy endpoint's original conservative limit behavior is unchanged.
+
+`provenance.py` distinguishes TRACEABLE/INCOMPLETE/INVALID metadata from external truth verification.
+Synthetic sources are SYNTHETIC; external references are UNVERIFIED_EXTERNAL. No links are fetched.
+`contradictions.py` compares only valid structured same-service/signal/environment observations
+with overlapping closed intervals. It never reads narrative keywords or infers a deployment cause.
+At most 100 evidence records means at most 4,950 potential pairs; audit counts cover the returned
+evidence even if only the first 100 matching pairs are returned.
+
+The version-2 demo fixture deliberately permits malformed/missing metadata specimens while
+enforcing labels, stable identity, demo ownership, directions, and relationship endpoint validity.
+It uses the same transaction/conflict-safe importer. The original version-1 fixture remains strict
+and unchanged. Additional cases are imported only through an explicit --fixture option into an
+operator-selected store. No migration, startup seed, new dependency, or default-store write exists.
+
+HTTP handlers remain synchronous. Expected store failures are generic 503, unknown incidents 404,
+invalid request arguments 422, and unexpected errors generic 500 with server-side logging.
+The same investigation function and response model serve CLI and HTTP; tests compare exact JSON.
+Full legacy response snapshots were captured using real Relate and commit e504012's source.

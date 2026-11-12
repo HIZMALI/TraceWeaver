@@ -4,10 +4,13 @@
 
 Sprint 00: Foundation, Real Relate Integration & Technical Verification
 
+Sprint 01: Evidence Intelligence & Temporal Investigation
+
 TraceWeaver prepares connected incident context for investigations: affected services,
 dependencies, deployments, code or configuration changes, alerts, and evidence with provenance.
-Sprint 00 delivers a working local graph, Python CLI, and read-only HTTP API. AI investigation
-and root cause inference are **planned**, not implemented.
+Sprint 00 delivered the local graph, Python CLI, and read-only HTTP API. Sprint 01 adds
+deterministic temporal investigation, source traceability, structured observation comparisons,
+and explicit uncertainty. AI agents and root cause inference are **planned**, not implemented.
 
 ## Hackathon context
 
@@ -48,11 +51,15 @@ flowchart LR
 - `storage.py`: context-managed Relate connections, errors, transactions, and graph counts.
 - `schema.py` / `seed.py`: ID constraints, fixture validation, and additive idempotent import.
 - `queries.py`: bounded graph traversals and incident context assembly.
-- `models.py`: Pydantic graph entities and HTTP response contracts.
+- `models.py`: unchanged legacy Pydantic graph entities and HTTP response contracts.
+- `investigation_models.py` / `investigation.py`: shared deterministic investigation contract/service.
+- `temporal.py`, `provenance.py`, `contradictions.py`: UTC windows and evidence quality/comparisons.
 - `api.py` / `cli.py`: thin HTTP and terminal entry points.
 
 See [Architecture](docs/ARCHITECTURE.md), [Graph schema](docs/GRAPH_SCHEMA.md), and the
-[Sprint 00 verification report](docs/SPRINT_00_REPORT.md).
+[Sprint 00 verification report](docs/SPRINT_00_REPORT.md). Sprint 01 is documented in the
+[investigation contract](docs/INVESTIGATION_CONTRACT.md) and
+[Sprint 01 verification report](docs/SPRINT_01_REPORT.md).
 
 ## Graph model overview
 
@@ -173,6 +180,7 @@ readers can also prevent a writer from opening. Lock errors are reported, not re
 python -m traceweaver stats --database ./data/traceweaver.rl
 python -m traceweaver context --incident INC-001 --database ./data/traceweaver.rl
 python -m traceweaver context --incident INC-002 --database ./data/traceweaver.rl
+python -m traceweaver investigate --incident INC-001 --pre-minutes 120 --post-minutes 30 --database ./data/traceweaver.rl
 ```
 
 Commands emit JSON on stdout. `context` includes incident details, affected services,
@@ -180,6 +188,66 @@ dependency paths, candidate deployments and changes, evidence with source/time, 
 and a four-edge context path. Exit codes: `0` success, `1` configuration/storage/import error,
 `2` argument error, `3` unknown incident. Errors go to stderr. Terminal diagnostics may
 include the local database path; HTTP errors deliberately omit internal paths and tracebacks.
+
+## Sprint 01 investigation
+
+`investigate` and the new HTTP endpoint share one read-only service and Pydantic contract:
+
+```powershell
+Invoke-RestMethod 'http://127.0.0.1:8000/incidents/INC-001/investigation?pre_minutes=120&post_minutes=30'
+```
+
+Window values must be integers in `0..1440`; optional `max_candidates` and `max_evidence` are
+integers in `1..100` (CLI flags use hyphens). Defaults are 120 minutes before, 30 after, and
+100 items. Original ISO timestamps are retained alongside normalized UTC values. Naive,
+invalid, missing, or ambiguous values produce warnings and UNKNOWN classifications.
+
+Actual baseline demo result, shortened to selected fields:
+
+```json
+{
+  "incident_id": "INC-001",
+  "is_demo": true,
+  "incident_started_at": "2026-11-10T10:05:00Z",
+  "investigation_status": "PARTIAL_CONTEXT",
+  "causal_conclusion": "NOT_ESTABLISHED",
+  "provenance_audit": {
+    "scope": "RETURNED_EVIDENCE",
+    "total_evidence": 4,
+    "traceable_count": 4,
+    "incomplete_count": 0,
+    "invalid_count": 0,
+    "unverified_external_count": 0
+  },
+  "contradictions": [],
+  "results_may_be_truncated": false
+}
+```
+
+The baseline has no structured signal observations, so four records are not evaluable for
+contradiction detection. That missing comparison data makes the review context partial even
+though its time/source metadata is complete. TRACEABLE does not mean externally verified.
+Synthetic references are identified as SYNTHETIC; external references remain UNVERIFIED_EXTERNAL.
+
+Candidates include deployments on affected services or up to three dependency hops away,
+including deployments without changes. Each has an actual graph path with node IDs, edge types,
+stored source/target IDs, and traversal direction. BEFORE means temporal suitability for review;
+AFTER and AT_ONSET are retained as context and excluded only as preceding triggers. The sort order
+is deterministic presentation, not a cause score. Causation always remains NOT_ESTABLISHED.
+
+New synthetic cases are **opt-in**, with a separate version-2 fixture. Use a fresh temporary store:
+
+```powershell
+$demoStore = Join-Path $env:TEMP ('traceweaver-sprint01-' + [guid]::NewGuid().ToString('N') + '.rl')
+python -m traceweaver seed --database $demoStore
+python -m traceweaver seed --fixture ./fixtures/sprint01_cases.json --database $demoStore
+python -m traceweaver investigate --incident CASE-INC --database $demoStore
+```
+
+The additive cases contain 30 nodes / 40 edges; combined with the baseline the new temporary
+store has 51 nodes / 67 edges. They intentionally include missing/invalid times, incomplete sources,
+orphan evidence, an unrelated deployment, and structured HEALTHY/FAILED/DEGRADED observations.
+No extra records are imported into the application's default store automatically.
 
 ## Running FastAPI
 
@@ -203,9 +271,11 @@ Invoke-RestMethod http://127.0.0.1:8000/incidents/INC-001/context
 | `GET /health` | Queries real graph counts; reports engine `relate` and persistent store |
 | `GET /incidents` | Lists up to 100 incidents with ID, title, status, and severity |
 | `GET /incidents/{incident_id}/context` | Retrieves connected context through Cypher |
+| `GET /incidents/{incident_id}/investigation` | Temporal candidate context, provenance, structured comparisons, uncertainty |
 
 Unknown incidents return `404`. Missing, corrupt, locked, or unreadable stores return `503`.
-There are no write endpoints. Each request opens, queries, and closes its connection within
+Invalid investigation query arguments return `422`. Unexpected failures are logged on the server
+and produce a generic `500`. There are no write endpoints. Each request opens, queries, and closes its connection within
 one synchronous worker thread, respecting Relate's thread affinity. This is a local development
 API with no authentication; keep the demonstrated loopback binding.
 
@@ -259,11 +329,16 @@ Python 3.11**. Local Windows verification does not establish that remote CI pass
 - Six node labels, seven relationship types, unique IDs, explicit demo provenance.
 - Real multi-hop graph context, competing deployment candidates, evidence timestamps/sources.
 - CLI and read-only FastAPI with OpenAPI; real-engine integration tests and Ruff checks.
+- UTC-normalized bounded temporal investigation, honest missing-data warnings, explicit provenance.
+- Incident-scoped structured contradiction/undetermined detection and actual graph paths.
+- Shared investigation API/CLI; exact new-list truncation detection and deterministic output.
 
 ## Roadmap
 
-- **Sprint 01 — Planned:** evidence-grounded investigation contracts, time-aware candidate
-  selection, explicit uncertainty, and provenance validation.
+- **Sprint 01 — Implemented:** deterministic evidence-grounded investigation, time-aware context,
+  explicit uncertainty, and provenance metadata validation.
+- **Sprint 02 — Planned:** versioned real-data ingestion, evidence evaluation, external-source
+  access policy, and investigation evaluation cases before any AI integration.
 - **Upcoming:** AI agent integration after the graph contract and evaluation criteria are agreed.
 - **Later:** investigation UI and visualization, only when separately scoped.
 
@@ -271,23 +346,30 @@ Python 3.11**. Local Windows verification does not establish that remote CI pass
 
 - No AI model, root cause inference, remediation, ingestion connectors, dashboard, or production
   authentication is implemented in Sprint 00.
-- Related deployments are topological candidates; no incident-time window or causality ranking
-  is applied. Shared dependencies may intentionally connect future incidents to common context.
+- The legacy `context` endpoint keeps its original topology-only behavior. The new investigation
+  endpoint classifies times but does not infer causes or rank causality. Shared dependencies may
+  connect candidate deployments across incidents; evidence still requires that incident's HAS_EVIDENCE.
 - Dependency expansion is bounded to three hops; each context list is capped at 100 rows.
   `results_may_be_truncated` conservatively flags a context list reaching that cap. The incident
   list has no pagination in this sprint.
-- Deployment context currently requires an `INCLUDES_CHANGE` edge; evidence observations require
-  an `OBSERVED_ON` edge. The bundled fixture satisfies these requirements.
+- Legacy context retrieval requires change/observed-service edges; the new investigation retains
+  deployments without changes and evidence without observations, with explicit gaps.
 - Graph entities follow the strict Sprint 00 demo response contract. Arbitrary externally written
   entity properties need a deliberate schema migration/ingestion design before API exposure.
 - Relate holds its working graph in memory and allows one writer process. A `.rl` file cannot
   serve cross-process readers while a writer holds it. Connections cannot cross threads.
 - Local verification ran on Windows x64 / Python 3.14.0. Remote CI and Linux execution remain
   unverified until the repository is pushed and the workflow is actually run.
+- Investigation uses closed observation intervals or exact instants for structured comparisons.
+  HEALTHY versus FAILED can conflict; pairs involving DEGRADED are UNDETERMINED. Narrative text
+  alone is never evaluated. Links and timestamps do not establish source truth or causation.
+- Investigation lists are capped with real lookahead. Candidate selection first uses graph IDs;
+  temporal ordering applies within the selected subset. One shortest simple path per candidate is
+  shown. Truncated data and alternate paths are not a complete graph export; see the contract.
 
 ## AI-assisted development disclosure
 
-Sprint 00 was implemented and tested with OpenAI Codex assistance. The assistant generated and
+Sprints 00 and 01 were implemented and tested with OpenAI Codex assistance. The assistant generated and
 reviewed code, fixtures, tests, and documentation, and executed local verification commands.
 The application itself does not call an AI service. Synthetic evidence and connected graph paths
 must never be presented as verified real-world root causes.

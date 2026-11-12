@@ -1,13 +1,23 @@
 """Minimal read-only HTTP surface over the actual Relate store."""
 
-from fastapi import FastAPI, HTTPException
+import logging
+from typing import Annotated
+
+from fastapi import FastAPI, HTTPException, Query
 from fastapi.responses import JSONResponse
-from pydantic import ValidationError
+from pydantic import BeforeValidator, ValidationError
 
 from traceweaver.config import Settings
+from traceweaver.investigation import investigate
+from traceweaver.investigation_models import Investigation, InvestigationOptions
 from traceweaver.models import Health, IncidentContext, IncidentSummary
 from traceweaver.queries import IncidentNotFound, incident_context, list_incidents
 from traceweaver.storage import GraphStore, StorageError
+from traceweaver.temporal import integer_query
+
+logger = logging.getLogger(__name__)
+WindowMinutes = Annotated[int, BeforeValidator(integer_query), Query(ge=0, le=1440)]
+ResultLimit = Annotated[int, BeforeValidator(integer_query), Query(ge=1, le=100)]
 
 
 def create_app(settings: Settings | None = None) -> FastAPI:
@@ -23,6 +33,11 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     @application.exception_handler(ValidationError)
     async def invalid_graph_handler(request, exc):
         return JSONResponse(status_code=503, content={"detail": "Graph data is incompatible"})
+
+    @application.exception_handler(Exception)
+    async def unexpected_handler(request, exc):
+        logger.error("Unexpected TraceWeaver request failure", exc_info=exc)
+        return JSONResponse(status_code=500, content={"detail": "Internal server error"})
 
     # A synchronous handler runs its entire with block in one worker thread. A yielded
     # dependency could open and close on different threads, which Relate forbids.
@@ -41,6 +56,26 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         try:
             with GraphStore(config.database) as store:
                 return incident_context(store, incident_id)
+        except IncidentNotFound:
+            raise HTTPException(status_code=404, detail="Incident not found") from None
+
+    @application.get("/incidents/{incident_id}/investigation", response_model=Investigation)
+    def investigation(
+        incident_id: str,
+        pre_minutes: WindowMinutes = 120,
+        post_minutes: WindowMinutes = 30,
+        max_candidates: ResultLimit = 100,
+        max_evidence: ResultLimit = 100,
+    ) -> Investigation:
+        try:
+            options = InvestigationOptions(
+                pre_minutes=pre_minutes,
+                post_minutes=post_minutes,
+                max_candidates=max_candidates,
+                max_evidence=max_evidence,
+            )
+            with GraphStore(config.database) as store:
+                return investigate(store, incident_id, options)
         except IncidentNotFound:
             raise HTTPException(status_code=404, detail="Incident not found") from None
 

@@ -3,6 +3,7 @@
 import json
 from importlib.resources import files
 from pathlib import Path
+from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, JsonValue, model_validator
 
@@ -19,7 +20,6 @@ class FixtureNode(BaseModel):
     def validate_entity(self) -> "FixtureNode":
         if self.label not in ENTITY_MODELS:
             raise ValueError("Unsupported node label")
-        self.properties = ENTITY_MODELS[self.label].model_validate(self.properties).model_dump()
         return self
 
 
@@ -32,6 +32,7 @@ class FixtureRelationship(BaseModel):
 
 class GraphFixture(BaseModel):
     model_config = ConfigDict(extra="forbid")
+    schema_version: Literal[1, 2] = 1
     dataset_id: str
     description: str
     nodes: list[FixtureNode]
@@ -39,6 +40,15 @@ class GraphFixture(BaseModel):
 
     @model_validator(mode="after")
     def validate_graph(self) -> "GraphFixture":
+        for node in self.nodes:
+            if self.schema_version == 1:
+                node.properties = (
+                    ENTITY_MODELS[node.label].model_validate(node.properties).model_dump()
+                )
+            else:
+                # Version 2 explicitly permits synthetic missing/invalid metadata specimens.
+                # Identity and demo ownership remain mandatory; import never overwrites.
+                DemoIdentity.model_validate(node.properties)
         nodes = {node.properties["id"]: node for node in self.nodes}
         if len(nodes) != len(self.nodes):
             raise ValueError("Fixture IDs must be unique")
@@ -58,6 +68,19 @@ class GraphFixture(BaseModel):
             if key in edges:
                 raise ValueError("Duplicate fixture relationship")
             edges.add(key)
+        return self
+
+
+class DemoIdentity(BaseModel):
+    model_config = ConfigDict(strict=True, extra="allow")
+    id: str
+    demo: Literal[True]
+    dataset_id: str
+
+    @model_validator(mode="after")
+    def nonempty_identity(self) -> "DemoIdentity":
+        if not self.id.strip() or not self.dataset_id.strip():
+            raise ValueError("Demo identity values must not be empty")
         return self
 
 

@@ -1,0 +1,505 @@
+{
+  "/health": {
+    "database_engine": "relate",
+    "node_count": 21,
+    "persistent_store": true,
+    "relationship_count": 27,
+    "status": "ok"
+  },
+  "/incidents": [
+    {
+      "id": "INC-001",
+      "severity": "high",
+      "status": "investigating",
+      "title": "Payment API 5xx error spike"
+    },
+    {
+      "id": "INC-002",
+      "severity": "medium",
+      "status": "investigating",
+      "title": "Notification delivery delays"
+    }
+  ],
+  "/incidents/INC-001/context": {
+    "affected_services": [
+      {
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "demo": true,
+        "description": "Demo payment request handler",
+        "environment": "demo",
+        "id": "SVC-PAYMENT",
+        "name": "Payment API"
+      }
+    ],
+    "alerts": [
+      {
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "demo": true,
+        "environment": "demo",
+        "id": "ALT-001",
+        "name": "Demo payment error budget alert",
+        "severity": "high",
+        "source": "demo-alert-rules",
+        "source_ref": "demo://alerts/ALT-001",
+        "timestamp": "2026-11-10T10:06:30Z"
+      }
+    ],
+    "context_paths": [
+      {
+        "affected_service_id": "SVC-PAYMENT",
+        "change_id": "CHG-001",
+        "dependency_service_id": "SVC-AUTH",
+        "deployment_id": "DEP-001",
+        "incident_id": "INC-001",
+        "relationship_types": [
+          "AFFECTS",
+          "DEPENDS_ON",
+          "TARGETS",
+          "INCLUDES_CHANGE"
+        ]
+      }
+    ],
+    "dependency_depth_limit": 3,
+    "dependency_paths": [
+      {
+        "affected_service": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo payment request handler",
+          "environment": "demo",
+          "id": "SVC-PAYMENT",
+          "name": "Payment API"
+        },
+        "dependency_service": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo token validation service",
+          "environment": "demo",
+          "id": "SVC-AUTH",
+          "name": "Auth Service"
+        },
+        "hop_count": 1,
+        "relationship_types": [
+          "DEPENDS_ON"
+        ],
+        "service_ids": [
+          "SVC-PAYMENT",
+          "SVC-AUTH"
+        ]
+      },
+      {
+        "affected_service": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo payment request handler",
+          "environment": "demo",
+          "id": "SVC-PAYMENT",
+          "name": "Payment API"
+        },
+        "dependency_service": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo payment ledger",
+          "environment": "demo",
+          "id": "SVC-LEDGER",
+          "name": "Ledger Service"
+        },
+        "hop_count": 1,
+        "relationship_types": [
+          "DEPENDS_ON"
+        ],
+        "service_ids": [
+          "SVC-PAYMENT",
+          "SVC-LEDGER"
+        ]
+      },
+      {
+        "affected_service": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo payment request handler",
+          "environment": "demo",
+          "id": "SVC-PAYMENT",
+          "name": "Payment API"
+        },
+        "dependency_service": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo payment ledger",
+          "environment": "demo",
+          "id": "SVC-LEDGER",
+          "name": "Ledger Service"
+        },
+        "hop_count": 2,
+        "relationship_types": [
+          "DEPENDS_ON",
+          "DEPENDS_ON"
+        ],
+        "service_ids": [
+          "SVC-PAYMENT",
+          "SVC-AUTH",
+          "SVC-LEDGER"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "evidence": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo auth logs show unknown token key IDs during the incident.",
+          "environment": "demo",
+          "id": "EVD-003",
+          "source": "demo-auth-logs",
+          "source_ref": "demo://evidence/EVD-003",
+          "summary": "Auth rejects recently issued tokens",
+          "timestamp": "2026-11-10T10:04:45Z"
+        },
+        "service": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo token validation service",
+          "environment": "demo",
+          "id": "SVC-AUTH",
+          "name": "Auth Service"
+        }
+      },
+      {
+        "evidence": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo five-minute error ratio rose from 0.2 percent to 12 percent.",
+          "environment": "demo",
+          "id": "EVD-001",
+          "source": "demo-metrics",
+          "source_ref": "demo://evidence/EVD-001",
+          "summary": "Payment 5xx rate at 12 percent",
+          "timestamp": "2026-11-10T10:05:00Z"
+        },
+        "service": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo payment request handler",
+          "environment": "demo",
+          "id": "SVC-PAYMENT",
+          "name": "Payment API"
+        }
+      },
+      {
+        "evidence": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo payment logs contain token validation failures from the auth dependency.",
+          "environment": "demo",
+          "id": "EVD-002",
+          "source": "demo-application-logs",
+          "source_ref": "demo://evidence/EVD-002",
+          "summary": "Payment upstream auth failures",
+          "timestamp": "2026-11-10T10:05:30Z"
+        },
+        "service": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo payment request handler",
+          "environment": "demo",
+          "id": "SVC-PAYMENT",
+          "name": "Payment API"
+        }
+      },
+      {
+        "evidence": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo distributed trace shows delayed auth key refresh; cause remains unverified.",
+          "environment": "demo",
+          "id": "EVD-004",
+          "source": "demo-distributed-tracing",
+          "source_ref": "demo://evidence/EVD-004",
+          "summary": "Auth key refresh latency",
+          "timestamp": "2026-11-10T10:06:00Z"
+        },
+        "service": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo token validation service",
+          "environment": "demo",
+          "id": "SVC-AUTH",
+          "name": "Auth Service"
+        }
+      }
+    ],
+    "incident": {
+      "dataset_id": "traceweaver-sprint00-demo-v1",
+      "demo": true,
+      "environment": "demo",
+      "id": "INC-001",
+      "severity": "high",
+      "status": "investigating",
+      "summary": "Demo payment failures correlated with authentication errors; cause unverified.",
+      "timestamp": "2026-11-10T10:05:00Z",
+      "title": "Payment API 5xx error spike"
+    },
+    "interpretation": "Graph connections are observed context, not proof that a deployment caused the incident.",
+    "related_deployments": [
+      {
+        "change": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo token key overlap changed from 15 minutes to 2 minutes.",
+          "environment": "demo",
+          "id": "CHG-001",
+          "name": "Token rotation configuration",
+          "source": "demo-change-audit",
+          "source_ref": "demo://changes/CHG-001",
+          "timestamp": "2026-11-10T09:40:00Z"
+        },
+        "deployment": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo auth deployment preceding INC-001; causation is unverified.",
+          "environment": "demo",
+          "id": "DEP-001",
+          "name": "Auth token rotation rollout",
+          "source": "demo-release-audit",
+          "source_ref": "demo://deployments/DEP-001",
+          "timestamp": "2026-11-10T09:55:00Z"
+        },
+        "service": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo token validation service",
+          "environment": "demo",
+          "id": "SVC-AUTH",
+          "name": "Auth Service"
+        }
+      },
+      {
+        "change": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo response log sampling changed; no causal claim is made.",
+          "environment": "demo",
+          "id": "CHG-002",
+          "name": "Payment log sampling",
+          "source": "demo-change-audit",
+          "source_ref": "demo://changes/CHG-002",
+          "timestamp": "2026-11-10T09:45:00Z"
+        },
+        "deployment": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo payment deployment, another candidate context for investigation.",
+          "environment": "demo",
+          "id": "DEP-002",
+          "name": "Payment response logging rollout",
+          "source": "demo-release-audit",
+          "source_ref": "demo://deployments/DEP-002",
+          "timestamp": "2026-11-10T09:58:00Z"
+        },
+        "service": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo payment request handler",
+          "environment": "demo",
+          "id": "SVC-PAYMENT",
+          "name": "Payment API"
+        }
+      }
+    ],
+    "result_limit": 100,
+    "results_may_be_truncated": false
+  },
+  "/incidents/INC-002/context": {
+    "affected_services": [
+      {
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "demo": true,
+        "description": "Demo message delivery worker",
+        "environment": "demo",
+        "id": "SVC-NOTIFICATION",
+        "name": "Notification Service"
+      }
+    ],
+    "alerts": [
+      {
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "demo": true,
+        "environment": "demo",
+        "id": "ALT-002",
+        "name": "Demo notification delay alert",
+        "severity": "medium",
+        "source": "demo-alert-rules",
+        "source_ref": "demo://alerts/ALT-002",
+        "timestamp": "2026-11-11T14:12:00Z"
+      }
+    ],
+    "context_paths": [
+      {
+        "affected_service_id": "SVC-NOTIFICATION",
+        "change_id": "CHG-003",
+        "dependency_service_id": "SVC-QUEUE",
+        "deployment_id": "DEP-003",
+        "incident_id": "INC-002",
+        "relationship_types": [
+          "AFFECTS",
+          "DEPENDS_ON",
+          "TARGETS",
+          "INCLUDES_CHANGE"
+        ]
+      }
+    ],
+    "dependency_depth_limit": 3,
+    "dependency_paths": [
+      {
+        "affected_service": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo message delivery worker",
+          "environment": "demo",
+          "id": "SVC-NOTIFICATION",
+          "name": "Notification Service"
+        },
+        "dependency_service": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo notification message broker",
+          "environment": "demo",
+          "id": "SVC-QUEUE",
+          "name": "Message Queue"
+        },
+        "hop_count": 1,
+        "relationship_types": [
+          "DEPENDS_ON"
+        ],
+        "service_ids": [
+          "SVC-NOTIFICATION",
+          "SVC-QUEUE"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "evidence": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo notification delivery duration rose above its 10-second baseline.",
+          "environment": "demo",
+          "id": "EVD-005",
+          "source": "demo-delivery-metrics",
+          "source_ref": "demo://evidence/EVD-005",
+          "summary": "Notification delivery p95 at 90 seconds",
+          "timestamp": "2026-11-11T14:10:00Z"
+        },
+        "service": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo message delivery worker",
+          "environment": "demo",
+          "id": "SVC-NOTIFICATION",
+          "name": "Notification Service"
+        }
+      },
+      {
+        "evidence": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo message broker reports accumulated ready messages.",
+          "environment": "demo",
+          "id": "EVD-006",
+          "source": "demo-broker-metrics",
+          "source_ref": "demo://evidence/EVD-006",
+          "summary": "Queue backlog at 12000 messages",
+          "timestamp": "2026-11-11T14:11:00Z"
+        },
+        "service": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo notification message broker",
+          "environment": "demo",
+          "id": "SVC-QUEUE",
+          "name": "Message Queue"
+        }
+      }
+    ],
+    "incident": {
+      "dataset_id": "traceweaver-sprint00-demo-v1",
+      "demo": true,
+      "environment": "demo",
+      "id": "INC-002",
+      "severity": "medium",
+      "status": "investigating",
+      "summary": "Demo notification queue latency increased; cause unverified.",
+      "timestamp": "2026-11-11T14:10:00Z",
+      "title": "Notification delivery delays"
+    },
+    "interpretation": "Graph connections are observed context, not proof that a deployment caused the incident.",
+    "related_deployments": [
+      {
+        "change": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo queue prefetch and worker batch sizes increased.",
+          "environment": "demo",
+          "id": "CHG-003",
+          "name": "Notification batch size",
+          "source": "demo-change-audit",
+          "source_ref": "demo://changes/CHG-003",
+          "timestamp": "2026-11-11T13:40:00Z"
+        },
+        "deployment": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo notification and queue deployment preceding INC-002.",
+          "environment": "demo",
+          "id": "DEP-003",
+          "name": "Notification queue tuning rollout",
+          "source": "demo-release-audit",
+          "source_ref": "demo://deployments/DEP-003",
+          "timestamp": "2026-11-11T14:00:00Z"
+        },
+        "service": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo message delivery worker",
+          "environment": "demo",
+          "id": "SVC-NOTIFICATION",
+          "name": "Notification Service"
+        }
+      },
+      {
+        "change": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo queue prefetch and worker batch sizes increased.",
+          "environment": "demo",
+          "id": "CHG-003",
+          "name": "Notification batch size",
+          "source": "demo-change-audit",
+          "source_ref": "demo://changes/CHG-003",
+          "timestamp": "2026-11-11T13:40:00Z"
+        },
+        "deployment": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo notification and queue deployment preceding INC-002.",
+          "environment": "demo",
+          "id": "DEP-003",
+          "name": "Notification queue tuning rollout",
+          "source": "demo-release-audit",
+          "source_ref": "demo://deployments/DEP-003",
+          "timestamp": "2026-11-11T14:00:00Z"
+        },
+        "service": {
+          "dataset_id": "traceweaver-sprint00-demo-v1",
+          "demo": true,
+          "description": "Demo notification message broker",
+          "environment": "demo",
+          "id": "SVC-QUEUE",
+          "name": "Message Queue"
+        }
+      }
+    ],
+    "result_limit": 100,
+    "results_may_be_truncated": false
+  }
+}

@@ -103,5 +103,10 @@ def test_corrupt_database_returns_503(tmp_path):
 def test_openapi_and_no_write_routes(client):
     assert client.get("/docs").status_code == 200
     schema = client.get("/openapi.json").json()
-    assert set(schema["paths"]) == {"/health", "/incidents", "/incidents/{incident_id}/context"}
+    assert set(schema["paths"]) == {
+        "/health",
+        "/incidents",
+        "/incidents/{incident_id}/context",
+        "/incidents/{incident_id}/investigation",
+    }
     assert all(set(path) == {"get"} for path in schema["paths"].values())

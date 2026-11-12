@@ -1,0 +1,649 @@
+{
+  "schema_version": 2,
+  "dataset_id": "traceweaver-sprint01-cases-v2",
+  "description": "Entirely synthetic additive Sprint 01 specimens, including intentionally invalid and incomplete metadata. Opt-in import only.",
+  "nodes": [
+    {
+      "label": "Incident",
+      "properties": {
+        "id": "CASE-INC",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "title": "Synthetic Sprint 01 investigation specimen",
+        "summary": "Demo only; not a real incident.",
+        "severity": "medium",
+        "status": "investigating",
+        "timestamp": "2026-11-12T10:00:00Z"
+      }
+    },
+    {
+      "label": "Incident",
+      "properties": {
+        "id": "CASE-NO-TIME",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "title": "Synthetic Sprint 01 investigation specimen",
+        "summary": "Demo only; not a real incident.",
+        "severity": "medium",
+        "status": "investigating"
+      }
+    },
+    {
+      "label": "Incident",
+      "properties": {
+        "id": "CASE-OTHER",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "title": "Synthetic Sprint 01 investigation specimen",
+        "summary": "Demo only; not a real incident.",
+        "severity": "medium",
+        "status": "investigating",
+        "timestamp": "2026-11-12T10:00:00Z"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "CASE-API",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "name": "CASE-API",
+        "description": "Synthetic Sprint 01 service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "CASE-AUTH",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "name": "CASE-AUTH",
+        "description": "Synthetic Sprint 01 service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "CASE-UNRELATED",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "name": "CASE-UNRELATED",
+        "description": "Synthetic Sprint 01 service"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "CASE-DEP-BEFORE",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "name": "Demo BEFORE",
+        "description": "Synthetic temporal specimen",
+        "timestamp": "2026-11-12T09:30:00Z",
+        "source": "demo-release-audit",
+        "source_ref": "demo://sprint01/CASE-DEP-BEFORE"
+      }
+    },
+    {
+      "label": "Change",
+      "properties": {
+        "id": "CASE-CHG-BEFORE",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "name": "Demo change BEFORE",
+        "description": "Synthetic change, no causal assertion.",
+        "timestamp": "2026-11-12T09:00:00Z",
+        "source": "demo-change-audit",
+        "source_ref": "demo://sprint01/CASE-CHG-BEFORE"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "CASE-DEP-AFTER",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "name": "Demo AFTER",
+        "description": "Synthetic temporal specimen",
+        "timestamp": "2026-11-12T10:02:00Z",
+        "source": "demo-release-audit",
+        "source_ref": "demo://sprint01/CASE-DEP-AFTER"
+      }
+    },
+    {
+      "label": "Change",
+      "properties": {
+        "id": "CASE-CHG-AFTER",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "name": "Demo change AFTER",
+        "description": "Synthetic change, no causal assertion.",
+        "timestamp": "2026-11-12T09:00:00Z",
+        "source": "demo-change-audit",
+        "source_ref": "demo://sprint01/CASE-CHG-AFTER"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "CASE-DEP-ONSET",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "name": "Demo ONSET",
+        "description": "Synthetic temporal specimen",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "source": "demo-release-audit",
+        "source_ref": "demo://sprint01/CASE-DEP-ONSET"
+      }
+    },
+    {
+      "label": "Change",
+      "properties": {
+        "id": "CASE-CHG-ONSET",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "name": "Demo change ONSET",
+        "description": "Synthetic change, no causal assertion.",
+        "timestamp": "2026-11-12T09:00:00Z",
+        "source": "demo-change-audit",
+        "source_ref": "demo://sprint01/CASE-CHG-ONSET"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "CASE-DEP-OFFSET",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "name": "Demo OFFSET",
+        "description": "Synthetic temporal specimen",
+        "timestamp": "2026-11-12T13:00:00+03:00",
+        "source": "demo-release-audit",
+        "source_ref": "demo://sprint01/CASE-DEP-OFFSET"
+      }
+    },
+    {
+      "label": "Change",
+      "properties": {
+        "id": "CASE-CHG-OFFSET",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "name": "Demo change OFFSET",
+        "description": "Synthetic change, no causal assertion.",
+        "timestamp": "2026-11-12T09:00:00Z",
+        "source": "demo-change-audit",
+        "source_ref": "demo://sprint01/CASE-CHG-OFFSET"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "CASE-DEP-NOCHANGE",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "name": "Demo NOCHANGE",
+        "description": "Synthetic temporal specimen",
+        "timestamp": "2026-11-12T09:40:00Z",
+        "source": "demo-release-audit",
+        "source_ref": "demo://sprint01/CASE-DEP-NOCHANGE"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "CASE-DEP-UNRELATED",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "name": "Demo UNRELATED",
+        "description": "Synthetic temporal specimen",
+        "timestamp": "2026-11-12T09:50:00Z",
+        "source": "demo-release-audit",
+        "source_ref": "demo://sprint01/CASE-DEP-UNRELATED"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "CASE-DEP-INVALID",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "name": "Demo INVALID",
+        "description": "Synthetic temporal specimen",
+        "timestamp": "not-a-timestamp",
+        "source": "demo-release-audit",
+        "source_ref": "demo://sprint01/CASE-DEP-INVALID"
+      }
+    },
+    {
+      "label": "Change",
+      "properties": {
+        "id": "CASE-CHG-INVALID",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "name": "Demo change INVALID",
+        "description": "Synthetic change, no causal assertion.",
+        "timestamp": "2026-11-12T09:00:00Z",
+        "source": "demo-change-audit",
+        "source_ref": "demo://sprint01/CASE-CHG-INVALID"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "CASE-E-HEALTHY",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "summary": "Synthetic observation HEALTHY",
+        "description": "Demo metadata test specimen.",
+        "source": "demo-observer-HEALTHY",
+        "source_ref": "demo://sprint01/CASE-E-HEALTHY",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "CASE-API",
+        "observation_window_start": "2026-11-12T09:59:00Z",
+        "observation_window_end": "2026-11-12T10:01:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "CASE-E-FAILED",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "summary": "Synthetic observation FAILED",
+        "description": "Demo metadata test specimen.",
+        "source": "demo-observer-FAILED",
+        "source_ref": "demo://sprint01/CASE-E-FAILED",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "FAILED",
+        "service_id": "CASE-API",
+        "observation_window_start": "2026-11-12T09:59:00Z",
+        "observation_window_end": "2026-11-12T10:01:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "CASE-E-EARLY",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "summary": "Synthetic observation EARLY",
+        "description": "Demo metadata test specimen.",
+        "source": "demo-observer-EARLY",
+        "source_ref": "demo://sprint01/CASE-E-EARLY",
+        "timestamp": "2026-11-12T09:00:00Z",
+        "signal_key": "latency",
+        "observed_state": "HEALTHY",
+        "service_id": "CASE-API"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "CASE-E-LATE",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "summary": "Synthetic observation LATE",
+        "description": "Demo metadata test specimen.",
+        "source": "demo-observer-LATE",
+        "source_ref": "demo://sprint01/CASE-E-LATE",
+        "timestamp": "2026-11-12T11:00:00Z",
+        "signal_key": "latency",
+        "observed_state": "FAILED",
+        "service_id": "CASE-API"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "CASE-E-NAIVE",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "summary": "Synthetic observation NAIVE",
+        "description": "Demo metadata test specimen.",
+        "source": "demo-observer-NAIVE",
+        "source_ref": "demo://sprint01/CASE-E-NAIVE",
+        "timestamp": "2026-11-12T10:00:00"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "CASE-E-MISSING-REF",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "summary": "Synthetic observation MISSING-REF",
+        "description": "Demo metadata test specimen.",
+        "source": "demo-observer-MISSING-REF",
+        "source_ref": null,
+        "timestamp": "2026-11-12T10:00:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "CASE-E-MISSING-SOURCE",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "summary": "Synthetic observation MISSING-SOURCE",
+        "description": "Demo metadata test specimen.",
+        "source": null,
+        "source_ref": "demo://sprint01/CASE-E-MISSING-SOURCE",
+        "timestamp": "2026-11-12T10:00:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "CASE-E-ORPHAN",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "summary": "Synthetic observation ORPHAN",
+        "description": "Demo metadata test specimen.",
+        "source": "demo-observer-ORPHAN",
+        "source_ref": "demo://sprint01/CASE-E-ORPHAN",
+        "timestamp": "2026-11-12T10:00:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "CASE-E-OTHER",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "summary": "Synthetic observation OTHER",
+        "description": "Demo metadata test specimen.",
+        "source": "demo-observer-OTHER",
+        "source_ref": "demo://sprint01/CASE-E-OTHER",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "FAILED",
+        "service_id": "CASE-API",
+        "observation_window_start": "2026-11-12T09:59:00Z",
+        "observation_window_end": "2026-11-12T10:01:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "CASE-E-DEGRADED",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "summary": "Synthetic observation DEGRADED",
+        "description": "Demo metadata test specimen.",
+        "source": "demo-observer-DEGRADED",
+        "source_ref": "demo://sprint01/CASE-E-DEGRADED",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "DEGRADED",
+        "service_id": "CASE-API",
+        "observation_window_start": "2026-11-12T09:59:00Z",
+        "observation_window_end": "2026-11-12T10:01:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "CASE-E-WRONG-SERVICE",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "summary": "Synthetic observation WRONG-SERVICE",
+        "description": "Demo metadata test specimen.",
+        "source": "demo-observer-WRONG-SERVICE",
+        "source_ref": "demo://sprint01/CASE-E-WRONG-SERVICE",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "FAILED",
+        "service_id": "CASE-AUTH",
+        "observation_window_start": "2026-11-12T09:59:00Z",
+        "observation_window_end": "2026-11-12T10:01:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "CASE-E-NO-TIME",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint01-cases-v2",
+        "environment": "demo",
+        "summary": "Synthetic observation NO-TIME",
+        "description": "Demo metadata test specimen.",
+        "source": "demo-observer-NO-TIME",
+        "source_ref": "demo://sprint01/CASE-E-NO-TIME"
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "type": "AFFECTS",
+      "source": "CASE-INC",
+      "target": "CASE-API"
+    },
+    {
+      "type": "AFFECTS",
+      "source": "CASE-NO-TIME",
+      "target": "CASE-API"
+    },
+    {
+      "type": "AFFECTS",
+      "source": "CASE-OTHER",
+      "target": "CASE-API"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source": "CASE-API",
+      "target": "CASE-AUTH"
+    },
+    {
+      "type": "TARGETS",
+      "source": "CASE-DEP-BEFORE",
+      "target": "CASE-AUTH"
+    },
+    {
+      "type": "INCLUDES_CHANGE",
+      "source": "CASE-DEP-BEFORE",
+      "target": "CASE-CHG-BEFORE"
+    },
+    {
+      "type": "TARGETS",
+      "source": "CASE-DEP-AFTER",
+      "target": "CASE-AUTH"
+    },
+    {
+      "type": "INCLUDES_CHANGE",
+      "source": "CASE-DEP-AFTER",
+      "target": "CASE-CHG-AFTER"
+    },
+    {
+      "type": "TARGETS",
+      "source": "CASE-DEP-ONSET",
+      "target": "CASE-API"
+    },
+    {
+      "type": "INCLUDES_CHANGE",
+      "source": "CASE-DEP-ONSET",
+      "target": "CASE-CHG-ONSET"
+    },
+    {
+      "type": "TARGETS",
+      "source": "CASE-DEP-OFFSET",
+      "target": "CASE-API"
+    },
+    {
+      "type": "INCLUDES_CHANGE",
+      "source": "CASE-DEP-OFFSET",
+      "target": "CASE-CHG-OFFSET"
+    },
+    {
+      "type": "TARGETS",
+      "source": "CASE-DEP-NOCHANGE",
+      "target": "CASE-API"
+    },
+    {
+      "type": "TARGETS",
+      "source": "CASE-DEP-UNRELATED",
+      "target": "CASE-UNRELATED"
+    },
+    {
+      "type": "TARGETS",
+      "source": "CASE-DEP-INVALID",
+      "target": "CASE-AUTH"
+    },
+    {
+      "type": "INCLUDES_CHANGE",
+      "source": "CASE-DEP-INVALID",
+      "target": "CASE-CHG-INVALID"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "CASE-INC",
+      "target": "CASE-E-HEALTHY"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "CASE-E-HEALTHY",
+      "target": "CASE-API"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "CASE-INC",
+      "target": "CASE-E-FAILED"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "CASE-E-FAILED",
+      "target": "CASE-API"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "CASE-INC",
+      "target": "CASE-E-EARLY"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "CASE-E-EARLY",
+      "target": "CASE-API"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "CASE-INC",
+      "target": "CASE-E-LATE"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "CASE-E-LATE",
+      "target": "CASE-API"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "CASE-INC",
+      "target": "CASE-E-NAIVE"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "CASE-E-NAIVE",
+      "target": "CASE-API"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "CASE-INC",
+      "target": "CASE-E-MISSING-REF"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "CASE-E-MISSING-REF",
+      "target": "CASE-API"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "CASE-INC",
+      "target": "CASE-E-MISSING-SOURCE"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "CASE-E-MISSING-SOURCE",
+      "target": "CASE-API"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "CASE-INC",
+      "target": "CASE-E-ORPHAN"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "CASE-OTHER",
+      "target": "CASE-E-OTHER"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "CASE-E-OTHER",
+      "target": "CASE-API"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "CASE-INC",
+      "target": "CASE-E-DEGRADED"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "CASE-E-DEGRADED",
+      "target": "CASE-API"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "CASE-INC",
+      "target": "CASE-E-WRONG-SERVICE"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "CASE-E-WRONG-SERVICE",
+      "target": "CASE-API"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "CASE-INC",
+      "target": "CASE-E-NO-TIME"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "CASE-E-NO-TIME",
+      "target": "CASE-API"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "CASE-NO-TIME",
+      "target": "CASE-E-HEALTHY"
+    }
+  ]
+}

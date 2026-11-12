@@ -1,4 +1,4 @@
-# Graph schema — Sprint 00
+# Graph schema — Sprints 00 and 01
 
 All fixture entities are **synthetic demo data** with `demo: true`,
 `dataset_id: "traceweaver-sprint00-demo-v1"`, and `environment: "demo"`.
@@ -148,3 +148,53 @@ ORDER BY e.timestamp, e.id, s.id LIMIT $limit
 
 Graph context uses up to three dependency hops and 100 rows per list. It includes multiple
 deployment candidates and makes no temporal filtering or causal ranking claim.
+
+## Sprint 01 additions and versioning
+
+No baseline nodes, edges, constraints, or fixture properties were changed. `schema_version`
+defaults to 1 for the original strict fixture. The separate `sprint01_cases.json` opts into
+version 2 for intentionally incomplete/invalid synthetic metadata. Its 30 nodes and 40 edges
+use a distinct dataset ID and CASE-prefixed record IDs. Version-2 imports remain additive,
+idempotent, demo-only, validated, and transactional; they never overwrite a matching conflict.
+
+Optional properties read by the new investigation service:
+
+| Label | Property | Meaning |
+| --- | --- | --- |
+| Incident | `incident_started_at` | Explicit incident onset; otherwise existing `timestamp` semantics |
+| Deployment | `deployment_occurred_at` | Explicit actual rollout time; otherwise existing `timestamp` |
+| Evidence | `observed_at` | Explicit observation time; otherwise existing `timestamp` |
+| Any | `ingested_at` | Ingestion metadata only; never used as event time |
+| Evidence | `signal_key` | Exact structured signal identity, case-sensitive |
+| Evidence | `observed_state` | Exact allowlist HEALTHY, DEGRADED, FAILED |
+| Evidence | `service_id` | Structured observation service; must match an actual OBSERVED_ON link |
+| Evidence | `environment` | Exact observation environment; required for structured comparison |
+| Evidence | `observation_window_start`, `observation_window_end` | Closed observation interval; both must be valid and ordered |
+
+The new API tolerates missing/invalid time and source metadata and records warnings instead of
+guessing. Stable nonempty string IDs remain required. These optional fields are not automatically
+added to existing graphs. Explicit semantic time fields take precedence even when invalid.
+Original timestamp values and selected source field names remain in the investigation response.
+
+Candidate retrieval follows the actual bounded graph and does not require a change neighbor:
+
+```cypher
+MATCH p=(i:Incident {id: $incident_id})-[:AFFECTS]->(:Service)
+        -[:DEPENDS_ON*0..3]->(target:Service)<-[:TARGETS]-(d:Deployment)
+WHERE all(n IN nodes(p) WHERE single(m IN nodes(p) WHERE elementId(m) = elementId(n)))
+WITH d, target, min([length(p), [n IN nodes(p) | n.id]]) AS chosen_path
+RETURN properties(d) AS deployment, properties(target) AS target,
+       chosen_path[0] - 2 AS dependency_depth, chosen_path[1] AS node_ids
+ORDER BY deployment.id, target.id LIMIT $limit
+```
+
+`limit` is the requested candidate cap plus one. Changes are then retrieved in a bounded batch
+through INCLUDES_CHANGE. Evidence nodes are selected through HAS_EVIDENCE separately from
+OBSERVED_ON, so incomplete observations remain visible and another incident's evidence cannot
+leak through a shared service. All ID lists and caps are parameters.
+
+For comparison, HEALTHY/FAILED in overlapping same-context windows is CONFLICTING_OBSERVATIONS.
+DEGRADED versus another state is UNDETERMINED; identical states produce no conflict record.
+Missing signal fields produce not-evaluable warnings. There is no narrative interpretation,
+source-truth verdict, causal relationship, or migration in Sprint 01. See
+[the complete investigation contract](INVESTIGATION_CONTRACT.md).
