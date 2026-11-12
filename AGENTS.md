@@ -28,3 +28,23 @@
 - Bound graph reads and output lists, detect actual truncation with lookahead, and report gaps.
 - Preserve the legacy fixture, API/CLI contracts, and existing tests. Add synthetic cases only
   with explicit opt-in import into isolated stores; never seed or migrate an existing user store.
+
+## Sprint 02 integrity and evaluation rules
+
+- Keep ingestion contract versions separate from demo fixture schema versions. Validate complete
+  bounded batches before a writer; default to read-only dry-run and require explicit --apply.
+- Reject known conflicts with a read-only preflight, then recheck under the single transaction.
+  Preserve extra properties and ownership markers. Never claim physical byte rewind after native
+  rollback: committed graph equality and file-byte equality are different guarantees.
+- Require --allow-non-demo for false or unknown demo markers. Never commit private input/stores.
+- Hash raw local bytes before parsing. Expected hashes must be supplied separately by the operator;
+  matching checksums establish byte equality only. External verification remains NOT_PERFORMED.
+- Never fetch source references or accept URL, UNC, device, remote-drive, or symlink/reparse input.
+  Do not expose imported values, private paths, or raw validation bodies in tool/API errors.
+- Keep evaluation gold explicit and frozen before execution. Use the unchanged investigation
+  service on isolated real Relate stores, honest null denominators, and visible truncation scope.
+- Keep canonical reports deterministic. Obtain explicit overwrite opt-in for generated reports.
+- Publish only the exact synthetic judge-store Git exception. Verify manifest bytes and logical
+  graph; --force applies only to recognized intact generated bundles, never user stores.
+- Preserve all 119 Sprint 01 cases and the Sprint 02 ingestion/integrity/evaluation regression
+  cases. Keep Python 3.11, other operating systems, and remote CI unverified until actually run.

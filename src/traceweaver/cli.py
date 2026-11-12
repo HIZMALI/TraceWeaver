@@ -1,4 +1,4 @@
-"""Local commands. Only seed opens a writable connection."""
+"""Local commands with explicit writers and separate offline-tool error contracts."""
 
 import argparse
 import json
@@ -14,6 +14,7 @@ from traceweaver.queries import IncidentNotFound, incident_context
 from traceweaver.seed import seed_database
 from traceweaver.storage import GraphStore, StorageError
 from traceweaver.temporal import integer_query
+from traceweaver.tool_errors import ToolError
 
 
 def bounded_integer(minimum: int, maximum: int):
@@ -27,6 +28,52 @@ def bounded_integer(minimum: int, maximum: int):
         return number
 
     return parse
+
+
+def offline_command(args) -> int:
+    # Keep new tooling errors separate from legacy CLI diagnostics and response contracts.
+    from traceweaver.evaluation import evaluate_to_files
+    from traceweaver.ingestion import ingest
+    from traceweaver.judge_demo import build_judge_demo
+    from traceweaver.source_integrity import verify_source
+
+    try:
+        exit_code = 0
+        if args.command == "ingest":
+            result = ingest(
+                args.input,
+                args.database,
+                apply=args.apply,
+                allow_non_demo=args.allow_non_demo,
+                expected_sha256=args.expected_sha256,
+            )
+        elif args.command == "verify-source":
+            result = verify_source(args.input, args.expected_sha256).model_dump()
+            exit_code = 6 if result["comparison_status"] == "MISMATCH" else 0
+        elif args.command == "evaluate":
+            result = evaluate_to_files(args.suite, args.output, overwrite=args.overwrite)
+            exit_code = 11 if result["failed"] else 0
+        else:
+            result = build_judge_demo(args.output_dir, force=args.force)
+        print(json.dumps(result, indent=2, sort_keys=True, ensure_ascii=True, allow_nan=False))
+        return exit_code
+    except ToolError as exc:
+        print(json.dumps(exc.as_dict(), sort_keys=True), file=sys.stderr)
+        return exc.exit_code
+    except (OSError, StorageError, ValueError):
+        print(
+            json.dumps(
+                {
+                    "committed": None,
+                    "error": {
+                        "code": "TOOL_OPERATION_ERROR",
+                        "message": "Offline operation failed; internal details are not disclosed.",
+                    },
+                }
+            ),
+            file=sys.stderr,
+        )
+        return 1
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -44,7 +91,25 @@ def main(argv: list[str] | None = None) -> int:
             command.add_argument("--post-minutes", type=bounded_integer(0, 1440), default=30)
             command.add_argument("--max-candidates", type=bounded_integer(1, 100), default=100)
             command.add_argument("--max-evidence", type=bounded_integer(1, 100), default=100)
+    command = commands.add_parser("ingest")
+    command.add_argument("--input", required=True)
+    command.add_argument("--database", required=True)
+    command.add_argument("--apply", action="store_true")
+    command.add_argument("--allow-non-demo", action="store_true")
+    command.add_argument("--expected-sha256")
+    command = commands.add_parser("verify-source")
+    command.add_argument("--input", required=True)
+    command.add_argument("--expected-sha256")
+    command = commands.add_parser("evaluate")
+    command.add_argument("--suite", required=True)
+    command.add_argument("--output", required=True)
+    command.add_argument("--overwrite", action="store_true")
+    command = commands.add_parser("build-judge-demo")
+    command.add_argument("--output-dir", required=True)
+    command.add_argument("--force", action="store_true")
     args = parser.parse_args(argv)
+    if args.command in {"ingest", "verify-source", "evaluate", "build-judge-demo"}:
+        return offline_command(args)
     try:
         config = Settings(database=args.database) if args.database is not None else Settings()
         if args.command == "seed":

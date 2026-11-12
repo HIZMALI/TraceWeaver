@@ -1,0 +1,394 @@
+{
+  "cases": [
+    {
+      "assertion_count": 56,
+      "case_id": "E01",
+      "diagnostics": {
+        "investigation_query_count": 6,
+        "max_changes_per_candidate": 1,
+        "max_observed_services_per_evidence": 1,
+        "returned_candidates": 2,
+        "returned_evidence": 4,
+        "returned_timeline": 7
+      },
+      "failure_count": 0,
+      "failures": [],
+      "failures_may_be_truncated": false,
+      "passed": true
+    },
+    {
+      "assertion_count": 44,
+      "case_id": "E02",
+      "diagnostics": {
+        "investigation_query_count": 6,
+        "max_changes_per_candidate": 1,
+        "max_observed_services_per_evidence": 1,
+        "returned_candidates": 2,
+        "returned_evidence": 2,
+        "returned_timeline": 5
+      },
+      "failure_count": 0,
+      "failures": [],
+      "failures_may_be_truncated": false,
+      "passed": true
+    },
+    {
+      "assertion_count": 122,
+      "case_id": "E03",
+      "diagnostics": {
+        "investigation_query_count": 6,
+        "max_changes_per_candidate": 1,
+        "max_observed_services_per_evidence": 1,
+        "returned_candidates": 6,
+        "returned_evidence": 11,
+        "returned_timeline": 18
+      },
+      "failure_count": 0,
+      "failures": [],
+      "failures_may_be_truncated": false,
+      "passed": true
+    },
+    {
+      "assertion_count": 63,
+      "case_id": "E04",
+      "diagnostics": {
+        "investigation_query_count": 6,
+        "max_changes_per_candidate": 1,
+        "max_observed_services_per_evidence": 1,
+        "returned_candidates": 6,
+        "returned_evidence": 1,
+        "returned_timeline": 8
+      },
+      "failure_count": 0,
+      "failures": [],
+      "failures_may_be_truncated": false,
+      "passed": true
+    },
+    {
+      "assertion_count": 62,
+      "case_id": "E05",
+      "diagnostics": {
+        "investigation_query_count": 6,
+        "max_changes_per_candidate": 1,
+        "max_observed_services_per_evidence": 1,
+        "returned_candidates": 6,
+        "returned_evidence": 1,
+        "returned_timeline": 8
+      },
+      "failure_count": 0,
+      "failures": [],
+      "failures_may_be_truncated": false,
+      "passed": true
+    },
+    {
+      "assertion_count": 38,
+      "case_id": "E06",
+      "diagnostics": {
+        "investigation_query_count": 6,
+        "max_changes_per_candidate": 0,
+        "max_observed_services_per_evidence": 1,
+        "returned_candidates": 2,
+        "returned_evidence": 1,
+        "returned_timeline": 4
+      },
+      "failure_count": 0,
+      "failures": [],
+      "failures_may_be_truncated": false,
+      "passed": true
+    },
+    {
+      "assertion_count": 92,
+      "case_id": "E07",
+      "diagnostics": {
+        "investigation_query_count": 6,
+        "max_changes_per_candidate": 0,
+        "max_observed_services_per_evidence": 1,
+        "returned_candidates": 8,
+        "returned_evidence": 4,
+        "returned_timeline": 13
+      },
+      "failure_count": 0,
+      "failures": [],
+      "failures_may_be_truncated": false,
+      "passed": true
+    },
+    {
+      "assertion_count": 92,
+      "case_id": "E08",
+      "diagnostics": {
+        "investigation_query_count": 6,
+        "max_changes_per_candidate": 0,
+        "max_observed_services_per_evidence": 1,
+        "returned_candidates": 8,
+        "returned_evidence": 4,
+        "returned_timeline": 13
+      },
+      "failure_count": 0,
+      "failures": [],
+      "failures_may_be_truncated": false,
+      "passed": true
+    },
+    {
+      "assertion_count": 122,
+      "case_id": "E09",
+      "diagnostics": {
+        "investigation_query_count": 6,
+        "max_changes_per_candidate": 1,
+        "max_observed_services_per_evidence": 1,
+        "returned_candidates": 6,
+        "returned_evidence": 11,
+        "returned_timeline": 18
+      },
+      "failure_count": 0,
+      "failures": [],
+      "failures_may_be_truncated": false,
+      "passed": true
+    },
+    {
+      "assertion_count": 27,
+      "case_id": "E10",
+      "diagnostics": {
+        "investigation_query_count": 5,
+        "max_changes_per_candidate": 0,
+        "max_observed_services_per_evidence": 1,
+        "returned_candidates": 0,
+        "returned_evidence": 1,
+        "returned_timeline": 2
+      },
+      "failure_count": 0,
+      "failures": [],
+      "failures_may_be_truncated": false,
+      "passed": true
+    },
+    {
+      "assertion_count": 27,
+      "case_id": "E11",
+      "diagnostics": {
+        "investigation_query_count": 5,
+        "max_changes_per_candidate": 0,
+        "max_observed_services_per_evidence": 1,
+        "returned_candidates": 0,
+        "returned_evidence": 1,
+        "returned_timeline": 2
+      },
+      "failure_count": 0,
+      "failures": [],
+      "failures_may_be_truncated": false,
+      "passed": true
+    },
+    {
+      "assertion_count": 21,
+      "case_id": "E12",
+      "diagnostics": {
+        "investigation_query_count": 4,
+        "max_changes_per_candidate": 0,
+        "max_observed_services_per_evidence": 0,
+        "returned_candidates": 0,
+        "returned_evidence": 0,
+        "returned_timeline": 1
+      },
+      "failure_count": 0,
+      "failures": [],
+      "failures_may_be_truncated": false,
+      "passed": true
+    },
+    {
+      "assertion_count": 68,
+      "case_id": "E13",
+      "diagnostics": {
+        "investigation_query_count": 5,
+        "max_changes_per_candidate": 0,
+        "max_observed_services_per_evidence": 1,
+        "returned_candidates": 0,
+        "returned_evidence": 8,
+        "returned_timeline": 9
+      },
+      "failure_count": 0,
+      "failures": [],
+      "failures_may_be_truncated": false,
+      "passed": true
+    },
+    {
+      "assertion_count": 33,
+      "case_id": "E14",
+      "diagnostics": {
+        "investigation_query_count": 6,
+        "max_changes_per_candidate": 0,
+        "max_observed_services_per_evidence": 100,
+        "returned_candidates": 1,
+        "returned_evidence": 1,
+        "returned_timeline": 3
+      },
+      "failure_count": 0,
+      "failures": [],
+      "failures_may_be_truncated": false,
+      "passed": true
+    },
+    {
+      "assertion_count": 45,
+      "case_id": "E15",
+      "diagnostics": {
+        "investigation_query_count": 6,
+        "max_changes_per_candidate": 0,
+        "max_observed_services_per_evidence": 100,
+        "returned_candidates": 2,
+        "returned_evidence": 2,
+        "returned_timeline": 5
+      },
+      "failure_count": 0,
+      "failures": [],
+      "failures_may_be_truncated": false,
+      "passed": true
+    },
+    {
+      "assertion_count": 56,
+      "case_id": "E16",
+      "diagnostics": {
+        "investigation_query_count": 6,
+        "max_changes_per_candidate": 1,
+        "max_observed_services_per_evidence": 1,
+        "returned_candidates": 2,
+        "returned_evidence": 4,
+        "returned_timeline": 7
+      },
+      "failure_count": 0,
+      "failures": [],
+      "failures_may_be_truncated": false,
+      "passed": true
+    },
+    {
+      "assertion_count": 56,
+      "case_id": "E17",
+      "diagnostics": {
+        "investigation_query_count": 6,
+        "max_changes_per_candidate": 1,
+        "max_observed_services_per_evidence": 1,
+        "returned_candidates": 2,
+        "returned_evidence": 4,
+        "returned_timeline": 7
+      },
+      "failure_count": 0,
+      "failures": [],
+      "failures_may_be_truncated": false,
+      "passed": true
+    },
+    {
+      "assertion_count": 44,
+      "case_id": "E18",
+      "diagnostics": {
+        "investigation_query_count": 6,
+        "max_changes_per_candidate": 1,
+        "max_observed_services_per_evidence": 1,
+        "returned_candidates": 2,
+        "returned_evidence": 2,
+        "returned_timeline": 5
+      },
+      "failure_count": 0,
+      "failures": [],
+      "failures_may_be_truncated": false,
+      "passed": true
+    },
+    {
+      "assertion_count": 26,
+      "case_id": "E19",
+      "diagnostics": {
+        "investigation_query_count": 5,
+        "max_changes_per_candidate": 0,
+        "max_observed_services_per_evidence": 1,
+        "returned_candidates": 0,
+        "returned_evidence": 1,
+        "returned_timeline": 2
+      },
+      "failure_count": 0,
+      "failures": [],
+      "failures_may_be_truncated": false,
+      "passed": true
+    },
+    {
+      "assertion_count": 33,
+      "case_id": "E20",
+      "diagnostics": {
+        "investigation_query_count": 6,
+        "max_changes_per_candidate": 0,
+        "max_observed_services_per_evidence": 1,
+        "returned_candidates": 1,
+        "returned_evidence": 1,
+        "returned_timeline": 3
+      },
+      "failure_count": 0,
+      "failures": [],
+      "failures_may_be_truncated": false,
+      "passed": true
+    }
+  ],
+  "causal_conclusion": "NOT_ESTABLISHED",
+  "evaluation_contract_version": "1.0",
+  "external_verification_status": "NOT_PERFORMED",
+  "failed": 0,
+  "interpretation": "Synthetic retrieval/path/state agreement, not root-cause accuracy. Truncated scenarios are excluded from affected retrieval metrics.",
+  "metrics": {
+    "candidate_retrieval": {
+      "excluded_truncated_cases": 2,
+      "expected_count": 53,
+      "false_negative": 0,
+      "false_positive": 0,
+      "included_case_count": 18,
+      "precision": 1.0,
+      "predicted_count": 53,
+      "recall": 1.0,
+      "true_positive": 53,
+      "undefined_precision_cases": 5,
+      "undefined_recall_cases": 5,
+      "unit": "scenario_deployment_target_pairs"
+    },
+    "conflict_detection": {
+      "excluded_truncated_cases": 2,
+      "expected_count": 3,
+      "false_negative": 0,
+      "false_positive": 0,
+      "included_case_count": 18,
+      "precision": 1.0,
+      "predicted_count": 3,
+      "recall": 1.0,
+      "true_positive": 3,
+      "undefined_precision_cases": 15,
+      "undefined_recall_cases": 15,
+      "unit": "scenario_unordered_conflict_pairs"
+    },
+    "evidence_scope": {
+      "excluded_truncated_cases": 2,
+      "expected_count": 61,
+      "false_negative": 0,
+      "false_positive": 0,
+      "included_case_count": 18,
+      "precision": 1.0,
+      "predicted_count": 61,
+      "recall": 1.0,
+      "true_positive": 61,
+      "undefined_precision_cases": 1,
+      "undefined_recall_cases": 1,
+      "unit": "scenario_evidence_ids"
+    },
+    "graph_edges": {
+      "agreement": 1.0,
+      "correct": 432,
+      "total": 432
+    },
+    "provenance": {
+      "agreement": 1.0,
+      "correct": 64,
+      "total": 64
+    },
+    "temporal": {
+      "agreement": 1.0,
+      "correct": 120,
+      "total": 120
+    }
+  },
+  "passed": 20,
+  "relate_version": "1.0.0",
+  "scenarios_executed": 20,
+  "suite_id": "traceweaver-sprint02-frozen-gold-v1",
+  "suite_sha256": "6749145aa8e28937bc74aa8d3b53ec00fe0651d29b0cadc39ce6fd5547f4cef8",
+  "synthetic_only": true
+}

@@ -6,6 +6,7 @@ __pycache__/
 .ruff_cache/
 .env
 *.rl
+!examples/judge-demo/traceweaver-demo.rl
 *.rl.*
 *.log
 *.egg-info/

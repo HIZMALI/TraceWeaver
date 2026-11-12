@@ -1,0 +1,234 @@
+{
+  "contract_version": "1.0",
+  "dataset_id": "traceweaver-sprint02-ingest-example-v1",
+  "source": {
+    "source_id": "SRC-LOCAL-001",
+    "kind": "LOCAL_EXPORT",
+    "declared_origin": "SYNTHETIC",
+    "captured_at": "2026-11-12T10:10:00Z",
+    "description": "Synthetic local export for Sprint 02; not real production data."
+  },
+  "nodes": [
+    {
+      "label": "Incident",
+      "id": "ING-INC-001",
+      "properties": {
+        "id": "ING-INC-001",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-ingest-example-v1",
+        "environment": "demo",
+        "title": "Local synthetic authentication incident",
+        "summary": "Synthetic local ingestion specimen; cause not established.",
+        "severity": "medium",
+        "status": "investigating",
+        "timestamp": "2026-11-12T10:05:00Z"
+      }
+    },
+    {
+      "label": "Service",
+      "id": "ING-API",
+      "properties": {
+        "id": "ING-API",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-ingest-example-v1",
+        "environment": "demo",
+        "name": "Synthetic API",
+        "description": "Demo caller service"
+      }
+    },
+    {
+      "label": "Service",
+      "id": "ING-AUTH",
+      "properties": {
+        "id": "ING-AUTH",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-ingest-example-v1",
+        "environment": "demo",
+        "name": "Synthetic Auth",
+        "description": "Demo dependency service"
+      }
+    },
+    {
+      "label": "Deployment",
+      "id": "ING-DEP-001",
+      "properties": {
+        "id": "ING-DEP-001",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-ingest-example-v1",
+        "environment": "demo",
+        "name": "Synthetic auth rollout",
+        "description": "Candidate context only",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "source": "demo-local-release",
+        "source_ref": "demo://ingestion/deployments/ING-DEP-001"
+      }
+    },
+    {
+      "label": "Change",
+      "id": "ING-CHG-001",
+      "properties": {
+        "id": "ING-CHG-001",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-ingest-example-v1",
+        "environment": "demo",
+        "name": "Synthetic token settings",
+        "description": "Demo change for connected context",
+        "timestamp": "2026-11-12T09:55:00Z",
+        "source": "demo-local-changes",
+        "source_ref": "demo://ingestion/changes/ING-CHG-001"
+      }
+    },
+    {
+      "label": "Evidence",
+      "id": "ING-E-HEALTHY",
+      "properties": {
+        "id": "ING-E-HEALTHY",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-ingest-example-v1",
+        "environment": "demo",
+        "summary": "Synthetic structured observation HEALTHY",
+        "description": "Explicit synthetic state; no truth assertion",
+        "timestamp": "2026-11-12T10:05:00Z",
+        "source": "demo-local-observer",
+        "source_ref": "demo://ingestion/evidence/HEALTHY",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "ING-AUTH"
+      }
+    },
+    {
+      "label": "Evidence",
+      "id": "ING-E-FAILED",
+      "properties": {
+        "id": "ING-E-FAILED",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-ingest-example-v1",
+        "environment": "demo",
+        "summary": "Synthetic structured observation FAILED",
+        "description": "Explicit synthetic state; no truth assertion",
+        "timestamp": "2026-11-12T10:05:00Z",
+        "source": "demo-local-observer",
+        "source_ref": "demo://ingestion/evidence/FAILED",
+        "signal_key": "availability",
+        "observed_state": "FAILED",
+        "service_id": "ING-AUTH"
+      }
+    },
+    {
+      "label": "Alert",
+      "id": "ING-ALERT-001",
+      "properties": {
+        "id": "ING-ALERT-001",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-ingest-example-v1",
+        "environment": "demo",
+        "name": "Synthetic local alert",
+        "severity": "medium",
+        "timestamp": "2026-11-12T10:05:30Z",
+        "source": "demo-local-alerts",
+        "source_ref": "demo://ingestion/alerts/ING-ALERT-001"
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "type": "AFFECTS",
+      "source": {
+        "label": "Incident",
+        "id": "ING-INC-001"
+      },
+      "target": {
+        "label": "Service",
+        "id": "ING-API"
+      }
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source": {
+        "label": "Service",
+        "id": "ING-API"
+      },
+      "target": {
+        "label": "Service",
+        "id": "ING-AUTH"
+      }
+    },
+    {
+      "type": "TARGETS",
+      "source": {
+        "label": "Deployment",
+        "id": "ING-DEP-001"
+      },
+      "target": {
+        "label": "Service",
+        "id": "ING-AUTH"
+      }
+    },
+    {
+      "type": "INCLUDES_CHANGE",
+      "source": {
+        "label": "Deployment",
+        "id": "ING-DEP-001"
+      },
+      "target": {
+        "label": "Change",
+        "id": "ING-CHG-001"
+      }
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": {
+        "label": "Incident",
+        "id": "ING-INC-001"
+      },
+      "target": {
+        "label": "Evidence",
+        "id": "ING-E-HEALTHY"
+      }
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": {
+        "label": "Incident",
+        "id": "ING-INC-001"
+      },
+      "target": {
+        "label": "Evidence",
+        "id": "ING-E-FAILED"
+      }
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": {
+        "label": "Evidence",
+        "id": "ING-E-HEALTHY"
+      },
+      "target": {
+        "label": "Service",
+        "id": "ING-AUTH"
+      }
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": {
+        "label": "Evidence",
+        "id": "ING-E-FAILED"
+      },
+      "target": {
+        "label": "Service",
+        "id": "ING-AUTH"
+      }
+    },
+    {
+      "type": "RAISED_FOR",
+      "source": {
+        "label": "Alert",
+        "id": "ING-ALERT-001"
+      },
+      "target": {
+        "label": "Incident",
+        "id": "ING-INC-001"
+      }
+    }
+  ]
+}

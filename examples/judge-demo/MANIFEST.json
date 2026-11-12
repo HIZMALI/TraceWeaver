@@ -1,0 +1,41 @@
+{
+  "artifact_filename": "traceweaver-demo.rl",
+  "artifact_kind": "TRACEWEAVER_SYNTHETIC_JUDGE_DEMO_V1",
+  "artifact_sha256": "29b10010152ebf82fe61b7dd8eff71848f39963e58d7b7a56f0aecebf1150239",
+  "artifact_size_bytes": 110592,
+  "contracts": {
+    "demo_fixture_versions": [
+      1,
+      2
+    ],
+    "investigation": "Sprint 01 unchanged"
+  },
+  "external_verification_status": "NOT_PERFORMED",
+  "fixture_sources": [
+    {
+      "demo_fixture_schema_version": 1,
+      "name": "fixtures/demo_incidents.json",
+      "sha256": "0128f7337cef8549c20a7f4dcb740638dde16f99862785df1bf79b93f2ee0658"
+    },
+    {
+      "demo_fixture_schema_version": 2,
+      "name": "fixtures/sprint01_cases.json",
+      "sha256": "ca573fa094c6b9eb3142bc06d93e21721bfe25697bcf2b4532327295946acc14"
+    }
+  ],
+  "graph_counts": {
+    "node_count": 51,
+    "relationship_count": 67
+  },
+  "limitations": "Bounded pattern/content checks are not a perfect secrets audit. A digest establishes byte equality only.",
+  "logical_graph_sha256": "1cc7f23c5bc9926d9aec9b5f6a91c32022a8a6e268d52bc6120b9d4411c6743d",
+  "manifest_version": "1.0",
+  "relate_version": "1.0.0",
+  "screening": [
+    "Exact published fixture graph",
+    "Every node and edge demo=true",
+    "Demo-only source references",
+    "Private-path and credential-pattern checks"
+  ],
+  "synthetic_only": true
+}

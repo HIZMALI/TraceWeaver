@@ -1,0 +1,3506 @@
+{
+  "suite_version": "1.0",
+  "suite_id": "traceweaver-sprint02-frozen-gold-v1",
+  "gold_authoring": "Explicit synthetic topology, interval, state and scope expectations authored before harness execution; never generated from investigate output.",
+  "cases": [
+    {
+      "case_id": "E01",
+      "description": "Dependency path, reverse TARGETS and direct candidate",
+      "fixture_profiles": [
+        "baseline"
+      ],
+      "incident_id": "INC-001",
+      "options": {},
+      "expected": {
+        "candidates": [
+          {
+            "deployment_id": "DEP-001",
+            "target_service_id": "SVC-AUTH",
+            "dependency_depth": 1,
+            "temporal_classification": "BEFORE",
+            "candidate_assessment": "INVESTIGATE",
+            "event_utc": "2026-11-10T09:55:00Z",
+            "change_ids": [
+              "CHG-001"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "INC-001",
+                "SVC-PAYMENT",
+                "SVC-AUTH",
+                "DEP-001"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "INC-001",
+                  "target_id": "SVC-PAYMENT",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "DEPENDS_ON",
+                  "source_id": "SVC-PAYMENT",
+                  "target_id": "SVC-AUTH",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "DEP-001",
+                  "target_id": "SVC-AUTH",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "DEP-002",
+            "target_service_id": "SVC-PAYMENT",
+            "dependency_depth": 0,
+            "temporal_classification": "BEFORE",
+            "candidate_assessment": "INVESTIGATE",
+            "event_utc": "2026-11-10T09:58:00Z",
+            "change_ids": [
+              "CHG-002"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "INC-001",
+                "SVC-PAYMENT",
+                "DEP-002"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "INC-001",
+                  "target_id": "SVC-PAYMENT",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "DEP-002",
+                  "target_id": "SVC-PAYMENT",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "evidence_id": "EVD-001",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-10T10:05:00Z",
+            "observed_service_ids": [
+              "SVC-PAYMENT"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "EVD-002",
+            "temporal_classification": "AFTER",
+            "event_utc": "2026-11-10T10:05:30Z",
+            "observed_service_ids": [
+              "SVC-PAYMENT"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "EVD-003",
+            "temporal_classification": "BEFORE",
+            "event_utc": "2026-11-10T10:04:45Z",
+            "observed_service_ids": [
+              "SVC-AUTH"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "EVD-004",
+            "temporal_classification": "AFTER",
+            "event_utc": "2026-11-10T10:06:00Z",
+            "observed_service_ids": [
+              "SVC-AUTH"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          }
+        ],
+        "conflict_pairs": [],
+        "undetermined_pairs": [],
+        "not_evaluable_count": 4,
+        "investigation_status": "PARTIAL_CONTEXT",
+        "causal_conclusion": "NOT_ESTABLISHED",
+        "truncation": {
+          "candidates": false,
+          "evidence": false,
+          "affected_services": false,
+          "changes": false,
+          "observations": false,
+          "timeline": false,
+          "contradictions": false,
+          "provenance_warnings": false
+        },
+        "required_limitation_codes": []
+      }
+    },
+    {
+      "case_id": "E02",
+      "description": "Second incident evidence isolation and multi-target rollout",
+      "fixture_profiles": [
+        "baseline"
+      ],
+      "incident_id": "INC-002",
+      "options": {},
+      "expected": {
+        "candidates": [
+          {
+            "deployment_id": "DEP-003",
+            "target_service_id": "SVC-NOTIFICATION",
+            "dependency_depth": 0,
+            "temporal_classification": "BEFORE",
+            "candidate_assessment": "INVESTIGATE",
+            "event_utc": "2026-11-11T14:00:00Z",
+            "change_ids": [
+              "CHG-003"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "INC-002",
+                "SVC-NOTIFICATION",
+                "DEP-003"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "INC-002",
+                  "target_id": "SVC-NOTIFICATION",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "DEP-003",
+                  "target_id": "SVC-NOTIFICATION",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "DEP-003",
+            "target_service_id": "SVC-QUEUE",
+            "dependency_depth": 1,
+            "temporal_classification": "BEFORE",
+            "candidate_assessment": "INVESTIGATE",
+            "event_utc": "2026-11-11T14:00:00Z",
+            "change_ids": [
+              "CHG-003"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "INC-002",
+                "SVC-NOTIFICATION",
+                "SVC-QUEUE",
+                "DEP-003"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "INC-002",
+                  "target_id": "SVC-NOTIFICATION",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "DEPENDS_ON",
+                  "source_id": "SVC-NOTIFICATION",
+                  "target_id": "SVC-QUEUE",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "DEP-003",
+                  "target_id": "SVC-QUEUE",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "evidence_id": "EVD-005",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-11T14:10:00Z",
+            "observed_service_ids": [
+              "SVC-NOTIFICATION"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "EVD-006",
+            "temporal_classification": "AFTER",
+            "event_utc": "2026-11-11T14:11:00Z",
+            "observed_service_ids": [
+              "SVC-QUEUE"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          }
+        ],
+        "conflict_pairs": [],
+        "undetermined_pairs": [],
+        "not_evaluable_count": 2,
+        "investigation_status": "PARTIAL_CONTEXT",
+        "causal_conclusion": "NOT_ESTABLISHED",
+        "truncation": {
+          "candidates": false,
+          "evidence": false,
+          "affected_services": false,
+          "changes": false,
+          "observations": false,
+          "timeline": false,
+          "contradictions": false,
+          "provenance_warnings": false
+        },
+        "required_limitation_codes": []
+      }
+    },
+    {
+      "case_id": "E03",
+      "description": "Comparable conflicts, DEGRADED uncertainty, missing changes and metadata",
+      "fixture_profiles": [
+        "sprint01"
+      ],
+      "incident_id": "CASE-INC",
+      "options": {},
+      "expected": {
+        "candidates": [
+          {
+            "deployment_id": "CASE-DEP-BEFORE",
+            "target_service_id": "CASE-AUTH",
+            "dependency_depth": 1,
+            "temporal_classification": "BEFORE",
+            "candidate_assessment": "INVESTIGATE",
+            "event_utc": "2026-11-12T09:30:00Z",
+            "change_ids": [
+              "CASE-CHG-BEFORE"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "CASE-INC",
+                "CASE-API",
+                "CASE-AUTH",
+                "CASE-DEP-BEFORE"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "CASE-INC",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "DEPENDS_ON",
+                  "source_id": "CASE-API",
+                  "target_id": "CASE-AUTH",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "CASE-DEP-BEFORE",
+                  "target_id": "CASE-AUTH",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "CASE-DEP-AFTER",
+            "target_service_id": "CASE-AUTH",
+            "dependency_depth": 1,
+            "temporal_classification": "AFTER",
+            "candidate_assessment": "TEMPORALLY_EXCLUDED",
+            "event_utc": "2026-11-12T10:02:00Z",
+            "change_ids": [
+              "CASE-CHG-AFTER"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "CASE-INC",
+                "CASE-API",
+                "CASE-AUTH",
+                "CASE-DEP-AFTER"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "CASE-INC",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "DEPENDS_ON",
+                  "source_id": "CASE-API",
+                  "target_id": "CASE-AUTH",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "CASE-DEP-AFTER",
+                  "target_id": "CASE-AUTH",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "CASE-DEP-ONSET",
+            "target_service_id": "CASE-API",
+            "dependency_depth": 0,
+            "temporal_classification": "AT_ONSET",
+            "candidate_assessment": "TEMPORALLY_EXCLUDED",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "change_ids": [
+              "CASE-CHG-ONSET"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "CASE-INC",
+                "CASE-API",
+                "CASE-DEP-ONSET"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "CASE-INC",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "CASE-DEP-ONSET",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "CASE-DEP-OFFSET",
+            "target_service_id": "CASE-API",
+            "dependency_depth": 0,
+            "temporal_classification": "AT_ONSET",
+            "candidate_assessment": "TEMPORALLY_EXCLUDED",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "change_ids": [
+              "CASE-CHG-OFFSET"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "CASE-INC",
+                "CASE-API",
+                "CASE-DEP-OFFSET"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "CASE-INC",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "CASE-DEP-OFFSET",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "CASE-DEP-NOCHANGE",
+            "target_service_id": "CASE-API",
+            "dependency_depth": 0,
+            "temporal_classification": "BEFORE",
+            "candidate_assessment": "INVESTIGATE",
+            "event_utc": "2026-11-12T09:40:00Z",
+            "change_ids": [],
+            "graph_path": {
+              "node_ids": [
+                "CASE-INC",
+                "CASE-API",
+                "CASE-DEP-NOCHANGE"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "CASE-INC",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "CASE-DEP-NOCHANGE",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "CASE-DEP-INVALID",
+            "target_service_id": "CASE-AUTH",
+            "dependency_depth": 1,
+            "temporal_classification": "UNKNOWN",
+            "candidate_assessment": "INSUFFICIENT_DATA",
+            "event_utc": null,
+            "change_ids": [
+              "CASE-CHG-INVALID"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "CASE-INC",
+                "CASE-API",
+                "CASE-AUTH",
+                "CASE-DEP-INVALID"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "CASE-INC",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "DEPENDS_ON",
+                  "source_id": "CASE-API",
+                  "target_id": "CASE-AUTH",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "CASE-DEP-INVALID",
+                  "target_id": "CASE-AUTH",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "evidence_id": "CASE-E-HEALTHY",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "CASE-API"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "CASE-E-FAILED",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "CASE-API"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "CASE-E-EARLY",
+            "temporal_classification": "BEFORE",
+            "event_utc": "2026-11-12T09:00:00Z",
+            "observed_service_ids": [
+              "CASE-API"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "CASE-E-LATE",
+            "temporal_classification": "OUTSIDE_WINDOW",
+            "event_utc": "2026-11-12T11:00:00Z",
+            "observed_service_ids": [
+              "CASE-API"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "CASE-E-NAIVE",
+            "temporal_classification": "UNKNOWN",
+            "event_utc": null,
+            "observed_service_ids": [
+              "CASE-API"
+            ],
+            "provenance_status": "INVALID",
+            "warning_codes": [
+              "INVALID_TIMESTAMP"
+            ],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "CASE-E-MISSING-REF",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "CASE-API"
+            ],
+            "provenance_status": "INCOMPLETE",
+            "warning_codes": [
+              "MISSING_SOURCE_REF"
+            ],
+            "verification_status": "NOT_AVAILABLE"
+          },
+          {
+            "evidence_id": "CASE-E-MISSING-SOURCE",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "CASE-API"
+            ],
+            "provenance_status": "INCOMPLETE",
+            "warning_codes": [
+              "MISSING_SOURCE"
+            ],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "CASE-E-ORPHAN",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [],
+            "provenance_status": "INCOMPLETE",
+            "warning_codes": [
+              "MISSING_OBSERVED_SERVICE"
+            ],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "CASE-E-DEGRADED",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "CASE-API"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "CASE-E-WRONG-SERVICE",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "CASE-API"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "CASE-E-NO-TIME",
+            "temporal_classification": "UNKNOWN",
+            "event_utc": null,
+            "observed_service_ids": [
+              "CASE-API"
+            ],
+            "provenance_status": "INCOMPLETE",
+            "warning_codes": [
+              "MISSING_TIMESTAMP"
+            ],
+            "verification_status": "SYNTHETIC"
+          }
+        ],
+        "conflict_pairs": [
+          [
+            "CASE-E-FAILED",
+            "CASE-E-HEALTHY"
+          ]
+        ],
+        "undetermined_pairs": [
+          [
+            "CASE-E-DEGRADED",
+            "CASE-E-FAILED"
+          ],
+          [
+            "CASE-E-DEGRADED",
+            "CASE-E-HEALTHY"
+          ]
+        ],
+        "not_evaluable_count": 6,
+        "investigation_status": "PARTIAL_CONTEXT",
+        "causal_conclusion": "NOT_ESTABLISHED",
+        "truncation": {
+          "candidates": false,
+          "evidence": false,
+          "affected_services": false,
+          "changes": false,
+          "observations": false,
+          "timeline": false,
+          "contradictions": false,
+          "provenance_warnings": false
+        },
+        "required_limitation_codes": []
+      }
+    },
+    {
+      "case_id": "E04",
+      "description": "Missing incident anchor stays UNKNOWN",
+      "fixture_profiles": [
+        "sprint01"
+      ],
+      "incident_id": "CASE-NO-TIME",
+      "options": {},
+      "expected": {
+        "candidates": [
+          {
+            "deployment_id": "CASE-DEP-BEFORE",
+            "target_service_id": "CASE-AUTH",
+            "dependency_depth": 1,
+            "temporal_classification": "UNKNOWN",
+            "candidate_assessment": "INSUFFICIENT_DATA",
+            "event_utc": "2026-11-12T09:30:00Z",
+            "change_ids": [
+              "CASE-CHG-BEFORE"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "CASE-NO-TIME",
+                "CASE-API",
+                "CASE-AUTH",
+                "CASE-DEP-BEFORE"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "CASE-NO-TIME",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "DEPENDS_ON",
+                  "source_id": "CASE-API",
+                  "target_id": "CASE-AUTH",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "CASE-DEP-BEFORE",
+                  "target_id": "CASE-AUTH",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "CASE-DEP-AFTER",
+            "target_service_id": "CASE-AUTH",
+            "dependency_depth": 1,
+            "temporal_classification": "UNKNOWN",
+            "candidate_assessment": "INSUFFICIENT_DATA",
+            "event_utc": "2026-11-12T10:02:00Z",
+            "change_ids": [
+              "CASE-CHG-AFTER"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "CASE-NO-TIME",
+                "CASE-API",
+                "CASE-AUTH",
+                "CASE-DEP-AFTER"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "CASE-NO-TIME",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "DEPENDS_ON",
+                  "source_id": "CASE-API",
+                  "target_id": "CASE-AUTH",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "CASE-DEP-AFTER",
+                  "target_id": "CASE-AUTH",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "CASE-DEP-ONSET",
+            "target_service_id": "CASE-API",
+            "dependency_depth": 0,
+            "temporal_classification": "UNKNOWN",
+            "candidate_assessment": "INSUFFICIENT_DATA",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "change_ids": [
+              "CASE-CHG-ONSET"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "CASE-NO-TIME",
+                "CASE-API",
+                "CASE-DEP-ONSET"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "CASE-NO-TIME",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "CASE-DEP-ONSET",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "CASE-DEP-OFFSET",
+            "target_service_id": "CASE-API",
+            "dependency_depth": 0,
+            "temporal_classification": "UNKNOWN",
+            "candidate_assessment": "INSUFFICIENT_DATA",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "change_ids": [
+              "CASE-CHG-OFFSET"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "CASE-NO-TIME",
+                "CASE-API",
+                "CASE-DEP-OFFSET"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "CASE-NO-TIME",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "CASE-DEP-OFFSET",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "CASE-DEP-NOCHANGE",
+            "target_service_id": "CASE-API",
+            "dependency_depth": 0,
+            "temporal_classification": "UNKNOWN",
+            "candidate_assessment": "INSUFFICIENT_DATA",
+            "event_utc": "2026-11-12T09:40:00Z",
+            "change_ids": [],
+            "graph_path": {
+              "node_ids": [
+                "CASE-NO-TIME",
+                "CASE-API",
+                "CASE-DEP-NOCHANGE"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "CASE-NO-TIME",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "CASE-DEP-NOCHANGE",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "CASE-DEP-INVALID",
+            "target_service_id": "CASE-AUTH",
+            "dependency_depth": 1,
+            "temporal_classification": "UNKNOWN",
+            "candidate_assessment": "INSUFFICIENT_DATA",
+            "event_utc": null,
+            "change_ids": [
+              "CASE-CHG-INVALID"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "CASE-NO-TIME",
+                "CASE-API",
+                "CASE-AUTH",
+                "CASE-DEP-INVALID"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "CASE-NO-TIME",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "DEPENDS_ON",
+                  "source_id": "CASE-API",
+                  "target_id": "CASE-AUTH",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "CASE-DEP-INVALID",
+                  "target_id": "CASE-AUTH",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "evidence_id": "CASE-E-HEALTHY",
+            "temporal_classification": "UNKNOWN",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "CASE-API"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          }
+        ],
+        "conflict_pairs": [],
+        "undetermined_pairs": [],
+        "not_evaluable_count": 0,
+        "investigation_status": "PARTIAL_CONTEXT",
+        "causal_conclusion": "NOT_ESTABLISHED",
+        "truncation": {
+          "candidates": false,
+          "evidence": false,
+          "affected_services": false,
+          "changes": false,
+          "observations": false,
+          "timeline": false,
+          "contradictions": false,
+          "provenance_warnings": false
+        },
+        "required_limitation_codes": [
+          "MISSING_TIMESTAMP"
+        ]
+      }
+    },
+    {
+      "case_id": "E05",
+      "description": "Shared service never imports another incident evidence",
+      "fixture_profiles": [
+        "sprint01"
+      ],
+      "incident_id": "CASE-OTHER",
+      "options": {},
+      "expected": {
+        "candidates": [
+          {
+            "deployment_id": "CASE-DEP-BEFORE",
+            "target_service_id": "CASE-AUTH",
+            "dependency_depth": 1,
+            "temporal_classification": "BEFORE",
+            "candidate_assessment": "INVESTIGATE",
+            "event_utc": "2026-11-12T09:30:00Z",
+            "change_ids": [
+              "CASE-CHG-BEFORE"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "CASE-OTHER",
+                "CASE-API",
+                "CASE-AUTH",
+                "CASE-DEP-BEFORE"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "CASE-OTHER",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "DEPENDS_ON",
+                  "source_id": "CASE-API",
+                  "target_id": "CASE-AUTH",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "CASE-DEP-BEFORE",
+                  "target_id": "CASE-AUTH",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "CASE-DEP-AFTER",
+            "target_service_id": "CASE-AUTH",
+            "dependency_depth": 1,
+            "temporal_classification": "AFTER",
+            "candidate_assessment": "TEMPORALLY_EXCLUDED",
+            "event_utc": "2026-11-12T10:02:00Z",
+            "change_ids": [
+              "CASE-CHG-AFTER"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "CASE-OTHER",
+                "CASE-API",
+                "CASE-AUTH",
+                "CASE-DEP-AFTER"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "CASE-OTHER",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "DEPENDS_ON",
+                  "source_id": "CASE-API",
+                  "target_id": "CASE-AUTH",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "CASE-DEP-AFTER",
+                  "target_id": "CASE-AUTH",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "CASE-DEP-ONSET",
+            "target_service_id": "CASE-API",
+            "dependency_depth": 0,
+            "temporal_classification": "AT_ONSET",
+            "candidate_assessment": "TEMPORALLY_EXCLUDED",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "change_ids": [
+              "CASE-CHG-ONSET"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "CASE-OTHER",
+                "CASE-API",
+                "CASE-DEP-ONSET"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "CASE-OTHER",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "CASE-DEP-ONSET",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "CASE-DEP-OFFSET",
+            "target_service_id": "CASE-API",
+            "dependency_depth": 0,
+            "temporal_classification": "AT_ONSET",
+            "candidate_assessment": "TEMPORALLY_EXCLUDED",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "change_ids": [
+              "CASE-CHG-OFFSET"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "CASE-OTHER",
+                "CASE-API",
+                "CASE-DEP-OFFSET"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "CASE-OTHER",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "CASE-DEP-OFFSET",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "CASE-DEP-NOCHANGE",
+            "target_service_id": "CASE-API",
+            "dependency_depth": 0,
+            "temporal_classification": "BEFORE",
+            "candidate_assessment": "INVESTIGATE",
+            "event_utc": "2026-11-12T09:40:00Z",
+            "change_ids": [],
+            "graph_path": {
+              "node_ids": [
+                "CASE-OTHER",
+                "CASE-API",
+                "CASE-DEP-NOCHANGE"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "CASE-OTHER",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "CASE-DEP-NOCHANGE",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "CASE-DEP-INVALID",
+            "target_service_id": "CASE-AUTH",
+            "dependency_depth": 1,
+            "temporal_classification": "UNKNOWN",
+            "candidate_assessment": "INSUFFICIENT_DATA",
+            "event_utc": null,
+            "change_ids": [
+              "CASE-CHG-INVALID"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "CASE-OTHER",
+                "CASE-API",
+                "CASE-AUTH",
+                "CASE-DEP-INVALID"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "CASE-OTHER",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "DEPENDS_ON",
+                  "source_id": "CASE-API",
+                  "target_id": "CASE-AUTH",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "CASE-DEP-INVALID",
+                  "target_id": "CASE-AUTH",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "evidence_id": "CASE-E-OTHER",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "CASE-API"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          }
+        ],
+        "conflict_pairs": [],
+        "undetermined_pairs": [],
+        "not_evaluable_count": 0,
+        "investigation_status": "PARTIAL_CONTEXT",
+        "causal_conclusion": "NOT_ESTABLISHED",
+        "truncation": {
+          "candidates": false,
+          "evidence": false,
+          "affected_services": false,
+          "changes": false,
+          "observations": false,
+          "timeline": false,
+          "contradictions": false,
+          "provenance_warnings": false
+        },
+        "required_limitation_codes": []
+      }
+    },
+    {
+      "case_id": "E06",
+      "description": "Three hops included, fourth excluded, cyclic alternate paths removed",
+      "fixture_profiles": [
+        "evaluation"
+      ],
+      "incident_id": "EV-DEPTH",
+      "options": {},
+      "expected": {
+        "candidates": [
+          {
+            "deployment_id": "EV-D-DIRECT",
+            "target_service_id": "EV-ROOT",
+            "dependency_depth": 0,
+            "temporal_classification": "BEFORE",
+            "candidate_assessment": "INVESTIGATE",
+            "event_utc": "2026-11-12T09:30:00Z",
+            "change_ids": [],
+            "graph_path": {
+              "node_ids": [
+                "EV-DEPTH",
+                "EV-ROOT",
+                "EV-D-DIRECT"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "EV-DEPTH",
+                  "target_id": "EV-ROOT",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "EV-D-DIRECT",
+                  "target_id": "EV-ROOT",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "EV-D-THREE",
+            "target_service_id": "EV-S-3",
+            "dependency_depth": 3,
+            "temporal_classification": "BEFORE",
+            "candidate_assessment": "INVESTIGATE",
+            "event_utc": "2026-11-12T09:30:00Z",
+            "change_ids": [],
+            "graph_path": {
+              "node_ids": [
+                "EV-DEPTH",
+                "EV-ROOT",
+                "EV-S-1",
+                "EV-S-2",
+                "EV-S-3",
+                "EV-D-THREE"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "EV-DEPTH",
+                  "target_id": "EV-ROOT",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "DEPENDS_ON",
+                  "source_id": "EV-ROOT",
+                  "target_id": "EV-S-1",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "DEPENDS_ON",
+                  "source_id": "EV-S-1",
+                  "target_id": "EV-S-2",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "DEPENDS_ON",
+                  "source_id": "EV-S-2",
+                  "target_id": "EV-S-3",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "EV-D-THREE",
+                  "target_id": "EV-S-3",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "evidence_id": "EV-E-DEPTH",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "EV-ROOT"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          }
+        ],
+        "conflict_pairs": [],
+        "undetermined_pairs": [],
+        "not_evaluable_count": 0,
+        "investigation_status": "PARTIAL_CONTEXT",
+        "causal_conclusion": "NOT_ESTABLISHED",
+        "truncation": {
+          "candidates": false,
+          "evidence": false,
+          "affected_services": false,
+          "changes": false,
+          "observations": false,
+          "timeline": false,
+          "contradictions": false,
+          "provenance_warnings": false
+        },
+        "required_limitation_codes": []
+      }
+    },
+    {
+      "case_id": "E07",
+      "description": "Inclusive lower/upper boundaries and one-second negative controls",
+      "fixture_profiles": [
+        "evaluation"
+      ],
+      "incident_id": "EV-BOUNDARY",
+      "options": {},
+      "expected": {
+        "candidates": [
+          {
+            "deployment_id": "EV-B-LOWER",
+            "target_service_id": "EV-BOUNDARY-S",
+            "dependency_depth": 0,
+            "temporal_classification": "BEFORE",
+            "candidate_assessment": "INVESTIGATE",
+            "event_utc": "2026-11-12T08:00:00Z",
+            "change_ids": [],
+            "graph_path": {
+              "node_ids": [
+                "EV-BOUNDARY",
+                "EV-BOUNDARY-S",
+                "EV-B-LOWER"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "EV-BOUNDARY",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "EV-B-LOWER",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "EV-B-LOWER-OUT",
+            "target_service_id": "EV-BOUNDARY-S",
+            "dependency_depth": 0,
+            "temporal_classification": "OUTSIDE_WINDOW",
+            "candidate_assessment": "TEMPORALLY_EXCLUDED",
+            "event_utc": "2026-11-12T07:59:59Z",
+            "change_ids": [],
+            "graph_path": {
+              "node_ids": [
+                "EV-BOUNDARY",
+                "EV-BOUNDARY-S",
+                "EV-B-LOWER-OUT"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "EV-BOUNDARY",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "EV-B-LOWER-OUT",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "EV-B-ONSET",
+            "target_service_id": "EV-BOUNDARY-S",
+            "dependency_depth": 0,
+            "temporal_classification": "AT_ONSET",
+            "candidate_assessment": "TEMPORALLY_EXCLUDED",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "change_ids": [],
+            "graph_path": {
+              "node_ids": [
+                "EV-BOUNDARY",
+                "EV-BOUNDARY-S",
+                "EV-B-ONSET"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "EV-BOUNDARY",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "EV-B-ONSET",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "EV-B-OFFSET",
+            "target_service_id": "EV-BOUNDARY-S",
+            "dependency_depth": 0,
+            "temporal_classification": "AT_ONSET",
+            "candidate_assessment": "TEMPORALLY_EXCLUDED",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "change_ids": [],
+            "graph_path": {
+              "node_ids": [
+                "EV-BOUNDARY",
+                "EV-BOUNDARY-S",
+                "EV-B-OFFSET"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "EV-BOUNDARY",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "EV-B-OFFSET",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "EV-B-UPPER",
+            "target_service_id": "EV-BOUNDARY-S",
+            "dependency_depth": 0,
+            "temporal_classification": "AFTER",
+            "candidate_assessment": "TEMPORALLY_EXCLUDED",
+            "event_utc": "2026-11-12T10:30:00Z",
+            "change_ids": [],
+            "graph_path": {
+              "node_ids": [
+                "EV-BOUNDARY",
+                "EV-BOUNDARY-S",
+                "EV-B-UPPER"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "EV-BOUNDARY",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "EV-B-UPPER",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "EV-B-UPPER-OUT",
+            "target_service_id": "EV-BOUNDARY-S",
+            "dependency_depth": 0,
+            "temporal_classification": "OUTSIDE_WINDOW",
+            "candidate_assessment": "TEMPORALLY_EXCLUDED",
+            "event_utc": "2026-11-12T10:30:01Z",
+            "change_ids": [],
+            "graph_path": {
+              "node_ids": [
+                "EV-BOUNDARY",
+                "EV-BOUNDARY-S",
+                "EV-B-UPPER-OUT"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "EV-BOUNDARY",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "EV-B-UPPER-OUT",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "EV-B-NAIVE",
+            "target_service_id": "EV-BOUNDARY-S",
+            "dependency_depth": 0,
+            "temporal_classification": "UNKNOWN",
+            "candidate_assessment": "INSUFFICIENT_DATA",
+            "event_utc": null,
+            "change_ids": [],
+            "graph_path": {
+              "node_ids": [
+                "EV-BOUNDARY",
+                "EV-BOUNDARY-S",
+                "EV-B-NAIVE"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "EV-BOUNDARY",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "EV-B-NAIVE",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "EV-B-NO-TIME",
+            "target_service_id": "EV-BOUNDARY-S",
+            "dependency_depth": 0,
+            "temporal_classification": "UNKNOWN",
+            "candidate_assessment": "INSUFFICIENT_DATA",
+            "event_utc": null,
+            "change_ids": [],
+            "graph_path": {
+              "node_ids": [
+                "EV-BOUNDARY",
+                "EV-BOUNDARY-S",
+                "EV-B-NO-TIME"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "EV-BOUNDARY",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "EV-B-NO-TIME",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "evidence_id": "EV-B-E-TRACE",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "EV-BOUNDARY-S"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "EV-B-E-NAIVE",
+            "temporal_classification": "UNKNOWN",
+            "event_utc": null,
+            "observed_service_ids": [
+              "EV-BOUNDARY-S"
+            ],
+            "provenance_status": "INVALID",
+            "warning_codes": [
+              "INVALID_TIMESTAMP"
+            ],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "EV-B-E-NOREF",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "EV-BOUNDARY-S"
+            ],
+            "provenance_status": "INCOMPLETE",
+            "warning_codes": [
+              "MISSING_SOURCE_REF"
+            ],
+            "verification_status": "NOT_AVAILABLE"
+          },
+          {
+            "evidence_id": "EV-B-E-ORPHAN",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [],
+            "provenance_status": "INCOMPLETE",
+            "warning_codes": [
+              "MISSING_OBSERVED_SERVICE"
+            ],
+            "verification_status": "SYNTHETIC"
+          }
+        ],
+        "conflict_pairs": [],
+        "undetermined_pairs": [],
+        "not_evaluable_count": 3,
+        "investigation_status": "PARTIAL_CONTEXT",
+        "causal_conclusion": "NOT_ESTABLISHED",
+        "truncation": {
+          "candidates": false,
+          "evidence": false,
+          "affected_services": false,
+          "changes": false,
+          "observations": false,
+          "timeline": false,
+          "contradictions": false,
+          "provenance_warnings": false
+        },
+        "required_limitation_codes": []
+      }
+    },
+    {
+      "case_id": "E08",
+      "description": "Zero windows admit exact UTC-equivalent onset only",
+      "fixture_profiles": [
+        "evaluation"
+      ],
+      "incident_id": "EV-BOUNDARY",
+      "options": {
+        "pre_minutes": 0,
+        "post_minutes": 0
+      },
+      "expected": {
+        "candidates": [
+          {
+            "deployment_id": "EV-B-LOWER",
+            "target_service_id": "EV-BOUNDARY-S",
+            "dependency_depth": 0,
+            "temporal_classification": "OUTSIDE_WINDOW",
+            "candidate_assessment": "TEMPORALLY_EXCLUDED",
+            "event_utc": "2026-11-12T08:00:00Z",
+            "change_ids": [],
+            "graph_path": {
+              "node_ids": [
+                "EV-BOUNDARY",
+                "EV-BOUNDARY-S",
+                "EV-B-LOWER"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "EV-BOUNDARY",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "EV-B-LOWER",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "EV-B-LOWER-OUT",
+            "target_service_id": "EV-BOUNDARY-S",
+            "dependency_depth": 0,
+            "temporal_classification": "OUTSIDE_WINDOW",
+            "candidate_assessment": "TEMPORALLY_EXCLUDED",
+            "event_utc": "2026-11-12T07:59:59Z",
+            "change_ids": [],
+            "graph_path": {
+              "node_ids": [
+                "EV-BOUNDARY",
+                "EV-BOUNDARY-S",
+                "EV-B-LOWER-OUT"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "EV-BOUNDARY",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "EV-B-LOWER-OUT",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "EV-B-ONSET",
+            "target_service_id": "EV-BOUNDARY-S",
+            "dependency_depth": 0,
+            "temporal_classification": "AT_ONSET",
+            "candidate_assessment": "TEMPORALLY_EXCLUDED",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "change_ids": [],
+            "graph_path": {
+              "node_ids": [
+                "EV-BOUNDARY",
+                "EV-BOUNDARY-S",
+                "EV-B-ONSET"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "EV-BOUNDARY",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "EV-B-ONSET",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "EV-B-OFFSET",
+            "target_service_id": "EV-BOUNDARY-S",
+            "dependency_depth": 0,
+            "temporal_classification": "AT_ONSET",
+            "candidate_assessment": "TEMPORALLY_EXCLUDED",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "change_ids": [],
+            "graph_path": {
+              "node_ids": [
+                "EV-BOUNDARY",
+                "EV-BOUNDARY-S",
+                "EV-B-OFFSET"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "EV-BOUNDARY",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "EV-B-OFFSET",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "EV-B-UPPER",
+            "target_service_id": "EV-BOUNDARY-S",
+            "dependency_depth": 0,
+            "temporal_classification": "OUTSIDE_WINDOW",
+            "candidate_assessment": "TEMPORALLY_EXCLUDED",
+            "event_utc": "2026-11-12T10:30:00Z",
+            "change_ids": [],
+            "graph_path": {
+              "node_ids": [
+                "EV-BOUNDARY",
+                "EV-BOUNDARY-S",
+                "EV-B-UPPER"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "EV-BOUNDARY",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "EV-B-UPPER",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "EV-B-UPPER-OUT",
+            "target_service_id": "EV-BOUNDARY-S",
+            "dependency_depth": 0,
+            "temporal_classification": "OUTSIDE_WINDOW",
+            "candidate_assessment": "TEMPORALLY_EXCLUDED",
+            "event_utc": "2026-11-12T10:30:01Z",
+            "change_ids": [],
+            "graph_path": {
+              "node_ids": [
+                "EV-BOUNDARY",
+                "EV-BOUNDARY-S",
+                "EV-B-UPPER-OUT"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "EV-BOUNDARY",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "EV-B-UPPER-OUT",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "EV-B-NAIVE",
+            "target_service_id": "EV-BOUNDARY-S",
+            "dependency_depth": 0,
+            "temporal_classification": "UNKNOWN",
+            "candidate_assessment": "INSUFFICIENT_DATA",
+            "event_utc": null,
+            "change_ids": [],
+            "graph_path": {
+              "node_ids": [
+                "EV-BOUNDARY",
+                "EV-BOUNDARY-S",
+                "EV-B-NAIVE"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "EV-BOUNDARY",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "EV-B-NAIVE",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "EV-B-NO-TIME",
+            "target_service_id": "EV-BOUNDARY-S",
+            "dependency_depth": 0,
+            "temporal_classification": "UNKNOWN",
+            "candidate_assessment": "INSUFFICIENT_DATA",
+            "event_utc": null,
+            "change_ids": [],
+            "graph_path": {
+              "node_ids": [
+                "EV-BOUNDARY",
+                "EV-BOUNDARY-S",
+                "EV-B-NO-TIME"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "EV-BOUNDARY",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "EV-B-NO-TIME",
+                  "target_id": "EV-BOUNDARY-S",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "evidence_id": "EV-B-E-TRACE",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "EV-BOUNDARY-S"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "EV-B-E-NAIVE",
+            "temporal_classification": "UNKNOWN",
+            "event_utc": null,
+            "observed_service_ids": [
+              "EV-BOUNDARY-S"
+            ],
+            "provenance_status": "INVALID",
+            "warning_codes": [
+              "INVALID_TIMESTAMP"
+            ],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "EV-B-E-NOREF",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "EV-BOUNDARY-S"
+            ],
+            "provenance_status": "INCOMPLETE",
+            "warning_codes": [
+              "MISSING_SOURCE_REF"
+            ],
+            "verification_status": "NOT_AVAILABLE"
+          },
+          {
+            "evidence_id": "EV-B-E-ORPHAN",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [],
+            "provenance_status": "INCOMPLETE",
+            "warning_codes": [
+              "MISSING_OBSERVED_SERVICE"
+            ],
+            "verification_status": "SYNTHETIC"
+          }
+        ],
+        "conflict_pairs": [],
+        "undetermined_pairs": [],
+        "not_evaluable_count": 3,
+        "investigation_status": "PARTIAL_CONTEXT",
+        "causal_conclusion": "NOT_ESTABLISHED",
+        "truncation": {
+          "candidates": false,
+          "evidence": false,
+          "affected_services": false,
+          "changes": false,
+          "observations": false,
+          "timeline": false,
+          "contradictions": false,
+          "provenance_warnings": false
+        },
+        "required_limitation_codes": []
+      }
+    },
+    {
+      "case_id": "E09",
+      "description": "Thirty-minute lower bound included; no post-window eligibility",
+      "fixture_profiles": [
+        "sprint01"
+      ],
+      "incident_id": "CASE-INC",
+      "options": {
+        "pre_minutes": 30,
+        "post_minutes": 0
+      },
+      "expected": {
+        "candidates": [
+          {
+            "deployment_id": "CASE-DEP-BEFORE",
+            "target_service_id": "CASE-AUTH",
+            "dependency_depth": 1,
+            "temporal_classification": "BEFORE",
+            "candidate_assessment": "INVESTIGATE",
+            "event_utc": "2026-11-12T09:30:00Z",
+            "change_ids": [
+              "CASE-CHG-BEFORE"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "CASE-INC",
+                "CASE-API",
+                "CASE-AUTH",
+                "CASE-DEP-BEFORE"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "CASE-INC",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "DEPENDS_ON",
+                  "source_id": "CASE-API",
+                  "target_id": "CASE-AUTH",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "CASE-DEP-BEFORE",
+                  "target_id": "CASE-AUTH",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "CASE-DEP-AFTER",
+            "target_service_id": "CASE-AUTH",
+            "dependency_depth": 1,
+            "temporal_classification": "OUTSIDE_WINDOW",
+            "candidate_assessment": "TEMPORALLY_EXCLUDED",
+            "event_utc": "2026-11-12T10:02:00Z",
+            "change_ids": [
+              "CASE-CHG-AFTER"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "CASE-INC",
+                "CASE-API",
+                "CASE-AUTH",
+                "CASE-DEP-AFTER"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "CASE-INC",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "DEPENDS_ON",
+                  "source_id": "CASE-API",
+                  "target_id": "CASE-AUTH",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "CASE-DEP-AFTER",
+                  "target_id": "CASE-AUTH",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "CASE-DEP-ONSET",
+            "target_service_id": "CASE-API",
+            "dependency_depth": 0,
+            "temporal_classification": "AT_ONSET",
+            "candidate_assessment": "TEMPORALLY_EXCLUDED",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "change_ids": [
+              "CASE-CHG-ONSET"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "CASE-INC",
+                "CASE-API",
+                "CASE-DEP-ONSET"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "CASE-INC",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "CASE-DEP-ONSET",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "CASE-DEP-OFFSET",
+            "target_service_id": "CASE-API",
+            "dependency_depth": 0,
+            "temporal_classification": "AT_ONSET",
+            "candidate_assessment": "TEMPORALLY_EXCLUDED",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "change_ids": [
+              "CASE-CHG-OFFSET"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "CASE-INC",
+                "CASE-API",
+                "CASE-DEP-OFFSET"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "CASE-INC",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "CASE-DEP-OFFSET",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "CASE-DEP-NOCHANGE",
+            "target_service_id": "CASE-API",
+            "dependency_depth": 0,
+            "temporal_classification": "BEFORE",
+            "candidate_assessment": "INVESTIGATE",
+            "event_utc": "2026-11-12T09:40:00Z",
+            "change_ids": [],
+            "graph_path": {
+              "node_ids": [
+                "CASE-INC",
+                "CASE-API",
+                "CASE-DEP-NOCHANGE"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "CASE-INC",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "CASE-DEP-NOCHANGE",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "CASE-DEP-INVALID",
+            "target_service_id": "CASE-AUTH",
+            "dependency_depth": 1,
+            "temporal_classification": "UNKNOWN",
+            "candidate_assessment": "INSUFFICIENT_DATA",
+            "event_utc": null,
+            "change_ids": [
+              "CASE-CHG-INVALID"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "CASE-INC",
+                "CASE-API",
+                "CASE-AUTH",
+                "CASE-DEP-INVALID"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "CASE-INC",
+                  "target_id": "CASE-API",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "DEPENDS_ON",
+                  "source_id": "CASE-API",
+                  "target_id": "CASE-AUTH",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "CASE-DEP-INVALID",
+                  "target_id": "CASE-AUTH",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "evidence_id": "CASE-E-HEALTHY",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "CASE-API"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "CASE-E-FAILED",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "CASE-API"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "CASE-E-EARLY",
+            "temporal_classification": "OUTSIDE_WINDOW",
+            "event_utc": "2026-11-12T09:00:00Z",
+            "observed_service_ids": [
+              "CASE-API"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "CASE-E-LATE",
+            "temporal_classification": "OUTSIDE_WINDOW",
+            "event_utc": "2026-11-12T11:00:00Z",
+            "observed_service_ids": [
+              "CASE-API"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "CASE-E-NAIVE",
+            "temporal_classification": "UNKNOWN",
+            "event_utc": null,
+            "observed_service_ids": [
+              "CASE-API"
+            ],
+            "provenance_status": "INVALID",
+            "warning_codes": [
+              "INVALID_TIMESTAMP"
+            ],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "CASE-E-MISSING-REF",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "CASE-API"
+            ],
+            "provenance_status": "INCOMPLETE",
+            "warning_codes": [
+              "MISSING_SOURCE_REF"
+            ],
+            "verification_status": "NOT_AVAILABLE"
+          },
+          {
+            "evidence_id": "CASE-E-MISSING-SOURCE",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "CASE-API"
+            ],
+            "provenance_status": "INCOMPLETE",
+            "warning_codes": [
+              "MISSING_SOURCE"
+            ],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "CASE-E-ORPHAN",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [],
+            "provenance_status": "INCOMPLETE",
+            "warning_codes": [
+              "MISSING_OBSERVED_SERVICE"
+            ],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "CASE-E-DEGRADED",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "CASE-API"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "CASE-E-WRONG-SERVICE",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "CASE-API"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "CASE-E-NO-TIME",
+            "temporal_classification": "UNKNOWN",
+            "event_utc": null,
+            "observed_service_ids": [
+              "CASE-API"
+            ],
+            "provenance_status": "INCOMPLETE",
+            "warning_codes": [
+              "MISSING_TIMESTAMP"
+            ],
+            "verification_status": "SYNTHETIC"
+          }
+        ],
+        "conflict_pairs": [
+          [
+            "CASE-E-FAILED",
+            "CASE-E-HEALTHY"
+          ]
+        ],
+        "undetermined_pairs": [
+          [
+            "CASE-E-DEGRADED",
+            "CASE-E-FAILED"
+          ],
+          [
+            "CASE-E-DEGRADED",
+            "CASE-E-HEALTHY"
+          ]
+        ],
+        "not_evaluable_count": 6,
+        "investigation_status": "PARTIAL_CONTEXT",
+        "causal_conclusion": "NOT_ESTABLISHED",
+        "truncation": {
+          "candidates": false,
+          "evidence": false,
+          "affected_services": false,
+          "changes": false,
+          "observations": false,
+          "timeline": false,
+          "contradictions": false,
+          "provenance_warnings": false
+        },
+        "required_limitation_codes": []
+      }
+    },
+    {
+      "case_id": "E10",
+      "description": "Invalid anchor is not replaced by observed/ingestion time",
+      "fixture_profiles": [
+        "evaluation"
+      ],
+      "incident_id": "EV-INVALID",
+      "options": {},
+      "expected": {
+        "candidates": [],
+        "evidence": [
+          {
+            "evidence_id": "EV-INVALID-E",
+            "temporal_classification": "UNKNOWN",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "EV-INVALID-S"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          }
+        ],
+        "conflict_pairs": [],
+        "undetermined_pairs": [],
+        "not_evaluable_count": 0,
+        "investigation_status": "PARTIAL_CONTEXT",
+        "causal_conclusion": "NOT_ESTABLISHED",
+        "truncation": {
+          "candidates": false,
+          "evidence": false,
+          "affected_services": false,
+          "changes": false,
+          "observations": false,
+          "timeline": false,
+          "contradictions": false,
+          "provenance_warnings": false
+        },
+        "required_limitation_codes": [
+          "INVALID_TIMESTAMP"
+        ]
+      }
+    },
+    {
+      "case_id": "E11",
+      "description": "Invalid anchor is not replaced by observed/ingestion time",
+      "fixture_profiles": [
+        "evaluation"
+      ],
+      "incident_id": "EV-NAIVE",
+      "options": {},
+      "expected": {
+        "candidates": [],
+        "evidence": [
+          {
+            "evidence_id": "EV-NAIVE-E",
+            "temporal_classification": "UNKNOWN",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "EV-NAIVE-S"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          }
+        ],
+        "conflict_pairs": [],
+        "undetermined_pairs": [],
+        "not_evaluable_count": 0,
+        "investigation_status": "PARTIAL_CONTEXT",
+        "causal_conclusion": "NOT_ESTABLISHED",
+        "truncation": {
+          "candidates": false,
+          "evidence": false,
+          "affected_services": false,
+          "changes": false,
+          "observations": false,
+          "timeline": false,
+          "contradictions": false,
+          "provenance_warnings": false
+        },
+        "required_limitation_codes": [
+          "INVALID_TIMESTAMP"
+        ]
+      }
+    },
+    {
+      "case_id": "E12",
+      "description": "No evidence means insufficient, not proof of no problem",
+      "fixture_profiles": [
+        "evaluation"
+      ],
+      "incident_id": "EV-NONE",
+      "options": {},
+      "expected": {
+        "candidates": [],
+        "evidence": [],
+        "conflict_pairs": [],
+        "undetermined_pairs": [],
+        "not_evaluable_count": 0,
+        "investigation_status": "INSUFFICIENT_EVIDENCE",
+        "causal_conclusion": "NOT_ESTABLISHED",
+        "truncation": {
+          "candidates": false,
+          "evidence": false,
+          "affected_services": false,
+          "changes": false,
+          "observations": false,
+          "timeline": false,
+          "contradictions": false,
+          "provenance_warnings": false
+        },
+        "required_limitation_codes": [
+          "NO_INCIDENT_EVIDENCE"
+        ]
+      }
+    },
+    {
+      "case_id": "E13",
+      "description": "Same signal positive conflict; different environment/signal/service/time negatives",
+      "fixture_profiles": [
+        "evaluation"
+      ],
+      "incident_id": "EV-SIGNALS",
+      "options": {},
+      "expected": {
+        "candidates": [],
+        "evidence": [
+          {
+            "evidence_id": "EV-G-HEALTHY",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "EV-SIGNAL-S"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "EV-G-FAILED",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "EV-SIGNAL-S"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "EV-G-DEGRADED",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "EV-SIGNAL-S"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "EV-G-EARLY",
+            "temporal_classification": "BEFORE",
+            "event_utc": "2026-11-12T09:00:00Z",
+            "observed_service_ids": [
+              "EV-SIGNAL-S"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "EV-G-LATE",
+            "temporal_classification": "OUTSIDE_WINDOW",
+            "event_utc": "2026-11-12T11:00:00Z",
+            "observed_service_ids": [
+              "EV-SIGNAL-S"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "EV-G-ENV",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "EV-SIGNAL-S"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "EV-G-SIGNAL",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "EV-SIGNAL-S"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "EV-G-SERVICE",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "EV-SIGNAL-OTHER"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          }
+        ],
+        "conflict_pairs": [
+          [
+            "EV-G-FAILED",
+            "EV-G-HEALTHY"
+          ]
+        ],
+        "undetermined_pairs": [
+          [
+            "EV-G-DEGRADED",
+            "EV-G-FAILED"
+          ],
+          [
+            "EV-G-DEGRADED",
+            "EV-G-HEALTHY"
+          ]
+        ],
+        "not_evaluable_count": 0,
+        "investigation_status": "PARTIAL_CONTEXT",
+        "causal_conclusion": "NOT_ESTABLISHED",
+        "truncation": {
+          "candidates": false,
+          "evidence": false,
+          "affected_services": false,
+          "changes": false,
+          "observations": false,
+          "timeline": false,
+          "contradictions": false,
+          "provenance_warnings": false
+        },
+        "required_limitation_codes": []
+      }
+    },
+    {
+      "case_id": "E14",
+      "description": "Real N+1 truncation with high-degree observation links",
+      "fixture_profiles": [
+        "caps"
+      ],
+      "incident_id": "EV-CAPS",
+      "options": {
+        "max_candidates": 1,
+        "max_evidence": 1
+      },
+      "expected": {
+        "candidates": [
+          {
+            "deployment_id": "EV-CAP-D-000",
+            "target_service_id": "EV-CAP-ROOT",
+            "dependency_depth": 0,
+            "temporal_classification": "BEFORE",
+            "candidate_assessment": "INVESTIGATE",
+            "event_utc": "2026-11-12T09:30:00Z",
+            "change_ids": [],
+            "graph_path": {
+              "node_ids": [
+                "EV-CAPS",
+                "EV-CAP-ROOT",
+                "EV-CAP-D-000"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "EV-CAPS",
+                  "target_id": "EV-CAP-ROOT",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "EV-CAP-D-000",
+                  "target_id": "EV-CAP-ROOT",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "evidence_id": "EV-CAP-E-000",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "EV-CAP-ROOT",
+              "EV-CAP-S-000",
+              "EV-CAP-S-001",
+              "EV-CAP-S-002",
+              "EV-CAP-S-003",
+              "EV-CAP-S-004",
+              "EV-CAP-S-005",
+              "EV-CAP-S-006",
+              "EV-CAP-S-007",
+              "EV-CAP-S-008",
+              "EV-CAP-S-009",
+              "EV-CAP-S-010",
+              "EV-CAP-S-011",
+              "EV-CAP-S-012",
+              "EV-CAP-S-013",
+              "EV-CAP-S-014",
+              "EV-CAP-S-015",
+              "EV-CAP-S-016",
+              "EV-CAP-S-017",
+              "EV-CAP-S-018",
+              "EV-CAP-S-019",
+              "EV-CAP-S-020",
+              "EV-CAP-S-021",
+              "EV-CAP-S-022",
+              "EV-CAP-S-023",
+              "EV-CAP-S-024",
+              "EV-CAP-S-025",
+              "EV-CAP-S-026",
+              "EV-CAP-S-027",
+              "EV-CAP-S-028",
+              "EV-CAP-S-029",
+              "EV-CAP-S-030",
+              "EV-CAP-S-031",
+              "EV-CAP-S-032",
+              "EV-CAP-S-033",
+              "EV-CAP-S-034",
+              "EV-CAP-S-035",
+              "EV-CAP-S-036",
+              "EV-CAP-S-037",
+              "EV-CAP-S-038",
+              "EV-CAP-S-039",
+              "EV-CAP-S-040",
+              "EV-CAP-S-041",
+              "EV-CAP-S-042",
+              "EV-CAP-S-043",
+              "EV-CAP-S-044",
+              "EV-CAP-S-045",
+              "EV-CAP-S-046",
+              "EV-CAP-S-047",
+              "EV-CAP-S-048",
+              "EV-CAP-S-049",
+              "EV-CAP-S-050",
+              "EV-CAP-S-051",
+              "EV-CAP-S-052",
+              "EV-CAP-S-053",
+              "EV-CAP-S-054",
+              "EV-CAP-S-055",
+              "EV-CAP-S-056",
+              "EV-CAP-S-057",
+              "EV-CAP-S-058",
+              "EV-CAP-S-059",
+              "EV-CAP-S-060",
+              "EV-CAP-S-061",
+              "EV-CAP-S-062",
+              "EV-CAP-S-063",
+              "EV-CAP-S-064",
+              "EV-CAP-S-065",
+              "EV-CAP-S-066",
+              "EV-CAP-S-067",
+              "EV-CAP-S-068",
+              "EV-CAP-S-069",
+              "EV-CAP-S-070",
+              "EV-CAP-S-071",
+              "EV-CAP-S-072",
+              "EV-CAP-S-073",
+              "EV-CAP-S-074",
+              "EV-CAP-S-075",
+              "EV-CAP-S-076",
+              "EV-CAP-S-077",
+              "EV-CAP-S-078",
+              "EV-CAP-S-079",
+              "EV-CAP-S-080",
+              "EV-CAP-S-081",
+              "EV-CAP-S-082",
+              "EV-CAP-S-083",
+              "EV-CAP-S-084",
+              "EV-CAP-S-085",
+              "EV-CAP-S-086",
+              "EV-CAP-S-087",
+              "EV-CAP-S-088",
+              "EV-CAP-S-089",
+              "EV-CAP-S-090",
+              "EV-CAP-S-091",
+              "EV-CAP-S-092",
+              "EV-CAP-S-093",
+              "EV-CAP-S-094",
+              "EV-CAP-S-095",
+              "EV-CAP-S-096",
+              "EV-CAP-S-097",
+              "EV-CAP-S-098"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          }
+        ],
+        "conflict_pairs": [],
+        "undetermined_pairs": [],
+        "not_evaluable_count": 0,
+        "investigation_status": "PARTIAL_CONTEXT",
+        "causal_conclusion": "NOT_ESTABLISHED",
+        "truncation": {
+          "candidates": true,
+          "evidence": true,
+          "affected_services": false,
+          "changes": false,
+          "observations": true,
+          "timeline": false,
+          "contradictions": false,
+          "provenance_warnings": false
+        },
+        "required_limitation_codes": [
+          "TRUNCATED_CONTEXT"
+        ]
+      }
+    },
+    {
+      "case_id": "E15",
+      "description": "Real N+1 truncation with high-degree observation links",
+      "fixture_profiles": [
+        "caps"
+      ],
+      "incident_id": "EV-CAPS",
+      "options": {
+        "max_candidates": 2,
+        "max_evidence": 2
+      },
+      "expected": {
+        "candidates": [
+          {
+            "deployment_id": "EV-CAP-D-000",
+            "target_service_id": "EV-CAP-ROOT",
+            "dependency_depth": 0,
+            "temporal_classification": "BEFORE",
+            "candidate_assessment": "INVESTIGATE",
+            "event_utc": "2026-11-12T09:30:00Z",
+            "change_ids": [],
+            "graph_path": {
+              "node_ids": [
+                "EV-CAPS",
+                "EV-CAP-ROOT",
+                "EV-CAP-D-000"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "EV-CAPS",
+                  "target_id": "EV-CAP-ROOT",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "EV-CAP-D-000",
+                  "target_id": "EV-CAP-ROOT",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "EV-CAP-D-001",
+            "target_service_id": "EV-CAP-ROOT",
+            "dependency_depth": 0,
+            "temporal_classification": "BEFORE",
+            "candidate_assessment": "INVESTIGATE",
+            "event_utc": "2026-11-12T09:30:00Z",
+            "change_ids": [],
+            "graph_path": {
+              "node_ids": [
+                "EV-CAPS",
+                "EV-CAP-ROOT",
+                "EV-CAP-D-001"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "EV-CAPS",
+                  "target_id": "EV-CAP-ROOT",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "EV-CAP-D-001",
+                  "target_id": "EV-CAP-ROOT",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "evidence_id": "EV-CAP-E-000",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "EV-CAP-ROOT",
+              "EV-CAP-S-000",
+              "EV-CAP-S-001",
+              "EV-CAP-S-002",
+              "EV-CAP-S-003",
+              "EV-CAP-S-004",
+              "EV-CAP-S-005",
+              "EV-CAP-S-006",
+              "EV-CAP-S-007",
+              "EV-CAP-S-008",
+              "EV-CAP-S-009",
+              "EV-CAP-S-010",
+              "EV-CAP-S-011",
+              "EV-CAP-S-012",
+              "EV-CAP-S-013",
+              "EV-CAP-S-014",
+              "EV-CAP-S-015",
+              "EV-CAP-S-016",
+              "EV-CAP-S-017",
+              "EV-CAP-S-018",
+              "EV-CAP-S-019",
+              "EV-CAP-S-020",
+              "EV-CAP-S-021",
+              "EV-CAP-S-022",
+              "EV-CAP-S-023",
+              "EV-CAP-S-024",
+              "EV-CAP-S-025",
+              "EV-CAP-S-026",
+              "EV-CAP-S-027",
+              "EV-CAP-S-028",
+              "EV-CAP-S-029",
+              "EV-CAP-S-030",
+              "EV-CAP-S-031",
+              "EV-CAP-S-032",
+              "EV-CAP-S-033",
+              "EV-CAP-S-034",
+              "EV-CAP-S-035",
+              "EV-CAP-S-036",
+              "EV-CAP-S-037",
+              "EV-CAP-S-038",
+              "EV-CAP-S-039",
+              "EV-CAP-S-040",
+              "EV-CAP-S-041",
+              "EV-CAP-S-042",
+              "EV-CAP-S-043",
+              "EV-CAP-S-044",
+              "EV-CAP-S-045",
+              "EV-CAP-S-046",
+              "EV-CAP-S-047",
+              "EV-CAP-S-048",
+              "EV-CAP-S-049",
+              "EV-CAP-S-050",
+              "EV-CAP-S-051",
+              "EV-CAP-S-052",
+              "EV-CAP-S-053",
+              "EV-CAP-S-054",
+              "EV-CAP-S-055",
+              "EV-CAP-S-056",
+              "EV-CAP-S-057",
+              "EV-CAP-S-058",
+              "EV-CAP-S-059",
+              "EV-CAP-S-060",
+              "EV-CAP-S-061",
+              "EV-CAP-S-062",
+              "EV-CAP-S-063",
+              "EV-CAP-S-064",
+              "EV-CAP-S-065",
+              "EV-CAP-S-066",
+              "EV-CAP-S-067",
+              "EV-CAP-S-068",
+              "EV-CAP-S-069",
+              "EV-CAP-S-070",
+              "EV-CAP-S-071",
+              "EV-CAP-S-072",
+              "EV-CAP-S-073",
+              "EV-CAP-S-074",
+              "EV-CAP-S-075",
+              "EV-CAP-S-076",
+              "EV-CAP-S-077",
+              "EV-CAP-S-078",
+              "EV-CAP-S-079",
+              "EV-CAP-S-080",
+              "EV-CAP-S-081",
+              "EV-CAP-S-082",
+              "EV-CAP-S-083",
+              "EV-CAP-S-084",
+              "EV-CAP-S-085",
+              "EV-CAP-S-086",
+              "EV-CAP-S-087",
+              "EV-CAP-S-088",
+              "EV-CAP-S-089",
+              "EV-CAP-S-090",
+              "EV-CAP-S-091",
+              "EV-CAP-S-092",
+              "EV-CAP-S-093",
+              "EV-CAP-S-094",
+              "EV-CAP-S-095",
+              "EV-CAP-S-096",
+              "EV-CAP-S-097",
+              "EV-CAP-S-098"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "EV-CAP-E-001",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [],
+            "provenance_status": "INCOMPLETE",
+            "warning_codes": [
+              "MISSING_OBSERVED_SERVICE"
+            ],
+            "verification_status": "SYNTHETIC"
+          }
+        ],
+        "conflict_pairs": [],
+        "undetermined_pairs": [],
+        "not_evaluable_count": 1,
+        "investigation_status": "PARTIAL_CONTEXT",
+        "causal_conclusion": "NOT_ESTABLISHED",
+        "truncation": {
+          "candidates": true,
+          "evidence": true,
+          "affected_services": false,
+          "changes": false,
+          "observations": true,
+          "timeline": false,
+          "contradictions": false,
+          "provenance_warnings": false
+        },
+        "required_limitation_codes": [
+          "TRUNCATED_CONTEXT"
+        ]
+      }
+    },
+    {
+      "case_id": "E16",
+      "description": "Exactly full candidate/evidence caps are not falsely truncated",
+      "fixture_profiles": [
+        "baseline"
+      ],
+      "incident_id": "INC-001",
+      "options": {
+        "max_candidates": 2,
+        "max_evidence": 4
+      },
+      "expected": {
+        "candidates": [
+          {
+            "deployment_id": "DEP-001",
+            "target_service_id": "SVC-AUTH",
+            "dependency_depth": 1,
+            "temporal_classification": "BEFORE",
+            "candidate_assessment": "INVESTIGATE",
+            "event_utc": "2026-11-10T09:55:00Z",
+            "change_ids": [
+              "CHG-001"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "INC-001",
+                "SVC-PAYMENT",
+                "SVC-AUTH",
+                "DEP-001"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "INC-001",
+                  "target_id": "SVC-PAYMENT",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "DEPENDS_ON",
+                  "source_id": "SVC-PAYMENT",
+                  "target_id": "SVC-AUTH",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "DEP-001",
+                  "target_id": "SVC-AUTH",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "DEP-002",
+            "target_service_id": "SVC-PAYMENT",
+            "dependency_depth": 0,
+            "temporal_classification": "BEFORE",
+            "candidate_assessment": "INVESTIGATE",
+            "event_utc": "2026-11-10T09:58:00Z",
+            "change_ids": [
+              "CHG-002"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "INC-001",
+                "SVC-PAYMENT",
+                "DEP-002"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "INC-001",
+                  "target_id": "SVC-PAYMENT",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "DEP-002",
+                  "target_id": "SVC-PAYMENT",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "evidence_id": "EVD-001",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-10T10:05:00Z",
+            "observed_service_ids": [
+              "SVC-PAYMENT"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "EVD-002",
+            "temporal_classification": "AFTER",
+            "event_utc": "2026-11-10T10:05:30Z",
+            "observed_service_ids": [
+              "SVC-PAYMENT"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "EVD-003",
+            "temporal_classification": "BEFORE",
+            "event_utc": "2026-11-10T10:04:45Z",
+            "observed_service_ids": [
+              "SVC-AUTH"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "EVD-004",
+            "temporal_classification": "AFTER",
+            "event_utc": "2026-11-10T10:06:00Z",
+            "observed_service_ids": [
+              "SVC-AUTH"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          }
+        ],
+        "conflict_pairs": [],
+        "undetermined_pairs": [],
+        "not_evaluable_count": 4,
+        "investigation_status": "PARTIAL_CONTEXT",
+        "causal_conclusion": "NOT_ESTABLISHED",
+        "truncation": {
+          "candidates": false,
+          "evidence": false,
+          "affected_services": false,
+          "changes": false,
+          "observations": false,
+          "timeline": false,
+          "contradictions": false,
+          "provenance_warnings": false
+        },
+        "required_limitation_codes": []
+      }
+    },
+    {
+      "case_id": "E17",
+      "description": "Old deployments outside a narrow preceding window remain context",
+      "fixture_profiles": [
+        "baseline"
+      ],
+      "incident_id": "INC-001",
+      "options": {
+        "pre_minutes": 5,
+        "post_minutes": 0
+      },
+      "expected": {
+        "candidates": [
+          {
+            "deployment_id": "DEP-001",
+            "target_service_id": "SVC-AUTH",
+            "dependency_depth": 1,
+            "temporal_classification": "OUTSIDE_WINDOW",
+            "candidate_assessment": "TEMPORALLY_EXCLUDED",
+            "event_utc": "2026-11-10T09:55:00Z",
+            "change_ids": [
+              "CHG-001"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "INC-001",
+                "SVC-PAYMENT",
+                "SVC-AUTH",
+                "DEP-001"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "INC-001",
+                  "target_id": "SVC-PAYMENT",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "DEPENDS_ON",
+                  "source_id": "SVC-PAYMENT",
+                  "target_id": "SVC-AUTH",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "DEP-001",
+                  "target_id": "SVC-AUTH",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "DEP-002",
+            "target_service_id": "SVC-PAYMENT",
+            "dependency_depth": 0,
+            "temporal_classification": "OUTSIDE_WINDOW",
+            "candidate_assessment": "TEMPORALLY_EXCLUDED",
+            "event_utc": "2026-11-10T09:58:00Z",
+            "change_ids": [
+              "CHG-002"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "INC-001",
+                "SVC-PAYMENT",
+                "DEP-002"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "INC-001",
+                  "target_id": "SVC-PAYMENT",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "DEP-002",
+                  "target_id": "SVC-PAYMENT",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "evidence_id": "EVD-001",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-10T10:05:00Z",
+            "observed_service_ids": [
+              "SVC-PAYMENT"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "EVD-002",
+            "temporal_classification": "OUTSIDE_WINDOW",
+            "event_utc": "2026-11-10T10:05:30Z",
+            "observed_service_ids": [
+              "SVC-PAYMENT"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "EVD-003",
+            "temporal_classification": "BEFORE",
+            "event_utc": "2026-11-10T10:04:45Z",
+            "observed_service_ids": [
+              "SVC-AUTH"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "EVD-004",
+            "temporal_classification": "OUTSIDE_WINDOW",
+            "event_utc": "2026-11-10T10:06:00Z",
+            "observed_service_ids": [
+              "SVC-AUTH"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          }
+        ],
+        "conflict_pairs": [],
+        "undetermined_pairs": [],
+        "not_evaluable_count": 4,
+        "investigation_status": "PARTIAL_CONTEXT",
+        "causal_conclusion": "NOT_ESTABLISHED",
+        "truncation": {
+          "candidates": false,
+          "evidence": false,
+          "affected_services": false,
+          "changes": false,
+          "observations": false,
+          "timeline": false,
+          "contradictions": false,
+          "provenance_warnings": false
+        },
+        "required_limitation_codes": []
+      }
+    },
+    {
+      "case_id": "E18",
+      "description": "Second incident zero-width timing and isolated evidence",
+      "fixture_profiles": [
+        "baseline"
+      ],
+      "incident_id": "INC-002",
+      "options": {
+        "pre_minutes": 0,
+        "post_minutes": 0
+      },
+      "expected": {
+        "candidates": [
+          {
+            "deployment_id": "DEP-003",
+            "target_service_id": "SVC-NOTIFICATION",
+            "dependency_depth": 0,
+            "temporal_classification": "OUTSIDE_WINDOW",
+            "candidate_assessment": "TEMPORALLY_EXCLUDED",
+            "event_utc": "2026-11-11T14:00:00Z",
+            "change_ids": [
+              "CHG-003"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "INC-002",
+                "SVC-NOTIFICATION",
+                "DEP-003"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "INC-002",
+                  "target_id": "SVC-NOTIFICATION",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "DEP-003",
+                  "target_id": "SVC-NOTIFICATION",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          },
+          {
+            "deployment_id": "DEP-003",
+            "target_service_id": "SVC-QUEUE",
+            "dependency_depth": 1,
+            "temporal_classification": "OUTSIDE_WINDOW",
+            "candidate_assessment": "TEMPORALLY_EXCLUDED",
+            "event_utc": "2026-11-11T14:00:00Z",
+            "change_ids": [
+              "CHG-003"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "INC-002",
+                "SVC-NOTIFICATION",
+                "SVC-QUEUE",
+                "DEP-003"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "INC-002",
+                  "target_id": "SVC-NOTIFICATION",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "DEPENDS_ON",
+                  "source_id": "SVC-NOTIFICATION",
+                  "target_id": "SVC-QUEUE",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "DEP-003",
+                  "target_id": "SVC-QUEUE",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "evidence_id": "EVD-005",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-11T14:10:00Z",
+            "observed_service_ids": [
+              "SVC-NOTIFICATION"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          },
+          {
+            "evidence_id": "EVD-006",
+            "temporal_classification": "OUTSIDE_WINDOW",
+            "event_utc": "2026-11-11T14:11:00Z",
+            "observed_service_ids": [
+              "SVC-QUEUE"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          }
+        ],
+        "conflict_pairs": [],
+        "undetermined_pairs": [],
+        "not_evaluable_count": 2,
+        "investigation_status": "PARTIAL_CONTEXT",
+        "causal_conclusion": "NOT_ESTABLISHED",
+        "truncation": {
+          "candidates": false,
+          "evidence": false,
+          "affected_services": false,
+          "changes": false,
+          "observations": false,
+          "timeline": false,
+          "contradictions": false,
+          "provenance_warnings": false
+        },
+        "required_limitation_codes": []
+      }
+    },
+    {
+      "case_id": "E19",
+      "description": "URL is opaque demo metadata; traceability is not independent verification",
+      "fixture_profiles": [
+        "evaluation"
+      ],
+      "incident_id": "EV-OPAQUE",
+      "options": {},
+      "expected": {
+        "candidates": [],
+        "evidence": [
+          {
+            "evidence_id": "EV-OPAQUE-E",
+            "temporal_classification": "AT_ONSET",
+            "event_utc": "2026-11-12T10:00:00Z",
+            "observed_service_ids": [
+              "EV-OPAQUE-S"
+            ],
+            "provenance_status": "TRACEABLE",
+            "warning_codes": [],
+            "verification_status": "SYNTHETIC"
+          }
+        ],
+        "conflict_pairs": [],
+        "undetermined_pairs": [],
+        "not_evaluable_count": 0,
+        "investigation_status": "READY_FOR_REVIEW",
+        "causal_conclusion": "NOT_ESTABLISHED",
+        "truncation": {
+          "candidates": false,
+          "evidence": false,
+          "affected_services": false,
+          "changes": false,
+          "observations": false,
+          "timeline": false,
+          "contradictions": false,
+          "provenance_warnings": false
+        },
+        "required_limitation_codes": []
+      }
+    },
+    {
+      "case_id": "E20",
+      "description": "Missing event times never use ingestion metadata",
+      "fixture_profiles": [
+        "evaluation"
+      ],
+      "incident_id": "EV-MISSING-EVENT",
+      "options": {},
+      "expected": {
+        "candidates": [
+          {
+            "deployment_id": "EV-MISSING-D",
+            "target_service_id": "EV-MISSING-S",
+            "dependency_depth": 0,
+            "temporal_classification": "UNKNOWN",
+            "candidate_assessment": "INSUFFICIENT_DATA",
+            "event_utc": null,
+            "change_ids": [],
+            "graph_path": {
+              "node_ids": [
+                "EV-MISSING-EVENT",
+                "EV-MISSING-S",
+                "EV-MISSING-D"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "EV-MISSING-EVENT",
+                  "target_id": "EV-MISSING-S",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "EV-MISSING-D",
+                  "target_id": "EV-MISSING-S",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "evidence_id": "EV-MISSING-E",
+            "temporal_classification": "UNKNOWN",
+            "event_utc": null,
+            "observed_service_ids": [
+              "EV-MISSING-S"
+            ],
+            "provenance_status": "INCOMPLETE",
+            "warning_codes": [
+              "MISSING_TIMESTAMP"
+            ],
+            "verification_status": "SYNTHETIC"
+          }
+        ],
+        "conflict_pairs": [],
+        "undetermined_pairs": [],
+        "not_evaluable_count": 1,
+        "investigation_status": "PARTIAL_CONTEXT",
+        "causal_conclusion": "NOT_ESTABLISHED",
+        "truncation": {
+          "candidates": false,
+          "evidence": false,
+          "affected_services": false,
+          "changes": false,
+          "observations": false,
+          "timeline": false,
+          "contradictions": false,
+          "provenance_warnings": false
+        },
+        "required_limitation_codes": [
+          "UNKNOWN_EVENT_TIMES"
+        ]
+      }
+    }
+  ]
+}

@@ -6,11 +6,15 @@ Sprint 00: Foundation, Real Relate Integration & Technical Verification
 
 Sprint 01: Evidence Intelligence & Temporal Investigation
 
+Sprint 02: Trusted Local Ingestion, Source Integrity & Reproducible Evaluation
+
 TraceWeaver prepares connected incident context for investigations: affected services,
 dependencies, deployments, code or configuration changes, alerts, and evidence with provenance.
 Sprint 00 delivered the local graph, Python CLI, and read-only HTTP API. Sprint 01 adds
 deterministic temporal investigation, source traceability, structured observation comparisons,
-and explicit uncertainty. AI agents and root cause inference are **planned**, not implemented.
+and explicit uncertainty. Sprint 02 adds validated local ingestion, offline file-integrity checks,
+20 frozen evaluation scenarios, and a separately published synthetic Relate store. These features
+are implemented and verified locally; remote CI is unverified. AI agents are **planned**.
 
 ## Hackathon context
 
@@ -42,6 +46,8 @@ Relate is an experimental Neo4j Labs project. See its
 flowchart LR
     Fixture[Demo JSON] --> Seed[Transactional seed CLI]
     Seed --> Store[(Relate .rl store)]
+    Export[Local ingestion JSON] --> Intake[Validate and preflight]
+    Intake -->|Explicit apply transaction| Store
     API[FastAPI read-only endpoints] --> Queries[Parameterized Cypher queries]
     CLI[Stats and context CLI] --> Queries
     Queries --> Store
@@ -55,11 +61,45 @@ flowchart LR
 - `investigation_models.py` / `investigation.py`: shared deterministic investigation contract/service.
 - `temporal.py`, `provenance.py`, `contradictions.py`: UTC windows and evidence quality/comparisons.
 - `api.py` / `cli.py`: thin HTTP and terminal entry points.
+- `ingestion_models.py` / `ingestion.py`: independent ingestion contract 1.0, read-only preflight,
+  and explicit transactional apply using the existing storage adapter.
+- `local_files.py` / `source_integrity.py`: bounded local-file admission and raw-byte SHA-256.
+- `evaluation.py` / `evaluation_models.py`: frozen gold assertions on isolated real stores.
+- `judge_demo.py`: guarded synthetic-only bundle construction and read-only inspection.
 
 See [Architecture](docs/ARCHITECTURE.md), [Graph schema](docs/GRAPH_SCHEMA.md), and the
 [Sprint 00 verification report](docs/SPRINT_00_REPORT.md). Sprint 01 is documented in the
 [investigation contract](docs/INVESTIGATION_CONTRACT.md) and
 [Sprint 01 verification report](docs/SPRINT_01_REPORT.md).
+Sprint 02 has an [ingestion contract](docs/INGESTION_CONTRACT.md),
+[source verification policy](docs/SOURCE_VERIFICATION_POLICY.md),
+[signal taxonomy](docs/SIGNAL_TAXONOMY.md), [evaluation method](docs/EVALUATION_METHOD.md),
+[full walkthrough](docs/SPRINT_02_WALKTHROUGH.md), and [verification report](docs/SPRINT_02_REPORT.md).
+
+## Two-minute synthetic judge walkthrough
+
+After installation, use the included **synthetic-only** artifact. No seed or write is needed:
+
+```powershell
+Get-FileHash ./examples/judge-demo/traceweaver-demo.rl -Algorithm SHA256
+python -m traceweaver stats --database ./examples/judge-demo/traceweaver-demo.rl
+python -m traceweaver context --incident INC-001 --database ./examples/judge-demo/traceweaver-demo.rl
+python -m traceweaver investigate --incident INC-001 --database ./examples/judge-demo/traceweaver-demo.rl
+python -m traceweaver investigate --incident CASE-INC --database ./examples/judge-demo/traceweaver-demo.rl
+$evaluationOutput = Join-Path $env:TEMP ('traceweaver-eval-' + [guid]::NewGuid().ToString('N') + '.json')
+python -m traceweaver evaluate --suite ./evaluation/cases.json --output $evaluationOutput
+```
+
+The included 110,592-byte store has **51 nodes / 67 relationships** and SHA-256
+`29b10010152ebf82fe61b7dd8eff71848f39963e58d7b7a56f0aecebf1150239`.
+For INC-001, compare context and investigation for the same incident: two competing deployments
+and four evidence records with stored relationship paths. For CASE-INC, inspect six candidates
+and eleven evidence records, including intentionally incomplete metadata. Its audit finds one conflicting pair
+and two undetermined pairs; `causal_conclusion` stays **NOT_ESTABLISHED**. Relate executes the
+traversals against the actual .rl file; no prepared investigation answer replaces graph reads.
+Evaluation runs 20 scenarios in separate temporary stores and returns 20 PASS / 0 FAIL.
+Perfect agreement with synthetic gold is not real-world incident accuracy. Hash equality is
+byte integrity, not authentication. See the [bundle manifest and rebuild guide](examples/judge-demo/README.md).
 
 ## Graph model overview
 
@@ -188,6 +228,44 @@ dependency paths, candidate deployments and changes, evidence with source/time, 
 and a four-edge context path. Exit codes: `0` success, `1` configuration/storage/import error,
 `2` argument error, `3` unknown incident. Errors go to stderr. Terminal diagnostics may
 include the local database path; HTTP errors deliberately omit internal paths and tracebacks.
+
+## Sprint 02 local ingestion and integrity
+
+Use a fresh scratch location and supply the expected digest as a separate operator argument:
+
+```powershell
+$scratchStore = Join-Path $env:TEMP ('traceweaver-ingest-' + [guid]::NewGuid().ToString('N') + '.rl')
+$expectedSha256 = (Get-Content ./fixtures/ingestion_example.sha256).Split(' ')[0]
+python -m traceweaver verify-source --input ./fixtures/ingestion_example.json --expected-sha256 $expectedSha256
+python -m traceweaver ingest --input ./fixtures/ingestion_example.json --database $scratchStore
+python -m traceweaver ingest --input ./fixtures/ingestion_example.json --database $scratchStore --apply --expected-sha256 $expectedSha256
+python -m traceweaver ingest --input ./fixtures/ingestion_example.json --database $scratchStore --apply
+python -m traceweaver ingest --input ./fixtures/ingestion_example.json --database $scratchStore --apply
+python -m traceweaver investigate --incident ING-INC-001 --database $scratchStore
+```
+
+Dry-run is the default and does not create a store. First apply creates 8 nodes / 9 relationships;
+both repeated applies create zero. Full validation and known-conflict preflight happen before
+the writer opens; apply rechecks within one finite transaction. Conflicting records and extra
+user properties are preserved. Non-demo or unknown markers require `--allow-non-demo`; this
+local opt-in is not access control. Only synthetic examples are included in this repository.
+
+The contract admits at most 8 MiB, 2,000 nodes and 4,000 relationships, with bounded strings and
+JSON depth. Source references are opaque metadata and are never fetched. MATCH establishes
+only equality with the supplied digest; external verification is always NOT_PERFORMED.
+The example checksum illustrates a separate expected-hash channel; its repository location
+does not authenticate its origin. New-tool JSON errors have separate documented exit codes;
+old commands retain codes 0/1/2/3. See the [complete conflict and mismatch walkthrough](docs/SPRINT_02_WALKTHROUGH.md).
+
+To reconstruct the synthetic judge bundle, select a new directory:
+
+```powershell
+$judgeOutput = Join-Path $env:TEMP ('traceweaver-judge-' + [guid]::NewGuid().ToString('N'))
+python -m traceweaver build-judge-demo --output-dir $judgeOutput
+```
+
+Existing output is refused by default. `--force` accepts only an intact recognized generated
+bundle; it never authorizes replacing a user-supplied store.
 
 ## Sprint 01 investigation
 
@@ -332,20 +410,23 @@ Python 3.11**. Local Windows verification does not establish that remote CI pass
 - UTC-normalized bounded temporal investigation, honest missing-data warnings, explicit provenance.
 - Incident-scoped structured contradiction/undetermined detection and actual graph paths.
 - Shared investigation API/CLI; exact new-list truncation detection and deterministic output.
+- Versioned local ingestion, guarded non-demo opt-in, strict validation, and conflict-safe apply.
+- Offline SHA-256 comparison, 20 frozen evaluation scenarios, and a synthetic judge .rl bundle.
 
 ## Roadmap
 
 - **Sprint 01 — Implemented:** deterministic evidence-grounded investigation, time-aware context,
   explicit uncertainty, and provenance metadata validation.
-- **Sprint 02 — Planned:** versioned real-data ingestion, evidence evaluation, external-source
-  access policy, and investigation evaluation cases before any AI integration.
-- **Upcoming:** AI agent integration after the graph contract and evaluation criteria are agreed.
+- **Sprint 02 — Implemented and locally verified:** bounded local ingestion, offline source-file
+  integrity, reproducible synthetic evaluation, and a packaged judge store.
+- **Sprint 03 — Planned:** a read-only AI assistant consuming the existing investigation contract,
+  with graph-backed citations, explicit uncertainty, and no inferred causal verdict.
 - **Later:** investigation UI and visualization, only when separately scoped.
 
 ## Limitations
 
-- No AI model, root cause inference, remediation, ingestion connectors, dashboard, or production
-  authentication is implemented in Sprint 00.
+- No AI model, root cause inference, remediation, external ingestion connectors, dashboard, or
+  production authentication is implemented through Sprint 02.
 - The legacy `context` endpoint keeps its original topology-only behavior. The new investigation
   endpoint classifies times but does not infer causes or rank causality. Shared dependencies may
   connect candidate deployments across incidents; evidence still requires that incident's HAS_EVIDENCE.
@@ -354,6 +435,9 @@ Python 3.11**. Local Windows verification does not establish that remote CI pass
   list has no pagination in this sprint.
 - Legacy context retrieval requires change/observed-service edges; the new investigation retains
   deployments without changes and evidence without observations, with explicit gaps.
+- The strict legacy context model cannot represent the intentionally invalid/incomplete CASE-INC
+  fixture or arbitrary structured ingestion metadata. Use investigate for those records; INC-001
+  remains the backward-compatible context example. No old response model was broadened.
 - Graph entities follow the strict Sprint 00 demo response contract. Arbitrary externally written
   entity properties need a deliberate schema migration/ingestion design before API exposure.
 - Relate holds its working graph in memory and allows one writer process. A `.rl` file cannot
@@ -366,10 +450,18 @@ Python 3.11**. Local Windows verification does not establish that remote CI pass
 - Investigation lists are capped with real lookahead. Candidate selection first uses graph IDs;
   temporal ordering applies within the selected subset. One shortest simple path per candidate is
   shown. Truncated data and alternate paths are not a complete graph export; see the contract.
+- Relate can change physical file bytes when a rolled-back writer closes, despite identical
+  committed records. Known ingestion conflicts are rejected read-only before opening a writer;
+  conflicts discovered after acquisition roll back logically. No physical byte rewind is promised.
+- Row/input caps do not bound high-degree query cost, whole-store memory, or persistent size.
+  Evaluation is a small synthetic regression suite, not a production performance benchmark.
+- Ingestion source envelopes are input claims returned by the CLI, not an authenticated persistent
+  intake registry. Local filesystem/output guards assume trusted, quiescent directories; multi-file
+  report/bundle publication is not an atomic filesystem transaction.
 
 ## AI-assisted development disclosure
 
-Sprints 00 and 01 were implemented and tested with OpenAI Codex assistance. The assistant generated and
+Sprints 00 through 02 were implemented and tested with OpenAI Codex assistance. The assistant generated and
 reviewed code, fixtures, tests, and documentation, and executed local verification commands.
 The application itself does not call an AI service. Synthetic evidence and connected graph paths
 must never be presented as verified real-world root causes.

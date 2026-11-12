@@ -1,0 +1,6347 @@
+{
+  "schema_version": 2,
+  "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+  "description": "Synthetic frozen evaluation specimens; opt-in isolated stores only.",
+  "nodes": [
+    {
+      "label": "Incident",
+      "properties": {
+        "id": "EV-CAPS",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "title": "Synthetic evaluation incident",
+        "summary": "Frozen offline graph evaluation, not a real incident.",
+        "severity": "medium",
+        "status": "investigating",
+        "timestamp": "2026-11-12T10:00:00Z"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-ROOT",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-ROOT",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-000",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-000",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-000",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-000",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-000",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-000",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-001",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-001",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-001",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-001",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-001",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-001",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-002",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-002",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-002",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-002",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-002",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-002",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-003",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-003",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-003",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-003",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-003",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-003",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-004",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-004",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-004",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-004",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-004",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-004",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-005",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-005",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-005",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-005",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-005",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-005",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-006",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-006",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-006",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-006",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-006",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-006",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-007",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-007",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-007",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-007",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-007",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-007",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-008",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-008",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-008",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-008",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-008",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-008",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-009",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-009",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-009",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-009",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-009",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-009",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-010",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-010",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-010",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-010",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-010",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-010",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-011",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-011",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-011",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-011",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-011",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-011",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-012",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-012",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-012",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-012",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-012",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-012",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-013",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-013",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-013",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-013",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-013",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-013",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-014",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-014",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-014",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-014",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-014",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-014",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-015",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-015",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-015",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-015",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-015",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-015",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-016",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-016",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-016",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-016",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-016",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-016",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-017",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-017",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-017",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-017",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-017",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-017",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-018",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-018",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-018",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-018",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-018",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-018",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-019",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-019",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-019",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-019",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-019",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-019",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-020",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-020",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-020",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-020",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-020",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-020",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-021",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-021",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-021",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-021",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-021",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-021",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-022",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-022",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-022",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-022",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-022",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-022",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-023",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-023",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-023",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-023",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-023",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-023",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-024",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-024",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-024",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-024",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-024",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-024",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-025",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-025",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-025",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-025",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-025",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-025",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-026",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-026",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-026",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-026",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-026",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-026",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-027",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-027",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-027",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-027",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-027",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-027",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-028",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-028",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-028",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-028",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-028",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-028",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-029",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-029",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-029",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-029",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-029",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-029",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-030",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-030",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-030",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-030",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-030",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-030",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-031",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-031",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-031",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-031",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-031",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-031",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-032",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-032",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-032",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-032",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-032",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-032",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-033",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-033",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-033",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-033",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-033",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-033",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-034",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-034",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-034",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-034",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-034",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-034",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-035",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-035",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-035",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-035",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-035",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-035",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-036",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-036",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-036",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-036",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-036",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-036",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-037",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-037",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-037",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-037",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-037",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-037",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-038",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-038",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-038",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-038",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-038",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-038",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-039",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-039",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-039",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-039",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-039",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-039",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-040",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-040",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-040",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-040",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-040",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-040",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-041",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-041",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-041",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-041",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-041",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-041",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-042",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-042",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-042",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-042",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-042",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-042",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-043",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-043",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-043",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-043",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-043",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-043",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-044",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-044",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-044",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-044",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-044",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-044",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-045",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-045",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-045",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-045",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-045",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-045",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-046",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-046",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-046",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-046",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-046",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-046",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-047",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-047",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-047",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-047",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-047",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-047",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-048",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-048",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-048",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-048",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-048",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-048",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-049",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-049",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-049",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-049",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-049",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-049",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-050",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-050",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-050",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-050",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-050",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-050",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-051",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-051",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-051",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-051",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-051",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-051",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-052",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-052",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-052",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-052",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-052",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-052",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-053",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-053",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-053",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-053",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-053",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-053",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-054",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-054",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-054",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-054",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-054",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-054",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-055",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-055",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-055",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-055",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-055",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-055",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-056",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-056",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-056",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-056",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-056",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-056",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-057",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-057",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-057",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-057",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-057",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-057",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-058",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-058",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-058",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-058",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-058",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-058",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-059",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-059",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-059",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-059",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-059",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-059",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-060",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-060",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-060",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-060",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-060",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-060",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-061",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-061",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-061",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-061",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-061",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-061",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-062",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-062",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-062",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-062",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-062",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-062",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-063",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-063",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-063",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-063",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-063",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-063",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-064",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-064",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-064",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-064",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-064",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-064",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-065",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-065",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-065",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-065",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-065",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-065",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-066",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-066",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-066",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-066",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-066",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-066",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-067",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-067",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-067",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-067",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-067",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-067",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-068",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-068",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-068",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-068",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-068",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-068",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-069",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-069",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-069",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-069",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-069",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-069",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-070",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-070",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-070",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-070",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-070",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-070",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-071",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-071",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-071",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-071",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-071",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-071",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-072",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-072",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-072",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-072",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-072",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-072",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-073",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-073",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-073",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-073",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-073",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-073",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-074",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-074",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-074",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-074",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-074",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-074",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-075",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-075",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-075",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-075",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-075",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-075",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-076",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-076",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-076",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-076",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-076",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-076",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-077",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-077",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-077",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-077",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-077",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-077",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-078",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-078",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-078",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-078",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-078",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-078",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-079",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-079",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-079",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-079",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-079",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-079",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-080",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-080",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-080",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-080",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-080",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-080",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-081",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-081",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-081",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-081",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-081",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-081",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-082",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-082",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-082",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-082",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-082",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-082",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-083",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-083",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-083",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-083",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-083",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-083",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-084",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-084",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-084",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-084",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-084",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-084",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-085",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-085",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-085",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-085",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-085",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-085",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-086",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-086",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-086",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-086",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-086",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-086",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-087",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-087",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-087",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-087",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-087",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-087",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-088",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-088",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-088",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-088",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-088",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-088",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-089",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-089",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-089",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-089",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-089",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-089",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-090",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-090",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-090",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-090",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-090",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-090",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-091",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-091",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-091",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-091",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-091",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-091",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-092",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-092",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-092",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-092",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-092",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-092",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-093",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-093",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-093",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-093",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-093",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-093",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-094",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-094",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-094",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-094",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-094",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-094",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-095",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-095",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-095",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-095",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-095",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-095",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-096",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-096",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-096",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-096",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-096",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-096",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-097",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-097",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-097",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-097",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-097",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-097",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-098",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-098",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-098",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-098",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-098",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-098",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-099",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-099",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-099",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-099",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-099",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-099",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-100",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-100",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-100",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-100",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-100",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-100",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-CAP-D-101",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-D-101",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-CAP-D-101",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-CAP-E-101",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "summary": "EV-CAP-E-101",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-CAP-E-101",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-CAP-ROOT"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-000",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-000",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-001",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-001",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-002",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-002",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-003",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-003",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-004",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-004",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-005",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-005",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-006",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-006",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-007",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-007",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-008",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-008",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-009",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-009",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-010",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-010",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-011",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-011",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-012",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-012",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-013",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-013",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-014",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-014",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-015",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-015",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-016",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-016",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-017",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-017",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-018",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-018",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-019",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-019",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-020",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-020",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-021",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-021",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-022",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-022",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-023",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-023",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-024",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-024",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-025",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-025",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-026",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-026",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-027",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-027",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-028",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-028",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-029",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-029",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-030",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-030",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-031",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-031",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-032",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-032",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-033",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-033",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-034",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-034",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-035",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-035",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-036",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-036",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-037",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-037",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-038",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-038",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-039",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-039",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-040",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-040",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-041",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-041",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-042",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-042",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-043",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-043",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-044",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-044",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-045",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-045",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-046",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-046",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-047",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-047",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-048",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-048",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-049",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-049",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-050",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-050",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-051",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-051",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-052",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-052",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-053",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-053",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-054",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-054",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-055",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-055",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-056",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-056",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-057",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-057",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-058",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-058",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-059",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-059",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-060",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-060",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-061",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-061",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-062",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-062",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-063",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-063",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-064",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-064",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-065",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-065",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-066",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-066",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-067",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-067",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-068",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-068",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-069",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-069",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-070",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-070",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-071",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-071",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-072",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-072",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-073",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-073",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-074",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-074",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-075",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-075",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-076",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-076",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-077",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-077",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-078",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-078",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-079",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-079",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-080",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-080",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-081",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-081",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-082",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-082",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-083",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-083",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-084",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-084",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-085",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-085",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-086",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-086",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-087",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-087",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-088",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-088",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-089",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-089",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-090",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-090",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-091",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-091",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-092",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-092",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-093",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-093",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-094",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-094",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-095",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-095",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-096",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-096",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-097",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-097",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-098",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-098",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-099",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-099",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-CAP-S-100",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-caps-v2",
+        "environment": "demo",
+        "name": "EV-CAP-S-100",
+        "description": "Synthetic evaluation service"
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "type": "AFFECTS",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-000",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-000"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-001",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-001"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-001",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-002",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-002"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-002",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-003",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-003"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-003",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-004",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-004"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-004",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-005",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-005"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-005",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-006",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-006"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-006",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-007",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-007"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-007",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-008",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-008"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-008",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-009",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-009"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-009",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-010",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-010"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-010",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-011",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-011"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-011",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-012",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-012"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-012",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-013",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-013"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-013",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-014",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-014"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-014",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-015",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-015"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-015",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-016",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-016"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-016",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-017",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-017"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-017",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-018",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-018"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-018",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-019",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-019"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-019",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-020",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-020"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-020",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-021",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-021"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-021",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-022",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-022"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-022",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-023",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-023"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-023",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-024",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-024"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-024",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-025",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-025"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-025",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-026",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-026"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-026",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-027",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-027"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-027",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-028",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-028"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-028",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-029",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-029"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-029",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-030",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-030"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-030",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-031",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-031"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-031",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-032",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-032"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-032",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-033",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-033"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-033",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-034",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-034"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-034",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-035",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-035"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-035",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-036",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-036"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-036",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-037",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-037"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-037",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-038",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-038"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-038",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-039",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-039"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-039",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-040",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-040"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-040",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-041",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-041"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-041",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-042",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-042"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-042",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-043",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-043"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-043",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-044",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-044"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-044",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-045",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-045"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-045",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-046",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-046"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-046",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-047",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-047"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-047",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-048",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-048"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-048",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-049",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-049"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-049",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-050",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-050"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-050",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-051",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-051"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-051",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-052",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-052"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-052",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-053",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-053"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-053",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-054",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-054"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-054",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-055",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-055"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-055",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-056",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-056"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-056",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-057",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-057"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-057",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-058",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-058"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-058",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-059",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-059"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-059",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-060",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-060"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-060",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-061",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-061"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-061",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-062",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-062"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-062",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-063",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-063"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-063",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-064",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-064"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-064",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-065",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-065"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-065",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-066",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-066"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-066",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-067",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-067"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-067",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-068",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-068"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-068",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-069",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-069"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-069",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-070",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-070"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-070",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-071",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-071"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-071",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-072",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-072"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-072",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-073",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-073"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-073",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-074",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-074"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-074",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-075",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-075"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-075",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-076",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-076"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-076",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-077",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-077"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-077",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-078",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-078"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-078",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-079",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-079"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-079",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-080",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-080"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-080",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-081",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-081"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-081",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-082",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-082"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-082",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-083",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-083"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-083",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-084",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-084"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-084",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-085",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-085"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-085",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-086",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-086"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-086",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-087",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-087"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-087",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-088",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-088"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-088",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-089",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-089"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-089",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-090",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-090"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-090",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-091",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-091"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-091",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-092",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-092"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-092",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-093",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-093"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-093",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-094",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-094"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-094",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-095",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-095"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-095",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-096",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-096"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-096",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-097",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-097"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-097",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-098",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-098"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-098",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-099",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-099"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-099",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-100",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-100"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-100",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-CAP-D-101",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-CAPS",
+      "target": "EV-CAP-E-101"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-101",
+      "target": "EV-CAP-ROOT"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-000"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-001"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-002"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-003"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-004"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-005"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-006"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-007"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-008"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-009"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-010"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-011"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-012"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-013"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-014"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-015"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-016"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-017"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-018"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-019"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-020"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-021"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-022"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-023"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-024"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-025"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-026"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-027"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-028"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-029"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-030"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-031"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-032"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-033"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-034"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-035"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-036"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-037"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-038"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-039"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-040"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-041"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-042"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-043"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-044"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-045"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-046"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-047"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-048"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-049"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-050"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-051"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-052"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-053"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-054"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-055"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-056"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-057"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-058"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-059"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-060"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-061"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-062"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-063"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-064"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-065"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-066"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-067"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-068"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-069"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-070"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-071"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-072"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-073"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-074"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-075"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-076"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-077"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-078"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-079"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-080"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-081"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-082"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-083"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-084"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-085"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-086"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-087"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-088"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-089"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-090"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-091"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-092"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-093"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-094"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-095"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-096"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-097"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-098"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-099"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-CAP-E-000",
+      "target": "EV-CAP-S-100"
+    }
+  ]
+}

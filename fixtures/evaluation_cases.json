@@ -1,0 +1,998 @@
+{
+  "schema_version": 2,
+  "dataset_id": "traceweaver-sprint02-evaluation-v2",
+  "description": "Synthetic frozen evaluation specimens; opt-in isolated stores only.",
+  "nodes": [
+    {
+      "label": "Incident",
+      "properties": {
+        "id": "EV-DEPTH",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "title": "Synthetic evaluation incident",
+        "summary": "Frozen offline graph evaluation, not a real incident.",
+        "severity": "medium",
+        "status": "investigating",
+        "timestamp": "2026-11-12T10:00:00Z"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-ROOT",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "name": "EV-ROOT",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-S-1",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "name": "EV-S-1",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-S-2",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "name": "EV-S-2",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-S-3",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "name": "EV-S-3",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-S-4",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "name": "EV-S-4",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-D-DIRECT",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "name": "EV-D-DIRECT",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-D-DIRECT",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-D-THREE",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "name": "EV-D-THREE",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-D-THREE",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-D-FOUR",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "name": "EV-D-FOUR",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-D-FOUR",
+        "timestamp": "2026-11-12T09:30:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-E-DEPTH",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "summary": "EV-E-DEPTH",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-E-DEPTH",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-ROOT"
+      }
+    },
+    {
+      "label": "Incident",
+      "properties": {
+        "id": "EV-BOUNDARY",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "title": "Synthetic evaluation incident",
+        "summary": "Frozen offline graph evaluation, not a real incident.",
+        "severity": "medium",
+        "status": "investigating",
+        "timestamp": "2026-11-12T10:00:00Z"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-BOUNDARY-S",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "name": "EV-BOUNDARY-S",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-B-LOWER",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "name": "EV-B-LOWER",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-B-LOWER",
+        "timestamp": "2026-11-12T08:00:00Z"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-B-LOWER-OUT",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "name": "EV-B-LOWER-OUT",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-B-LOWER-OUT",
+        "timestamp": "2026-11-12T07:59:59Z"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-B-ONSET",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "name": "EV-B-ONSET",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-B-ONSET",
+        "timestamp": "2026-11-12T10:00:00Z"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-B-OFFSET",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "name": "EV-B-OFFSET",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-B-OFFSET",
+        "timestamp": "2026-11-12T13:00:00+03:00"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-B-UPPER",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "name": "EV-B-UPPER",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-B-UPPER",
+        "timestamp": "2026-11-12T10:30:00Z"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-B-UPPER-OUT",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "name": "EV-B-UPPER-OUT",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-B-UPPER-OUT",
+        "timestamp": "2026-11-12T10:30:01Z"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-B-NAIVE",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "name": "EV-B-NAIVE",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-B-NAIVE",
+        "timestamp": "2026-11-12T09:30:00"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-B-NO-TIME",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "name": "EV-B-NO-TIME",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-B-NO-TIME"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-B-E-TRACE",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "summary": "EV-B-E-TRACE",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-B-E-TRACE",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-BOUNDARY-S"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-B-E-NAIVE",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "summary": "EV-B-E-NAIVE",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-B-E-NAIVE",
+        "timestamp": "2026-11-12T10:00:00"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-B-E-NOREF",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "summary": "EV-B-E-NOREF",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": null,
+        "timestamp": "2026-11-12T10:00:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-B-E-ORPHAN",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "summary": "EV-B-E-ORPHAN",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-B-E-ORPHAN",
+        "timestamp": "2026-11-12T10:00:00Z"
+      }
+    },
+    {
+      "label": "Incident",
+      "properties": {
+        "id": "EV-NONE",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "title": "Synthetic evaluation incident",
+        "summary": "Frozen offline graph evaluation, not a real incident.",
+        "severity": "medium",
+        "status": "investigating",
+        "timestamp": "2026-11-12T10:00:00Z"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-NONE-S",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "name": "EV-NONE-S",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Incident",
+      "properties": {
+        "id": "EV-INVALID",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "title": "Synthetic evaluation incident",
+        "summary": "Frozen offline graph evaluation, not a real incident.",
+        "severity": "medium",
+        "status": "investigating",
+        "timestamp": "invalid"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-INVALID-S",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "name": "EV-INVALID-S",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-INVALID-E",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "summary": "EV-INVALID-E",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-INVALID-E",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-INVALID-S"
+      }
+    },
+    {
+      "label": "Incident",
+      "properties": {
+        "id": "EV-NAIVE",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "title": "Synthetic evaluation incident",
+        "summary": "Frozen offline graph evaluation, not a real incident.",
+        "severity": "medium",
+        "status": "investigating",
+        "timestamp": "2026-11-12T10:00:00"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-NAIVE-S",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "name": "EV-NAIVE-S",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-NAIVE-E",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "summary": "EV-NAIVE-E",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-NAIVE-E",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-NAIVE-S"
+      }
+    },
+    {
+      "label": "Incident",
+      "properties": {
+        "id": "EV-SIGNALS",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "title": "Synthetic evaluation incident",
+        "summary": "Frozen offline graph evaluation, not a real incident.",
+        "severity": "medium",
+        "status": "investigating",
+        "timestamp": "2026-11-12T10:00:00Z"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-SIGNAL-S",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "name": "EV-SIGNAL-S",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-SIGNAL-OTHER",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "name": "EV-SIGNAL-OTHER",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-G-HEALTHY",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "summary": "EV-G-HEALTHY",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-G-HEALTHY",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-SIGNAL-S"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-G-FAILED",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "summary": "EV-G-FAILED",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-G-FAILED",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "FAILED",
+        "service_id": "EV-SIGNAL-S"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-G-DEGRADED",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "summary": "EV-G-DEGRADED",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-G-DEGRADED",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "DEGRADED",
+        "service_id": "EV-SIGNAL-S"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-G-EARLY",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "summary": "EV-G-EARLY",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-G-EARLY",
+        "timestamp": "2026-11-12T09:00:00Z",
+        "signal_key": "latency",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-SIGNAL-S"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-G-LATE",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "summary": "EV-G-LATE",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-G-LATE",
+        "timestamp": "2026-11-12T11:00:00Z",
+        "signal_key": "latency",
+        "observed_state": "FAILED",
+        "service_id": "EV-SIGNAL-S"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-G-ENV",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "other-demo",
+        "summary": "EV-G-ENV",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-G-ENV",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "FAILED",
+        "service_id": "EV-SIGNAL-S"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-G-SIGNAL",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "summary": "EV-G-SIGNAL",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-G-SIGNAL",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "error_rate",
+        "observed_state": "FAILED",
+        "service_id": "EV-SIGNAL-S"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-G-SERVICE",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "summary": "EV-G-SERVICE",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-G-SERVICE",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "FAILED",
+        "service_id": "EV-SIGNAL-OTHER"
+      }
+    },
+    {
+      "label": "Incident",
+      "properties": {
+        "id": "EV-OPAQUE",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "title": "Synthetic evaluation incident",
+        "summary": "Frozen offline graph evaluation, not a real incident.",
+        "severity": "medium",
+        "status": "investigating",
+        "timestamp": "2026-11-12T10:00:00Z"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-OPAQUE-S",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "name": "EV-OPAQUE-S",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-OPAQUE-E",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "summary": "EV-OPAQUE-E",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "https://example.invalid/opaque-synthetic-reference",
+        "timestamp": "2026-11-12T10:00:00Z",
+        "signal_key": "availability",
+        "observed_state": "HEALTHY",
+        "service_id": "EV-OPAQUE-S"
+      }
+    },
+    {
+      "label": "Incident",
+      "properties": {
+        "id": "EV-MISSING-EVENT",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "title": "Synthetic evaluation incident",
+        "summary": "Frozen offline graph evaluation, not a real incident.",
+        "severity": "medium",
+        "status": "investigating",
+        "timestamp": "2026-11-12T10:00:00Z"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "EV-MISSING-S",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "name": "EV-MISSING-S",
+        "description": "Synthetic evaluation service"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "EV-MISSING-D",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "name": "EV-MISSING-D",
+        "description": "Synthetic candidate, not a causal finding.",
+        "source": "demo-evaluation-release",
+        "source_ref": "demo://evaluation/EV-MISSING-D",
+        "ingested_at": "2026-11-12T10:00:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EV-MISSING-E",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint02-evaluation-v2",
+        "environment": "demo",
+        "summary": "EV-MISSING-E",
+        "description": "Synthetic evaluation observation.",
+        "source": "demo-evaluation-observer",
+        "source_ref": "demo://evaluation/EV-MISSING-E",
+        "ingested_at": "2026-11-12T10:00:00Z"
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "type": "AFFECTS",
+      "source": "EV-DEPTH",
+      "target": "EV-ROOT"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source": "EV-ROOT",
+      "target": "EV-S-1"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source": "EV-S-1",
+      "target": "EV-S-2"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source": "EV-S-2",
+      "target": "EV-S-3"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source": "EV-S-3",
+      "target": "EV-S-4"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source": "EV-S-3",
+      "target": "EV-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-D-DIRECT",
+      "target": "EV-ROOT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-D-THREE",
+      "target": "EV-S-3"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-D-FOUR",
+      "target": "EV-S-4"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-DEPTH",
+      "target": "EV-E-DEPTH"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-E-DEPTH",
+      "target": "EV-ROOT"
+    },
+    {
+      "type": "AFFECTS",
+      "source": "EV-BOUNDARY",
+      "target": "EV-BOUNDARY-S"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-B-LOWER",
+      "target": "EV-BOUNDARY-S"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-B-LOWER-OUT",
+      "target": "EV-BOUNDARY-S"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-B-ONSET",
+      "target": "EV-BOUNDARY-S"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-B-OFFSET",
+      "target": "EV-BOUNDARY-S"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-B-UPPER",
+      "target": "EV-BOUNDARY-S"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-B-UPPER-OUT",
+      "target": "EV-BOUNDARY-S"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-B-NAIVE",
+      "target": "EV-BOUNDARY-S"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-B-NO-TIME",
+      "target": "EV-BOUNDARY-S"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-BOUNDARY",
+      "target": "EV-B-E-TRACE"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-B-E-TRACE",
+      "target": "EV-BOUNDARY-S"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-BOUNDARY",
+      "target": "EV-B-E-NAIVE"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-B-E-NAIVE",
+      "target": "EV-BOUNDARY-S"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-BOUNDARY",
+      "target": "EV-B-E-NOREF"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-B-E-NOREF",
+      "target": "EV-BOUNDARY-S"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-BOUNDARY",
+      "target": "EV-B-E-ORPHAN"
+    },
+    {
+      "type": "AFFECTS",
+      "source": "EV-NONE",
+      "target": "EV-NONE-S"
+    },
+    {
+      "type": "AFFECTS",
+      "source": "EV-INVALID",
+      "target": "EV-INVALID-S"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-INVALID",
+      "target": "EV-INVALID-E"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-INVALID-E",
+      "target": "EV-INVALID-S"
+    },
+    {
+      "type": "AFFECTS",
+      "source": "EV-NAIVE",
+      "target": "EV-NAIVE-S"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-NAIVE",
+      "target": "EV-NAIVE-E"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-NAIVE-E",
+      "target": "EV-NAIVE-S"
+    },
+    {
+      "type": "AFFECTS",
+      "source": "EV-SIGNALS",
+      "target": "EV-SIGNAL-S"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-SIGNALS",
+      "target": "EV-G-HEALTHY"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-G-HEALTHY",
+      "target": "EV-SIGNAL-S"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-SIGNALS",
+      "target": "EV-G-FAILED"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-G-FAILED",
+      "target": "EV-SIGNAL-S"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-SIGNALS",
+      "target": "EV-G-DEGRADED"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-G-DEGRADED",
+      "target": "EV-SIGNAL-S"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-SIGNALS",
+      "target": "EV-G-EARLY"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-G-EARLY",
+      "target": "EV-SIGNAL-S"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-SIGNALS",
+      "target": "EV-G-LATE"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-G-LATE",
+      "target": "EV-SIGNAL-S"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-SIGNALS",
+      "target": "EV-G-ENV"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-G-ENV",
+      "target": "EV-SIGNAL-S"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-SIGNALS",
+      "target": "EV-G-SIGNAL"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-G-SIGNAL",
+      "target": "EV-SIGNAL-S"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-SIGNALS",
+      "target": "EV-G-SERVICE"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-G-SERVICE",
+      "target": "EV-SIGNAL-OTHER"
+    },
+    {
+      "type": "AFFECTS",
+      "source": "EV-OPAQUE",
+      "target": "EV-OPAQUE-S"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-OPAQUE",
+      "target": "EV-OPAQUE-E"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-OPAQUE-E",
+      "target": "EV-OPAQUE-S"
+    },
+    {
+      "type": "AFFECTS",
+      "source": "EV-MISSING-EVENT",
+      "target": "EV-MISSING-S"
+    },
+    {
+      "type": "TARGETS",
+      "source": "EV-MISSING-D",
+      "target": "EV-MISSING-S"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "EV-MISSING-EVENT",
+      "target": "EV-MISSING-E"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EV-MISSING-E",
+      "target": "EV-MISSING-S"
+    }
+  ]
+}
