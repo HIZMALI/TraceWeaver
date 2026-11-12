@@ -1,8 +1,8 @@
 # Sprint 03 verification report
 
 Date: 2026-11-13. **Track A: PASS. Track B: PASS, including genuine local-model inference.**
-Overall implementation/verification status: **PASS**. Final Git delivery metadata is pending
-the staged content audit and local commit below. Remote CI/Python 3.11/Ubuntu are UNVERIFIED.
+Overall implementation/verification status: **PASS**, committed locally after the staged audit.
+Remote CI/Python 3.11/Ubuntu are UNVERIFIED.
 An example's PARTIAL_CONTEXT describes its incident evidence, not a failed sprint or model call.
 
 ## Baseline and preservation
@@ -246,8 +246,14 @@ passed after these corrections and additional contract/multi-service proof cover
 - Explanations validate returned-context support, not real-world truth, exhaustive graph discovery,
   root cause or a definitive fix. Synthetic datasets and small gold limit interpretation.
 
-Final staged secret/private-path/unexpected-file review and Git delivery are recorded below
-after execution; no unexecuted security scan or clean status is claimed yet.
+The executed staged review covered **33 files**, checked **32 local documentation links** and
+compared all **80 pre-existing tracked files** against the baseline. Only six intended existing
+files changed: AGENTS, README, architecture, API, CLI and the exact OpenAPI route assertion.
+It found zero matches for reviewed private-user/project paths, credential/key patterns or private
+keys, and zero unexpected binaries/stores. No .rl, environment, verification record, model raw
+output or private import was staged. Both original store hashes/counts remained unchanged.
+This limited static pattern/content review is not a perfect security audit. Cached diff check
+passed; post-implementation status was clean.
 
 ## Definition of Done
 
@@ -276,7 +282,8 @@ after execution; no unexecuted security scan or clean status is claimed yet.
 | B5 | At least one genuine installed local-model inference | PASS | Actual final wheel qwen3:8b call; seven IDs / 17 citations accepted, no-cause invariant |
 
 Remote runtime verification is explicitly **UNVERIFIED / NOT RUN**, not passed by inference.
-Git/security completion is pending the final reviewed commit step; code criteria are verified.
+Local Git/security criteria also passed: staged review, diff check, exact implementation subject,
+existing main/history, clean post-implementation status, and no push.
 
 ## Sprint 04 recommendation — planned
 
@@ -290,7 +297,14 @@ verdict, source-truth claim, model-written factual prose or autonomous remediati
 
 ## Git delivery
 
-Implementation commit is pending final staged review. Intended exact subject:
+Implementation commit: **4810da83c2828a768106601df9c9d62c12a202e7** on existing main.
+Exact subject:
 `sprint03: add citation-verified incident explanations and local AI selector`.
-Work stays on existing main, with no reset/rebase/branch/remote change or push. A report-only
-follow-up may record the actual resulting implementation hash without changing tested code.
+
+Observed immediately after implementation commit: git status --short --branch returned only
+`## main`. A separate report-only follow-up records this actual hash, staged review and observed
+clean status. It changes no tested source, test, fixture, example, dependency, workflow or
+evaluation artifact. Tests above refer to that unchanged implementation and installed wheel;
+no claim is made that application tests needed to rerun after a report-only metadata update.
+Final status is checked after the follow-up. Inspect git log -2 --oneline for both local commits.
+No reset, rebase, new branch, remote modification, publication or push was performed.
