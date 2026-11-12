@@ -48,3 +48,27 @@
   graph; --force applies only to recognized intact generated bundles, never user stores.
 - Preserve all 119 Sprint 01 cases and the Sprint 02 ingestion/integrity/evaluation regression
   cases. Keep Python 3.11, other operating systems, and remote CI unverified until actually run.
+
+## Sprint 03 explanation and local selection rules
+
+- Preserve all 204 earlier cases/contracts, immutable judge bytes/manifest, fixtures and frozen
+  Sprint 02 gold/reports. Only add the documented GET route to the exact OpenAPI route assertion.
+- Consume the existing real graph-backed Investigation; do not create a competing graph analyzer.
+- Keep explanations read-only. Close the worker-local store before optional model requests.
+- Bind catalog and proposal to canonical Investigation/options fingerprint. Validate semantic
+  support, exact candidate/evidence scope, actual paths/directions, UTC and comparison classes.
+- Render factual statements only through controlled templates after validation. Always conclude
+  with NOT_ESTABLISHED; preserve gaps, source status, truncation and insufficient-evidence abstention.
+- Deterministic mode is offline and explicitly not AI-generated. HTTP explanation is always
+  deterministic; no query parameter may enable inference.
+- Optional CLI Ollama selects opaque claim IDs only at fixed 127.0.0.1:11434. Never send source
+  prose, graph properties, raw entity IDs, URLs, secrets or private paths to a model.
+- Never accept model-authored facts, citations, tools or Cypher. Reject invalid/duplicate/excessive/
+  cross-snapshot selections and extra fields; do not repair hallucinations or hide a fallback.
+- Never pull/install models automatically. Separate controlled provider protocol tests from actual
+  live-model runtime evidence. If no real invocation succeeds, report Track B BLOCKED/NOT RUN and
+  overall PARTIAL, while completing the offline track.
+- Never persist prompts/raw provider responses. Preserve the actual model/demo status and expose
+  only bounded safe failure codes. Hashes and traceability never establish source truth.
+- Keep explanation gold explicit and reviewed, separate from Sprint 02 labels. Disclose any label
+  correction with its independent rule/fixture basis; never generate expectations from outputs.

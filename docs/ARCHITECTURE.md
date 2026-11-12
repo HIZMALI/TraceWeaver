@@ -148,3 +148,35 @@ HTTP handlers remain synchronous. Expected store failures are generic 503, unkno
 invalid request arguments 422, and unexpected errors generic 500 with server-side logging.
 The same investigation function and response model serve CLI and HTTP; tests compare exact JSON.
 Full legacy response snapshots were captured using real Relate and commit e504012's source.
+
+## Sprint 02 and Sprint 03 additions
+
+Sprint 02 adds independent strict local ingestion, raw-byte integrity checks, frozen real-engine
+evaluation and a separately published synthetic judge bundle. Ingest is dry-run by default;
+explicit apply reuses the finite native transaction. Existing stores are never startup-seeded.
+See INGESTION_CONTRACT.md and SPRINT_02_REPORT.md for its physical rollback-byte limitation.
+
+Sprint 03 introduces a separate explanation contract without changing graph schema or Investigation:
+
+```text
+CLI / deterministic-only HTTP -> one worker-local read-only Relate Investigation -> close store
+  -> canonical source/options fingerprint -> bounded admissible claim catalog
+  -> deterministic selection OR explicit fixed-loopback Ollama selection of opaque claim IDs
+  -> independent semantic citation firewall -> controlled factual templates -> ExplanationReport
+```
+
+The firewall owns deep source/catalog copies. It checks actual candidate-target paths, reverse
+TARGETS, HAS_EVIDENCE incident scope, UTC/class prerequisites, provenance and matching structured
+comparison services. A source graph path is not a causal verdict. Unknown times and missing or
+truncated evidence produce caveats/abstention. Every accepted output concludes NOT_ESTABLISHED.
+
+Model code has no graph handle, filesystem tools, URL option, cloud connector or provider SDK.
+Its only HTTP routes are native local tags/chat, bounded in bytes/time. Inputs contain opaque
+claim hashes and allowlisted kinds/statuses, never raw graph/source prose or source references.
+The model chooses emphasis/order only; unsafe output rejects without a hidden deterministic
+fallback. Default explanations and all HTTP explanation requests perform zero model calls.
+
+Explanation evaluation has separate reviewed frozen gold and actual temporary Relate execution,
+semantic/adversarial checks, stored edge assertions and reproducible canonical reports. Published
+judge bytes, fixtures and Sprint 02 gold/reports remain unchanged. Local runtime evidence is in
+SPRINT_03_REPORT.md; remote CI/platform verification is not inferred from local success.

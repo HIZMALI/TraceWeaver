@@ -79,18 +79,23 @@ def offline_command(args) -> int:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="traceweaver")
     commands = parser.add_subparsers(dest="command", required=True)
-    for name in ("seed", "stats", "context", "investigate"):
+    for name in ("seed", "stats", "context", "investigate", "explain"):
         command = commands.add_parser(name)
         command.add_argument("--database", type=Path, default=None)
         if name == "seed":
             command.add_argument("--fixture", type=Path, default=None)
-        if name in ("context", "investigate"):
+        if name in ("context", "investigate", "explain"):
             command.add_argument("--incident", required=True)
-        if name == "investigate":
+        if name in ("investigate", "explain"):
             command.add_argument("--pre-minutes", type=bounded_integer(0, 1440), default=120)
             command.add_argument("--post-minutes", type=bounded_integer(0, 1440), default=30)
             command.add_argument("--max-candidates", type=bounded_integer(1, 100), default=100)
             command.add_argument("--max-evidence", type=bounded_integer(1, 100), default=100)
+        if name == "explain":
+            command.add_argument(
+                "--mode", choices=("deterministic", "ollama"), default="deterministic"
+            )
+            command.add_argument("--model")
     command = commands.add_parser("ingest")
     command.add_argument("--input", required=True)
     command.add_argument("--database", required=True)
@@ -107,7 +112,13 @@ def main(argv: list[str] | None = None) -> int:
     command = commands.add_parser("build-judge-demo")
     command.add_argument("--output-dir", required=True)
     command.add_argument("--force", action="store_true")
+    command = commands.add_parser("evaluate-explanations")
+    command.add_argument("--suite", required=True)
+    command.add_argument("--output", required=True)
+    command.add_argument("--overwrite", action="store_true")
     args = parser.parse_args(argv)
+    if args.command in {"explain", "evaluate-explanations"}:
+        return explanation_command(args)
     if args.command in {"ingest", "verify-source", "evaluate", "build-judge-demo"}:
         return offline_command(args)
     try:
@@ -137,4 +148,50 @@ def main(argv: list[str] | None = None) -> int:
         return 3
     except (StorageError, OSError, ValueError, ValidationError) as exc:
         print(f"TraceWeaver error: {exc}", file=sys.stderr)
+        return 1
+
+
+def explanation_command(args) -> int:
+    from traceweaver.explanation import explain
+
+    try:
+        if args.command == "evaluate-explanations":
+            from traceweaver.explanation_evaluation import evaluate_explanations
+
+            result = evaluate_explanations(args.suite, args.output, overwrite=args.overwrite)
+            code = 14 if result["failed"] else 0
+        else:
+            config = Settings(database=args.database) if args.database is not None else Settings()
+            options = InvestigationOptions(
+                **{
+                    name: getattr(args, name)
+                    for name in ("pre_minutes", "post_minutes", "max_candidates", "max_evidence")
+                }
+            )
+            result = explain(
+                config.database, args.incident, options, mode=args.mode, model=args.model
+            ).model_dump(mode="json")
+            code = {"MODEL_UNAVAILABLE": 12, "MODEL_OUTPUT_REJECTED": 13}.get(
+                result["explanation_status"], 0
+            )
+        print(json.dumps(result, indent=2, sort_keys=True, ensure_ascii=True, allow_nan=False))
+        return code
+    except IncidentNotFound:
+        print("Incident not found", file=sys.stderr)
+        return 3
+    except ToolError as exc:
+        print(json.dumps(exc.as_dict(), sort_keys=True), file=sys.stderr)
+        return exc.exit_code
+    except (StorageError, OSError, ValueError):
+        print(
+            json.dumps(
+                {
+                    "error": {
+                        "code": "EXPLANATION_UNAVAILABLE",
+                        "message": "Explanation operation failed; internal details are withheld.",
+                    }
+                }
+            ),
+            file=sys.stderr,
+        )
         return 1

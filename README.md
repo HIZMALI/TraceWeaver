@@ -8,13 +8,18 @@ Sprint 01: Evidence Intelligence & Temporal Investigation
 
 Sprint 02: Trusted Local Ingestion, Source Integrity & Reproducible Evaluation
 
+Sprint 03: Graph-Grounded Explanations, Citation Firewall & Optional Local AI
+
 TraceWeaver prepares connected incident context for investigations: affected services,
 dependencies, deployments, code or configuration changes, alerts, and evidence with provenance.
 Sprint 00 delivered the local graph, Python CLI, and read-only HTTP API. Sprint 01 adds
 deterministic temporal investigation, source traceability, structured observation comparisons,
 and explicit uncertainty. Sprint 02 adds validated local ingestion, offline file-integrity checks,
 20 frozen evaluation scenarios, and a separately published synthetic Relate store. These features
-are implemented and verified locally; remote CI is unverified. AI agents are **planned**.
+are implemented and verified locally; remote CI is unverified. Sprint 03 adds a read-only
+explanation layer, semantic citation validation and an optional local AI claim selector.
+Default deterministic explanations are **not AI-generated**. The AI can select existing facts;
+it cannot establish a root cause or write arbitrary factual prose.
 
 ## Hackathon context
 
@@ -66,6 +71,10 @@ flowchart LR
 - `local_files.py` / `source_integrity.py`: bounded local-file admission and raw-byte SHA-256.
 - `evaluation.py` / `evaluation_models.py`: frozen gold assertions on isolated real stores.
 - `judge_demo.py`: guarded synthetic-only bundle construction and read-only inspection.
+- `explanation_catalog.py` / `citation_validator.py`: admissible propositions and semantic proof
+  checks against one exact returned investigation snapshot.
+- `explanation.py` / `explanation_renderer.py`: shared read-only service and controlled narrative.
+- `ollama_local.py` / `model_selection.py`: optional fixed-loopback structured claim selection.
 
 See [Architecture](docs/ARCHITECTURE.md), [Graph schema](docs/GRAPH_SCHEMA.md), and the
 [Sprint 00 verification report](docs/SPRINT_00_REPORT.md). Sprint 01 is documented in the
@@ -75,6 +84,9 @@ Sprint 02 has an [ingestion contract](docs/INGESTION_CONTRACT.md),
 [source verification policy](docs/SOURCE_VERIFICATION_POLICY.md),
 [signal taxonomy](docs/SIGNAL_TAXONOMY.md), [evaluation method](docs/EVALUATION_METHOD.md),
 [full walkthrough](docs/SPRINT_02_WALKTHROUGH.md), and [verification report](docs/SPRINT_02_REPORT.md).
+Sprint 03 has an [explanation contract](docs/EXPLANATION_CONTRACT.md),
+[citation/model safety policy](docs/CITATION_AND_MODEL_SAFETY.md),
+[walkthrough](docs/SPRINT_03_WALKTHROUGH.md), and [verification report](docs/SPRINT_03_REPORT.md).
 
 ## Two-minute synthetic judge walkthrough
 
@@ -100,6 +112,47 @@ traversals against the actual .rl file; no prepared investigation answer replace
 Evaluation runs 20 scenarios in separate temporary stores and returns 20 PASS / 0 FAIL.
 Perfect agreement with synthetic gold is not real-world incident accuracy. Hash equality is
 byte integrity, not authentication. See the [bundle manifest and rebuild guide](examples/judge-demo/README.md).
+
+## Proof-carrying explanations: offline first
+
+With the existing synthetic judge store, run:
+
+```powershell
+python -m traceweaver explain --incident INC-001 --database ./examples/judge-demo/traceweaver-demo.rl
+python -m traceweaver explain --incident CASE-INC --database ./examples/judge-demo/traceweaver-demo.rl --mode deterministic
+$explanationEvaluation = Join-Path $env:TEMP ('traceweaver-explanation-eval-' + [guid]::NewGuid().ToString('N') + '.json')
+python -m traceweaver evaluate-explanations --suite ./evaluation/explanation_cases.json --output $explanationEvaluation
+```
+
+**DETERMINISTIC / ai_generated_selection=false:** no model, network, key or download is needed.
+The real Relate investigation supplies paths, times, evidence and gaps. A bounded catalog offers
+specific propositions; a separate firewall validates their semantics and citations. Controlled
+English templates display the accepted statements, with NOT_ESTABLISHED as the final caution.
+Source prose/references are withheld. Missing evidence abstains, and unknown/truncated/conflicting
+context remains visible. The JSON includes an exact investigation/options fingerprint.
+
+The offline suite executes 19 synthetic cases in fresh actual .rl stores. Its checked-in
+[JSON report](reports/sprint03-explanation-evaluation.json) records explicit denominators and
+adversarial rejection; it is not real-world incident or root-cause accuracy. See actual
+[INC-001](docs/examples/INC-001-explanation.json) and [CASE-INC](docs/examples/CASE-INC-explanation.json)
+responses. The judge store and all pre-existing fixtures/reports are preserved.
+
+**OLLAMA / ai_generated_selection=true only on acceptance:** if a compatible model is already
+installed in local Ollama, opt in explicitly. This local environment verified `qwen3:8b`:
+
+```powershell
+python -m traceweaver explain --incident INC-001 --database ./examples/judge-demo/traceweaver-demo.rl --mode ollama --model qwen3:8b
+```
+
+Only use a model actually installed on your machine. The adapter checks fixed 127.0.0.1:11434,
+never downloads weights, follows redirects or uses cloud/proxy endpoints. A model receives
+opaque claim hashes and allowlisted metadata, selects/orders existing IDs, and cannot create
+evidence, citations, Cypher or remediation. Invalid selections are rejected with no hidden
+fallback; unavailability returns mode_executed=NONE. Model output may vary. A controlled test
+transport is not live AI inference; exact local-model evidence is in the Sprint 03 report.
+
+The API adds deterministic-only `GET /incidents/{incident_id}/explanation`, using the existing
+window/cap options. It never triggers a model. Keep the development server on loopback.
 
 ## Graph model overview
 
@@ -350,6 +403,7 @@ Invoke-RestMethod http://127.0.0.1:8000/incidents/INC-001/context
 | `GET /incidents` | Lists up to 100 incidents with ID, title, status, and severity |
 | `GET /incidents/{incident_id}/context` | Retrieves connected context through Cypher |
 | `GET /incidents/{incident_id}/investigation` | Temporal candidate context, provenance, structured comparisons, uncertainty |
+| `GET /incidents/{incident_id}/explanation` | Deterministic-only proof-carrying statements, citations, gaps and explicit abstention |
 
 Unknown incidents return `404`. Missing, corrupt, locked, or unreadable stores return `503`.
 Invalid investigation query arguments return `422`. Unexpected failures are logged on the server
@@ -412,6 +466,8 @@ Python 3.11**. Local Windows verification does not establish that remote CI pass
 - Shared investigation API/CLI; exact new-list truncation detection and deterministic output.
 - Versioned local ingestion, guarded non-demo opt-in, strict validation, and conflict-safe apply.
 - Offline SHA-256 comparison, 20 frozen evaluation scenarios, and a synthetic judge .rl bundle.
+- Default offline proof-carrying explanation, semantic citation firewall and explicit abstention.
+- Optional local Ollama selection over existing claims; no model-generated factual prose or graph writes.
 
 ## Roadmap
 
@@ -419,14 +475,16 @@ Python 3.11**. Local Windows verification does not establish that remote CI pass
   explicit uncertainty, and provenance metadata validation.
 - **Sprint 02 — Implemented and locally verified:** bounded local ingestion, offline source-file
   integrity, reproducible synthetic evaluation, and a packaged judge store.
-- **Sprint 03 — Planned:** a read-only AI assistant consuming the existing investigation contract,
-  with graph-backed citations, explicit uncertainty, and no inferred causal verdict.
+- **Sprint 03 — Implemented and locally verified:** read-only explanations, citation firewall,
+  separate frozen explanation evaluation, and optional real local Ollama claim selection.
+- **Sprint 04 — Planned:** visual evidence/citation dashboard and a short judge demonstration,
+  with an actual Relate path and optional local model selection.
 - **Later:** investigation UI and visualization, only when separately scoped.
 
 ## Limitations
 
-- No AI model, root cause inference, remediation, external ingestion connectors, dashboard, or
-  production authentication is implemented through Sprint 02.
+- No causal inference, remediation, external ingestion connector, dashboard, cloud AI service, or
+  production authentication is implemented through Sprint 03. Local AI selection is optional.
 - The legacy `context` endpoint keeps its original topology-only behavior. The new investigation
   endpoint classifies times but does not infer causes or rank causality. Shared dependencies may
   connect candidate deployments across incidents; evidence still requires that incident's HAS_EVIDENCE.
@@ -458,10 +516,14 @@ Python 3.11**. Local Windows verification does not establish that remote CI pass
 - Ingestion source envelopes are input claims returned by the CLI, not an authenticated persistent
   intake registry. Local filesystem/output guards assume trusted, quiescent directories; multi-file
   report/bundle publication is not an atomic filesystem transaction.
+- Explanation validates support by returned graph context, not external source truth. Catalog and
+  rendered claims are capped independently of the graph. Unsafe display identifiers fail closed.
+  The local Ollama daemon is trusted; model supply-chain authentication is outside this sprint.
 
 ## AI-assisted development disclosure
 
-Sprints 00 through 02 were implemented and tested with OpenAI Codex assistance. The assistant generated and
+Sprints 00 through 03 were implemented and tested with OpenAI Codex assistance. The assistant generated and
 reviewed code, fixtures, tests, and documentation, and executed local verification commands.
-The application itself does not call an AI service. Synthetic evidence and connected graph paths
+Only explicit CLI Ollama mode calls a local model; default CLI and HTTP explanations use no model.
+Synthetic evidence and connected graph paths
 must never be presented as verified real-world root causes.

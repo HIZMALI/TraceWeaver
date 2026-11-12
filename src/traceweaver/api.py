@@ -8,12 +8,15 @@ from fastapi.responses import JSONResponse
 from pydantic import BeforeValidator, ValidationError
 
 from traceweaver.config import Settings
+from traceweaver.explanation import explain
+from traceweaver.explanation_models import ExplanationReport
 from traceweaver.investigation import investigate
 from traceweaver.investigation_models import Investigation, InvestigationOptions
 from traceweaver.models import Health, IncidentContext, IncidentSummary
 from traceweaver.queries import IncidentNotFound, incident_context, list_incidents
 from traceweaver.storage import GraphStore, StorageError
 from traceweaver.temporal import integer_query
+from traceweaver.tool_errors import ToolError
 
 logger = logging.getLogger(__name__)
 WindowMinutes = Annotated[int, BeforeValidator(integer_query), Query(ge=0, le=1440)]
@@ -78,6 +81,31 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 return investigate(store, incident_id, options)
         except IncidentNotFound:
             raise HTTPException(status_code=404, detail="Incident not found") from None
+
+    @application.get("/incidents/{incident_id}/explanation", response_model=ExplanationReport)
+    def explanation(
+        incident_id: str,
+        pre_minutes: WindowMinutes = 120,
+        post_minutes: WindowMinutes = 30,
+        max_candidates: ResultLimit = 100,
+        max_evidence: ResultLimit = 100,
+    ) -> ExplanationReport:
+        try:
+            options = InvestigationOptions(
+                pre_minutes=pre_minutes,
+                post_minutes=post_minutes,
+                max_candidates=max_candidates,
+                max_evidence=max_evidence,
+            )
+            # Shared service owns open/query/close in this same synchronous worker.
+            # HTTP deliberately exposes no provider/model option.
+            return explain(config.database, incident_id, options)
+        except IncidentNotFound:
+            raise HTTPException(status_code=404, detail="Incident not found") from None
+        except ToolError:
+            raise HTTPException(
+                status_code=503, detail="Explanation context is incompatible"
+            ) from None
 
     return application
 

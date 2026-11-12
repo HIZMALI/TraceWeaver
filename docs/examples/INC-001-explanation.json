@@ -1,0 +1,484 @@
+{
+  "ai_generated_selection": false,
+  "catalog_claim_count": 12,
+  "causal_conclusion": "NOT_ESTABLISHED",
+  "claims": [
+    {
+      "citations": [
+        {
+          "classification": null,
+          "code": null,
+          "count": null,
+          "entity_ids": [
+            "INC-001"
+          ],
+          "event_utc": "2026-11-10T10:05:00Z",
+          "graph_path": null,
+          "kind": "INCIDENT",
+          "overlap_end": null,
+          "overlap_start": null,
+          "provenance_status": null,
+          "source_ref": null,
+          "source_ref_withheld": false,
+          "temporal_classification": null,
+          "verification_status": null
+        }
+      ],
+      "claim_id": "C-2968a02ee7eef9f21ef9a1f4",
+      "claim_type": "INCIDENT_OBSERVED",
+      "referenced_entity_ids": [
+        "INC-001"
+      ],
+      "statement": "Incident INC-001 is in the returned graph context; onset is 2026-11-10T10:05:00Z.",
+      "support_status": "SUPPORTED_BY_RETURNED_CONTEXT"
+    },
+    {
+      "citations": [
+        {
+          "classification": null,
+          "code": null,
+          "count": null,
+          "entity_ids": [
+            "INC-001",
+            "SVC-PAYMENT"
+          ],
+          "event_utc": null,
+          "graph_path": {
+            "edges": [
+              {
+                "source_id": "INC-001",
+                "target_id": "SVC-PAYMENT",
+                "traversal_direction": "FORWARD",
+                "type": "AFFECTS"
+              }
+            ],
+            "node_ids": [
+              "INC-001",
+              "SVC-PAYMENT"
+            ]
+          },
+          "kind": "GRAPH_PATH",
+          "overlap_end": null,
+          "overlap_start": null,
+          "provenance_status": null,
+          "source_ref": null,
+          "source_ref_withheld": false,
+          "temporal_classification": null,
+          "verification_status": null
+        }
+      ],
+      "claim_id": "C-3ba13a0d57afc325c65a5557",
+      "claim_type": "SERVICE_AFFECTED",
+      "referenced_entity_ids": [
+        "INC-001",
+        "SVC-PAYMENT"
+      ],
+      "statement": "Incident INC-001 has a returned AFFECTS link to service SVC-PAYMENT.",
+      "support_status": "SUPPORTED_BY_RETURNED_CONTEXT"
+    },
+    {
+      "citations": [
+        {
+          "classification": null,
+          "code": null,
+          "count": null,
+          "entity_ids": [
+            "INC-001",
+            "SVC-PAYMENT",
+            "SVC-AUTH",
+            "DEP-001"
+          ],
+          "event_utc": null,
+          "graph_path": {
+            "edges": [
+              {
+                "source_id": "INC-001",
+                "target_id": "SVC-PAYMENT",
+                "traversal_direction": "FORWARD",
+                "type": "AFFECTS"
+              },
+              {
+                "source_id": "SVC-PAYMENT",
+                "target_id": "SVC-AUTH",
+                "traversal_direction": "FORWARD",
+                "type": "DEPENDS_ON"
+              },
+              {
+                "source_id": "DEP-001",
+                "target_id": "SVC-AUTH",
+                "traversal_direction": "REVERSE",
+                "type": "TARGETS"
+              }
+            ],
+            "node_ids": [
+              "INC-001",
+              "SVC-PAYMENT",
+              "SVC-AUTH",
+              "DEP-001"
+            ]
+          },
+          "kind": "GRAPH_PATH",
+          "overlap_end": null,
+          "overlap_start": null,
+          "provenance_status": null,
+          "source_ref": null,
+          "source_ref_withheld": false,
+          "temporal_classification": null,
+          "verification_status": null
+        }
+      ],
+      "claim_id": "C-5f5585df4d6c614b8c4a3676",
+      "claim_type": "DEPLOYMENT_CONNECTED",
+      "referenced_entity_ids": [
+        "DEP-001",
+        "SVC-AUTH"
+      ],
+      "statement": "Deployment DEP-001 is graph-connected to target SVC-AUTH; connection is not cause.",
+      "support_status": "SUPPORTED_BY_RETURNED_CONTEXT"
+    },
+    {
+      "citations": [
+        {
+          "classification": null,
+          "code": null,
+          "count": null,
+          "entity_ids": [
+            "INC-001",
+            "SVC-PAYMENT",
+            "DEP-002"
+          ],
+          "event_utc": null,
+          "graph_path": {
+            "edges": [
+              {
+                "source_id": "INC-001",
+                "target_id": "SVC-PAYMENT",
+                "traversal_direction": "FORWARD",
+                "type": "AFFECTS"
+              },
+              {
+                "source_id": "DEP-002",
+                "target_id": "SVC-PAYMENT",
+                "traversal_direction": "REVERSE",
+                "type": "TARGETS"
+              }
+            ],
+            "node_ids": [
+              "INC-001",
+              "SVC-PAYMENT",
+              "DEP-002"
+            ]
+          },
+          "kind": "GRAPH_PATH",
+          "overlap_end": null,
+          "overlap_start": null,
+          "provenance_status": null,
+          "source_ref": null,
+          "source_ref_withheld": false,
+          "temporal_classification": null,
+          "verification_status": null
+        }
+      ],
+      "claim_id": "C-dc3d071cd020904c5bbc2377",
+      "claim_type": "DEPLOYMENT_CONNECTED",
+      "referenced_entity_ids": [
+        "DEP-002",
+        "SVC-PAYMENT"
+      ],
+      "statement": "Deployment DEP-002 is graph-connected to target SVC-PAYMENT; connection is not cause.",
+      "support_status": "SUPPORTED_BY_RETURNED_CONTEXT"
+    },
+    {
+      "citations": [
+        {
+          "classification": null,
+          "code": null,
+          "count": null,
+          "entity_ids": [
+            "INC-001",
+            "SVC-PAYMENT",
+            "DEP-002"
+          ],
+          "event_utc": null,
+          "graph_path": {
+            "edges": [
+              {
+                "source_id": "INC-001",
+                "target_id": "SVC-PAYMENT",
+                "traversal_direction": "FORWARD",
+                "type": "AFFECTS"
+              },
+              {
+                "source_id": "DEP-002",
+                "target_id": "SVC-PAYMENT",
+                "traversal_direction": "REVERSE",
+                "type": "TARGETS"
+              }
+            ],
+            "node_ids": [
+              "INC-001",
+              "SVC-PAYMENT",
+              "DEP-002"
+            ]
+          },
+          "kind": "GRAPH_PATH",
+          "overlap_end": null,
+          "overlap_start": null,
+          "provenance_status": null,
+          "source_ref": null,
+          "source_ref_withheld": false,
+          "temporal_classification": null,
+          "verification_status": null
+        },
+        {
+          "classification": null,
+          "code": null,
+          "count": null,
+          "entity_ids": [
+            "DEP-002",
+            "SVC-PAYMENT"
+          ],
+          "event_utc": "2026-11-10T09:58:00Z",
+          "graph_path": null,
+          "kind": "TEMPORAL",
+          "overlap_end": null,
+          "overlap_start": null,
+          "provenance_status": null,
+          "source_ref": null,
+          "source_ref_withheld": false,
+          "temporal_classification": "BEFORE",
+          "verification_status": null
+        }
+      ],
+      "claim_id": "C-137d0d5cc03effe27c154b25",
+      "claim_type": "DEPLOYMENT_BEFORE_ONSET",
+      "referenced_entity_ids": [
+        "DEP-002",
+        "SVC-PAYMENT"
+      ],
+      "statement": "Deployment DEP-002 at 2026-11-10T09:58:00Z is BEFORE onset within the requested window; temporal precedence does not establish causation.",
+      "support_status": "SUPPORTED_BY_RETURNED_CONTEXT"
+    },
+    {
+      "citations": [
+        {
+          "classification": null,
+          "code": null,
+          "count": null,
+          "entity_ids": [
+            "EVD-002"
+          ],
+          "event_utc": null,
+          "graph_path": null,
+          "kind": "EVIDENCE",
+          "overlap_end": null,
+          "overlap_start": null,
+          "provenance_status": null,
+          "source_ref": null,
+          "source_ref_withheld": false,
+          "temporal_classification": null,
+          "verification_status": null
+        },
+        {
+          "classification": null,
+          "code": null,
+          "count": null,
+          "entity_ids": [
+            "INC-001",
+            "EVD-002",
+            "SVC-PAYMENT"
+          ],
+          "event_utc": null,
+          "graph_path": {
+            "edges": [
+              {
+                "source_id": "INC-001",
+                "target_id": "EVD-002",
+                "traversal_direction": "FORWARD",
+                "type": "HAS_EVIDENCE"
+              },
+              {
+                "source_id": "EVD-002",
+                "target_id": "SVC-PAYMENT",
+                "traversal_direction": "FORWARD",
+                "type": "OBSERVED_ON"
+              }
+            ],
+            "node_ids": [
+              "INC-001",
+              "EVD-002",
+              "SVC-PAYMENT"
+            ]
+          },
+          "kind": "GRAPH_PATH",
+          "overlap_end": null,
+          "overlap_start": null,
+          "provenance_status": null,
+          "source_ref": null,
+          "source_ref_withheld": false,
+          "temporal_classification": null,
+          "verification_status": null
+        },
+        {
+          "classification": null,
+          "code": null,
+          "count": null,
+          "entity_ids": [
+            "EVD-002"
+          ],
+          "event_utc": null,
+          "graph_path": null,
+          "kind": "PROVENANCE",
+          "overlap_end": null,
+          "overlap_start": null,
+          "provenance_status": "TRACEABLE",
+          "source_ref": null,
+          "source_ref_withheld": true,
+          "temporal_classification": null,
+          "verification_status": "SYNTHETIC"
+        }
+      ],
+      "claim_id": "C-54c4c370e92e2f2bc7f5d109",
+      "claim_type": "EVIDENCE_REPORTED",
+      "referenced_entity_ids": [
+        "EVD-002"
+      ],
+      "statement": "Evidence EVD-002 belongs to this incident: TRACEABLE metadata, SYNTHETIC source status. Source text is withheld.",
+      "support_status": "SUPPORTED_BY_RETURNED_CONTEXT"
+    },
+    {
+      "citations": [
+        {
+          "classification": null,
+          "code": "STRUCTURED_SIGNAL_GAPS",
+          "count": 4,
+          "entity_ids": [
+            "EVD-001",
+            "EVD-002",
+            "EVD-003",
+            "EVD-004"
+          ],
+          "event_utc": null,
+          "graph_path": null,
+          "kind": "GAP",
+          "overlap_end": null,
+          "overlap_start": null,
+          "provenance_status": null,
+          "source_ref": null,
+          "source_ref_withheld": false,
+          "temporal_classification": null,
+          "verification_status": null
+        }
+      ],
+      "claim_id": "C-c55a48b473646cbdf146e26d",
+      "claim_type": "CONTEXT_GAP",
+      "referenced_entity_ids": [
+        "EVD-001",
+        "EVD-002",
+        "EVD-003",
+        "EVD-004"
+      ],
+      "statement": "Returned context reports STRUCTURED_SIGNAL_GAPS (count 4); review the scoped gap.",
+      "support_status": "SUPPORTED_BY_RETURNED_CONTEXT"
+    },
+    {
+      "citations": [
+        {
+          "classification": null,
+          "code": "NO_CAUSAL_VERDICT",
+          "count": null,
+          "entity_ids": [
+            "INC-001"
+          ],
+          "event_utc": null,
+          "graph_path": null,
+          "kind": "GAP",
+          "overlap_end": null,
+          "overlap_start": null,
+          "provenance_status": null,
+          "source_ref": null,
+          "source_ref_withheld": false,
+          "temporal_classification": null,
+          "verification_status": null
+        }
+      ],
+      "claim_id": "C-02c51c9fdd50a9a03b37c175",
+      "claim_type": "NO_CAUSAL_VERDICT",
+      "referenced_entity_ids": [
+        "INC-001"
+      ],
+      "statement": "Causal conclusion is NOT_ESTABLISHED. Connected deployments are investigation candidates.",
+      "support_status": "SUPPORTED_BY_RETURNED_CONTEXT"
+    }
+  ],
+  "contract_version": "1.0",
+  "demo_notice": "Synthetic demo data; no real incident or causal finding.",
+  "evidence_summary": {
+    "conflict_count": 0,
+    "incomplete_count": 0,
+    "invalid_count": 0,
+    "not_evaluable_count": 4,
+    "returned_candidates": 2,
+    "returned_evidence": 4,
+    "scope": "RETURNED_EVIDENCE",
+    "traceable_count": 4,
+    "undetermined_count": 0,
+    "unverified_external_count": 0
+  },
+  "explanation_status": "PARTIAL_CONTEXT",
+  "external_verification_status": "NOT_PERFORMED",
+  "generated_claim_count": 12,
+  "incident_id": "INC-001",
+  "investigation_fingerprint": "d05166378e55098b88a4c71e69095cc206e075031a3e46ce1a5643f70c1b5520",
+  "investigation_status": "PARTIAL_CONTEXT",
+  "is_demo": true,
+  "limitations": [
+    "Cause is NOT_ESTABLISHED; graph connectivity and time order do not establish causation.",
+    "External source truth verification is NOT_PERFORMED; TRACEABLE is not authenticated.",
+    "Source prose and source references are withheld; stable graph IDs carry citation proof.",
+    "Only returned context is explained; alternate paths and omitted data may matter.",
+    "Row and output caps do not bound whole-store RAM or graph query cost.",
+    "Model selects IDs only; deterministic templates render factual statements.",
+    "Deterministic mode is not AI-generated and makes no model call."
+  ],
+  "mode_executed": "DETERMINISTIC",
+  "mode_requested": "DETERMINISTIC",
+  "model": null,
+  "next_checks": [
+    "Resolve STRUCTURED_SIGNAL_GAPS for EVD-001, EVD-002, EVD-003, EVD-004: Structured signal comparisons cannot evaluate these observations."
+  ],
+  "overview": "Deterministic mode; not AI-generated. Returned context contains 2 deployment/target pairs and 4 evidence records. Structured audit: 0 conflicts and 0 undetermined pairs. This is scoped review context; cause is not established.",
+  "rejection_codes": [],
+  "truncation": {
+    "catalog": false,
+    "investigation": {
+      "affected_services": false,
+      "candidates": false,
+      "changes": false,
+      "contradictions": false,
+      "evidence": false,
+      "observations": false,
+      "provenance_warnings": false,
+      "timeline": false
+    },
+    "model_offer": false,
+    "next_checks": false,
+    "selected_subset": true,
+    "uncertainties": false
+  },
+  "uncertainties": [
+    {
+      "code": "STRUCTURED_SIGNAL_GAPS",
+      "count": 4,
+      "entity_ids": [
+        "EVD-001",
+        "EVD-002",
+        "EVD-003",
+        "EVD-004"
+      ],
+      "references_omitted": false
+    }
+  ],
+  "validated_citation_count": 11,
+  "validated_claim_count": 8
+}

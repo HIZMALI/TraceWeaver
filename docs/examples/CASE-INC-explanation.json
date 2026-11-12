@@ -1,0 +1,854 @@
+{
+  "ai_generated_selection": false,
+  "catalog_claim_count": 33,
+  "causal_conclusion": "NOT_ESTABLISHED",
+  "claims": [
+    {
+      "citations": [
+        {
+          "classification": null,
+          "code": null,
+          "count": null,
+          "entity_ids": [
+            "CASE-INC"
+          ],
+          "event_utc": "2026-11-12T10:00:00Z",
+          "graph_path": null,
+          "kind": "INCIDENT",
+          "overlap_end": null,
+          "overlap_start": null,
+          "provenance_status": null,
+          "source_ref": null,
+          "source_ref_withheld": false,
+          "temporal_classification": null,
+          "verification_status": null
+        }
+      ],
+      "claim_id": "C-edb140b2b487228033cf97dd",
+      "claim_type": "INCIDENT_OBSERVED",
+      "referenced_entity_ids": [
+        "CASE-INC"
+      ],
+      "statement": "Incident CASE-INC is in the returned graph context; onset is 2026-11-12T10:00:00Z.",
+      "support_status": "SUPPORTED_BY_RETURNED_CONTEXT"
+    },
+    {
+      "citations": [
+        {
+          "classification": null,
+          "code": null,
+          "count": null,
+          "entity_ids": [
+            "CASE-INC",
+            "CASE-API"
+          ],
+          "event_utc": null,
+          "graph_path": {
+            "edges": [
+              {
+                "source_id": "CASE-INC",
+                "target_id": "CASE-API",
+                "traversal_direction": "FORWARD",
+                "type": "AFFECTS"
+              }
+            ],
+            "node_ids": [
+              "CASE-INC",
+              "CASE-API"
+            ]
+          },
+          "kind": "GRAPH_PATH",
+          "overlap_end": null,
+          "overlap_start": null,
+          "provenance_status": null,
+          "source_ref": null,
+          "source_ref_withheld": false,
+          "temporal_classification": null,
+          "verification_status": null
+        }
+      ],
+      "claim_id": "C-96d862bf9843d5c9fa17a669",
+      "claim_type": "SERVICE_AFFECTED",
+      "referenced_entity_ids": [
+        "CASE-INC",
+        "CASE-API"
+      ],
+      "statement": "Incident CASE-INC has a returned AFFECTS link to service CASE-API.",
+      "support_status": "SUPPORTED_BY_RETURNED_CONTEXT"
+    },
+    {
+      "citations": [
+        {
+          "classification": null,
+          "code": null,
+          "count": null,
+          "entity_ids": [
+            "CASE-INC",
+            "CASE-API",
+            "CASE-AUTH",
+            "CASE-DEP-INVALID"
+          ],
+          "event_utc": null,
+          "graph_path": {
+            "edges": [
+              {
+                "source_id": "CASE-INC",
+                "target_id": "CASE-API",
+                "traversal_direction": "FORWARD",
+                "type": "AFFECTS"
+              },
+              {
+                "source_id": "CASE-API",
+                "target_id": "CASE-AUTH",
+                "traversal_direction": "FORWARD",
+                "type": "DEPENDS_ON"
+              },
+              {
+                "source_id": "CASE-DEP-INVALID",
+                "target_id": "CASE-AUTH",
+                "traversal_direction": "REVERSE",
+                "type": "TARGETS"
+              }
+            ],
+            "node_ids": [
+              "CASE-INC",
+              "CASE-API",
+              "CASE-AUTH",
+              "CASE-DEP-INVALID"
+            ]
+          },
+          "kind": "GRAPH_PATH",
+          "overlap_end": null,
+          "overlap_start": null,
+          "provenance_status": null,
+          "source_ref": null,
+          "source_ref_withheld": false,
+          "temporal_classification": null,
+          "verification_status": null
+        }
+      ],
+      "claim_id": "C-54315b142d818cedf3ba14e1",
+      "claim_type": "DEPLOYMENT_CONNECTED",
+      "referenced_entity_ids": [
+        "CASE-DEP-INVALID",
+        "CASE-AUTH"
+      ],
+      "statement": "Deployment CASE-DEP-INVALID is graph-connected to target CASE-AUTH; connection is not cause.",
+      "support_status": "SUPPORTED_BY_RETURNED_CONTEXT"
+    },
+    {
+      "citations": [
+        {
+          "classification": null,
+          "code": null,
+          "count": null,
+          "entity_ids": [
+            "CASE-INC",
+            "CASE-API",
+            "CASE-AUTH",
+            "CASE-DEP-AFTER"
+          ],
+          "event_utc": null,
+          "graph_path": {
+            "edges": [
+              {
+                "source_id": "CASE-INC",
+                "target_id": "CASE-API",
+                "traversal_direction": "FORWARD",
+                "type": "AFFECTS"
+              },
+              {
+                "source_id": "CASE-API",
+                "target_id": "CASE-AUTH",
+                "traversal_direction": "FORWARD",
+                "type": "DEPENDS_ON"
+              },
+              {
+                "source_id": "CASE-DEP-AFTER",
+                "target_id": "CASE-AUTH",
+                "traversal_direction": "REVERSE",
+                "type": "TARGETS"
+              }
+            ],
+            "node_ids": [
+              "CASE-INC",
+              "CASE-API",
+              "CASE-AUTH",
+              "CASE-DEP-AFTER"
+            ]
+          },
+          "kind": "GRAPH_PATH",
+          "overlap_end": null,
+          "overlap_start": null,
+          "provenance_status": null,
+          "source_ref": null,
+          "source_ref_withheld": false,
+          "temporal_classification": null,
+          "verification_status": null
+        }
+      ],
+      "claim_id": "C-89a0c3bd6a63feddf029eb8f",
+      "claim_type": "DEPLOYMENT_CONNECTED",
+      "referenced_entity_ids": [
+        "CASE-DEP-AFTER",
+        "CASE-AUTH"
+      ],
+      "statement": "Deployment CASE-DEP-AFTER is graph-connected to target CASE-AUTH; connection is not cause.",
+      "support_status": "SUPPORTED_BY_RETURNED_CONTEXT"
+    },
+    {
+      "citations": [
+        {
+          "classification": null,
+          "code": null,
+          "count": null,
+          "entity_ids": [
+            "CASE-INC",
+            "CASE-API",
+            "CASE-AUTH",
+            "CASE-DEP-AFTER"
+          ],
+          "event_utc": null,
+          "graph_path": {
+            "edges": [
+              {
+                "source_id": "CASE-INC",
+                "target_id": "CASE-API",
+                "traversal_direction": "FORWARD",
+                "type": "AFFECTS"
+              },
+              {
+                "source_id": "CASE-API",
+                "target_id": "CASE-AUTH",
+                "traversal_direction": "FORWARD",
+                "type": "DEPENDS_ON"
+              },
+              {
+                "source_id": "CASE-DEP-AFTER",
+                "target_id": "CASE-AUTH",
+                "traversal_direction": "REVERSE",
+                "type": "TARGETS"
+              }
+            ],
+            "node_ids": [
+              "CASE-INC",
+              "CASE-API",
+              "CASE-AUTH",
+              "CASE-DEP-AFTER"
+            ]
+          },
+          "kind": "GRAPH_PATH",
+          "overlap_end": null,
+          "overlap_start": null,
+          "provenance_status": null,
+          "source_ref": null,
+          "source_ref_withheld": false,
+          "temporal_classification": null,
+          "verification_status": null
+        },
+        {
+          "classification": null,
+          "code": null,
+          "count": null,
+          "entity_ids": [
+            "CASE-DEP-AFTER",
+            "CASE-AUTH"
+          ],
+          "event_utc": "2026-11-12T10:02:00Z",
+          "graph_path": null,
+          "kind": "TEMPORAL",
+          "overlap_end": null,
+          "overlap_start": null,
+          "provenance_status": null,
+          "source_ref": null,
+          "source_ref_withheld": false,
+          "temporal_classification": "AFTER",
+          "verification_status": null
+        }
+      ],
+      "claim_id": "C-3f2cf693f8fb391cd75c7bdd",
+      "claim_type": "DEPLOYMENT_NOT_PRECEDING",
+      "referenced_entity_ids": [
+        "CASE-DEP-AFTER",
+        "CASE-AUTH"
+      ],
+      "statement": "Deployment CASE-DEP-AFTER at 2026-11-12T10:02:00Z is AFTER; it cannot be a preceding trigger and remains context.",
+      "support_status": "SUPPORTED_BY_RETURNED_CONTEXT"
+    },
+    {
+      "citations": [
+        {
+          "classification": null,
+          "code": null,
+          "count": null,
+          "entity_ids": [
+            "CASE-INC",
+            "CASE-API",
+            "CASE-AUTH",
+            "CASE-DEP-BEFORE"
+          ],
+          "event_utc": null,
+          "graph_path": {
+            "edges": [
+              {
+                "source_id": "CASE-INC",
+                "target_id": "CASE-API",
+                "traversal_direction": "FORWARD",
+                "type": "AFFECTS"
+              },
+              {
+                "source_id": "CASE-API",
+                "target_id": "CASE-AUTH",
+                "traversal_direction": "FORWARD",
+                "type": "DEPENDS_ON"
+              },
+              {
+                "source_id": "CASE-DEP-BEFORE",
+                "target_id": "CASE-AUTH",
+                "traversal_direction": "REVERSE",
+                "type": "TARGETS"
+              }
+            ],
+            "node_ids": [
+              "CASE-INC",
+              "CASE-API",
+              "CASE-AUTH",
+              "CASE-DEP-BEFORE"
+            ]
+          },
+          "kind": "GRAPH_PATH",
+          "overlap_end": null,
+          "overlap_start": null,
+          "provenance_status": null,
+          "source_ref": null,
+          "source_ref_withheld": false,
+          "temporal_classification": null,
+          "verification_status": null
+        },
+        {
+          "classification": null,
+          "code": null,
+          "count": null,
+          "entity_ids": [
+            "CASE-DEP-BEFORE",
+            "CASE-AUTH"
+          ],
+          "event_utc": "2026-11-12T09:30:00Z",
+          "graph_path": null,
+          "kind": "TEMPORAL",
+          "overlap_end": null,
+          "overlap_start": null,
+          "provenance_status": null,
+          "source_ref": null,
+          "source_ref_withheld": false,
+          "temporal_classification": "BEFORE",
+          "verification_status": null
+        }
+      ],
+      "claim_id": "C-0bbc4452f5469b0f8d47fb43",
+      "claim_type": "DEPLOYMENT_BEFORE_ONSET",
+      "referenced_entity_ids": [
+        "CASE-DEP-BEFORE",
+        "CASE-AUTH"
+      ],
+      "statement": "Deployment CASE-DEP-BEFORE at 2026-11-12T09:30:00Z is BEFORE onset within the requested window; temporal precedence does not establish causation.",
+      "support_status": "SUPPORTED_BY_RETURNED_CONTEXT"
+    },
+    {
+      "citations": [
+        {
+          "classification": null,
+          "code": null,
+          "count": null,
+          "entity_ids": [
+            "CASE-E-EARLY"
+          ],
+          "event_utc": null,
+          "graph_path": null,
+          "kind": "EVIDENCE",
+          "overlap_end": null,
+          "overlap_start": null,
+          "provenance_status": null,
+          "source_ref": null,
+          "source_ref_withheld": false,
+          "temporal_classification": null,
+          "verification_status": null
+        },
+        {
+          "classification": null,
+          "code": null,
+          "count": null,
+          "entity_ids": [
+            "CASE-INC",
+            "CASE-E-EARLY",
+            "CASE-API"
+          ],
+          "event_utc": null,
+          "graph_path": {
+            "edges": [
+              {
+                "source_id": "CASE-INC",
+                "target_id": "CASE-E-EARLY",
+                "traversal_direction": "FORWARD",
+                "type": "HAS_EVIDENCE"
+              },
+              {
+                "source_id": "CASE-E-EARLY",
+                "target_id": "CASE-API",
+                "traversal_direction": "FORWARD",
+                "type": "OBSERVED_ON"
+              }
+            ],
+            "node_ids": [
+              "CASE-INC",
+              "CASE-E-EARLY",
+              "CASE-API"
+            ]
+          },
+          "kind": "GRAPH_PATH",
+          "overlap_end": null,
+          "overlap_start": null,
+          "provenance_status": null,
+          "source_ref": null,
+          "source_ref_withheld": false,
+          "temporal_classification": null,
+          "verification_status": null
+        },
+        {
+          "classification": null,
+          "code": null,
+          "count": null,
+          "entity_ids": [
+            "CASE-E-EARLY"
+          ],
+          "event_utc": null,
+          "graph_path": null,
+          "kind": "PROVENANCE",
+          "overlap_end": null,
+          "overlap_start": null,
+          "provenance_status": "TRACEABLE",
+          "source_ref": null,
+          "source_ref_withheld": true,
+          "temporal_classification": null,
+          "verification_status": "SYNTHETIC"
+        }
+      ],
+      "claim_id": "C-0166ee96f4855e6a9fe71578",
+      "claim_type": "EVIDENCE_REPORTED",
+      "referenced_entity_ids": [
+        "CASE-E-EARLY"
+      ],
+      "statement": "Evidence CASE-E-EARLY belongs to this incident: TRACEABLE metadata, SYNTHETIC source status. Source text is withheld.",
+      "support_status": "SUPPORTED_BY_RETURNED_CONTEXT"
+    },
+    {
+      "citations": [
+        {
+          "classification": "CONFLICTING_OBSERVATIONS",
+          "code": null,
+          "count": null,
+          "entity_ids": [
+            "CASE-E-FAILED",
+            "CASE-E-HEALTHY",
+            "CASE-API"
+          ],
+          "event_utc": null,
+          "graph_path": null,
+          "kind": "CONTRADICTION",
+          "overlap_end": "2026-11-12T10:01:00Z",
+          "overlap_start": "2026-11-12T09:59:00Z",
+          "provenance_status": null,
+          "source_ref": null,
+          "source_ref_withheld": false,
+          "temporal_classification": null,
+          "verification_status": null
+        },
+        {
+          "classification": null,
+          "code": null,
+          "count": null,
+          "entity_ids": [
+            "CASE-INC",
+            "CASE-E-FAILED",
+            "CASE-API"
+          ],
+          "event_utc": null,
+          "graph_path": {
+            "edges": [
+              {
+                "source_id": "CASE-INC",
+                "target_id": "CASE-E-FAILED",
+                "traversal_direction": "FORWARD",
+                "type": "HAS_EVIDENCE"
+              },
+              {
+                "source_id": "CASE-E-FAILED",
+                "target_id": "CASE-API",
+                "traversal_direction": "FORWARD",
+                "type": "OBSERVED_ON"
+              }
+            ],
+            "node_ids": [
+              "CASE-INC",
+              "CASE-E-FAILED",
+              "CASE-API"
+            ]
+          },
+          "kind": "GRAPH_PATH",
+          "overlap_end": null,
+          "overlap_start": null,
+          "provenance_status": null,
+          "source_ref": null,
+          "source_ref_withheld": false,
+          "temporal_classification": null,
+          "verification_status": null
+        },
+        {
+          "classification": null,
+          "code": null,
+          "count": null,
+          "entity_ids": [
+            "CASE-INC",
+            "CASE-E-HEALTHY",
+            "CASE-API"
+          ],
+          "event_utc": null,
+          "graph_path": {
+            "edges": [
+              {
+                "source_id": "CASE-INC",
+                "target_id": "CASE-E-HEALTHY",
+                "traversal_direction": "FORWARD",
+                "type": "HAS_EVIDENCE"
+              },
+              {
+                "source_id": "CASE-E-HEALTHY",
+                "target_id": "CASE-API",
+                "traversal_direction": "FORWARD",
+                "type": "OBSERVED_ON"
+              }
+            ],
+            "node_ids": [
+              "CASE-INC",
+              "CASE-E-HEALTHY",
+              "CASE-API"
+            ]
+          },
+          "kind": "GRAPH_PATH",
+          "overlap_end": null,
+          "overlap_start": null,
+          "provenance_status": null,
+          "source_ref": null,
+          "source_ref_withheld": false,
+          "temporal_classification": null,
+          "verification_status": null
+        }
+      ],
+      "claim_id": "C-ca474a03cebd1095d873d68a",
+      "claim_type": "STRUCTURED_CONFLICT",
+      "referenced_entity_ids": [
+        "CASE-E-FAILED",
+        "CASE-E-HEALTHY"
+      ],
+      "statement": "Evidence CASE-E-FAILED and CASE-E-HEALTHY has comparable conflicting observations; reconcile them.",
+      "support_status": "SUPPORTED_BY_RETURNED_CONTEXT"
+    },
+    {
+      "citations": [
+        {
+          "classification": "UNDETERMINED",
+          "code": null,
+          "count": null,
+          "entity_ids": [
+            "CASE-E-DEGRADED",
+            "CASE-E-HEALTHY",
+            "CASE-API"
+          ],
+          "event_utc": null,
+          "graph_path": null,
+          "kind": "CONTRADICTION",
+          "overlap_end": "2026-11-12T10:01:00Z",
+          "overlap_start": "2026-11-12T09:59:00Z",
+          "provenance_status": null,
+          "source_ref": null,
+          "source_ref_withheld": false,
+          "temporal_classification": null,
+          "verification_status": null
+        },
+        {
+          "classification": null,
+          "code": null,
+          "count": null,
+          "entity_ids": [
+            "CASE-INC",
+            "CASE-E-DEGRADED",
+            "CASE-API"
+          ],
+          "event_utc": null,
+          "graph_path": {
+            "edges": [
+              {
+                "source_id": "CASE-INC",
+                "target_id": "CASE-E-DEGRADED",
+                "traversal_direction": "FORWARD",
+                "type": "HAS_EVIDENCE"
+              },
+              {
+                "source_id": "CASE-E-DEGRADED",
+                "target_id": "CASE-API",
+                "traversal_direction": "FORWARD",
+                "type": "OBSERVED_ON"
+              }
+            ],
+            "node_ids": [
+              "CASE-INC",
+              "CASE-E-DEGRADED",
+              "CASE-API"
+            ]
+          },
+          "kind": "GRAPH_PATH",
+          "overlap_end": null,
+          "overlap_start": null,
+          "provenance_status": null,
+          "source_ref": null,
+          "source_ref_withheld": false,
+          "temporal_classification": null,
+          "verification_status": null
+        },
+        {
+          "classification": null,
+          "code": null,
+          "count": null,
+          "entity_ids": [
+            "CASE-INC",
+            "CASE-E-HEALTHY",
+            "CASE-API"
+          ],
+          "event_utc": null,
+          "graph_path": {
+            "edges": [
+              {
+                "source_id": "CASE-INC",
+                "target_id": "CASE-E-HEALTHY",
+                "traversal_direction": "FORWARD",
+                "type": "HAS_EVIDENCE"
+              },
+              {
+                "source_id": "CASE-E-HEALTHY",
+                "target_id": "CASE-API",
+                "traversal_direction": "FORWARD",
+                "type": "OBSERVED_ON"
+              }
+            ],
+            "node_ids": [
+              "CASE-INC",
+              "CASE-E-HEALTHY",
+              "CASE-API"
+            ]
+          },
+          "kind": "GRAPH_PATH",
+          "overlap_end": null,
+          "overlap_start": null,
+          "provenance_status": null,
+          "source_ref": null,
+          "source_ref_withheld": false,
+          "temporal_classification": null,
+          "verification_status": null
+        }
+      ],
+      "claim_id": "C-7e387f366d5876503aa6ffef",
+      "claim_type": "COMPARISON_UNDETERMINED",
+      "referenced_entity_ids": [
+        "CASE-E-DEGRADED",
+        "CASE-E-HEALTHY"
+      ],
+      "statement": "Evidence CASE-E-DEGRADED and CASE-E-HEALTHY has an UNDETERMINED comparison; this is not a detected conflict.",
+      "support_status": "SUPPORTED_BY_RETURNED_CONTEXT"
+    },
+    {
+      "citations": [
+        {
+          "classification": null,
+          "code": "NO_CAUSAL_VERDICT",
+          "count": null,
+          "entity_ids": [
+            "CASE-INC"
+          ],
+          "event_utc": null,
+          "graph_path": null,
+          "kind": "GAP",
+          "overlap_end": null,
+          "overlap_start": null,
+          "provenance_status": null,
+          "source_ref": null,
+          "source_ref_withheld": false,
+          "temporal_classification": null,
+          "verification_status": null
+        }
+      ],
+      "claim_id": "C-a2829d17b6a5eaac1bdd20bc",
+      "claim_type": "NO_CAUSAL_VERDICT",
+      "referenced_entity_ids": [
+        "CASE-INC"
+      ],
+      "statement": "Causal conclusion is NOT_ESTABLISHED. Connected deployments are investigation candidates.",
+      "support_status": "SUPPORTED_BY_RETURNED_CONTEXT"
+    }
+  ],
+  "contract_version": "1.0",
+  "demo_notice": "Synthetic demo data; no real incident or causal finding.",
+  "evidence_summary": {
+    "conflict_count": 1,
+    "incomplete_count": 4,
+    "invalid_count": 1,
+    "not_evaluable_count": 6,
+    "returned_candidates": 6,
+    "returned_evidence": 11,
+    "scope": "RETURNED_EVIDENCE",
+    "traceable_count": 6,
+    "undetermined_count": 2,
+    "unverified_external_count": 0
+  },
+  "explanation_status": "PARTIAL_CONTEXT",
+  "external_verification_status": "NOT_PERFORMED",
+  "generated_claim_count": 33,
+  "incident_id": "CASE-INC",
+  "investigation_fingerprint": "26289a49442ae5d1f5eca4e80ddf4234aa4f9a448cdc2cf25c36051b1d523957",
+  "investigation_status": "PARTIAL_CONTEXT",
+  "is_demo": true,
+  "limitations": [
+    "Cause is NOT_ESTABLISHED; graph connectivity and time order do not establish causation.",
+    "External source truth verification is NOT_PERFORMED; TRACEABLE is not authenticated.",
+    "Source prose and source references are withheld; stable graph IDs carry citation proof.",
+    "Only returned context is explained; alternate paths and omitted data may matter.",
+    "Row and output caps do not bound whole-store RAM or graph query cost.",
+    "Model selects IDs only; deterministic templates render factual statements.",
+    "Deterministic mode is not AI-generated and makes no model call."
+  ],
+  "mode_executed": "DETERMINISTIC",
+  "mode_requested": "DETERMINISTIC",
+  "model": null,
+  "next_checks": [
+    "Resolve INCOMPLETE_PROVENANCE for CASE-E-MISSING-REF, CASE-E-MISSING-SOURCE, CASE-E-NAIVE, CASE-E-NO-TIME, CASE-E-ORPHAN: Review source, time, and service-link warnings.",
+    "Resolve MISSING_DEPLOYMENT_CHANGES for CASE-DEP-NOCHANGE: Candidates are retained without returned change links.",
+    "Resolve OBSERVATIONS_REQUIRE_RECONCILIATION for CASE-E-DEGRADED, CASE-E-FAILED, CASE-E-HEALTHY: Reconcile conflicting or undetermined observations without blame.",
+    "Resolve STRUCTURED_SIGNAL_GAPS for CASE-E-MISSING-REF, CASE-E-MISSING-SOURCE, CASE-E-NAIVE, CASE-E-NO-TIME, CASE-E-ORPHAN, CASE-E-WRONG-SERVICE: Structured signal comparisons cannot evaluate these observations.",
+    "Resolve UNKNOWN_EVENT_TIMES for CASE-DEP-INVALID, CASE-E-NAIVE, CASE-E-NO-TIME: Event times are missing or invalid."
+  ],
+  "overview": "Deterministic mode; not AI-generated. Returned context contains 6 deployment/target pairs and 11 evidence records. Structured audit: 1 conflicts and 2 undetermined pairs. This is scoped review context; cause is not established.",
+  "rejection_codes": [],
+  "truncation": {
+    "catalog": false,
+    "investigation": {
+      "affected_services": false,
+      "candidates": false,
+      "changes": false,
+      "contradictions": false,
+      "evidence": false,
+      "observations": false,
+      "provenance_warnings": false,
+      "timeline": false
+    },
+    "model_offer": false,
+    "next_checks": false,
+    "selected_subset": true,
+    "uncertainties": false
+  },
+  "uncertainties": [
+    {
+      "code": "INCOMPLETE_PROVENANCE",
+      "count": 5,
+      "entity_ids": [
+        "CASE-E-MISSING-REF",
+        "CASE-E-MISSING-SOURCE",
+        "CASE-E-NAIVE",
+        "CASE-E-NO-TIME",
+        "CASE-E-ORPHAN"
+      ],
+      "references_omitted": false
+    },
+    {
+      "code": "INVALID_TIMESTAMP",
+      "count": 1,
+      "entity_ids": [
+        "CASE-E-NAIVE"
+      ],
+      "references_omitted": false
+    },
+    {
+      "code": "MISSING_DEPLOYMENT_CHANGES",
+      "count": 1,
+      "entity_ids": [
+        "CASE-DEP-NOCHANGE"
+      ],
+      "references_omitted": false
+    },
+    {
+      "code": "MISSING_OBSERVED_SERVICE",
+      "count": 1,
+      "entity_ids": [
+        "CASE-E-ORPHAN"
+      ],
+      "references_omitted": false
+    },
+    {
+      "code": "MISSING_SOURCE",
+      "count": 1,
+      "entity_ids": [
+        "CASE-E-MISSING-SOURCE"
+      ],
+      "references_omitted": false
+    },
+    {
+      "code": "MISSING_SOURCE_REF",
+      "count": 1,
+      "entity_ids": [
+        "CASE-E-MISSING-REF"
+      ],
+      "references_omitted": false
+    },
+    {
+      "code": "MISSING_TIMESTAMP",
+      "count": 1,
+      "entity_ids": [
+        "CASE-E-NO-TIME"
+      ],
+      "references_omitted": false
+    },
+    {
+      "code": "OBSERVATIONS_REQUIRE_RECONCILIATION",
+      "count": 3,
+      "entity_ids": [
+        "CASE-E-DEGRADED",
+        "CASE-E-FAILED",
+        "CASE-E-HEALTHY"
+      ],
+      "references_omitted": false
+    },
+    {
+      "code": "STRUCTURED_SIGNAL_GAPS",
+      "count": 6,
+      "entity_ids": [
+        "CASE-E-MISSING-REF",
+        "CASE-E-MISSING-SOURCE",
+        "CASE-E-NAIVE",
+        "CASE-E-NO-TIME",
+        "CASE-E-ORPHAN",
+        "CASE-E-WRONG-SERVICE"
+      ],
+      "references_omitted": false
+    },
+    {
+      "code": "UNKNOWN_EVENT_TIMES",
+      "count": 3,
+      "entity_ids": [
+        "CASE-DEP-INVALID",
+        "CASE-E-NAIVE",
+        "CASE-E-NO-TIME"
+      ],
+      "references_omitted": false
+    }
+  ],
+  "validated_citation_count": 18,
+  "validated_claim_count": 10
+}

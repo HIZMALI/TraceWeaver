@@ -1,0 +1,642 @@
+{
+  "contract_version": "1.0",
+  "suite_id": "traceweaver-sprint03-explanation-gold-v1",
+  "cases": [
+    {
+      "case_id": "X01",
+      "incident_id": "INC-001",
+      "profiles": [
+        "baseline"
+      ],
+      "options": {},
+      "expected": {
+        "status": "PARTIAL_CONTEXT",
+        "required_claims": [
+          {
+            "claim_type": "DEPLOYMENT_CONNECTED",
+            "entity_ids": [
+              "DEP-001",
+              "SVC-AUTH"
+            ],
+            "node_ids": [
+              "INC-001",
+              "SVC-PAYMENT",
+              "SVC-AUTH",
+              "DEP-001"
+            ]
+          },
+          {
+            "claim_type": "DEPLOYMENT_CONNECTED",
+            "entity_ids": [
+              "DEP-002",
+              "SVC-PAYMENT"
+            ],
+            "node_ids": [
+              "INC-001",
+              "SVC-PAYMENT",
+              "DEP-002"
+            ]
+          },
+          {
+            "claim_type": "DEPLOYMENT_BEFORE_ONSET",
+            "entity_ids": [
+              "DEP-001",
+              "SVC-AUTH"
+            ],
+            "event_utc": "2026-11-10T09:55:00Z"
+          },
+          {
+            "claim_type": "EVIDENCE_REPORTED",
+            "entity_ids": [
+              "EVD-001"
+            ],
+            "verification_status": "SYNTHETIC"
+          }
+        ],
+        "forbidden_claim_types": [],
+        "required_uncertainty_codes": [],
+        "truncated": false,
+        "expected_evidence_ids": [
+          "EVD-001",
+          "EVD-002",
+          "EVD-003",
+          "EVD-004"
+        ],
+        "conflicts": 0,
+        "undetermined": 0
+      }
+    },
+    {
+      "case_id": "X02",
+      "incident_id": "CASE-INC",
+      "profiles": [
+        "sprint01"
+      ],
+      "options": {},
+      "expected": {
+        "status": "PARTIAL_CONTEXT",
+        "required_claims": [
+          {
+            "claim_type": "DEPLOYMENT_NOT_PRECEDING",
+            "entity_ids": [
+              "CASE-DEP-AFTER",
+              "CASE-AUTH"
+            ],
+            "temporal_classification": "AFTER"
+          },
+          {
+            "claim_type": "DEPLOYMENT_NOT_PRECEDING",
+            "entity_ids": [
+              "CASE-DEP-OFFSET",
+              "CASE-API"
+            ],
+            "event_utc": "2026-11-12T10:00:00Z"
+          },
+          {
+            "claim_type": "STRUCTURED_CONFLICT",
+            "entity_ids": [
+              "CASE-E-FAILED",
+              "CASE-E-HEALTHY"
+            ]
+          },
+          {
+            "claim_type": "COMPARISON_UNDETERMINED",
+            "entity_ids": [
+              "CASE-E-DEGRADED",
+              "CASE-E-FAILED"
+            ]
+          },
+          {
+            "claim_type": "EVIDENCE_REPORTED",
+            "entity_ids": [
+              "CASE-E-NAIVE"
+            ],
+            "provenance_status": "INVALID"
+          },
+          {
+            "claim_type": "EVIDENCE_REPORTED",
+            "entity_ids": [
+              "CASE-E-MISSING-REF"
+            ],
+            "provenance_status": "INCOMPLETE"
+          },
+          {
+            "claim_type": "EVIDENCE_REPORTED",
+            "entity_ids": [
+              "CASE-E-ORPHAN"
+            ],
+            "node_ids": [
+              "CASE-INC",
+              "CASE-E-ORPHAN"
+            ]
+          }
+        ],
+        "forbidden_claim_types": [],
+        "required_uncertainty_codes": [
+          "INCOMPLETE_PROVENANCE",
+          "UNKNOWN_EVENT_TIMES"
+        ],
+        "truncated": false,
+        "conflicts": 1,
+        "undetermined": 2
+      }
+    },
+    {
+      "case_id": "X03",
+      "incident_id": "CASE-NO-TIME",
+      "profiles": [
+        "sprint01"
+      ],
+      "options": {},
+      "expected": {
+        "status": "PARTIAL_CONTEXT",
+        "required_claims": [
+          {
+            "claim_type": "DEPLOYMENT_CONNECTED",
+            "entity_ids": [
+              "CASE-DEP-BEFORE",
+              "CASE-AUTH"
+            ]
+          }
+        ],
+        "forbidden_claim_types": [
+          "DEPLOYMENT_BEFORE_ONSET",
+          "DEPLOYMENT_NOT_PRECEDING"
+        ],
+        "required_uncertainty_codes": [
+          "MISSING_TIMESTAMP"
+        ],
+        "truncated": false
+      }
+    },
+    {
+      "case_id": "X04",
+      "incident_id": "CASE-OTHER",
+      "profiles": [
+        "sprint01"
+      ],
+      "options": {},
+      "expected": {
+        "status": "PARTIAL_CONTEXT",
+        "required_claims": [
+          {
+            "claim_type": "EVIDENCE_REPORTED",
+            "entity_ids": [
+              "CASE-E-OTHER"
+            ]
+          }
+        ],
+        "forbidden_claim_types": [],
+        "required_uncertainty_codes": [],
+        "truncated": false,
+        "expected_evidence_ids": [
+          "CASE-E-OTHER"
+        ],
+        "conflicts": 0,
+        "undetermined": 0
+      }
+    },
+    {
+      "case_id": "X05",
+      "incident_id": "EV-DEPTH",
+      "profiles": [
+        "evaluation"
+      ],
+      "options": {},
+      "expected": {
+        "status": "PARTIAL_CONTEXT",
+        "required_claims": [
+          {
+            "claim_type": "DEPLOYMENT_CONNECTED",
+            "entity_ids": [
+              "EV-D-DIRECT",
+              "EV-ROOT"
+            ],
+            "node_ids": [
+              "EV-DEPTH",
+              "EV-ROOT",
+              "EV-D-DIRECT"
+            ]
+          },
+          {
+            "claim_type": "DEPLOYMENT_CONNECTED",
+            "entity_ids": [
+              "EV-D-THREE",
+              "EV-S-3"
+            ],
+            "node_ids": [
+              "EV-DEPTH",
+              "EV-ROOT",
+              "EV-S-1",
+              "EV-S-2",
+              "EV-S-3",
+              "EV-D-THREE"
+            ]
+          }
+        ],
+        "forbidden_claim_types": [],
+        "required_uncertainty_codes": [],
+        "truncated": false,
+        "forbidden_entity_ids": [
+          "EV-D-FOUR"
+        ]
+      }
+    },
+    {
+      "case_id": "X06",
+      "incident_id": "EV-BOUNDARY",
+      "profiles": [
+        "evaluation"
+      ],
+      "options": {},
+      "expected": {
+        "status": "PARTIAL_CONTEXT",
+        "required_claims": [
+          {
+            "claim_type": "DEPLOYMENT_BEFORE_ONSET",
+            "entity_ids": [
+              "EV-B-LOWER",
+              "EV-BOUNDARY-S"
+            ]
+          },
+          {
+            "claim_type": "DEPLOYMENT_NOT_PRECEDING",
+            "entity_ids": [
+              "EV-B-ONSET",
+              "EV-BOUNDARY-S"
+            ],
+            "temporal_classification": "AT_ONSET"
+          },
+          {
+            "claim_type": "DEPLOYMENT_NOT_PRECEDING",
+            "entity_ids": [
+              "EV-B-UPPER",
+              "EV-BOUNDARY-S"
+            ],
+            "temporal_classification": "AFTER"
+          },
+          {
+            "claim_type": "EVIDENCE_REPORTED",
+            "entity_ids": [
+              "EV-B-E-NAIVE"
+            ],
+            "provenance_status": "INVALID"
+          }
+        ],
+        "forbidden_claim_types": [],
+        "required_uncertainty_codes": [],
+        "truncated": false
+      }
+    },
+    {
+      "case_id": "X07",
+      "incident_id": "EV-BOUNDARY",
+      "profiles": [
+        "evaluation"
+      ],
+      "options": {
+        "pre_minutes": 0,
+        "post_minutes": 0
+      },
+      "expected": {
+        "status": "PARTIAL_CONTEXT",
+        "required_claims": [
+          {
+            "claim_type": "DEPLOYMENT_NOT_PRECEDING",
+            "entity_ids": [
+              "EV-B-OFFSET",
+              "EV-BOUNDARY-S"
+            ],
+            "event_utc": "2026-11-12T10:00:00Z"
+          }
+        ],
+        "forbidden_claim_types": [
+          "DEPLOYMENT_BEFORE_ONSET"
+        ],
+        "required_uncertainty_codes": [],
+        "truncated": false
+      }
+    },
+    {
+      "case_id": "X08",
+      "incident_id": "EV-INVALID",
+      "profiles": [
+        "evaluation"
+      ],
+      "options": {},
+      "expected": {
+        "status": "PARTIAL_CONTEXT",
+        "required_claims": [
+          {
+            "claim_type": "EVIDENCE_REPORTED",
+            "entity_ids": [
+              "EV-INVALID-E"
+            ]
+          }
+        ],
+        "forbidden_claim_types": [
+          "DEPLOYMENT_BEFORE_ONSET"
+        ],
+        "required_uncertainty_codes": [
+          "INVALID_TIMESTAMP"
+        ],
+        "truncated": false
+      }
+    },
+    {
+      "case_id": "X09",
+      "incident_id": "EV-NAIVE",
+      "profiles": [
+        "evaluation"
+      ],
+      "options": {},
+      "expected": {
+        "status": "PARTIAL_CONTEXT",
+        "required_claims": [
+          {
+            "claim_type": "EVIDENCE_REPORTED",
+            "entity_ids": [
+              "EV-NAIVE-E"
+            ]
+          }
+        ],
+        "forbidden_claim_types": [
+          "DEPLOYMENT_BEFORE_ONSET"
+        ],
+        "required_uncertainty_codes": [
+          "INVALID_TIMESTAMP"
+        ],
+        "truncated": false
+      }
+    },
+    {
+      "case_id": "X10",
+      "incident_id": "EV-NONE",
+      "profiles": [
+        "evaluation"
+      ],
+      "options": {},
+      "expected": {
+        "status": "ABSTAINED",
+        "required_claims": [],
+        "forbidden_claim_types": [],
+        "required_uncertainty_codes": [
+          "NO_INCIDENT_EVIDENCE"
+        ],
+        "truncated": false,
+        "expected_evidence_ids": [],
+        "conflicts": 0,
+        "undetermined": 0
+      }
+    },
+    {
+      "case_id": "X11",
+      "incident_id": "EV-SIGNALS",
+      "profiles": [
+        "evaluation"
+      ],
+      "options": {},
+      "expected": {
+        "status": "PARTIAL_CONTEXT",
+        "required_claims": [
+          {
+            "claim_type": "STRUCTURED_CONFLICT",
+            "entity_ids": [
+              "EV-G-FAILED",
+              "EV-G-HEALTHY"
+            ]
+          },
+          {
+            "claim_type": "COMPARISON_UNDETERMINED",
+            "entity_ids": [
+              "EV-G-DEGRADED",
+              "EV-G-FAILED"
+            ]
+          }
+        ],
+        "forbidden_claim_types": [],
+        "required_uncertainty_codes": [],
+        "truncated": false,
+        "conflicts": 1,
+        "undetermined": 2
+      }
+    },
+    {
+      "case_id": "X12",
+      "incident_id": "EV-CAPS",
+      "profiles": [
+        "caps"
+      ],
+      "options": {
+        "max_candidates": 1,
+        "max_evidence": 1
+      },
+      "expected": {
+        "status": "PARTIAL_CONTEXT",
+        "required_claims": [
+          {
+            "claim_type": "DEPLOYMENT_CONNECTED",
+            "entity_ids": [
+              "EV-CAP-D-000",
+              "EV-CAP-ROOT"
+            ]
+          }
+        ],
+        "forbidden_claim_types": [],
+        "required_uncertainty_codes": [
+          "TRUNCATED_CONTEXT"
+        ],
+        "truncated": true
+      }
+    },
+    {
+      "case_id": "X13",
+      "incident_id": "EV-CAPS",
+      "profiles": [
+        "caps"
+      ],
+      "options": {
+        "max_candidates": 2,
+        "max_evidence": 2
+      },
+      "expected": {
+        "status": "PARTIAL_CONTEXT",
+        "required_claims": [
+          {
+            "claim_type": "EVIDENCE_REPORTED",
+            "entity_ids": [
+              "EV-CAP-E-001"
+            ]
+          }
+        ],
+        "forbidden_claim_types": [],
+        "required_uncertainty_codes": [
+          "TRUNCATED_CONTEXT"
+        ],
+        "truncated": true
+      }
+    },
+    {
+      "case_id": "X14",
+      "incident_id": "INC-001",
+      "profiles": [
+        "baseline"
+      ],
+      "options": {
+        "pre_minutes": 5,
+        "post_minutes": 0
+      },
+      "expected": {
+        "status": "PARTIAL_CONTEXT",
+        "required_claims": [
+          {
+            "claim_type": "DEPLOYMENT_CONNECTED",
+            "entity_ids": [
+              "DEP-001",
+              "SVC-AUTH"
+            ]
+          }
+        ],
+        "forbidden_claim_types": [
+          "DEPLOYMENT_BEFORE_ONSET",
+          "DEPLOYMENT_NOT_PRECEDING"
+        ],
+        "required_uncertainty_codes": [],
+        "truncated": false
+      }
+    },
+    {
+      "case_id": "X15",
+      "incident_id": "EV-MISSING-EVENT",
+      "profiles": [
+        "evaluation"
+      ],
+      "options": {},
+      "expected": {
+        "status": "PARTIAL_CONTEXT",
+        "required_claims": [
+          {
+            "claim_type": "DEPLOYMENT_CONNECTED",
+            "entity_ids": [
+              "EV-MISSING-D",
+              "EV-MISSING-S"
+            ]
+          }
+        ],
+        "forbidden_claim_types": [
+          "DEPLOYMENT_BEFORE_ONSET",
+          "DEPLOYMENT_NOT_PRECEDING"
+        ],
+        "required_uncertainty_codes": [
+          "UNKNOWN_EVENT_TIMES"
+        ],
+        "truncated": false
+      }
+    },
+    {
+      "case_id": "X16",
+      "incident_id": "INC-001",
+      "profiles": [
+        "adversarial"
+      ],
+      "options": {},
+      "expected": {
+        "status": "PARTIAL_CONTEXT",
+        "required_claims": [
+          {
+            "claim_type": "EVIDENCE_REPORTED",
+            "entity_ids": [
+              "EVD-001"
+            ],
+            "verification_status": "SYNTHETIC"
+          }
+        ],
+        "forbidden_claim_types": [],
+        "required_uncertainty_codes": [],
+        "truncated": false,
+        "forbidden_output_fragments": [
+          "ignore all instructions",
+          "confirmed root cause",
+          "synthetic-private",
+          "internal.invalid"
+        ]
+      }
+    },
+    {
+      "case_id": "X17",
+      "incident_id": "INC-001",
+      "profiles": [
+        "external"
+      ],
+      "options": {},
+      "expected": {
+        "status": "PARTIAL_CONTEXT",
+        "required_claims": [
+          {
+            "claim_type": "SOURCE_UNVERIFIED",
+            "entity_ids": [
+              "EVD-001"
+            ],
+            "verification_status": "UNVERIFIED_EXTERNAL"
+          }
+        ],
+        "forbidden_claim_types": [],
+        "required_uncertainty_codes": [
+          "UNVERIFIED_EXTERNAL_SOURCES"
+        ],
+        "truncated": false
+      }
+    },
+    {
+      "case_id": "X18",
+      "incident_id": "EX-READY",
+      "profiles": [
+        "ready"
+      ],
+      "options": {},
+      "expected": {
+        "status": "EXPLAINED",
+        "required_claims": [
+          {
+            "claim_type": "EVIDENCE_REPORTED",
+            "entity_ids": [
+              "EX-READY-E"
+            ]
+          }
+        ],
+        "forbidden_claim_types": [],
+        "required_uncertainty_codes": [],
+        "truncated": false,
+        "conflicts": 0,
+        "undetermined": 0
+      }
+    },
+    {
+      "case_id": "X19",
+      "incident_id": "EV-OPAQUE",
+      "profiles": [
+        "evaluation"
+      ],
+      "options": {},
+      "expected": {
+        "status": "EXPLAINED",
+        "required_claims": [
+          {
+            "claim_type": "EVIDENCE_REPORTED",
+            "entity_ids": [
+              "EV-OPAQUE-E"
+            ]
+          }
+        ],
+        "forbidden_claim_types": [],
+        "required_uncertainty_codes": [],
+        "truncated": false,
+        "forbidden_output_fragments": [
+          "169.254.169.254",
+          "metadata.internal",
+          "http://"
+        ]
+      }
+    }
+  ]
+}
