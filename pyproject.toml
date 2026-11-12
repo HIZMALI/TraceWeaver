@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "traceweaver"
+version = "0.1.0"
+description = "Graph-Verified AI Incident Investigator: a real Relate foundation"
+requires-python = ">=3.11"
+dependencies = [
+    "relate-db==1.0.0",
+    "fastapi>=0.162.5,<1",
+    "pydantic>=2.10,<3",
+    "uvicorn>=0.34,<1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=9.2,<10", "ruff>=0.17.4,<1", "httpx2>=2.16,<3"]
+
+[project.scripts]
+traceweaver = "traceweaver.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+traceweaver = ["fixtures/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]

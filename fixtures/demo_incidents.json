@@ -1,0 +1,422 @@
+{
+  "dataset_id": "traceweaver-sprint00-demo-v1",
+  "description": "Entirely synthetic demo data. No real company, incident, or causal conclusion.",
+  "nodes": [
+    {
+      "label": "Incident",
+      "properties": {
+        "id": "INC-001",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "environment": "demo",
+        "title": "Payment API 5xx error spike",
+        "summary": "Demo payment failures correlated with authentication errors; cause unverified.",
+        "severity": "high",
+        "status": "investigating",
+        "timestamp": "2026-11-10T10:05:00Z"
+      }
+    },
+    {
+      "label": "Incident",
+      "properties": {
+        "id": "INC-002",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "environment": "demo",
+        "title": "Notification delivery delays",
+        "summary": "Demo notification queue latency increased; cause unverified.",
+        "severity": "medium",
+        "status": "investigating",
+        "timestamp": "2026-11-11T14:10:00Z"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "SVC-PAYMENT",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "environment": "demo",
+        "name": "Payment API",
+        "description": "Demo payment request handler"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "SVC-AUTH",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "environment": "demo",
+        "name": "Auth Service",
+        "description": "Demo token validation service"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "SVC-LEDGER",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "environment": "demo",
+        "name": "Ledger Service",
+        "description": "Demo payment ledger"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "SVC-NOTIFICATION",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "environment": "demo",
+        "name": "Notification Service",
+        "description": "Demo message delivery worker"
+      }
+    },
+    {
+      "label": "Service",
+      "properties": {
+        "id": "SVC-QUEUE",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "environment": "demo",
+        "name": "Message Queue",
+        "description": "Demo notification message broker"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "DEP-001",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "environment": "demo",
+        "name": "Auth token rotation rollout",
+        "description": "Demo auth deployment preceding INC-001; causation is unverified.",
+        "timestamp": "2026-11-10T09:55:00Z",
+        "source": "demo-release-audit",
+        "source_ref": "demo://deployments/DEP-001"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "DEP-002",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "environment": "demo",
+        "name": "Payment response logging rollout",
+        "description": "Demo payment deployment, another candidate context for investigation.",
+        "timestamp": "2026-11-10T09:58:00Z",
+        "source": "demo-release-audit",
+        "source_ref": "demo://deployments/DEP-002"
+      }
+    },
+    {
+      "label": "Deployment",
+      "properties": {
+        "id": "DEP-003",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "environment": "demo",
+        "name": "Notification queue tuning rollout",
+        "description": "Demo notification and queue deployment preceding INC-002.",
+        "timestamp": "2026-11-11T14:00:00Z",
+        "source": "demo-release-audit",
+        "source_ref": "demo://deployments/DEP-003"
+      }
+    },
+    {
+      "label": "Change",
+      "properties": {
+        "id": "CHG-001",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "environment": "demo",
+        "name": "Token rotation configuration",
+        "description": "Demo token key overlap changed from 15 minutes to 2 minutes.",
+        "timestamp": "2026-11-10T09:40:00Z",
+        "source": "demo-change-audit",
+        "source_ref": "demo://changes/CHG-001"
+      }
+    },
+    {
+      "label": "Change",
+      "properties": {
+        "id": "CHG-002",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "environment": "demo",
+        "name": "Payment log sampling",
+        "description": "Demo response log sampling changed; no causal claim is made.",
+        "timestamp": "2026-11-10T09:45:00Z",
+        "source": "demo-change-audit",
+        "source_ref": "demo://changes/CHG-002"
+      }
+    },
+    {
+      "label": "Change",
+      "properties": {
+        "id": "CHG-003",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "environment": "demo",
+        "name": "Notification batch size",
+        "description": "Demo queue prefetch and worker batch sizes increased.",
+        "timestamp": "2026-11-11T13:40:00Z",
+        "source": "demo-change-audit",
+        "source_ref": "demo://changes/CHG-003"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EVD-001",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "environment": "demo",
+        "summary": "Payment 5xx rate at 12 percent",
+        "description": "Demo five-minute error ratio rose from 0.2 percent to 12 percent.",
+        "source": "demo-metrics",
+        "source_ref": "demo://evidence/EVD-001",
+        "timestamp": "2026-11-10T10:05:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EVD-002",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "environment": "demo",
+        "summary": "Payment upstream auth failures",
+        "description": "Demo payment logs contain token validation failures from the auth dependency.",
+        "source": "demo-application-logs",
+        "source_ref": "demo://evidence/EVD-002",
+        "timestamp": "2026-11-10T10:05:30Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EVD-003",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "environment": "demo",
+        "summary": "Auth rejects recently issued tokens",
+        "description": "Demo auth logs show unknown token key IDs during the incident.",
+        "source": "demo-auth-logs",
+        "source_ref": "demo://evidence/EVD-003",
+        "timestamp": "2026-11-10T10:04:45Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EVD-004",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "environment": "demo",
+        "summary": "Auth key refresh latency",
+        "description": "Demo distributed trace shows delayed auth key refresh; cause remains unverified.",
+        "source": "demo-distributed-tracing",
+        "source_ref": "demo://evidence/EVD-004",
+        "timestamp": "2026-11-10T10:06:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EVD-005",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "environment": "demo",
+        "summary": "Notification delivery p95 at 90 seconds",
+        "description": "Demo notification delivery duration rose above its 10-second baseline.",
+        "source": "demo-delivery-metrics",
+        "source_ref": "demo://evidence/EVD-005",
+        "timestamp": "2026-11-11T14:10:00Z"
+      }
+    },
+    {
+      "label": "Evidence",
+      "properties": {
+        "id": "EVD-006",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "environment": "demo",
+        "summary": "Queue backlog at 12000 messages",
+        "description": "Demo message broker reports accumulated ready messages.",
+        "source": "demo-broker-metrics",
+        "source_ref": "demo://evidence/EVD-006",
+        "timestamp": "2026-11-11T14:11:00Z"
+      }
+    },
+    {
+      "label": "Alert",
+      "properties": {
+        "id": "ALT-001",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "environment": "demo",
+        "name": "Demo payment error budget alert",
+        "severity": "high",
+        "timestamp": "2026-11-10T10:06:30Z",
+        "source": "demo-alert-rules",
+        "source_ref": "demo://alerts/ALT-001"
+      }
+    },
+    {
+      "label": "Alert",
+      "properties": {
+        "id": "ALT-002",
+        "demo": true,
+        "dataset_id": "traceweaver-sprint00-demo-v1",
+        "environment": "demo",
+        "name": "Demo notification delay alert",
+        "severity": "medium",
+        "timestamp": "2026-11-11T14:12:00Z",
+        "source": "demo-alert-rules",
+        "source_ref": "demo://alerts/ALT-002"
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "type": "AFFECTS",
+      "source": "INC-001",
+      "target": "SVC-PAYMENT"
+    },
+    {
+      "type": "AFFECTS",
+      "source": "INC-002",
+      "target": "SVC-NOTIFICATION"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source": "SVC-PAYMENT",
+      "target": "SVC-AUTH"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source": "SVC-PAYMENT",
+      "target": "SVC-LEDGER"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source": "SVC-AUTH",
+      "target": "SVC-LEDGER"
+    },
+    {
+      "type": "DEPENDS_ON",
+      "source": "SVC-NOTIFICATION",
+      "target": "SVC-QUEUE"
+    },
+    {
+      "type": "TARGETS",
+      "source": "DEP-001",
+      "target": "SVC-AUTH"
+    },
+    {
+      "type": "TARGETS",
+      "source": "DEP-002",
+      "target": "SVC-PAYMENT"
+    },
+    {
+      "type": "TARGETS",
+      "source": "DEP-003",
+      "target": "SVC-NOTIFICATION"
+    },
+    {
+      "type": "TARGETS",
+      "source": "DEP-003",
+      "target": "SVC-QUEUE"
+    },
+    {
+      "type": "INCLUDES_CHANGE",
+      "source": "DEP-001",
+      "target": "CHG-001"
+    },
+    {
+      "type": "INCLUDES_CHANGE",
+      "source": "DEP-002",
+      "target": "CHG-002"
+    },
+    {
+      "type": "INCLUDES_CHANGE",
+      "source": "DEP-003",
+      "target": "CHG-003"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "INC-001",
+      "target": "EVD-001"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EVD-001",
+      "target": "SVC-PAYMENT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "INC-001",
+      "target": "EVD-002"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EVD-002",
+      "target": "SVC-PAYMENT"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "INC-001",
+      "target": "EVD-003"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EVD-003",
+      "target": "SVC-AUTH"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "INC-001",
+      "target": "EVD-004"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EVD-004",
+      "target": "SVC-AUTH"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "INC-002",
+      "target": "EVD-005"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EVD-005",
+      "target": "SVC-NOTIFICATION"
+    },
+    {
+      "type": "HAS_EVIDENCE",
+      "source": "INC-002",
+      "target": "EVD-006"
+    },
+    {
+      "type": "OBSERVED_ON",
+      "source": "EVD-006",
+      "target": "SVC-QUEUE"
+    },
+    {
+      "type": "RAISED_FOR",
+      "source": "ALT-001",
+      "target": "INC-001"
+    },
+    {
+      "type": "RAISED_FOR",
+      "source": "ALT-002",
+      "target": "INC-002"
+    }
+  ]
+}
