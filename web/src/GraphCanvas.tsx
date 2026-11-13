@@ -155,6 +155,11 @@ export function GraphCanvas({
           edges={edges}
           nodeTypes={nodeTypes}
           nodesDraggable={false}
+          ariaLabelConfig={{
+            "node.a11yDescription.default": "Read-only node. Use the accessible path list to inspect proof.",
+            "node.a11yDescription.keyboardDisabled": "Read-only node. Use the accessible path list to inspect proof.",
+            "edge.a11yDescription.default": "Read-only stored relationship. Use the accessible path list to inspect proof.",
+          }}
           nodesConnectable={false}
           edgesReconnectable={false}
           deleteKeyCode={null}

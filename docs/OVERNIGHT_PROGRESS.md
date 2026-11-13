@@ -5,6 +5,16 @@ Starting main: 0783201fb5d83c072fe215cf23135eb165a2213a. No user edits at start.
 
 ## Latest successful gate
 
+G4 PASS — 2026-11-13 01:01 UTC. 28/28 actual Playwright scenarios passed in 29.2s;
+48 frontend cases, lint/type/build passed. Axe reports zero violations on the tested desktop
+state. Four viewport sizes and 720px equivalent 200% reflow have no page overflow. Actual
+missing/adversarial/empty/capped stores, navigation and keyboard flows pass. Six genuine public
+screenshots captured; desktop, selected claim and phone images visually reviewed.
+First rounds found incorrect new test strings/profile ID plus actual heading/accessible-name
+issues; fixed without excluding axe rules. Added visible explanation status. The audit helper
+had compared unordered rg enumeration as a list; corrected to compare sorted full records.
+Direct hashes confirmed both stores unchanged before that helper correction.
+
 G3 PASS — 2026-11-13 01:00 UTC. Full pytest: 383 passed in 56.45s; Ruff clean.
 46 added native/dashboard/local-boundary cases now protect the console. New routes reject
 alternate/duplicate Hosts and cross-origin reads without affecting legacy API contracts.
@@ -38,8 +48,8 @@ ignored .verification/overnight/baseline.json. Architecture decisions recorded b
 | G1 | PASS | Actual native snapshot console, type/lint/build and Chromium smoke; 363 Python tests |
 | G2 | PASS | 48 frontend cases, 29 native dashboard cases, real arrows/labels and browser smoke |
 | G3 | PASS | 383 total tests; strict new-console Host/origin, safe errors, native read-only snapshot |
-| G4 | IN PROGRESS | Actual Playwright scenarios, responsive/a11y/adversarial review, real screenshots |
-| G5 | PENDING | Explicit secure local-only model action, genuine installed model if available |
+| G4 | PASS | 28 actual browser scenarios, zero axe violations, six real captures and responsive checks |
+| G5 | IN PROGRESS | Explicit secure local-only model action, genuine installed model if available |
 | G6 | PENDING | Clean npm/wheel install, static assets and one-command launch/check |
 | G7 | PENDING | Judge guide, fact check, draft and screenshot pack |
 | G8 | PENDING | Independent fair retrieval comparison after P0/P1 pass |
@@ -48,8 +58,8 @@ ignored .verification/overnight/baseline.json. Architecture decisions recorded b
 ## Resume instructions
 
 Read this ledger and OVERNIGHT_ARCHITECTURE_DECISIONS.md; inspect Git status before edits.
-Do not reset or overwrite existing work. Next action: fix/run actual G4 Playwright suite,
-then G5 guarded optional local selection. Current app is source-built and served by FastAPI
+Do not reset or overwrite existing work. Next action: G5 guarded optional local selection,
+then independent packaging/launch. Current app is source-built and served by FastAPI
 at one loopback origin. Rebuild web after frontend edits. Browser files live in ignored
 .verification/overnight/browsers; web/e2e/smoke.mjs configures that path before importing Playwright.
 All tests that write graph data must use new OS temporary stores. The existing judge artifact,
@@ -89,3 +99,4 @@ manifest, fixtures, saved examples and frozen reports/gold must remain byte-iden
   Passing output above was rerun after the fix. No failed run was counted as PASS.
 - G2 commit: d93625e. G3 adds local_console boundary, new native Host/privacy tests,
   safe request errors and developer console proxy adjustment. No old tests changed.
+- G3 commit: 6c55620. G4 adds real browser runner/scenarios, accessibility repairs and public captures.

@@ -222,9 +222,9 @@ function Inspector({
   return (
     <aside className="inspector card" aria-label="Proof inspector">
       <header className="panel-title">
-        <span>
+        <h2 className="panel-heading">
           <ShieldCheck size={16} /> Proof inspector
-        </span>
+        </h2>
         <span className="tiny mono">SNAPSHOT BOUND</span>
       </header>
       <div className="inspector-content">
@@ -403,6 +403,7 @@ function Inspector({
           <p className="mode-label">
             Deterministic · Offline · Not AI-generated
           </p>
+          <Badge>{b.explanation.explanation_status}</Badge>
           <p className="muted">{b.explanation.overview}</p>
           <p className="tiny">
             {b.explanation.validated_claim_count} validated claims ·{" "}
@@ -416,8 +417,8 @@ function Inspector({
               className={`claim-button ${claim?.claim_id === c.claim_id ? "active" : ""}`}
               key={c.claim_id}
               onClick={() => onSelect("claim:" + c.claim_id)}
-              aria-label={`Inspect claim ${c.claim_type} ${c.claim_id}`}
             >
+              <span className="sr-only">Inspect claim {c.claim_type} {c.claim_id}. </span>
               <span className="claim-number">
                 {String(n + 1).padStart(2, "0")}
               </span>
