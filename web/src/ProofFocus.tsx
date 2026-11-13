@@ -17,8 +17,28 @@ export function ProofFocus({
       <div>
         <h2 id="proof-focus-title">Why this graph matters</h2>
         <p>
-          Read-only Relate Cypher connects affected services, competing
-          deployments and citation paths. Connection is not cause.
+          Review connected incident evidence. Read-only Relate Cypher connects
+          affected services, competing deployments and citation paths.
+          Connection is not cause.
+        </p>
+        {focused && (
+          <button
+            className="primary-button"
+            onClick={() =>
+              onSelect(
+                "candidate:" +
+                  candidateKey(
+                    focused.deployment_id,
+                    focused.target_service_id,
+                  ),
+              )
+            }
+          >
+            Explore the verified path
+          </button>
+        )}
+        <p className="tiny muted">
+          Verified means an exact stored path, not source truth or cause.
         </p>
       </div>
       <div>

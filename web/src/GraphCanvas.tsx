@@ -80,7 +80,6 @@ export function GraphCanvas({
     position: { x: n.x, y: n.y },
     data: { kind: n.kind, name: n.name, entityId: n.id },
     ariaLabel: `${n.kind} ${n.id}`,
-    style: { opacity: activeNodes.size && !activeNodes.has(n.id) ? 0.22 : 1 },
     selected: activeNodes.has(n.id),
   }));
   const edges = graph.edges.map((e) => {
@@ -122,7 +121,6 @@ export function GraphCanvas({
       style: {
         stroke: activeEdges.has(e.id) ? "#6de2cc" : "#70869a",
         strokeWidth: activeEdges.has(e.id) ? 2.5 : 1.3,
-        opacity: activeEdges.size && !activeEdges.has(e.id) ? 0.18 : 1,
       },
       labelStyle: { fill: "#dce7ef", fontSize: 14, fontWeight: 600 },
       labelBgStyle: { fill: "#0f1822", fillOpacity: 0.95 },
