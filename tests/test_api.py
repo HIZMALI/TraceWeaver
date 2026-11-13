@@ -109,5 +109,7 @@ def test_openapi_and_no_write_routes(client):
         "/incidents/{incident_id}/context",
         "/incidents/{incident_id}/investigation",
         "/incidents/{incident_id}/explanation",
+        "/incidents/{incident_id}/dashboard",
+        "/console/incidents",
     }
     assert all(set(path) == {"get"} for path in schema["paths"].values())

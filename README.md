@@ -1,5 +1,25 @@
 # TraceWeaver
 
+## Local investigation console
+
+The React/TypeScript console consumes a coherent, privacy-conscious snapshot from real Relate.
+It shows actual stored arrows, typed claim citations, candidate/evidence records, UTC timeline,
+structured comparisons and gaps. It is read-only and deterministic by default.
+
+With Node 24 and the project Python environment installed, build and run from the repo root:
+
+```powershell
+npm --prefix web ci
+npm --prefix web run build
+$env:TRACEWEAVER_DATABASE = './examples/judge-demo/traceweaver-demo.rl'
+.\.venv\Scripts\python.exe -m uvicorn traceweaver.api:app --host 127.0.0.1 --port 8000
+```
+
+Open [the local console](http://127.0.0.1:8000/?incident=INC-001). The existing synthetic judge
+file is read without reseeding. Select INC-001, INC-002 or CASE-INC; inspect graph paths and
+server-admitted claims. NOT_ESTABLISHED and external truth NOT_PERFORMED remain explicit.
+The [overnight ledger](docs/OVERNIGHT_PROGRESS.md) distinguishes completed gates from remaining work.
+
 **Graph-Verified AI Incident Investigator**
 
 Sprint 00: Foundation, Real Relate Integration & Technical Verification

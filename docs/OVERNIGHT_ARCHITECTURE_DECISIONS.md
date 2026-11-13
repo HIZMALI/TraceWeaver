@@ -13,6 +13,10 @@ Existing native stores and all versioned artifacts are hashed in ignored overnig
    stay unchanged. Publish a strict privacy-conscious projection, not raw graph properties/logs.
    The source fingerprint binds the original Investigation/options. A separate SHA-256 content
    digest binds the published safe view/explanation; client validates it before proof highlighting.
+   A separate GET /console/incidents projects the existing bounded native incident-list query:
+   legacy /incidents retains its raw display contract, while browser navigation must not receive
+   private-looking titles or unsupported IDs. This additional projection is a privacy boundary,
+   not a replacement graph repository or a change to legacy output.
 3. Use only returned candidate/change/evidence/claim paths. Preserve ordered traversal separately
    from type/source_id/target_id stored arrow orientation. Validate path layout, scope, selected
    proof membership and exact claim support before exposing the bundle. No inferred missing edges.

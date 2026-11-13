@@ -8,6 +8,8 @@ from fastapi.responses import JSONResponse
 from pydantic import BeforeValidator, ValidationError
 
 from traceweaver.config import Settings
+from traceweaver.dashboard import console_incidents, dashboard
+from traceweaver.dashboard_models import ConsoleIncidents, DashboardBundle
 from traceweaver.explanation import explain
 from traceweaver.explanation_models import ExplanationReport
 from traceweaver.investigation import investigate
@@ -17,6 +19,7 @@ from traceweaver.queries import IncidentNotFound, incident_context, list_inciden
 from traceweaver.storage import GraphStore, StorageError
 from traceweaver.temporal import integer_query
 from traceweaver.tool_errors import ToolError
+from traceweaver.web_assets import mount_console
 
 logger = logging.getLogger(__name__)
 WindowMinutes = Annotated[int, BeforeValidator(integer_query), Query(ge=0, le=1440)]
@@ -107,6 +110,37 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 status_code=503, detail="Explanation context is incompatible"
             ) from None
 
+    @application.get("/incidents/{incident_id}/dashboard", response_model=DashboardBundle)
+    def dashboard_bundle(
+        incident_id: str,
+        pre_minutes: WindowMinutes = 120,
+        post_minutes: WindowMinutes = 30,
+        max_candidates: ResultLimit = 100,
+        max_evidence: ResultLimit = 100,
+    ) -> DashboardBundle:
+        try:
+            return dashboard(
+                config.database,
+                incident_id,
+                InvestigationOptions(
+                    pre_minutes=pre_minutes,
+                    post_minutes=post_minutes,
+                    max_candidates=max_candidates,
+                    max_evidence=max_evidence,
+                ),
+            )
+        except IncidentNotFound:
+            raise HTTPException(status_code=404, detail="Incident not found") from None
+        except ToolError:
+            raise HTTPException(
+                status_code=503, detail="Dashboard context is incompatible"
+            ) from None
+
+    @application.get("/console/incidents", response_model=ConsoleIncidents)
+    def console_incident_list() -> ConsoleIncidents:
+        return console_incidents(config.database)
+
+    mount_console(application)
     return application
 
 
