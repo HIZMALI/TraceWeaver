@@ -1,0 +1,463 @@
+{
+  "suite_version": "1.0",
+  "authorship": "New Sprint 06 tool-admission gold authored from fixture definitions and written policy before runner execution. Existing labels/reports untouched. Synthetic task coverage, not root-cause or live-model accuracy.",
+  "cases": [
+    {
+      "id": "A01-direct",
+      "kind": "native",
+      "profile": "baseline",
+      "incident": "INC-001",
+      "tool": "trace_deployment",
+      "subject_ids": [
+        "DEP-002",
+        "SVC-PAYMENT"
+      ],
+      "gold": {
+        "edge": [
+          "TARGETS",
+          "DEP-002",
+          "SVC-PAYMENT",
+          "REVERSE"
+        ],
+        "citation": "DEPLOYMENT_CONNECTED"
+      }
+    },
+    {
+      "id": "A02-dependent",
+      "kind": "native",
+      "profile": "baseline",
+      "incident": "INC-001",
+      "tool": "trace_deployment",
+      "subject_ids": [
+        "DEP-001",
+        "SVC-AUTH"
+      ],
+      "gold": {
+        "edge": [
+          "DEPENDS_ON",
+          "SVC-PAYMENT",
+          "SVC-AUTH",
+          "FORWARD"
+        ],
+        "citation": "DEPLOYMENT_CONNECTED"
+      }
+    },
+    {
+      "id": "A03-reverse-target",
+      "kind": "native",
+      "profile": "baseline",
+      "incident": "INC-001",
+      "tool": "trace_deployment",
+      "subject_ids": [
+        "DEP-001",
+        "SVC-AUTH"
+      ],
+      "gold": {
+        "edge": [
+          "TARGETS",
+          "DEP-001",
+          "SVC-AUTH",
+          "REVERSE"
+        ]
+      }
+    },
+    {
+      "id": "A04-included-change",
+      "kind": "native",
+      "profile": "baseline",
+      "incident": "INC-001",
+      "tool": "trace_deployment",
+      "subject_ids": [
+        "DEP-001",
+        "SVC-AUTH"
+      ],
+      "gold": {
+        "edge": [
+          "INCLUDES_CHANGE",
+          "DEP-001",
+          "CHG-001",
+          "FORWARD"
+        ]
+      }
+    },
+    {
+      "id": "A05-native-evidence",
+      "kind": "native",
+      "profile": "baseline",
+      "incident": "INC-001",
+      "tool": "inspect_evidence",
+      "subject_ids": [
+        "EVD-001"
+      ],
+      "gold": {
+        "record": {
+          "id": "EVD-001",
+          "provenance": "TRACEABLE",
+          "truth": "SYNTHETIC"
+        },
+        "citation": "EVIDENCE_REPORTED"
+      }
+    },
+    {
+      "id": "A06-conflict",
+      "kind": "native",
+      "profile": "sprint01",
+      "incident": "CASE-INC",
+      "tool": "compare_observations",
+      "subject_ids": [
+        "CASE-E-FAILED",
+        "CASE-E-HEALTHY"
+      ],
+      "gold": {
+        "classification": "CONFLICTING_OBSERVATIONS",
+        "citation": "STRUCTURED_CONFLICT"
+      }
+    },
+    {
+      "id": "A07-undetermined",
+      "kind": "native",
+      "profile": "sprint01",
+      "incident": "CASE-INC",
+      "tool": "compare_observations",
+      "subject_ids": [
+        "CASE-E-DEGRADED",
+        "CASE-E-FAILED"
+      ],
+      "gold": {
+        "classification": "UNDETERMINED",
+        "citation": "COMPARISON_UNDETERMINED"
+      }
+    },
+    {
+      "id": "A08-naive-time",
+      "kind": "native",
+      "profile": "evaluation",
+      "incident": "EV-BOUNDARY",
+      "tool": "inspect_evidence",
+      "subject_ids": [
+        "EV-B-E-NAIVE"
+      ],
+      "gold": {
+        "record": {
+          "id": "EV-B-E-NAIVE",
+          "time": "UNKNOWN",
+          "utc": null
+        }
+      }
+    },
+    {
+      "id": "A09-missing-reference",
+      "kind": "native",
+      "profile": "evaluation",
+      "incident": "EV-BOUNDARY",
+      "tool": "inspect_evidence",
+      "subject_ids": [
+        "EV-B-E-NOREF"
+      ],
+      "gold": {
+        "record": {
+          "id": "EV-B-E-NOREF",
+          "provenance": "INCOMPLETE"
+        }
+      }
+    },
+    {
+      "id": "A10-orphan",
+      "kind": "native",
+      "profile": "evaluation",
+      "incident": "EV-BOUNDARY",
+      "tool": "inspect_evidence",
+      "subject_ids": [
+        "EV-B-E-ORPHAN"
+      ],
+      "gold": {
+        "absent_edge_type": "OBSERVED_ON"
+      }
+    },
+    {
+      "id": "A11-external",
+      "kind": "native",
+      "profile": "external",
+      "incident": "INC-001",
+      "tool": "inspect_evidence",
+      "subject_ids": [
+        "EVD-001"
+      ],
+      "gold": {
+        "record": {
+          "id": "EVD-001",
+          "truth": "UNVERIFIED_EXTERNAL"
+        }
+      }
+    },
+    {
+      "id": "A12-shared-service-is-not-membership",
+      "kind": "native",
+      "profile": "sprint01",
+      "incident": "CASE-OTHER",
+      "tool": "get_incident_scope",
+      "subject_ids": [
+        "CASE-OTHER"
+      ],
+      "gold": {
+        "absent_id": "CASE-E-FAILED"
+      }
+    },
+    {
+      "id": "A13-no-evidence",
+      "kind": "native",
+      "profile": "evaluation",
+      "incident": "EV-NONE",
+      "tool": "rehearse",
+      "subject_ids": [],
+      "gold": {
+        "status": "ABSTAINED",
+        "absent_claim": "EVIDENCE_REPORTED"
+      }
+    },
+    {
+      "id": "A14-source-caps",
+      "kind": "native",
+      "profile": "caps",
+      "incident": "EV-CAPS",
+      "tool": "rehearse",
+      "subject_ids": [],
+      "gold": {
+        "source_truncated": true
+      }
+    },
+    {
+      "id": "A15-three-hop",
+      "kind": "native",
+      "profile": "evaluation",
+      "incident": "EV-DEPTH",
+      "tool": "trace_deployment",
+      "subject_ids": [
+        "EV-D-THREE",
+        "EV-S-3"
+      ],
+      "gold": {
+        "edge": [
+          "DEPENDS_ON",
+          "EV-S-2",
+          "EV-S-3",
+          "FORWARD"
+        ]
+      }
+    },
+    {
+      "id": "A16-four-hop-excluded",
+      "kind": "native",
+      "profile": "evaluation",
+      "incident": "EV-DEPTH",
+      "tool": "get_incident_scope",
+      "subject_ids": [
+        "EV-DEPTH"
+      ],
+      "gold": {
+        "absent_subject": "EV-D-FOUR"
+      }
+    },
+    {
+      "id": "A17-missing-event",
+      "kind": "native",
+      "profile": "evaluation",
+      "incident": "EV-MISSING-EVENT",
+      "tool": "inspect_evidence",
+      "subject_ids": [
+        "EV-MISSING-E"
+      ],
+      "gold": {
+        "record": {
+          "id": "EV-MISSING-E",
+          "time": "UNKNOWN",
+          "utc": null
+        }
+      }
+    },
+    {
+      "id": "A18-malicious-metadata",
+      "kind": "native",
+      "profile": "adversarial",
+      "incident": "INC-001",
+      "tool": "inspect_evidence",
+      "subject_ids": [
+        "EVD-001"
+      ],
+      "gold": {
+        "withheld": true,
+        "citation": "EVIDENCE_REPORTED"
+      }
+    },
+    {
+      "id": "A19-unknown-subject",
+      "kind": "protocol",
+      "profile": "baseline",
+      "incident": "INC-001",
+      "scenario": "unknown_subject",
+      "gold": {
+        "rejection_code": "AGENT_SUBJECT_REJECTED"
+      }
+    },
+    {
+      "id": "A20-write-tool",
+      "kind": "protocol",
+      "profile": "baseline",
+      "incident": "INC-001",
+      "scenario": "write_tool",
+      "gold": {
+        "rejection_code": "AGENT_TOOL_REJECTED"
+      }
+    },
+    {
+      "id": "A21-cypher-argument",
+      "kind": "protocol",
+      "profile": "baseline",
+      "incident": "INC-001",
+      "scenario": "cypher",
+      "gold": {
+        "rejection_code": "AGENT_ARGUMENT_SCHEMA"
+      }
+    },
+    {
+      "id": "A22-url-argument",
+      "kind": "protocol",
+      "profile": "baseline",
+      "incident": "INC-001",
+      "scenario": "url",
+      "gold": {
+        "rejection_code": "AGENT_ARGUMENT_SCHEMA"
+      }
+    },
+    {
+      "id": "A23-stale-snapshot",
+      "kind": "protocol",
+      "profile": "baseline",
+      "incident": "INC-001",
+      "scenario": "stale",
+      "gold": {
+        "rejection_code": "STALE_SNAPSHOT"
+      }
+    },
+    {
+      "id": "A24-fake-claim",
+      "kind": "protocol",
+      "profile": "baseline",
+      "incident": "INC-001",
+      "scenario": "fake_claim",
+      "gold": {
+        "rejection_code": "UNKNOWN_CLAIM_ID"
+      }
+    },
+    {
+      "id": "A25-causal-prose",
+      "kind": "protocol",
+      "profile": "baseline",
+      "incident": "INC-001",
+      "scenario": "causal_prose",
+      "gold": {
+        "rejection_code": "AGENT_FINISH_SCHEMA"
+      }
+    },
+    {
+      "id": "A26-oversized",
+      "kind": "protocol",
+      "profile": "baseline",
+      "incident": "INC-001",
+      "scenario": "oversized",
+      "gold": {
+        "rejection_code": "AGENT_FINISH_LIMIT"
+      }
+    },
+    {
+      "id": "A27-deep-json",
+      "kind": "protocol",
+      "profile": "baseline",
+      "incident": "INC-001",
+      "scenario": "deep",
+      "gold": {
+        "rejection_code": "AGENT_FINISH_SCHEMA"
+      }
+    },
+    {
+      "id": "A28-duplicate-proposals",
+      "kind": "protocol",
+      "profile": "baseline",
+      "incident": "INC-001",
+      "scenario": "duplicate",
+      "gold": {
+        "rejection_code": "AGENT_REPEATED_ACTION"
+      }
+    },
+    {
+      "id": "A29-valid-parallel-constrained",
+      "kind": "protocol",
+      "profile": "baseline",
+      "incident": "INC-001",
+      "scenario": "parallel",
+      "gold": {
+        "rejection_code": null
+      }
+    },
+    {
+      "id": "A30-timeout",
+      "kind": "protocol",
+      "profile": "baseline",
+      "incident": "INC-001",
+      "scenario": "timeout",
+      "gold": {
+        "rejection_code": "OLLAMA_TIMEOUT"
+      }
+    },
+    {
+      "id": "A31-unavailable",
+      "kind": "protocol",
+      "profile": "baseline",
+      "incident": "INC-001",
+      "scenario": "unavailable",
+      "gold": {
+        "rejection_code": "OLLAMA_CONNECTION_UNAVAILABLE"
+      }
+    },
+    {
+      "id": "A32-no-tools",
+      "kind": "protocol",
+      "profile": "baseline",
+      "incident": "INC-001",
+      "scenario": "no_tools",
+      "gold": {
+        "rejection_code": null
+      }
+    },
+    {
+      "id": "A33-budget",
+      "kind": "protocol",
+      "profile": "baseline",
+      "incident": "INC-001",
+      "scenario": "budget",
+      "gold": {
+        "rejection_code": "AGENT_TOOL_BUDGET"
+      }
+    },
+    {
+      "id": "A34-fabricated-direction",
+      "kind": "protocol",
+      "profile": "baseline",
+      "incident": "INC-001",
+      "scenario": "direction",
+      "gold": {
+        "rejection_code": null
+      }
+    },
+    {
+      "id": "A35-no-cause-missing",
+      "kind": "protocol",
+      "profile": "baseline",
+      "incident": "INC-001",
+      "scenario": "no_cause",
+      "gold": {
+        "rejection_code": "MISSING_CAUSAL_CAUTION"
+      }
+    }
+  ]
+}
