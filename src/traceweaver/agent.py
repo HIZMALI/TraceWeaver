@@ -81,6 +81,27 @@ def retrieved_claims(context, steps):
     return [c for c in context.catalog.claims if supported(c)]
 
 
+def offered_claim_metadata(context, steps):
+    """Exactly the bounded opaque metadata actually offered, intersected with retrieved support."""
+    supported = {c.claim_id for c in retrieved_claims(context, steps)}
+    return [c for c in sanitized_packet(context.catalog)["claims"] if c["claim_id"] in supported]
+
+
+def final_messages(context, steps, messages):
+    packet = {
+        "task": "FINAL_CLAIM_IDS_ONLY",
+        "investigation_fingerprint": context.source_fingerprint,
+        "retrieved_claims": offered_claim_metadata(context, steps),
+        "executed_steps": [s.step_number for s in steps],
+        "response_schema": AgentFinalProposal.model_json_schema(),
+        "selection_rule": "Return only the exact schema object. Select only offered "
+        "retrieved_claims IDs. Select 3 to 8, fewer only when fewer are offered. If no "
+        "supported factual IDs are offered, abstain with selected_claim_ids=[] and "
+        "abstain=true. No extra fields or prose.",
+    }
+    return messages + [{"role": "user", "content": canonical_json(packet)}]
+
+
 def opaque_result(context, step):
     def handle(identity):
         if identity not in context.node_handles:
@@ -239,13 +260,19 @@ def constrain_proposals(context, message, used):
     return *parsed[0], len(parsed) - 1
 
 
-def admit_finish(context, steps, content):
-    if not isinstance(content, str) or len(content.encode()) > 4096:
+def admit_finish(context, steps, content, *, diagnostics=None):
+    if diagnostics is not None:
+        diagnostics.finish(content, AgentFinalProposal)
+    if not isinstance(content, str):
         raise ToolError("AGENT_FINISH_LIMIT", "Final proposal exceeds byte bound.")
     try:
-        proposal = AgentFinalProposal.model_validate(
-            parse_json_document(content.encode(), max_depth=4)
-        )
+        raw_content = content.encode("utf-8")
+    except UnicodeError:
+        raise ToolError("AGENT_FINISH_SCHEMA", "Final proposal is not valid UTF-8.") from None
+    if len(raw_content) > 4096:
+        raise ToolError("AGENT_FINISH_LIMIT", "Final proposal exceeds byte bound.")
+    try:
+        proposal = AgentFinalProposal.model_validate(parse_json_document(raw_content, max_depth=4))
     except (ValidationError, ToolError):
         raise ToolError("AGENT_FINISH_SCHEMA", "Final proposal schema is invalid.") from None
     if proposal.investigation_fingerprint != context.source_fingerprint:
@@ -259,11 +286,18 @@ def admit_finish(context, steps, content):
         raise ToolError("UNKNOWN_CLAIM_ID", "Final proposal contains an unknown claim ID.")
     if not steps:
         return [], "MODEL_SELECTION_ONLY"
-    offered = [c.claim_id for c in retrieved_claims(context, steps)]
-    if set(proposal.selected_claim_ids) - set(offered):
+    retrieved = {c.claim_id for c in retrieved_claims(context, steps)}
+    if set(proposal.selected_claim_ids) - retrieved:
         raise ToolError("CLAIM_NOT_RETRIEVED", "Claim support was not returned by executed tools.")
+    offered = [c["claim_id"] for c in offered_claim_metadata(context, steps)]
+    if set(proposal.selected_claim_ids) - set(offered):
+        raise ToolError(
+            "CLAIM_NOT_OFFERED", "Claim was not offered in the bounded provider packet."
+        )
     raw = canonical_json(proposal.model_dump(exclude={"tool_steps"})).encode()
     claims, abstain = accept_proposal(raw, context.source, context.catalog, offered)
+    if diagnostics is not None:
+        diagnostics.admitted(len(proposal.selected_claim_ids))
     status = (
         "ABSTAINED"
         if abstain or not context.source.evidence
@@ -274,13 +308,16 @@ def admit_finish(context, steps, content):
     return claims, status
 
 
-def run_agent(database, action):
+def run_agent(database, action, *, diagnostics=None):
     start = time.monotonic()
     deadline = start + TOTAL_SECONDS
     context = create_context(
         database, action.incident_id, action.options, action.source_fingerprint
     )
     provider = AgentProvider(action.model_id, deadline)
+    provider.diagnostics = diagnostics
+    if diagnostics is not None:
+        diagnostics.bind(context.source_fingerprint, context.database_digest)
     steps = []
     used = set()
     warnings = []
@@ -324,12 +361,21 @@ def run_agent(database, action):
                 raise ToolError("AGENT_TIME_BUDGET", "Agent deadline exhausted.")
             context.guard()
             tools = tool_definitions(context, used) if len(steps) < 4 else []
-            message = provider.chat(messages, tools, final=n == 4 or not tools)
+            final_phase = n == 4 or not tools
+            message = provider.chat(
+                final_messages(context, steps, messages) if final_phase and steps else messages,
+                tools,
+                final=final_phase,
+            )
             executed = action.model_id
             context.guard()
             if message.get("tool_calls"):
                 if len(steps) >= 4:
                     raise ToolError("AGENT_TOOL_BUDGET", "Native call budget exhausted.")
+                if final_phase:
+                    raise ToolError(
+                        "AGENT_FINAL_TOOL_REJECTED", "Final phase cannot execute tools."
+                    )
                 name, args, deferred = constrain_proposals(context, message, used)
                 if (name, args.subject) in used:
                     raise ToolError("AGENT_REPEATED_ACTION", "Repeated native action rejected.")
@@ -346,12 +392,8 @@ def run_agent(database, action):
                         warnings.append("PARALLEL_PROPOSALS_CONSTRAINED")
                 steps.append(step)
                 used.add((name, args.subject))
-                metadata = {c["claim_id"]: c for c in sanitized_packet(context.catalog)["claims"]}
-                available = [
-                    metadata[c.claim_id]
-                    for c in retrieved_claims(context, steps)
-                    if c.claim_id in metadata
-                ]
+                available = offered_claim_metadata(context, steps)
+                provider.offered_claim_count = len(available)
                 messages += [
                     {
                         "role": "assistant",
@@ -380,22 +422,9 @@ def run_agent(database, action):
                     # proposal: discard it, never echo it, and enter the declared final-ID phase.
                     if message["content"].strip() and "READ_PHASE_TEXT_NOT_USED" not in warnings:
                         warnings.append("READ_PHASE_TEXT_NOT_USED")
-                    metadata = {
-                        c["claim_id"]: c for c in sanitized_packet(context.catalog)["claims"]
-                    }
-                    final_packet = {
-                        "task": "FINAL_CLAIM_IDS_ONLY",
-                        "investigation_fingerprint": context.source_fingerprint,
-                        "retrieved_claims": [
-                            metadata[c.claim_id]
-                            for c in retrieved_claims(context, steps)
-                            if c.claim_id in metadata
-                        ],
-                        "executed_steps": [s.step_number for s in steps],
-                    }
                     context.guard()
                     message = provider.chat(
-                        messages + [{"role": "user", "content": canonical_json(final_packet)}],
+                        final_messages(context, steps, messages),
                         [],
                         final=True,
                     )
@@ -404,7 +433,9 @@ def run_agent(database, action):
                         raise ToolError(
                             "AGENT_FINAL_TOOL_REJECTED", "Final phase cannot execute tools."
                         )
-                claims, status = admit_finish(context, steps, message["content"])
+                claims, status = admit_finish(
+                    context, steps, message["content"], diagnostics=diagnostics
+                )
                 context.guard()
                 return make_report(
                     context,
@@ -420,6 +451,13 @@ def run_agent(database, action):
         raise ToolError("AGENT_MODEL_BUDGET", "Model interaction budget exhausted.")
     except (ToolError, CitationRejected) as exc:
         code = exc.code
+        if diagnostics is not None:
+            phase = (
+                "transport"
+                if isinstance(exc, OllamaFailure)
+                else ("final_schema" if code.startswith("AGENT_FINISH") else "firewall")
+            )
+            diagnostics.failure(phase, code)
         status = (
             "STALE_SNAPSHOT"
             if code in {"STALE_SNAPSHOT", "SNAPSHOT_MISMATCH"}

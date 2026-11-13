@@ -23,11 +23,21 @@ class AgentProvider:
         self.model, self.deadline = model, deadline
         self.client = OllamaLocal()
         self.interactions = 0
+        self.diagnostics = None
+        self.offered_claim_count = 0
 
     def request(self, method, route, payload=None):
-        result = self.client._request(
-            method, route, payload, deadline=min(self.deadline, time.monotonic() + ROUND_SECONDS)
-        )
+        try:
+            result = self.client._request(
+                method,
+                route,
+                payload,
+                deadline=min(self.deadline, time.monotonic() + ROUND_SECONDS),
+            )
+        except OllamaFailure as exc:
+            if self.diagnostics is not None:
+                self.diagnostics.failure("transport", exc.code)
+            raise
         if not isinstance(result, dict):
             raise OllamaFailure("AGENT_RESPONSE_SCHEMA")
         return result
@@ -63,7 +73,11 @@ class AgentProvider:
             body["tools"] = tools
         if final:
             body["format"] = AgentFinalProposal.model_json_schema()
+        if self.diagnostics is not None:
+            self.diagnostics.request(body, final=final, offered_count=self.offered_claim_count)
         response = self.request("POST", "/api/chat", body)
+        if self.diagnostics is not None:
+            self.diagnostics.response(response, final=final)
         message = response.get("message")
         if (
             response.get("done") is not True
