@@ -46,6 +46,17 @@ are never fabricated as zero and the current clock never becomes evidence time.
 ## Orchestration boundary
 
 At most four executed calls / five model chat interactions / one call per round, no retries.
+Native Ollama may propose a parallel batch. At most four proposals are fully validated (including
+every unexecuted tail); any unknown/repeated/out-of-scope proposal rejects the entire batch. For
+a valid batch only the first is executed, with explicit deferred_proposal_count and
+PARALLEL_PROPOSALS_CONSTRAINED warning. Other proposals are NOT represented as executed tools.
+Tool selection and final claim admission are separate phases. Read-phase text is discarded, never
+echoed/stored/rendered; one reserved structured final-ID request uses the existing proposal schema
+within the same five-interaction bound. Invalid final IDs/fields are rejected, never repaired/retried.
+Provider requests have a 20-second round deadline and 90-second total orchestration budget.
+The existing transport keeps its default 45-second legacy behavior; the agent supplies a tighter
+absolute deadline. These checks cannot preempt native Cypher already running; row caps do not
+constitute a native RAM/query-cost guarantee. Responses: 64 KiB; requests: 48 KiB; full report: 512 KiB.
 No native connection survives a provider request or crosses threads. Fixed native Ollama
 127.0.0.1:11434 only; no cloud/installation/pull. Model input is opaque handles/claim IDs, fixed
 tool names and bounded enums/counts/UTC. No narrative source/model prose is accepted as fact.

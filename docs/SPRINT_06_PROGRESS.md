@@ -7,8 +7,8 @@ Starting main a8f4ac502c8bb4eaefce8d6e448a273aa133a73e. Original worktree clean.
 | G0 | PASS | 420 pytest / 58 frontend / 36 native Chromium baseline; protected hashes match |
 | G1 | PASS | Actual native first-screen proof, larger type/core viewport; 62 unit / 36 real browser cases |
 | G2 | PASS | Strict agent 1.0 models + five actual parameterized native tools; 452 pytest passed |
-| G3 | IN PROGRESS | Bounded native Ollama tool orchestration; live installation unavailable |
-| G4 | PENDING | Same-tool deterministic offline rehearsal and CLI |
+| G3 | PARTIAL | Controller/protocol PASS: 479 pytest. Genuine qwen3 native trace verified; final ID proposal rejected |
+| G4 | IN PROGRESS | Same-tool deterministic offline rehearsal and CLI |
 | G5 | PENDING | Explicit local agent panel and step-to-proof selection |
 | G6 | PENDING | Readable real screenshots and new judge story |
 | G7 | PENDING | Independent frozen scenario gold, native/protocol runner and corruption control |
@@ -37,6 +37,19 @@ All five tools issue fresh native Cypher and recheck directed edge identities. S
 orphan/unknown timestamps, structured conflicts, caps, private-metadata withholding and query
 budgets verified on temporary native stores. Query counters include failed native work after
 reader closure; final focused rerun passed. Tool contract documented. Original bytes unchanged.
+
+G3: 479 full pytest passed in 67.70s; 59 agent/native/protocol cases, Ruff clean. Native tools and
+final IDs use existing firewall plus retrieved-support coverage. Current local service became
+available transiently: actual /api/version 0.40.16, installed tags qwen3:8b/openweft-qwen3:8b.
+No daemon/model was installed/started by this session. Real probes: first parallel batch rejected
+before native execution; later genuine qwen3 trace_deployment executed with ai_directed_tools=true,
+but final proposal failed AGENT_FINISH_SCHEMA (zero admitted claims). A fourth diagnostic attempt
+found service unavailable again. Safe metadata/typed native reports only are in ignored live-agent
+artifacts; no raw provider text/prompts persisted. Never count these as accepted final AI results.
+Valid parallel proposals are fully checked then explicitly constrained to one execution, with
+warnings. Structured final-ID phase is separately bounded, not a prose repair/fallback. Original
+protocol test duplicate batch still rejects before any native work; invalid tails also reject all.
+Live final admission remains PARTIAL; continue independent offline/UI/evaluation/release gates.
 
 Resume: read this ledger/decisions, inspect git status, preserve user changes. Complete G1 then
 the strict native tool layer. No model pulls/installations or user-store writers. Browser mirrors

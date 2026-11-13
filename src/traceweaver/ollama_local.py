@@ -60,7 +60,7 @@ class _DeadlineSocket:
 
 
 class OllamaLocal:
-    def _request(self, method: str, route: str, payload=None) -> dict:
+    def _request(self, method: str, route: str, payload=None, *, deadline=None) -> dict:
         if (method, route) not in {("GET", "/api/tags"), ("POST", "/api/chat")}:
             raise OllamaFailure("OLLAMA_ROUTE_REJECTED")
         body = (
@@ -70,8 +70,13 @@ class OllamaLocal:
         )
         if body is not None and len(body) > MAX_REQUEST_BYTES:
             raise OllamaFailure("OLLAMA_REQUEST_LIMIT")
-        connection = http.client.HTTPConnection(HOST, PORT, timeout=CONNECT_TIMEOUT)
-        deadline = time.monotonic() + TOTAL_TIMEOUT
+        remaining = (
+            TOTAL_TIMEOUT if deadline is None else min(TOTAL_TIMEOUT, deadline - time.monotonic())
+        )
+        if remaining <= 0:
+            raise OllamaFailure("OLLAMA_TIMEOUT")
+        connection = http.client.HTTPConnection(HOST, PORT, timeout=min(CONNECT_TIMEOUT, remaining))
+        deadline = time.monotonic() + remaining
         try:
             try:
                 connection.connect()

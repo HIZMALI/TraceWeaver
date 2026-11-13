@@ -94,6 +94,7 @@ class AgentStep(StrictModel):
     subject_ids: Annotated[list[Identity], Field(min_length=1, max_length=2)]
     selected_by: Literal["DETERMINISTIC_PLAN", "LOCAL_MODEL"]
     native_query_count: int = Field(ge=1, le=8)
+    deferred_proposal_count: int = Field(default=0, ge=0, le=3)
     result: NativeToolResult
     elapsed_ms: float = Field(ge=0, le=1e9, allow_inf_nan=False)
 
@@ -143,6 +144,7 @@ class AgentInvestigationReport(StrictModel):
     validated_claims: Annotated[list[Claim], Field(max_length=10)]
     validated_citation_count: int = Field(ge=0, le=120)
     rejection_codes: Annotated[list[Code], Field(max_length=8)]
+    proposal_warnings: Annotated[list[Code], Field(max_length=4)] = Field(default_factory=list)
     gap_codes: Annotated[list[Code], Field(max_length=20)]
     source_truncated: bool
     model_subjects_truncated: bool
