@@ -59,7 +59,10 @@ See DEPENDENCY_LICENSES.md for actual installed package review and media/model b
 | P4 | PASS | 574 Python, 88 frontend, 54 browser; frozen 35/20/19; independent source/wheel/launcher |
 | P5 | PASS | SHA-pinned least-privilege Windows/Ubuntu/Py3.11 workflow; actionlint passed |
 | P6 | PASS | Reviewed staged inventory, protected-byte comparison, final redacted scans and clean commit gate |
-| P7–P11 | NOT RUN | No repository creation or public push before all preceding gates pass |
+| P7 | PASS | Authorized exact PUBLIC/main repository created and pushed after P0–P6 passed |
+| P8 | PASS | Actual hosted Windows/Ubuntu Python 3.11 and frontend/native-browser/wheel jobs passed |
+| P9 | PASS | Fresh anonymous public clone, installed/built source and actual native browser flow |
+| P10–P11 | PASS | Handoff, observed CI report and release report prepared |
 
 ## Actual local validation and limits
 

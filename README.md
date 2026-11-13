@@ -14,8 +14,9 @@ citations. **Explore the verified path** means an exact stored path, not authent
 
 ## Judge quick start
 
-Already installed prerequisites: Python 3.11+ and Node 24+. Local Windows/Python 3.14 is verified;
-Windows/Ubuntu Python 3.11 hosted results are **NOT YET VERIFIED** until observed in the
+Already installed prerequisites: Python 3.11+ and Node 24+. Local Windows/Python 3.14 and hosted
+Windows/Ubuntu Python 3.11 tests passed. Ubuntu also passed the complete frontend/native browser
+and independently installed wheel flow; see the exact commit/jobs in the
 [CI report](docs/GITHUB_CI_REPORT.md). From a source checkout:
 
 ```powershell
@@ -30,7 +31,7 @@ two UNDETERMINED pairs. Setup time depends on package downloads; the [60-second 
 starts after installation. Stop with Ctrl+C. No account, key, Docker, graph server or model is needed.
 
 The sole distributed graph is [the synthetic judge store](examples/judge-demo/traceweaver-demo.rl),
-**51 nodes / 67 relationships**, with its [manifest](examples/judge-demo/manifest.json).
+**51 nodes / 67 relationships**, with its [manifest](examples/judge-demo/MANIFEST.json).
 After building, run `.\scripts\check-judge-demo.ps1` for a read-only integrity check. Source installs
 build assets with Node; an already built wheel needs no Node at runtime. The separately generated
 Windows x64/Python 3.14 offline export is local review material, not a GitHub release attachment.
@@ -140,7 +141,8 @@ Sprint 00 delivered the local graph, Python CLI, and read-only HTTP API. Sprint 
 deterministic temporal investigation, source traceability, structured observation comparisons,
 and explicit uncertainty. Sprint 02 adds validated local ingestion, offline file-integrity checks,
 20 frozen evaluation scenarios, and a separately published synthetic Relate store. These features
-are implemented and verified locally; remote CI is unverified. Sprint 03 adds a read-only
+are implemented and verified locally; public-release CI also verifies Windows/Ubuntu Python 3.11,
+as recorded above. Sprint 03 adds a read-only
 explanation layer, semantic citation validation and an optional local AI claim selector.
 Default deterministic explanations are **not AI-generated**. The AI can select existing facts;
 it cannot establish a root cause or write arbitrary factual prose.
@@ -628,8 +630,8 @@ Python 3.11**. Local Windows verification does not establish that remote CI pass
   entity properties need a deliberate schema migration/ingestion design before API exposure.
 - Relate holds its working graph in memory and allows one writer process. A `.rl` file cannot
   serve cross-process readers while a writer holds it. Connections cannot cross threads.
-- Local verification ran on Windows x64 / Python 3.14.0. Remote CI and Linux execution remain
-  unverified until the repository is pushed and the workflow is actually run.
+- Local verification ran on Windows x64 / Python 3.14.0. The public-release workflow also passed
+  Windows/Ubuntu Python 3.11 and Ubuntu native browser/installed-wheel checks; see the CI report.
 - Investigation uses closed observation intervals or exact instants for structured comparisons.
   HEALTHY versus FAILED can conflict; pairs involving DEGRADED are UNDETERMINED. Narrative text
   alone is never evaluated. Links and timestamps do not establish source truth or causation.

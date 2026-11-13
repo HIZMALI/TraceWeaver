@@ -6,7 +6,9 @@ All distributed records are synthetic. No account, API key, Docker, hosted graph
 ## Public source checkout
 
 Install existing prerequisites Python 3.11+ and Node 24+ first. Windows/Python 3.14 was verified
-locally; check GITHUB_CI_REPORT.md for actual hosted Windows/Ubuntu Python 3.11 results.
+locally; hosted Windows/Ubuntu Python 3.11 tests and the Ubuntu installed-wheel/browser flow
+also passed. See [the exact CI results](GITHUB_CI_REPORT.md); the PowerShell launcher itself
+was exercised on local Windows/Python 3.14.
 
 ```powershell
 git clone https://github.com/HIZMALI/TraceWeaver.git
