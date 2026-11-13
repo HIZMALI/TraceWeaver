@@ -19,6 +19,7 @@ import type { Bundle, Claim, Incident, Options, Path, Time } from "./contracts";
 import { edgeTypes } from "./contracts";
 import { GraphCanvas } from "./GraphCanvas";
 import { LocalSelection } from "./LocalSelection";
+import { ProofFocus } from "./ProofFocus";
 import {
   candidateKey,
   defaultFilters,
@@ -1122,6 +1123,7 @@ export function App() {
                 Connection and temporal precedence do not establish causation.
               </span>
             </div>
+            <ProofFocus bundle={data.bundle} onSelect={select} />
             <section className="metrics" aria-label="Returned scope metrics">
               <div>
                 <span>Candidate / target pairs</span>
@@ -1362,6 +1364,15 @@ export function App() {
                     select("claim:" + claim.claim_id);
                   }}
                 />
+                <details className="agent-intro card" id="investigation-steps">
+                  <summary>Agent investigation (local) · Experimental</summary>
+                  <p>
+                    Investigation steps are distinct from local claim selection.
+                    The default view is deterministic, offline and not
+                    AI-generated. Local AI requires explicit model choice and
+                    confirmation.
+                  </p>
+                </details>
               </div>
               <Inspector
                 data={data}

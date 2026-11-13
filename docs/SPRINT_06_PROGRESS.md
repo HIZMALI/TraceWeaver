@@ -5,8 +5,8 @@ Starting main a8f4ac502c8bb4eaefce8d6e448a273aa133a73e. Original worktree clean.
 | Gate | Status | Evidence / next step |
 | --- | --- | --- |
 | G0 | PASS | 420 pytest / 58 frontend / 36 native Chromium baseline; protected hashes match |
-| G1 | IN PROGRESS | Readable native proof summary/viewport, distinct experimental agent affordance |
-| G2 | PENDING | Strict versioned agent DTO and native read-only tools |
+| G1 | PASS | Actual native first-screen proof, larger type/core viewport; 62 unit / 36 real browser cases |
+| G2 | IN PROGRESS | Strict versioned agent DTO and native read-only tools |
 | G3 | PENDING | Bounded native Ollama tool orchestration and genuine availability check |
 | G4 | PENDING | Same-tool deterministic offline rehearsal and CLI |
 | G5 | PENDING | Explicit local agent panel and step-to-proof selection |
@@ -21,6 +21,16 @@ Baseline evidence: .verification/sprint06/baseline.json, baseline-pytest.txt and
 baseline-browser/.verification/sprint06-browser.txt. Old screenshots were written only in the
 mirror; originals remain byte-identical. All tests use native Relate, temporary write specimens.
 No old expectation changed. Ollama refused connection at G0; checking existing installation only.
+
+G1: typecheck/lint/build/Ruff pass, 62 frontend and 36 actual current-source Chromium tests pass
+(32.2s). Native first-screen capture in ignored G1-first-screen.png visually inspected. Original
+screenshots/fixtures/reports/stores remain identical. Test setup initially imported original static
+assets in a source mirror; the positive new-heading capture caught it. New test runner now uses
+current source with an owned cwd for unchanged historical screenshot writes. New summary buttons
+initially failed axe label-content matching; fixed actual accessible text without excluding rules.
+Ollama service, PATH/standard installation/registry/cache/binary searches found no executable/model;
+live agent verification is BLOCKED unless an existing usable local installation becomes available.
+Only Docker Desktop WSL is registered; no Ubuntu/Python 3.11 found, no system setup attempted.
 
 Resume: read this ledger/decisions, inspect git status, preserve user changes. Complete G1 then
 the strict native tool layer. No model pulls/installations or user-store writers. Browser mirrors

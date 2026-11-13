@@ -11,6 +11,65 @@
   --teal: #6de2cc;
   --amber: #f0c277;
 }
+.proof-focus {
+  display: grid;
+  grid-template-columns: 1.1fr 0.8fr 1.3fr;
+  gap: 5px 12px;
+  padding: 10px 14px;
+  margin: 10px 0;
+  font-size: 13px;
+}
+.proof-focus h2 {
+  margin: 0;
+  font-size: 16px;
+  color: var(--teal);
+}
+.proof-focus p {
+  margin: 5px 0;
+}
+.proof-focus button {
+  display: block;
+  padding: 6px 9px;
+  margin-top: 5px;
+  text-align: left;
+  width: 100%;
+  overflow-wrap: anywhere;
+}
+.proof-focus button span {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+}
+.proof-focus-scope {
+  grid-column: 1/-1;
+  color: var(--muted);
+  font-size: 12px;
+}
+.proof-focus-path {
+  grid-column: 1/-1;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+  color: #d1f2eb;
+}
+.focus-path-button {
+  top: 65px;
+}
+.agent-intro {
+  padding: 16px;
+  margin-top: 16px;
+  font-size: 13px;
+}
+.graph-view-note {
+  font-size: 12px;
+  padding: 8px 12px;
+  margin: 0;
+  color: var(--muted);
+  background: var(--surface);
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 4;
+}
 * {
   box-sizing: border-box;
 }
@@ -705,31 +764,31 @@ h4 {
   border: 1px solid #396171;
   box-shadow: 0 4px 10px #0003;
   border-radius: 6px;
-  width: 144px;
-  min-height: 57px;
+  width: 178px;
+  min-height: 76px;
   padding: 8px 10px;
   display: flex;
   flex-direction: column;
   gap: 2px;
-  font-size: 10px;
+  font-size: 14px;
   color: #d9e7ef;
 }
 .entity-node strong {
   font-family: Consolas, monospace;
-  font-size: 11px;
+  font-size: 16px;
   font-weight: 600;
   overflow-wrap: anywhere;
 }
 .entity-kind {
-  font-size: 7px;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: #acc7d7;
 }
 .entity-name {
-  font-size: 8px;
+  font-size: 14px;
   color: #a8bdcc;
-  max-width: 124px;
+  max-width: 154px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -1673,5 +1732,65 @@ dialog p {
     animation: none !important;
     transition: none !important;
     scroll-behavior: auto !important;
+  }
+}
+@media (min-width: 900px) {
+  .main .topbar {
+    min-height: 44px;
+    height: 44px;
+    margin-bottom: 14px;
+  }
+  .main .tiny,
+  .main .eyebrow,
+  .main .badge,
+  .main .heading-meta,
+  .main .event-time,
+  .main .scope-banner,
+  .main .metrics span,
+  .main .filters label,
+  .main .filters select,
+  .main .graph-subtitle,
+  .main .graph-footer,
+  .main .legend,
+  .main .detail-tabs button,
+  .main .mode-label,
+  .main .claim-button strong,
+  .main .citation-row,
+  .main .edge-proof,
+  .main .panel-title .tiny,
+  .main .page-footer {
+    font-size: 12px;
+  }
+  .main .claim-button,
+  .main .candidate-card,
+  .main .evidence-table {
+    font-size: 13px;
+  }
+  .main .metrics > div {
+    min-height: 52px;
+    padding: 8px 12px;
+  }
+  .main .metrics strong {
+    font-size: 24px;
+  }
+  .main .verdict small {
+    font-size: 12px;
+  }
+  .graph-canvas {
+    height: 330px;
+  }
+}
+@media (max-width: 899px) {
+  .proof-focus {
+    grid-template-columns: 1fr;
+  }
+  .proof-focus-scope {
+    grid-column: 1;
+  }
+  .proof-focus button {
+    min-height: 38px;
+  }
+  .graph-view-note {
+    font-size: 12px;
   }
 }

@@ -58,6 +58,8 @@ export function GraphCanvas({
     null,
   );
   const selectionKey = paths.map((p) => p.node_ids.join("~")).join("|");
+  const [hoveredEdge, setHoveredEdge] = useState("");
+  const candidateViewport = graph.nodes.filter((n) => n.kind !== "Evidence");
   useEffect(() => {
     if (!instance || !selectionKey) return;
     const ids = new Set(selectionKey.split(/[~|]/));
@@ -102,7 +104,14 @@ export function GraphCanvas({
       target: e.target,
       sourceHandle: "source-" + sourceSide,
       targetHandle: "target-" + targetSide,
-      label: e.type,
+      label:
+        activeEdges.has(e.id) ||
+        hoveredEdge === e.id ||
+        (!paths.length &&
+          graph.nodes.length <= 14 &&
+          ["AFFECTS", "DEPENDS_ON", "TARGETS"].includes(e.type))
+          ? e.type
+          : undefined,
       ariaLabel: `${e.type} stored ${e.source} to ${e.target}${e.reverse ? ", traversed in reverse" : ""}`,
       markerEnd: {
         type: MarkerType.ArrowClosed,
@@ -115,7 +124,7 @@ export function GraphCanvas({
         strokeWidth: activeEdges.has(e.id) ? 2.5 : 1.3,
         opacity: activeEdges.size && !activeEdges.has(e.id) ? 0.18 : 1,
       },
-      labelStyle: { fill: "#b9c9d7", fontSize: 9, fontWeight: 600 },
+      labelStyle: { fill: "#dce7ef", fontSize: 14, fontWeight: 600 },
       labelBgStyle: { fill: "#0f1822", fillOpacity: 0.95 },
       labelBgPadding: [4, 3] as [number, number],
     };
@@ -126,6 +135,11 @@ export function GraphCanvas({
       aria-label="Returned directed graph"
       data-testid="graph-canvas"
     >
+      <p className="graph-view-note">
+        Initial viewport favors candidate context. Edge labels appear on
+        focus/hover; all stored arrows and counts remain. Fit view shows all
+        returned nodes.
+      </p>
       {paths.length > 0 && (
         <button
           className="focus-path-button"
@@ -156,17 +170,26 @@ export function GraphCanvas({
           nodeTypes={nodeTypes}
           nodesDraggable={false}
           ariaLabelConfig={{
-            "node.a11yDescription.default": "Read-only node. Use the accessible path list to inspect proof.",
-            "node.a11yDescription.keyboardDisabled": "Read-only node. Use the accessible path list to inspect proof.",
-            "edge.a11yDescription.default": "Read-only stored relationship. Use the accessible path list to inspect proof.",
+            "node.a11yDescription.default":
+              "Read-only node. Use the accessible path list to inspect proof.",
+            "node.a11yDescription.keyboardDisabled":
+              "Read-only node. Use the accessible path list to inspect proof.",
+            "edge.a11yDescription.default":
+              "Read-only stored relationship. Use the accessible path list to inspect proof.",
           }}
           nodesConnectable={false}
           edgesReconnectable={false}
           deleteKeyCode={null}
           onNodeClick={(_, n) => onSelect("node:" + n.id)}
           onEdgeClick={(_, e) => onSelect("edge:" + e.id)}
+          onEdgeMouseEnter={(_, e) => setHoveredEdge(e.id)}
+          onEdgeMouseLeave={() => setHoveredEdge("")}
           fitView
-          fitViewOptions={{ padding: 0.18 }}
+          fitViewOptions={{
+            padding: 0.12,
+            nodes: candidateViewport.map((n) => ({ id: n.id })),
+            maxZoom: 1.15,
+          }}
           minZoom={0.15}
           maxZoom={2.5}
           colorMode="dark"

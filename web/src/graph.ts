@@ -119,12 +119,12 @@ export function graphFromBundle(b: Bundle): Graph {
       ...r,
       x:
         r.kind === "Evidence"
-          ? Math.floor(row / 6) * 190
-          : columns[r.kind] * 190,
+          ? Math.floor(row / 6) * 220
+          : columns[r.kind] * 220,
       y:
-        (r.kind === "Evidence" ? 240 : r.kind === "Incident" ? 100 : 0) +
+        (r.kind === "Evidence" ? 280 : r.kind === "Incident" ? 110 : 0) +
         (r.kind === "Evidence" ? row % 6 : row) *
-          (r.kind === "Evidence" ? 70 : 85),
+          (r.kind === "Evidence" ? 94 : 106),
     };
   });
   const allowed = new Set(nodes.map((n) => n.id));
