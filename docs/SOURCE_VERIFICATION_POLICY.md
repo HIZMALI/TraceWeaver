@@ -1,7 +1,7 @@
 # Offline source integrity policy 1.0
 
-Implemented locally; no external authenticity service is implemented. Remote runtime verification
-is not claimed. Source-file checks are independent of the unchanged investigation response.
+No external authenticity service or remote source verification is implemented. Local byte checks
+are independent of the unchanged investigation response and of application runtime/CI testing.
 
 ## Three independent questions
 
@@ -9,7 +9,7 @@ is not claimed. Source-file checks are independent of the unchanged investigatio
 | --- | --- | --- |
 | Traceability | source/source_ref/time and actual incident-evidence-service graph edges | Factual truth, authenticity, or complete context |
 | Content integrity | Exact local file bytes against an operator-supplied expected SHA-256 | Who authored the bytes or whether their claims are true |
-| External truth/authenticity | NOT_PERFORMED in Sprint 02 | No authority, URL, account, certificate, or company has been consulted |
+| External truth/authenticity | NOT_PERFORMED | No authority, URL, account, certificate, or company has been consulted |
 
 Matching an operator-provided checksum is **byte equality only**. A copied checksum inside an
 untrusted JSON or beside an untrusted download is not an independently authenticated statement.

@@ -1,7 +1,7 @@
 # Structured signal taxonomy — version 1
 
-This documents the implemented Sprint 01 comparison rules; Sprint 02 does not change or
-normalize them. Local tests verify the rules. Remote execution is not claimed. Numeric metric
+This documents the implemented structured comparison rules, exercised by native local and CI
+tests. Ingestion preserves exact state and signal identities. Numeric metric
 interpretation, threshold policies, unit conversion, and natural-language classification are PLANNED.
 
 | Example exact signal_key | Meaning of the supplied identity |

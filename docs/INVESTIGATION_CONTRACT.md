@@ -1,4 +1,4 @@
-# Investigation contract — Sprint 01
+# Investigation contract
 
 This is a deterministic graph/evidence review contract, not an AI or causal inference API.
 All bundled records are synthetic demo data. `causal_conclusion` is always **NOT_ESTABLISHED**.
@@ -11,9 +11,10 @@ python -m traceweaver investigate --incident INC-001 --database ./data/traceweav
 ```
 
 Both entry points use `investigation.investigate` and the same Pydantic `Investigation` model.
-The original health, incidents, context, seed, and stats contracts are unchanged. The only
-existing test expectation extended is the exact OpenAPI route set, which now has four GET paths.
-Full legacy JSON snapshots were captured from commit e504012's actual code and a real store.
+The original health, incidents, context, seed, and stats contracts are unchanged. Full legacy
+JSON snapshots were captured from commit e504012's actual code and a real store.
+Additional console routes are documented in the [dashboard contract](DASHBOARD_CONTRACT.md)
+and [agent contract](AGENT_TOOL_CONTRACT.md); they do not broaden this response model.
 
 | Option | Default | Accepted values |
 | --- | ---: | --- |
@@ -268,12 +269,13 @@ a database execution-time, memory, or raw-property byte limit; high-degree graph
 future query profiling and admission limits. Arbitrary property payloads are not a safe public
 ingestion interface. The finite input cap bounds structured comparison work to at most 4,950 pairs.
 
-## Guidance for future AI agents
+## Agent and consumer boundaries
 
 An agent may cite stable IDs, exact source references, original/UTC observation times, graph edge
 directions, missing-data warnings, and explicitly comparable structured observations. It must
 disclose synthetic data, caps, invalid/unknown times, unverified external sources, and gaps.
 It cannot claim a source was contacted, a source was proven true/false, an AFTER event preceded
 the incident, a partial result covered the whole graph, or a connected deployment caused an
-incident. AI integration, external verification, ingestion policy, evaluation, and causal
-inference remain separately scoped **PLANNED** work for later sprints.
+incident. Implemented [local AI tools](AGENT_TOOL_CONTRACT.md), [ingestion](INGESTION_CONTRACT.md)
+and [evaluation](../evaluation/README.md) have separate contracts. External truth verification
+and causal inference remain outside the implemented scope.

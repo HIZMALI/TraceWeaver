@@ -34,3 +34,7 @@ src/traceweaver/web_static/
 *.zip
 *.exe
 *.dll
+
+# Owner-local working guidance and unsubmitted competition copy.
+/AGENTS.md
+/submission/

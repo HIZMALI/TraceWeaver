@@ -1,14 +1,13 @@
 # Judge quick start
 
-TraceWeaver is a read-only incident investigation console backed by real embedded Relate 1.0.0.
-All distributed records are synthetic. No account, API key, Docker, hosted graph or model is needed.
+TraceWeaver reads the included synthetic Relate graph without seeding or changing it.
+The default explanation and tool rehearsal are deterministic and offline. No model, account,
+API key, Docker or graph server is needed.
 
-## Public source checkout
+## Install and start
 
-Install existing prerequisites Python 3.11+ and Node 24+ first. Windows/Python 3.14 was verified
-locally; hosted Windows/Ubuntu Python 3.11 tests and the Ubuntu installed-wheel/browser flow
-also passed. See [the exact CI results](GITHUB_CI_REPORT.md); the PowerShell launcher itself
-was exercised on local Windows/Python 3.14.
+Install Python 3.11+, Node 24+ and Git first. Initial dependency downloads require internet.
+The exploration below takes about two minutes **after** setup; installation time is separate.
 
 ```powershell
 git clone https://github.com/HIZMALI/TraceWeaver.git
@@ -18,76 +17,42 @@ python -m venv .venv
 .\scripts\start-judge-demo.ps1 -Build
 ```
 
-The source command builds its own frontend; ignored environments, assets and binary caches are
-not provided by Git. Initial downloads require internet and are outside the 60-second tour.
-After building, `.\scripts\check-judge-demo.ps1` verifies the published synthetic store read-only.
-Open `http://127.0.0.1:8000/?incident=INC-001`. No seeding is needed and no user store is modified.
+Open **http://127.0.0.1:8000/?incident=INC-001**. Stop with Ctrl+C.
+Subsequent launch: `.\scripts\start-judge-demo.ps1`; another free port: `-Port 8001`.
+The [root README](../README.md#quick-start) has the Linux command. Windows/Ubuntu Python 3.11
+tests and the Ubuntu installed-wheel/browser flow run in [CI](https://github.com/HIZMALI/TraceWeaver/actions/workflows/ci.yml);
+the PowerShell launcher was also exercised locally on Windows/Python 3.14.
 
-## Optional local offline export: about 60 seconds to explore after prerequisites
-
-This session's local export is `.verification/sprint07/release-candidate` in the checkout.
-It is local review material, absent from a public source clone and not an uploaded release.
-An owner can create a new reviewed export with `scripts/build_judge_wheel.py` and
-`scripts/stage_release.py` after building the frontend; never overwrite an existing bundle.
-The runtime wheels in the historical Sprint 07 export were resolved
-for **Windows x64 / Python 3.14**. Other Python/OS installations need compatible wheels; do not
-interpret an ABI3 package listing as a tested platform. Existing Python must be installed first.
-Network and Node are unnecessary for the exported folder's installation and server.
-
-From that folder in PowerShell:
+After building, verify the intact bundle read-only:
 
 ```powershell
-.\RUN_JUDGE.ps1 -CheckOnly
-.\RUN_JUDGE.ps1 -Port 8000
+.\scripts\check-judge-demo.ps1
 ```
 
-The launcher checks every exported artifact, creates a folder-local `.venv`, installs the included
-runtime wheels offline, checks the intact bundle, then serves numeric loopback. Checksums establish
-byte equality, not trusted authorship. It never seeds or repairs a store. A checksum, port or storage
-error is a real error: stop and preserve the files. Ctrl+C stops the server.
+Expect 51 nodes / 67 relationships and two inspected incidents. A missing, corrupt or locked
+bundle is an error; preserve it rather than reseeding or repairing. See [the manifest](../examples/judge-demo/MANIFEST.json)
+and [bundle inspection guide](../examples/judge-demo/README.md).
 
-Open `http://127.0.0.1:8000/?incident=INC-001`:
+## Two-minute route
 
-1. **0–15s:** read the synthetic/read-only/no-cause notices, two candidate pairs and four evidence.
-2. **15–30s:** click **Explore the verified path**. Inspect Payment → Auth ← DEP-001 → CHG-001.
-   “Verified” describes the stored path, not source truth. DEP-002 is a competing Payment candidate.
-3. **30–45s:** select DEPLOYMENT_BEFORE_ONSET in the inspector; inspect GRAPH_PATH and TEMPORAL.
-4. **45–60s:** choose CASE-INC → Observations: one conflict, two UNDETERMINED comparisons.
-   Evidence CASE-E-NAIVE stays Unknown. Gaps disclose missing context.
+1. **INC-001:** read synthetic/read-only notices, two candidate pairs and four evidence records.
+2. Click **Explore the verified path**: Payment → Auth ← DEP-001 → CHG-001. TARGETS is stored
+   deployment-to-service even though this path traverses it backwards. Compare competing DEP-002.
+3. Select **DEPLOYMENT_BEFORE_ONSET** and inspect GRAPH_PATH and TEMPORAL citations.
+   Precedence does not establish a cause.
+4. **CASE-INC → Observations:** inspect one conflict and two UNDETERMINED comparisons.
+   CASE-E-NAIVE remains unknown; **Gaps** exposes missing context.
+5. Return to **INC-001 → Explore investigation steps → Rehearse graph investigation**.
+   Expect four executed native tools, 23 queries, eight claims and eleven citations; both AI flags
+   are false. Step 2 exposes reverse TARGETS traversal. Refresh clears transient execution state.
 
-For the actual offline tool trace, return to INC-001 → **Explore investigation steps** →
-**Rehearse graph investigation**. Expect four executed native tools, 23 queries, eight admitted
-claims and eleven citations, both AI flags false. Step 2 exposes reverse TARGETS traversal.
-Refresh clears transient execution state. Optional AI is separate, opt-in and availability-dependent.
+Optional AI actions require an installed local model and explicit confirmation. Historical
+qwen3:8b source-service tool use succeeded; dependable current live-browser completion is
+unverified. Model availability/latency failures do not make the offline route an AI run.
 
-## Source checkout
+## Actual Relate proof
 
-Already installed prerequisites: Python 3.11+ and Node 24+; Windows/Python 3.14 was actually tested.
-Initial package installation requires internet access and is not included in the exploration minute.
-
-```powershell
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements-dev.lock
-.\.venv\Scripts\python.exe -m pip install -e .
-.\scripts\start-judge-demo.ps1 -Build
-```
-
-Subsequent launch: `scripts/start-judge-demo.ps1`. Other free port: `-Port 8001`.
-The source launcher uses PowerShell and npm; a non-editable wheel already contains the console.
-Portable installed-wheel command (one line):
-
-```text
-python -m traceweaver.judge --bundle /path/to/intact/judge-demo --port 8000
-```
-
-## Why Relate matters
-
-Relate is the actual **embedded, single-file persistent `.rl`** data engine, not an HTTP graph
-service. Incident nodes AFFECTS Service; Service DEPENDS_ON Service; Deployment TARGETS Service
-and INCLUDES_CHANGE Change; evidence has incident/service provenance relationships. Matching stored
-direction makes candidate context and typed citations reproducible without treating connection as cause.
-
-The read-only repository uses parameterized, bounded Cypher. A real INC-001 path is:
+This parameterized Cypher matches the starting path in the intact judge store:
 
 ```cypher
 MATCH (i:Incident {id: $incident_id})-[:AFFECTS]->(s:Service)
@@ -96,10 +61,14 @@ MATCH (d)-[:INCLUDES_CHANGE]->(c:Change)
 RETURN i.id, s.id, a.id, d.id, c.id LIMIT 10
 ```
 
-Bind `incident_id` to `INC-001` in the project GraphStore, read-only; run it only against the intact
-synthetic copy. It returns INC-001 / SVC-PAYMENT / SVC-AUTH / DEP-001 / CHG-001. The UI reproduces
-the path via the starting action and exact direction list. There is no arbitrary-query HTTP endpoint.
+Bind incident_id to INC-001 through the read-only GraphStore. It returns INC-001 / SVC-PAYMENT /
+SVC-AUTH / DEP-001 / CHG-001. The UI shows the same stored direction; there is no arbitrary-query
+HTTP endpoint. [Architecture](ARCHITECTURE.md) and [agent contract](AGENT_TOOL_CONTRACT.md) describe
+native query execution and proof admission.
 
-Representative paths and returned context are partial. TRACEABLE is not VERIFIED. The conclusion
-always remains NOT_ESTABLISHED and external verification NOT_PERFORMED. See the Sprint 07 report
-in the checkout for tests, platform limits, video and owner-only publication decisions.
+Representative paths and capped results are partial. TRACEABLE and matching digests do not
+authenticate source truth. Causal conclusion remains NOT_ESTABLISHED; external verification
+remains NOT_PERFORMED. The API is unauthenticated and must stay on numeric loopback.
+
+For an independently installed wheel or compatible offline export, use [packaging](PACKAGING.md).
+No prebuilt export, models or video are included in the source clone.

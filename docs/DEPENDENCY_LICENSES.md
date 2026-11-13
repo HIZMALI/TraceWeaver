@@ -23,14 +23,12 @@ built wheel at `/assets/third-party-licenses.txt`. Regenerate after `npm ci` if 
 Build/test tooling (Vite, TypeScript, Vitest, ESLint, Playwright, axe and testing-library) is
 project-scoped development tooling, not a runtime service. Chromium test binaries are ignored,
 not redistributed with the application. Python dependencies retain their own installed notices;
-the TraceWeaver wheel does not bundle their binaries. The repository had no project LICENSE at
-baseline; a public release should have the owner select the project's license. No license was
-silently assigned to the user's existing work.
+the TraceWeaver wheel does not bundle their binaries.
 
-## Authorized public release
+## Project license and distribution boundaries
 
-The owner has now explicitly selected Apache-2.0 for eligible original TraceWeaver material.
-See the canonical root LICENSE and project NOTICE. This supersedes the earlier pending decision;
+Eligible original TraceWeaver material is licensed under [Apache-2.0](../LICENSE).
+See [NOTICE](../NOTICE) for project attribution;
 third-party code, trademarks, models and separately produced footage/narration retain their own terms.
 The wheel builder verifies both license files and its SPDX License-Expression. No dependency
 binary is embedded in the project wheel; frontend production notices remain bundled with its assets.
@@ -47,4 +45,4 @@ screenshots are project-authored synthetic UI, with licensed Lucide icons covere
 notices. Existing FFmpeg was used as a local recording tool and is not redistributed. Optional
 Qwen/Ollama weights and Kokoro TTS assets are absent from Git. The local final narration uses
 Kokoro af_heart (Apache-2.0 model declaration, MIT integration); dependency/model notices were
-preserved with that separate production kit. No narrated video or audio is published in this task.
+preserved with that separate production kit. Narrated video and audio are not distributed here.

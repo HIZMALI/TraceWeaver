@@ -48,10 +48,14 @@ are retained. Reproduce from repository root using project Python and **new** ou
 .\.venv\Scripts\python.exe evaluation/graph-vs-flat/run_study.py --output .verification/overnight/retrieval-new.json --markdown .verification/overnight/retrieval-new.md
 ```
 
-See ERRATA.md: one frozen question (R13) has an independently identified cap-order assumption
+See [ERRATA.md](ERRATA.md): one frozen question (R13) has an independently identified cap-order assumption
 error. It is neither rewritten nor silently counted as a product defect. Thirteen valid questions
 remain. Raw final counts including that invalid expectation are native 13/14 and lexical 2/14;
 do not advertise those as general accuracy. Full ID sets, precision/recall, native edge matches,
 first/warm timing summaries and null denominators are in the actual result JSON. Flat retrieval is
 much faster on this small in-memory corpus; native retrieval enforces the declared relational
 semantics. The baseline was not retuned after seeing results and no UI superiority panel was added.
+
+Preserved artifacts: [first report](RESULTS.md), [first raw output](results.json),
+[selector 1.1 report](RESULTS_SELECTOR_V1.1.md), [selector 1.1 raw output](results-selector-v1.1.json),
+[frozen questions](questions.json) and [runner](run_study.py). Read the erratum alongside either report.

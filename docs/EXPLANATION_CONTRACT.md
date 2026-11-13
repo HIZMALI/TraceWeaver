@@ -1,9 +1,9 @@
 # Explanation contract 1.0
 
 Implemented locally on real Relate 1.0.0. This adds a separate strict response; legacy context,
-Investigation, ingestion, fixture and source-integrity contracts are unchanged. Runtime results,
-including genuine local-model evidence, are recorded in the Sprint 03 report. Remote platforms
-remain unverified until actually run.
+Investigation, ingestion, fixture and source-integrity contracts are unchanged. Native tests run
+on Windows/Ubuntu Python 3.11 in [CI](https://github.com/HIZMALI/TraceWeaver/actions/workflows/ci.yml).
+Controlled provider tests are separate from live-model evidence; the optional runtime is experimental.
 
 ## Entry points
 

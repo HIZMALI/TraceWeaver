@@ -4,6 +4,10 @@ Implemented safeguards are tested locally on real Relate. Provider protocol fixt
 explicit controlled transports; genuine local-model evidence is reported separately. These
 are local development safeguards, not a complete production security boundary or source audit.
 
+The protocol below describes opaque claim selection. The separate experimental
+[agent orchestrator](AGENT_TOOL_CONTRACT.md) adds five allowlisted read-only tools with opaque
+subjects and stricter per-round budgets, while retaining the same final semantic firewall.
+
 ## Trust boundaries
 
 1. Existing bounded parameterized Cypher produces one graph-backed Investigation. No source text
@@ -73,8 +77,9 @@ stdlib HTTP header line/count bounds also apply. No retries or streaming partial
 Connection refusal/connect timeout is MODEL_UNAVAILABLE; read timeout/invalid response is
 MODEL_OUTPUT_REJECTED. Prompts and raw responses are never logged or persisted.
 
-HTTP GET explanation cannot enable Ollama. Inference requires explicit CLI --mode ollama and
---model. No automatic deterministic fallback, model download, memory store or graph mutation.
+HTTP GET explanation cannot enable Ollama. Claim selection requires explicit CLI --mode ollama
+and --model, or a confirmed local console POST described in the [dashboard contract](DASHBOARD_CONTRACT.md).
+No automatic deterministic fallback, model download, memory store or graph mutation.
 An accepted provider response labels ai_generated_selection=true; it does not label the factual
 renderer as model prose. Controlled pytest transports do not establish a live model run.
 

@@ -104,6 +104,8 @@ Maximum investigation query count was six; the largest returned observed-service
 Seed writes and the independent edge-validation query are not included in that six-query count.
 
 Row caps do not bound graph query cost, total persistent store size, or native working RAM.
-High-degree graphs require future profiling/admission work. Python 3.11/Ubuntu and remote CI are
-UNVERIFIED until actually executed. Future independent cases, ingestion evaluation, and agent
-claim/citation evaluations are PLANNED; no external benchmark or paid model was used.
+High-degree graphs require future profiling/admission work. Windows/Ubuntu Python 3.11 native
+regressions have run in hosted CI; consult the exact commit's Actions results for coverage.
+Separate 19-case explanation and 35-case agent suites are documented in the
+[evaluation guide](../evaluation/README.md). Independent real-incident cases and broader ingestion
+evaluation remain future work; no external benchmark or paid model was used.

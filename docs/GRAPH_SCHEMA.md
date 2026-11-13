@@ -1,4 +1,4 @@
-# Graph schema — Sprints 00 and 01
+# Graph schema
 
 All fixture entities are **synthetic demo data** with `demo: true`,
 `dataset_id: "traceweaver-sprint00-demo-v1"`, and `environment: "demo"`.
@@ -39,7 +39,7 @@ and `MERGE`. The engine does not enforce these domain cardinalities for arbitrar
 | RAISED_FOR | Alert → Incident | Each seeded alert has one incident; incidents have 0..N alerts | Preserves the signal that raised investigation attention |
 
 The observation model can support a shared evidence record or multi-service deployment.
-Sprint 00 does not add `ROOT_CAUSE` or `CAUSED_BY`. A path is context, not proof of cause.
+The schema has no `ROOT_CAUSE` or `CAUSED_BY` relationship. A path is context, not proof of cause.
 
 ## Fixture topology
 
@@ -149,7 +149,7 @@ ORDER BY e.timestamp, e.id, s.id LIMIT $limit
 Graph context uses up to three dependency hops and 100 rows per list. It includes multiple
 deployment candidates and makes no temporal filtering or causal ranking claim.
 
-## Sprint 01 additions and versioning
+## Investigation metadata and fixture versioning
 
 No baseline nodes, edges, constraints, or fixture properties were changed. `schema_version`
 defaults to 1 for the original strict fixture. The separate `sprint01_cases.json` opts into
@@ -196,5 +196,5 @@ leak through a shared service. All ID lists and caps are parameters.
 For comparison, HEALTHY/FAILED in overlapping same-context windows is CONFLICTING_OBSERVATIONS.
 DEGRADED versus another state is UNDETERMINED; identical states produce no conflict record.
 Missing signal fields produce not-evaluable warnings. There is no narrative interpretation,
-source-truth verdict, causal relationship, or migration in Sprint 01. See
+source-truth verdict, causal relationship, or automatic migration. See
 [the complete investigation contract](INVESTIGATION_CONTRACT.md).

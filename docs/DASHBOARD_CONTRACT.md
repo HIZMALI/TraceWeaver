@@ -57,5 +57,6 @@ no automatic fallback. No model prose/prompt/raw response is exposed or stored. 
 retains the deterministic view and checks selection scope before highlighting. Client cancellation
 only cancels waiting; server/daemon work may continue to its deadline and retains the action lock.
 
-Two pre-existing OpenAPI method-set assertions were extended solely for these exact two POST
-routes; all previous routes still assert GET only. No other pre-existing test expectations changed.
+The separate agent rehearsal/investigation POST actions follow the
+[agent tool contract](AGENT_TOOL_CONTRACT.md). Existing GET routes retain deterministic behavior;
+no query argument enables inference.

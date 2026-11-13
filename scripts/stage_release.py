@@ -40,13 +40,35 @@ def main():
     shutil.copytree(root / "examples/judge-demo", output / "judge-demo")
     for source, name in [
         ("docs/JUDGE_QUICK_START.md", "QUICK_START.md"),
-        ("docs/SPRINT07_PUBLIC_READINESS.md", "PUBLIC_READINESS.md"),
+        ("docs/PACKAGING.md", "PUBLIC_READINESS.md"),
         ("docs/DEPENDENCY_LICENSES.md", "DEPENDENCY_LICENSES.md"),
+        ("LICENSE", "LICENSE"),
+        ("NOTICE", "NOTICE"),
         ("web/public/assets/third-party-licenses.txt", "third-party-licenses.txt"),
         ("requirements-dev.lock", "requirements-dev.lock"),
         ("scripts/run_release.ps1", "RUN_JUDGE.ps1"),
     ]:
         shutil.copyfile(root / source, output / name)
+    # Retarget source-document links for the standalone export without changing source guides.
+    links = {
+        "../README.md#quick-start": "https://github.com/HIZMALI/TraceWeaver#quick-start",
+        "../examples/judge-demo/MANIFEST.json": "judge-demo/MANIFEST.json",
+        "../examples/judge-demo/README.md": "judge-demo/README.md",
+        "ARCHITECTURE.md": "https://github.com/HIZMALI/TraceWeaver/blob/main/docs/ARCHITECTURE.md",
+        "AGENT_TOOL_CONTRACT.md": (
+            "https://github.com/HIZMALI/TraceWeaver/blob/main/docs/AGENT_TOOL_CONTRACT.md"
+        ),
+        "PACKAGING.md": "PUBLIC_READINESS.md",
+        "../LICENSE": "LICENSE",
+        "../NOTICE": "NOTICE",
+        "../web/public/assets/third-party-licenses.txt": "third-party-licenses.txt",
+    }
+    for name in ("QUICK_START.md", "DEPENDENCY_LICENSES.md"):
+        path = output / name
+        text = path.read_text(encoding="utf8")
+        for target, replacement in links.items():
+            text = text.replace("](" + target + ")", "](" + replacement + ")")
+        path.write_text(text, encoding="utf8", newline="\n")
     files = {
         p.relative_to(output).as_posix(): digest(p)
         for p in sorted(output.rglob("*"))
@@ -59,7 +81,7 @@ def main():
         "platform": platform.system(),
         "machine": platform.machine(),
         "python": platform.python_version(),
-        "license_decision": "OWNER_PENDING",
+        "license_decision": "Apache-2.0",
         "publication": "NOT_PERFORMED",
         "files": files,
     }

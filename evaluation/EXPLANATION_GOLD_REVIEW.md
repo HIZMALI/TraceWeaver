@@ -15,6 +15,7 @@ Only that X19 status label was corrected to EXPLAINED. No citation IDs, graph fa
 assertion, source contract or production logic was removed or weakened to conceal the mismatch.
 The first implementation-run gold digest was
 636930125e11808f77ad1f47d2685eab64ff1147c6dae28af8892af70e41d710.
-The reviewed gold is frozen for regression/evaluation, with its final digest in the sprint report.
+The [reviewed gold](explanation_cases.json) is frozen for regression/evaluation with SHA-256
+`e716b63860712d9aaef23ac2b8a61b2bb77c225ce0359d8a36749cd65d2224cb`.
 The test suite deliberately corrupts a separate copied gold and requires a failing evaluation.
 This disclosed label correction is not independent external adjudication or real-world accuracy.

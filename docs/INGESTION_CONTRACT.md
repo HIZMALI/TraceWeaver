@@ -1,7 +1,7 @@
 # Local ingestion contract 1.0
 
-Implemented and verified locally on Windows x64 / Python 3.14 / relate-db 1.0.0.
-Remote CI and Python 3.11/Ubuntu execution remain unverified. This is offline local tooling,
+Implemented with relate-db 1.0.0; native tests ran locally on Windows/Python 3.14 and in hosted
+Windows/Ubuntu Python 3.11 CI. This is offline local tooling,
 not an HTTP ingestion API, production connector, or source-authentication service.
 
 ## Entry points
