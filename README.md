@@ -19,7 +19,20 @@ causation remains NOT_ESTABLISHED. Local Ollama and AI controls are disabled in 
 Render Free sleeps after 15 idle minutes; the first request can take about a minute to wake it.
 See [public deployment and security limits](docs/PUBLIC_DEMO.md).
 
-## Why Relate
+## How it uses Relate
+
+**Mode:** Single file (persistent `.rl` store).
+
+**Why this mode:** We chose single-file persistence because it makes the complete investigation
+graph portable, reproducible, and easy to inspect. Unlike in-memory storage, the graph survives
+application restarts. Unlike directory-based storage, the dataset can be shared as one versioned
+file with a verifiable manifest. Judges can clone the repository and immediately query the same
+graph without deploying a separate database server.
+
+**What the graph models:** Incidents, services, dependencies, deployments, configuration changes,
+evidence, and alerts connected through six node labels and seven directed relationship types.
+
+**Where the data lives:** `examples/judge-demo/traceweaver-demo.rl`
 
 **Embedded Relate 1.0.0 is the actual data engine.** Parameterized Cypher traverses a persistent,
 single-file `.rl` graph at request time. Six node labels and seven directed relationship types
