@@ -7,17 +7,26 @@ Initial main was 8702efa4061525f3f8e37faa6aa90aedb5187b5c, clean. Reproduced bas
 one native tool followed by AGENT_FINISH_SCHEMA in Sprint 06; they contain no field-level error
 metadata or raw transcript. They cannot establish which field/JSON shape failed.
 
-One initial fixed GET to `http://127.0.0.1:11434/api/version` on 2026-11-13 at
+The first fixed GET to `http://127.0.0.1:11434/api/version` on 2026-11-13 at
 12:41:24.708116 UTC timed out after 2016.04ms. No Ollama process or listening local 11434 socket
-was observed by the read-only Windows checks. No second probe, tags/show request, inference,
-daemon start/restart/configuration change, model pull or installation followed. Current version,
-installed model and capabilities are UNKNOWN. Historical 0.40.16/qwen3 tags are not current
-availability evidence. B6 is BLOCKED_DEPENDENCY / L0; no live recovery trial was attempted.
+was observed by the read-only Windows checks. No retry loop, service change, tags/show or inference
+followed that initial failed audit. Current version/model/capabilities were initially UNKNOWN and
+B6 was marked BLOCKED_DEPENDENCY / L0.
 
-If an existing installation is available, the owner may open the Ollama application or manually
-run its already-installed `ollama serve` command in their own terminal. This session did neither
-and does not assert an installed CLI exists. After the owner restores reachability, run a fresh
-bounded probe; only then authorize/run one observed trial and at most two issue-driven follow-ups.
+After B5, an explicit UI capabilities action used while preparing a truthful blocked-state capture
+unexpectedly returned qwen3:8b and openweft-qwen3:8b. The capture assertion failed rather than
+saving a false unavailable screenshot. On that concrete external-state change, B1 was reopened:
+one additional bounded version request at 12:58:42.541533 UTC returned **0.40.16 in 4.364ms**.
+There were two explicit version checks total, no version polling. Exact installed-model eligibility
+was rechecked by the existing /api/tags guard for each permitted live action. No /api/show request
+was necessary. No daemon, global environment, service, model or system installation was changed.
+
+B6 then ran the initial explicit trial and one issue-driven follow-up. Trial 1 reached L2; trial 2
+reached genuine L3 (details below). Earlier outage evidence is retained, not relabeled as schema
+failure or erased. Availability remains an observed runtime condition, not a reliability promise.
+If the existing service becomes unavailable again, stop the live track. The owner may open their
+existing Ollama application or manually run their already-installed `ollama serve`; this session
+never does so and does not assert an installed CLI exists on PATH.
 
 ## Protocol facts and discriminated hypotheses
 
@@ -26,7 +35,7 @@ tools, format and thinking controls. [Tool calling](https://docs.ollama.com/capa
 shows assistant native tool_calls followed by a tool role/tool_name result.
 [Structured outputs](https://docs.ollama.com/capabilities/structured-outputs) recommends a
 Pydantic-generated format schema, validating message.content, and grounding the schema in the
-prompt. These documents do not prove how an unreachable particular daemon/model behaved.
+prompt. These documents do not prove how the prior failed daemon/model interaction behaved.
 
 | Hypothesis | Evidence | Conclusion |
 | --- | --- | --- |
@@ -37,11 +46,11 @@ prompt. These documents do not prove how an unreachable particular daemon/model 
 | Empty/malformed JSON, wrong root, null, missing/extra/wrong fields, duplicate/excessive IDs | Each can be structurally distinguished by new controlled tests and safe diagnostics | Plausible prior shapes, none identified as the historical live root cause |
 | Truncation/stop reason/token limit | Existing envelope rejects non-stop completion; diagnostic captures allowlisted stop reason and bounded counts | No historical token/stop data; no timeout/token-budget increase justified |
 | Known but unsupported/unknown valid-format ID | Existing semantic checks reject with distinct UNKNOWN_CLAIM_ID / CLAIM_NOT_RETRIEVED | Different gate from structural schema rejection; format-pattern errors can still be schema failures |
-| Provider refuses connection | Independently measured timeout at initial connect stage | Current dependency blocker, not schema failure |
+| Provider unreachable | Independently measured initial timeout; later explicit capability/version evidence showed a transition | Separate intermittent dependency state, never schema failure |
 
 **Historical AGENT_FINISH_SCHEMA root cause: UNRESOLVED / NOT REPRODUCED LIVE.** No raw model
 output was recovered, logged or invented. No claim is made that schema-in-prompt grounding fixes
-that historical failure. The safe new observability makes a future bounded trial discriminating.
+that historical failure. The new bounded live trials admitted valid structured finals; they do not reconstruct the old invalid field. No historical raw transcript is available.
 
 ## Independently reproduced defects and minimal corrections
 
@@ -90,3 +99,32 @@ CONTROLLED, not live), `offer-boundary-comparison.json`, baseline hashes and act
 The controlled null selected_claim_ids record exposes safe list_type/missing/extra-field paths;
 it is not described as the previous live response. All raw provider/prompt/source text remains
 absent from persistent artifacts and public results.
+
+## Genuine bounded recovery observations
+
+Trial 1 (actual qwen3:8b, daemon observed 0.40.16): trace_deployment, 10 native queries total,
+3 chats, 8755.763ms; 3 non-caution / 4 total admitted claims and 5 citations. Final response was
+280 UTF-8 bytes, JSON OBJECT, strict object parse accepted, zero unknown fields, selected_count=3,
+Pydantic shape valid and semantic support ADMITTED. Both AI flags true. Level **L2**: only one
+native tool, so this was not called multi-step success. Source remained partial, no cause/truth.
+
+The measured L3 shortfall was early tool-phase stopping after one native tool. A small soft task
+instruction now explicitly requests at least two different **model-chosen** available tools and
+returns the actual distinct-executed count in opaque tool metadata. It does not select a tool,
+force a native call, fabricate a trace, repair a final or reject otherwise valid single-tool
+results as if they had two steps. A new controlled regression verifies precisely that distinction.
+147 focused tests passed before the next real run.
+
+Trial 2: actual model chose get_incident_scope, then separately trace_deployment; 13 native queries
+(7 initial snapshot + 3 scope + 3 deployment), 4 chats, 15435.171ms. Initial valid parallel batch
+was fully checked/constrained to its first call; the unexecuted proposal was not counted. The model
+selected the second actual tool in the next native response. Final response: 314 bytes, JSON OBJECT,
+strict parse accepted, four allowlisted fields, zero unknown fields, selected_count=4 and semantic
+ADMITTED. Result: **L3**, 4 non-caution / 5 total claims / 6 citations, both AI flags true, no rejection.
+Three stored directed edge tuples independently queried again; judge bytes unchanged. Warnings
+PARALLEL_PROPOSALS_CONSTRAINED and READ_PHASE_TEXT_NOT_USED remain visible, not hidden.
+
+One final bounded action is reserved for the independently installed-wheel browser route. Its
+separate actual result must be recorded; CLI L3 is not automatically browser L3. No fourth live
+trial is allowed. Public safe evidence is `reports/sprint06b_live_agent_evidence.json`; complete
+structural metadata remains ignored, with no provider prose, thinking or raw prompt persistence.

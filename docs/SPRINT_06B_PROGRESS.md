@@ -11,9 +11,9 @@ contracts. Never modify protected historical documents/reports/gold/screenshots 
 | B2 | PASS controlled; live cause unresolved | Safe opt-in phase/shape diagnostics; official docs read; historical aggregate cannot determine actual old field failure |
 | B3 | PASS independent hardening; live repair unverified | Real caps-store offered-set mismatch closed; invalid Unicode safely rejected; explicit final schema grounded, no validator/budget relaxation |
 | B4 | PASS | 566 full pytest in 65.77s; 518 retained + 48 new controlled/native cases; Ruff clean, no old tests changed |
-| B5 | PENDING | Native offline CLI/intents and frozen 35/20/19 evaluations to new ignored outputs |
-| B6 | PENDING | Only if B1 permits: one actual initial trial, at most two justified follow-ups |
-| B7 | PENDING | Preserve UI unless an accurate state distinction needs correction; new captures only |
+| B5 | PASS | Judge native CLI TRACE 23 queries/8 claims/11 citations; RECONCILE 27/9/15; native edges independently audited; isolated parameterized reads; evaluations 35/20/19 PASS |
+| B6 | PASS / L3 observed | After externally observed availability transition: genuine qwen3 scope then deployment, 13 native queries, 4 non-caution claims, 6 citations; no rejection |
+| B7 | PASS unchanged UI; capture deferred | Existing actual state/flags/proof UI retained; no frontend changes; final genuine installed-wheel capture planned as last bounded live verification |
 | B8 | PENDING | Complete regression, protected audit, fresh external Node-free wheel/browser |
 | B9 | PENDING | Findings/report and observed local commits, no push/remote/license/service changes |
 
@@ -42,3 +42,29 @@ all negative controls. Full 566 tests passed in 65.77s; no baseline test or gold
 One initial new test captured mutable request history by reference; corrected its observation
 helper to deep-snapshot payloads at send time, then reran successfully. No runtime transcript was
 persisted. Next B5: native offline proof/frozen evaluations; then record B6 blocked and test B7/B8.
+
+B5 completed: original judge bytes/manifest unchanged. Frozen 35 agent, 20 graph and 19
+explanation evaluations all passed to new ignored B5 output names. Existing offline proof remains
+fully useful. B6 explicitly blocked per B1; 0 live trials, no daemon/model/service changes.
+Latest verified implementation commit: b246c45. B7 preserves existing UI; capture honest current
+capability state only, then B8 full regression/independent packaging.
+
+Availability transition: a genuine explicit UI capabilities action unexpectedly returned the two
+installed Qwen tags while preparing an honest blocked-state capture. The expected-unavailable
+capture assertion failed; no false blocked screenshot was saved. One bounded version check then
+returned actual 0.40.16 in 4.364ms (second explicit version request total). This was an observed
+external-state change, not service startup, polling or an automated model retry. Initial TIMEOUT
+remains recorded. B1 was reopened on that new evidence before permitting B6.
+Live trial 1: genuine qwen3 trace_deployment, valid final schema/admission; L2, 3 non-caution /
+4 total claims, 5 citations, 10 native queries, 3 chats, 8755.763ms. Historical schema error did
+not recur; its exact past field failure remains unknown. Measured issue: model stopped after one
+tool, below requested multi-step target. Added an explicit soft request for at least two different
+model-chosen tools and actual distinct-executed counter; never force a server-selected tool or
+fabricate a second step. Existing one-tool controlled cases still remain valid and honest.
+147 focused agent cases passed in 17.23s. Live trial 2: L3, genuine independently chosen native
+get_incident_scope then trace_deployment; 13 queries / 4 chats; 4 non-caution / 5 total admitted
+claims / 6 citations; 15435.171ms. Initial valid parallel proposals constrained to first; model
+then separately selected/executed second tool. Exact native edges independently rechecked; judge
+bytes unchanged. Both AI flags true, PARTIAL_CONTEXT remains appropriate source status, no cause.
+At most one further scoped live action remains, reserved for independently installed-wheel UI.
+Never run a fourth trial or continue after any new connection failure. B8 full final gates next.

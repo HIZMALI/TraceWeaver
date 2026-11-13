@@ -155,6 +155,21 @@ def test_tool_and_explicit_final_phases_never_mix_tools_format_and_actual_offer(
             assert {c.claim_id for c in report.validated_claims} <= actual
 
 
+def test_multistep_request_keeps_model_choice_and_reports_only_actual_executed_tool_count(
+    database, monkeypatch
+):
+    payloads = controlled(monkeypatch, count=1)
+    report = run_agent(database, request(database))
+    initial = json.loads(payloads[0]["messages"][1]["content"])
+    assert initial["requested_distinct_native_tools"] == 2
+    tool = json.loads(next(m["content"] for m in payloads[1]["messages"] if m["role"] == "tool"))
+    assert tool["distinct_tools_executed"] == 1 and tool["remaining_tool_calls"] == 3
+    assert len(report.tool_trace) == 1 and report.tool_trace[0].selected_by == "LOCAL_MODEL"
+    assert (
+        report.ai_generated_selection
+    )  # A valid single-tool result stays honest; no fake second step.
+
+
 @pytest.mark.parametrize(
     "value",
     [

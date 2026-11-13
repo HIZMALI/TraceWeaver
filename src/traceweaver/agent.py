@@ -333,6 +333,9 @@ def run_agent(database, action, *, diagnostics=None):
         " Inspect a deployment or evidence after scope before finishing the requested review. "
         "For multiple proposals the whole batch is validated but only its FIRST call is executed. "
         "Other proposed calls are NOT executed. Prefer exactly one call per round."
+        " This is a multi-step research task: independently choose at least two DIFFERENT "
+        "available native tools before finishing, when supported scope permits. "
+        "Choose the tools and opaque subjects yourself; never invent a second result."
     )
     messages = [
         {"role": "system", "content": system},
@@ -348,6 +351,7 @@ def run_agent(database, action, *, diagnostics=None):
                     ],
                     "retrieved_claims": [],
                     "source_truncated": context.source.results_may_be_truncated,
+                    "requested_distinct_native_tools": 2,
                 }
             ),
         },
@@ -410,6 +414,7 @@ def run_agent(database, action, *, diagnostics=None):
                                 "result": opaque_result(context, step),
                                 "retrieved_claims": available,
                                 "remaining_tool_calls": 4 - len(steps),
+                                "distinct_tools_executed": len({s.tool_name for s in steps}),
                                 "unexecuted_parallel_proposals": deferred,
                                 "investigation_fingerprint": context.source_fingerprint,
                             }
