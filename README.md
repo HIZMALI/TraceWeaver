@@ -1,5 +1,12 @@
 # TraceWeaver
 
+Sprint 07 local release candidate: start with the [60-second judge tour](docs/JUDGE_QUICK_START.md).
+Use **Explore the verified path** to inspect an actual stored Relate path; source truth and cause
+remain unestablished. The [115-second capture report](docs/VIDEO_CAPTURE_REPORT.md) describes the
+genuine offline MP4/WebM. See [current release/publication readiness](docs/SPRINT07_PUBLIC_READINESS.md)
+and the [Sprint 07 report](docs/SPRINT_07_RELEASE_REPORT.md). Historical sprint documents below are
+preserved as dated evidence. No public release, license decision or submission has occurred.
+
 ## Local investigation console
 
 ### Try in 2 minutes (after prerequisites)
