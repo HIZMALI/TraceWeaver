@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
 import { requestJSON } from "./api";
 import { agentOutcome } from "./agent-outcome";
+import { isPublicDemo } from "./deployment";
 import {
   intents,
   verifyAgent,
@@ -39,6 +40,7 @@ export function AgentPanel({
   onClaim: (c: Claim) => void;
   onActionStart?: () => void;
 }) {
+  const publicDemo = isPublicDemo();
   const [open, setOpen] = useState(false),
     [intent, setIntent] = useState<(typeof intents)[number]>(
       "TRACE_DEPENDENCY_PATH",
@@ -62,6 +64,7 @@ export function AgentPanel({
   async function action(kind: "models" | "offline" | "model") {
     if (
       inFlight.current ||
+      (publicDemo && kind !== "offline") ||
       (kind === "model" && (!confirmed || !models?.includes(model)))
     )
       return;
@@ -73,24 +76,40 @@ export function AgentPanel({
     setNotice("");
     setReport(null);
     try {
-      const raw = await requestJSON(
-        kind === "models"
-          ? "/console/models/capabilities"
-          : kind === "offline"
-            ? "/console/agent/rehearse"
-            : "/console/agent/investigate",
-        current.signal,
-        kind === "models"
-          ? { action: "LIST_INSTALLED_MODELS" }
-          : {
-              incident_id: bundle.investigation.incident_id,
-              options: bundle.investigation.options,
-              source_fingerprint: bundle.source_fingerprint,
-              intent,
-              confirmed: true,
-              ...(kind === "model" ? { model_id: model } : {}),
-            },
-      );
+      const raw = publicDemo
+        ? await requestJSON(
+            `/public/rehearsal/${encodeURIComponent(bundle.investigation.incident_id)}?${new URLSearchParams(
+              {
+                ...Object.fromEntries(
+                  Object.entries(bundle.investigation.options).map(([k, v]) => [
+                    k,
+                    String(v),
+                  ]),
+                ),
+                source_fingerprint: bundle.source_fingerprint,
+                intent,
+              },
+            )}`,
+            current.signal,
+          )
+        : await requestJSON(
+            kind === "models"
+              ? "/console/models/capabilities"
+              : kind === "offline"
+                ? "/console/agent/rehearse"
+                : "/console/agent/investigate",
+            current.signal,
+            kind === "models"
+              ? { action: "LIST_INSTALLED_MODELS" }
+              : {
+                  incident_id: bundle.investigation.incident_id,
+                  options: bundle.investigation.options,
+                  source_fingerprint: bundle.source_fingerprint,
+                  intent,
+                  confirmed: true,
+                  ...(kind === "model" ? { model_id: model } : {}),
+                },
+          );
       if (!mounted.current || current.signal.aborted) return;
       if (kind === "models") {
         const c = capabilities.parse(raw);
@@ -141,7 +160,10 @@ export function AgentPanel({
       aria-label="Investigation steps"
     >
       <h2>
-        Investigation steps <span className="badge">Experimental</span>
+        Investigation steps{" "}
+        <span className="badge">
+          {publicDemo ? "READ ONLY" : "Experimental"}
+        </span>
       </h2>
       <button aria-expanded={open} onClick={() => setOpen(!open)}>
         Explore investigation steps
@@ -177,11 +199,13 @@ export function AgentPanel({
             >
               Rehearse graph investigation
             </button>
-            <button disabled={busy} onClick={() => void action("models")}>
-              Agent investigation (local)
-            </button>
+            {!publicDemo && (
+              <button disabled={busy} onClick={() => void action("models")}>
+                Agent investigation (local)
+              </button>
+            )}
           </div>
-          {models && (
+          {!publicDemo && models && (
             <div className="local-controls">
               <label>
                 Agent installed model
@@ -220,7 +244,12 @@ export function AgentPanel({
           )}
           {busy && (
             <div role="status">
-              <p>Bounded local action running. Native tools are read-only.</p>
+              <p>
+                {publicDemo
+                  ? "Bounded graph read running."
+                  : "Bounded local action running."}{" "}
+                Native tools are read-only.
+              </p>
               <button
                 onClick={() => {
                   controller.current?.abort();
@@ -229,7 +258,7 @@ export function AgentPanel({
                   );
                 }}
               >
-                Cancel agent wait
+                {publicDemo ? "Cancel wait" : "Cancel agent wait"}
               </button>
             </div>
           )}

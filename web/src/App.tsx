@@ -20,6 +20,7 @@ import { edgeTypes } from "./contracts";
 import { GraphCanvas } from "./GraphCanvas";
 import { LocalSelection } from "./LocalSelection";
 import { AgentPanel } from "./AgentPanel";
+import { isPublicDemo } from "./deployment";
 import type { AgentStep } from "./agent-contracts";
 import { ProofFocus } from "./ProofFocus";
 import {
@@ -759,6 +760,7 @@ function DetailPanel({
 }
 
 export function App() {
+  const publicDemo = isPublicDemo();
   const [stepSelected, setStepSelected] = useState<{
     source: string;
     selection: string;
@@ -947,7 +949,8 @@ export function App() {
           </span>
         </a>
         <div className="workspace-label">
-          <span className="status-dot" /> LOCAL WORKSPACE{" "}
+          <span className="status-dot" />{" "}
+          {publicDemo ? "PUBLIC DEMO" : "LOCAL WORKSPACE"}{" "}
           <Badge>READ ONLY</Badge>
         </div>
         <div className="nav-section-title">
@@ -1044,7 +1047,8 @@ export function App() {
           </div>
           <div className="top-actions">
             <span className="connection">
-              <span className="status-dot" /> LOCAL · READ ONLY
+              <span className="status-dot" /> {publicDemo ? "PUBLIC" : "LOCAL"}{" "}
+              · READ ONLY
             </span>
             <button
               className="quiet-button"
@@ -1064,6 +1068,13 @@ export function App() {
             </button>
           </div>
         </header>
+        {publicDemo && (
+          <section aria-label="Public demo limits" className="notice">
+            Synthetic data · Read only · Deterministic explanations and native
+            tool rehearsal. Local AI actions are disabled in this hosted view.
+            Cause is not established.
+          </section>
+        )}
         {nav.warnings.length > 0 && (
           <div role="status" className="notice amber">
             {nav.warnings.join(" ")}
@@ -1394,41 +1405,45 @@ export function App() {
                   setTab={setTab}
                   onSelect={select}
                 />
-                <LocalSelection
-                  key={data.bundle.source_fingerprint}
-                  bundle={data.bundle}
-                  onClaim={(claim) => {
-                    setLocalSelected({
-                      source: data.bundle.source_fingerprint,
-                      claim,
-                    });
-                    select("claim:" + claim.claim_id);
-                  }}
-                />
-                <AgentPanel
-                  key={data.bundle.source_fingerprint}
-                  bundle={data.bundle}
-                  onActionStart={() => {
-                    setStepSelected(null);
-                    setLocalSelected(null);
-                  }}
-                  onStep={(step) => {
-                    const selection = "node:" + step.subject_ids[0];
-                    select(selection);
-                    setStepSelected({
-                      source: data.bundle.source_fingerprint,
-                      selection,
-                      step,
-                    });
-                  }}
-                  onClaim={(claim) => {
-                    setLocalSelected({
-                      source: data.bundle.source_fingerprint,
-                      claim,
-                    });
-                    select("claim:" + claim.claim_id);
-                  }}
-                />
+                {!publicDemo && (
+                  <LocalSelection
+                    key={data.bundle.source_fingerprint}
+                    bundle={data.bundle}
+                    onClaim={(claim) => {
+                      setLocalSelected({
+                        source: data.bundle.source_fingerprint,
+                        claim,
+                      });
+                      select("claim:" + claim.claim_id);
+                    }}
+                  />
+                )}
+                {
+                  <AgentPanel
+                    key={data.bundle.source_fingerprint}
+                    bundle={data.bundle}
+                    onActionStart={() => {
+                      setStepSelected(null);
+                      setLocalSelected(null);
+                    }}
+                    onStep={(step) => {
+                      const selection = "node:" + step.subject_ids[0];
+                      select(selection);
+                      setStepSelected({
+                        source: data.bundle.source_fingerprint,
+                        selection,
+                        step,
+                      });
+                    }}
+                    onClaim={(claim) => {
+                      setLocalSelected({
+                        source: data.bundle.source_fingerprint,
+                        claim,
+                      });
+                      select("claim:" + claim.claim_id);
+                    }}
+                  />
+                }
               </div>
               <Inspector
                 data={data}

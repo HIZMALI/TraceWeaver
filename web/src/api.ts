@@ -1,4 +1,5 @@
 import { incidentListSchema, verifyBundle, type Options } from "./contracts";
+import { isPublicDemo } from "./deployment";
 
 export class ApiError extends Error {
   constructor(
@@ -51,9 +52,15 @@ export async function requestJSON(
           422: "Invalid request options",
           503: "Graph database unavailable or incompatible",
           500: "Internal server error",
-          403: "Same-origin numeric loopback action required",
-          409: "Context changed; refresh before local selection",
-          429: "A local action is already running",
+          403: isPublicDemo()
+            ? "Public host or origin not permitted"
+            : "Same-origin numeric loopback action required",
+          409: isPublicDemo()
+            ? "Context changed. Refresh before trying again."
+            : "Context changed; refresh before local selection",
+          429: isPublicDemo()
+            ? "Public demo is busy. Try again shortly."
+            : "A local action is already running",
         } as Record<number, string>
       )[response.status] ?? "Request failed",
     );

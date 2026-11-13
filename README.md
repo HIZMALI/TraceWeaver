@@ -120,8 +120,8 @@ parameterized Cypher example, see [Judge quick start](docs/JUDGE_QUICK_START.md)
 
 ## Tests
 
-The verified release baseline has **574 Python**, **88 frontend** and **54 Chromium** tests:
-[observed release run](https://github.com/HIZMALI/TraceWeaver/actions/runs/43472027766).
+The public-demo release has **665 Python**, **96 frontend**, **54 local-console Chromium** and
+**11 public-demo Chromium** tests. The original 574 / 88 / 54 cases remain intact.
 Python runs on Windows/Ubuntu 3.11; frontend, native browser and independently installed wheel
 checks run on Ubuntu. Each push triggers a new run; check its SHA in
 [Actions](https://github.com/HIZMALI/TraceWeaver/actions/workflows/ci.yml).
@@ -139,6 +139,8 @@ npm --prefix web run build
 $env:PLAYWRIGHT_BROWSERS_PATH = Join-Path (Get-Location) '.verification/overnight/browsers'
 node web/node_modules/@playwright/test/cli.js install chromium
 npm --prefix web run test:e2e
+npm --prefix web run build:public
+npm --prefix web run test:public
 ```
 
 Tests use isolated real Relate stores; browser captures are written into owned verification
@@ -160,7 +162,9 @@ it establishes no universal retrieval advantage.
   remains **unverified**. Availability and latency can fail; offline results remain usable.
 - A first-load graph initialization flake was observed once during overlapping browser checks.
   Subsequent complete local and hosted runs passed; the timing cause was not established.
-- The HTTP console is a single-user, unauthenticated local tool. Bind only to numeric loopback.
+- The local HTTP console is a single-user tool. Bind it only to numeric loopback. Hosting uses a
+  [separate public application](docs/PUBLIC_DEMO.md) with an explicit read-only route allowlist,
+  immutable synthetic data, bounded reads and no local model endpoints.
 
 Technical references:
 

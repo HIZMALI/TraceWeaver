@@ -45,12 +45,20 @@ jobs:
       - run: npm --prefix web run lint
       - run: npm --prefix web test
       - run: npm --prefix web run build
+      - name: Build the separate public frontend
+        run: npm --prefix web run build:public
       - name: Install project-scoped browser
         env:
           PLAYWRIGHT_BROWSERS_PATH: .verification/overnight/browsers
         run: node web/node_modules/@playwright/test/cli.js install --with-deps chromium
       - name: Complete native Relate browser regression
         run: npm --prefix web run test:e2e
+      - name: Dedicated public native browser and security checks
+        run: npm --prefix web run test:public
       - run: .venv/bin/python scripts/build_judge_wheel.py --output .verification/ci/wheel
       - name: Independent wheel, native browser and failure-copy checks (no model)
         run: .venv/bin/python scripts/verify_release.py --wheel .verification/ci/wheel/traceweaver-0.1.0-py3-none-any.whl --output .verification/ci/install
+      - name: Build the deployment image from pinned Python and Node stages
+        run: docker build --tag traceweaver-public:ci .
+      - name: Independently installed public image, real browser and constrained resources
+        run: .venv/bin/python scripts/verify_public_container.py --image traceweaver-public:ci --output .verification/ci/public-container

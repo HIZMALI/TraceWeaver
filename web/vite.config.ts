@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   server: {
     host: "127.0.0.1",
     port: 5173,
@@ -12,9 +12,12 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: "../src/traceweaver/web_static",
+    outDir:
+      mode === "public"
+        ? "../src/traceweaver/public_static"
+        : "../src/traceweaver/web_static",
     emptyOutDir: true,
     sourcemap: false,
     chunkSizeWarningLimit: 650,
   },
-});
+}));

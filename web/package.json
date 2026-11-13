@@ -12,10 +12,12 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "tsc --noEmit && vite build",
+    "build:public": "tsc --noEmit && vite build --mode public",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "test": "vitest run",
-    "test:e2e": "node ../scripts/test_browser_sprint06.mjs"
+    "test:e2e": "node ../scripts/test_browser_sprint06.mjs",
+    "test:public": "node ../scripts/test_public_browser.mjs"
   },
   "dependencies": {
     "@xyflow/react": "12.12.1",

@@ -1,0 +1,24 @@
+# Default-deny context: never send user stores, local drafts, secrets, caches or audit logs.
+**
+!Dockerfile
+!.dockerignore
+!pyproject.toml
+!README.md
+!LICENSE
+!NOTICE
+!requirements-dev.lock
+!src/
+!src/traceweaver/
+!src/traceweaver/*.py
+!src/traceweaver/fixtures/
+!src/traceweaver/fixtures/*.json
+!web/
+!web/**
+web/node_modules/
+web/test-results/
+web/playwright-report/
+web/.env*
+!examples/
+!examples/judge-demo/
+!examples/judge-demo/traceweaver-demo.rl
+!examples/judge-demo/MANIFEST.json

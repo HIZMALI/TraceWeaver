@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: traceweaver-demo
+    runtime: docker
+    plan: free
+    region: oregon
+    repo: https://github.com/HIZMALI/TraceWeaver
+    branch: main
+    autoDeployTrigger: checksPass
+    numInstances: 1
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: "10000"
+      - key: TRACEWEAVER_PUBLIC_BUNDLE
+        value: /app/judge-demo

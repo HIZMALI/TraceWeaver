@@ -28,7 +28,7 @@ traceweaver-agent = "traceweaver.agent_cli:main"
 where = ["src"]
 
 [tool.setuptools.package-data]
-traceweaver = ["fixtures/*.json", "web_static/*.html", "web_static/assets/*"]
+traceweaver = ["fixtures/*.json", "web_static/*.html", "web_static/assets/*", "public_static/*.html", "public_static/assets/*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
