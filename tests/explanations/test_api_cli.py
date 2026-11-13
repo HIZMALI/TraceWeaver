@@ -153,7 +153,11 @@ def test_openapi_has_strict_report_and_only_get_routes(client):
         "content"
     ]["application/json"]["schema"] == {"$ref": "#/components/schemas/ExplanationReport"}
     assert schema["components"]["schemas"]["ExplanationReport"]["additionalProperties"] is False
-    assert all(set(route) == {"get"} for route in schema["paths"].values())
+    assert all(
+        set(route)
+        == ({"post"} if name in {"/console/models/capabilities", "/console/selection"} else {"get"})
+        for name, route in schema["paths"].items()
+    )
 
 
 @pytest.mark.parametrize(

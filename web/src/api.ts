@@ -29,12 +29,18 @@ export function boundedJSON(raw: string): unknown {
 export async function requestJSON(
   path: string,
   signal: AbortSignal,
+  body?: unknown,
 ): Promise<unknown> {
   const response = await fetch(path, {
     signal,
     credentials: "omit",
     redirect: "error",
-    headers: { Accept: "application/json" },
+    method: body === undefined ? "GET" : "POST",
+    body: body === undefined ? undefined : JSON.stringify(body),
+    headers: {
+      Accept: "application/json",
+      ...(body === undefined ? {} : { "Content-Type": "application/json" }),
+    },
   });
   if (!response.ok)
     throw new ApiError(
@@ -45,6 +51,9 @@ export async function requestJSON(
           422: "Invalid request options",
           503: "Graph database unavailable or incompatible",
           500: "Internal server error",
+          403: "Same-origin numeric loopback action required",
+          409: "Context changed; refresh before local selection",
+          429: "A local action is already running",
         } as Record<number, string>
       )[response.status] ?? "Request failed",
     );

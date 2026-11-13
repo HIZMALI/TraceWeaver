@@ -13,6 +13,7 @@ Phone viewport 390 × 844. Captures are synthetic and intentionally public.
 | [04-gaps-next-checks.png](04-gaps-next-checks.png) | Actual CASE-INC gaps and server-provided next checks |
 | [05-phone-records.png](05-phone-records.png) | Phone details view with actual INC-001 candidate records and persistent uncertainty |
 | [06-safe-unavailable.png](06-safe-unavailable.png) | Owned test server with a genuinely missing temporary store, generic error without private path |
+| [07-live-local-selection.png](07-live-local-selection.png) | Actual qwen3:8b UI invocation, seven accepted claims / seventeen citations, deterministic and local selection side by side |
 
 Regeneration deliberately replaces only these public captures. Store bytes and manifest are not changed.
 Selected-path focus can crop unselected context; fit-view and the accessible path list remain available.

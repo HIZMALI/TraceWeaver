@@ -334,7 +334,7 @@ export function allPaths(b: Bundle): Path[] {
 }
 export const pathKey = (p: Path) => canonical(p);
 
-export function validateScope(b: Bundle): void {
+export function validateScope(b: Bundle, deterministic = true): void {
   const i = b.investigation,
     e = b.explanation;
   if (
@@ -433,9 +433,10 @@ export function validateScope(b: Bundle): void {
     }),
   );
   if (
-    e.claims.at(-1)?.claim_type !== "NO_CAUSAL_VERDICT" ||
-    e.ai_generated_selection ||
-    e.mode_executed !== "DETERMINISTIC"
+    (e.mode_executed !== "NONE" &&
+      e.claims.at(-1)?.claim_type !== "NO_CAUSAL_VERDICT") ||
+    (deterministic &&
+      (e.ai_generated_selection || e.mode_executed !== "DETERMINISTIC"))
   )
     throw new Error("Unexpected deterministic report");
 }

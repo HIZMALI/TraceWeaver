@@ -72,3 +72,11 @@
   only bounded safe failure codes. Hashes and traceability never establish source truth.
 - Keep explanation gold explicit and reviewed, separate from Sprint 02 labels. Disclose any label
   correction with its independent rule/fixture basis; never generate expectations from outputs.
+
+## Overnight console selection exception
+
+- The explicitly authorized overnight mission adds dedicated local-only POST capability/selection
+  actions. Legacy HTTP GET explanation stays deterministic and no query parameter enables inference.
+- Require numeric loopback Host/exact Origin and port, bounded JSON, explicit confirmation/model,
+  current source fingerprint and one in-flight action. Keep the existing opaque-ID firewall and
+  close native readers before calling the fixed local Ollama service. Never pull a model.

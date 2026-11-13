@@ -5,6 +5,17 @@ Starting main: 0783201fb5d83c072fe215cf23135eb165a2213a. No user edits at start.
 
 ## Latest successful gate
 
+G5 PASS — 2026-11-13 01:09 UTC. Full pytest 410 passed in 52.25s, followed by 29 focused
+selection tests (two additional thread-close/no-GET-provider cases included). Frontend 55 passed,
+lint/type/build passed, actual Playwright 28 passed in 29.8s. Ruff/pip check clean. A genuine
+single qwen3:8b invocation through UI confirmation completed in 4250ms: OLLAMA, AI selection=true,
+PARTIAL_CONTEXT, 7 claims / 17 citations, no rejection. Source d05166378e55098b88a4c71e69095cc206e075031a3e46ce1a5643f70c1b5520.
+No model pull/install or raw provider storage. Actual installed tags include qwen3:8b and
+openweft-qwen3:8b; UI selects neither automatically. Screenshot 07 is genuine and visually reviewed.
+All protected bytes/counts unchanged. Tests distinguish controlled protocol cases from this live run.
+Initial regression failed the second old exact GET-method assertion; extended only the two
+authorized POST exceptions, preserving GET-only assertions for every legacy route. Rerun passed.
+
 G4 PASS — 2026-11-13 01:01 UTC. 28/28 actual Playwright scenarios passed in 29.2s;
 48 frontend cases, lint/type/build passed. Axe reports zero violations on the tested desktop
 state. Four viewport sizes and 720px equivalent 200% reflow have no page overflow. Actual
@@ -49,8 +60,8 @@ ignored .verification/overnight/baseline.json. Architecture decisions recorded b
 | G2 | PASS | 48 frontend cases, 29 native dashboard cases, real arrows/labels and browser smoke |
 | G3 | PASS | 383 total tests; strict new-console Host/origin, safe errors, native read-only snapshot |
 | G4 | PASS | 28 actual browser scenarios, zero axe violations, six real captures and responsive checks |
-| G5 | IN PROGRESS | Explicit secure local-only model action, genuine installed model if available |
-| G6 | PENDING | Clean npm/wheel install, static assets and one-command launch/check |
+| G5 | PASS | Strict local POST actions, 29 protocol/native cases, actual qwen3:8b UI inference |
+| G6 | IN PROGRESS | Clean npm/wheel install, static assets and one-command launch/check |
 | G7 | PENDING | Judge guide, fact check, draft and screenshot pack |
 | G8 | PENDING | Independent fair retrieval comparison after P0/P1 pass |
 | G9 | PENDING | Full regression, measurements, protected-file/staged audit, final report |
@@ -58,8 +69,8 @@ ignored .verification/overnight/baseline.json. Architecture decisions recorded b
 ## Resume instructions
 
 Read this ledger and OVERNIGHT_ARCHITECTURE_DECISIONS.md; inspect Git status before edits.
-Do not reset or overwrite existing work. Next action: G5 guarded optional local selection,
-then independent packaging/launch. Current app is source-built and served by FastAPI
+Do not reset or overwrite existing work. Next action: G6 independent packaging/launch,
+then G7 presentation pack and optional fair G8 study. Current app is source-built and served by FastAPI
 at one loopback origin. Rebuild web after frontend edits. Browser files live in ignored
 .verification/overnight/browsers; web/e2e/smoke.mjs configures that path before importing Playwright.
 All tests that write graph data must use new OS temporary stores. The existing judge artifact,
@@ -100,3 +111,5 @@ manifest, fixtures, saved examples and frozen reports/gold must remain byte-iden
 - G2 commit: d93625e. G3 adds local_console boundary, new native Host/privacy tests,
   safe request errors and developer console proxy adjustment. No old tests changed.
 - G3 commit: 6c55620. G4 adds real browser runner/scenarios, accessibility repairs and public captures.
+- G4 commit: 1044204. G5 adds console_selection, LocalSelection component, native/security and
+  component cases, guarded dedicated POSTs, explicit AGENTS exception and real-model helper.

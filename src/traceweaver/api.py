@@ -1,15 +1,26 @@
 """Minimal read-only HTTP surface over the actual Relate store."""
 
 import logging
+import threading
 from typing import Annotated
 
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.exception_handlers import request_validation_exception_handler
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from pydantic import BeforeValidator, ValidationError
+from starlette.concurrency import run_in_threadpool
 
 from traceweaver.config import Settings
+from traceweaver.console_selection import (
+    CapabilityRequest,
+    CapabilityResult,
+    SelectionRequest,
+    SelectionResult,
+    bounded_action,
+    installed_models,
+    select_local,
+)
 from traceweaver.dashboard import console_incidents, dashboard
 from traceweaver.dashboard_models import ConsoleIncidents, DashboardBundle
 from traceweaver.explanation import explain
@@ -35,6 +46,30 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         title="TraceWeaver", version="0.1.0", description="Read-only graph incident context"
     )
     application.add_middleware(LocalConsoleBoundary)
+    selection_lock = threading.Lock()
+
+    def single_action(function, *args):
+        if not selection_lock.acquire(blocking=False):
+            raise HTTPException(429, "A local action is already running")
+        try:
+            return function(*args)
+        finally:
+            selection_lock.release()
+
+    @application.post("/console/models/capabilities", response_model=CapabilityResult)
+    async def local_capabilities(request: Request):
+        await bounded_action(request, CapabilityRequest)
+        return await run_in_threadpool(single_action, installed_models)
+
+    @application.post("/console/selection", response_model=SelectionResult)
+    async def local_selection(request: Request):
+        action = await bounded_action(request, SelectionRequest)
+        try:
+            return await run_in_threadpool(single_action, select_local, config.database, action)
+        except IncidentNotFound:
+            raise HTTPException(404, "Incident not found") from None
+        except ToolError:
+            raise HTTPException(503, "Selection context is incompatible") from None
 
     @application.exception_handler(RequestValidationError)
     async def safe_request_validation(request, exc):

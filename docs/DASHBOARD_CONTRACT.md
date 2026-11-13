@@ -34,3 +34,26 @@ Legacy endpoints keep their compatibility surface; this is a local console, not 
 multi-user deployment. Bind Uvicorn to 127.0.0.1 without proxy-header trust.
 JSON responses are no-store; built index has CSP, nosniff and no-referrer headers.
 Vite is a developer-only same-machine proxy; production judge use has one FastAPI origin.
+
+## Explicit local POST actions
+
+`POST /console/models/capabilities` accepts only `{"action":"LIST_INSTALLED_MODELS"}`.
+Only a direct UI click sends it. It lists up to 32 eligible actual installed tags, never pulls.
+`POST /console/selection` requires incident_id, options, source_fingerprint, model_id and
+confirmed=true. No prompt, URL, tools, arbitrary provider host or additional fields are accepted.
+Both require exact application/json, at most 2048 bytes, shallow duplicate-free JSON and a
+two-second body deadline. Exact numeric loopback Host/port and Origin and local client are
+mandatory. No cookies, credentials, CORS or forwarding-header trust. One in-flight local action
+per application process; multiple server workers are unsupported for this single-user demo.
+Use the packaged single-origin launcher for UI selection; the Vite proxy does not rewrite Origin.
+
+Selection rereads the native graph and checks the exact source fingerprint before inference;
+changed context receives 409. Native connection closes before the established fixed
+127.0.0.1:11434 adapter (45-second total deadline). Actual tags are checked again by the adapter.
+Provider failures produce NONE / MODEL_UNAVAILABLE or MODEL_OUTPUT_REJECTED, empty accepted claims,
+no automatic fallback. No model prose/prompt/raw response is exposed or stored. The browser
+retains the deterministic view and checks selection scope before highlighting. Client cancellation
+only cancels waiting; server/daemon work may continue to its deadline and retains the action lock.
+
+Two pre-existing OpenAPI method-set assertions were extended solely for these exact two POST
+routes; all previous routes still assert GET only. No other pre-existing test expectations changed.

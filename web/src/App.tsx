@@ -18,6 +18,7 @@ import { ApiError, getBundle, getIncidents } from "./api";
 import type { Bundle, Claim, Incident, Options, Path, Time } from "./contracts";
 import { edgeTypes } from "./contracts";
 import { GraphCanvas } from "./GraphCanvas";
+import { LocalSelection } from "./LocalSelection";
 import {
   candidateKey,
   defaultFilters,
@@ -182,18 +183,20 @@ function Inspector({
   data,
   selection,
   onSelect,
+  localClaim,
 }: {
   data: Loaded;
   selection: string;
   onSelect: (s: string) => void;
+  localClaim?: Claim | null;
 }) {
   const { bundle: b, graph } = data;
   const i = b.investigation;
   const [kind, ...rest] = selection.split(":"),
     id = rest.join(":");
-  const claim = b.explanation.claims.find(
-    (c) => kind === "claim" && c.claim_id === id,
-  );
+  const claim =
+    localClaim ??
+    b.explanation.claims.find((c) => kind === "claim" && c.claim_id === id);
   const candidate = i.candidates.find(
     (c) =>
       kind === "candidate" &&
@@ -207,8 +210,12 @@ function Inspector({
   );
   const node = graph.nodes.find((n) => kind === "node" && n.id === id),
     edge = graph.edges.find((e) => kind === "edge" && e.id === id);
-  const paths = selectionPaths(b, selection),
-    exists = selectionExists(b, graph, selection);
+  const paths = localClaim
+      ? localClaim.citations.flatMap((c) =>
+          c.graph_path ? [c.graph_path] : [],
+        )
+      : selectionPaths(b, selection),
+    exists = !!localClaim || selectionExists(b, graph, selection);
   const linked = b.explanation.claims.filter((c) =>
     node
       ? c.referenced_entity_ids.includes(node.id) ||
@@ -418,7 +425,9 @@ function Inspector({
               key={c.claim_id}
               onClick={() => onSelect("claim:" + c.claim_id)}
             >
-              <span className="sr-only">Inspect claim {c.claim_type} {c.claim_id}. </span>
+              <span className="sr-only">
+                Inspect claim {c.claim_type} {c.claim_id}.{" "}
+              </span>
               <span className="claim-number">
                 {String(n + 1).padStart(2, "0")}
               </span>
@@ -724,6 +733,10 @@ function DetailPanel({
 }
 
 export function App() {
+  const [localSelected, setLocalSelected] = useState<{
+    source: string;
+    claim: Claim;
+  } | null>(null);
   const [nav, setNav] = useState<Navigation>(() =>
     parseNavigation(location.search),
   );
@@ -823,7 +836,17 @@ export function App() {
     () => (data ? filterGraph(data.graph, data.bundle, filters) : null),
     [data, filters],
   );
-  const paths = data ? selectionPaths(data.bundle, nav.selection) : [];
+  const localClaim =
+    data &&
+    localSelected?.source === data.bundle.source_fingerprint &&
+    nav.selection === "claim:" + localSelected.claim.claim_id
+      ? localSelected.claim
+      : null;
+  const paths = localClaim
+    ? localClaim.citations.flatMap((c) => (c.graph_path ? [c.graph_path] : []))
+    : data
+      ? selectionPaths(data.bundle, nav.selection)
+      : [];
   const i = data?.bundle.investigation,
     e = data?.bundle.explanation;
   const activeTab = (name: string) => setMobileView(name);
@@ -1328,11 +1351,23 @@ export function App() {
                   setTab={setTab}
                   onSelect={select}
                 />
+                <LocalSelection
+                  key={data.bundle.source_fingerprint}
+                  bundle={data.bundle}
+                  onClaim={(claim) => {
+                    setLocalSelected({
+                      source: data.bundle.source_fingerprint,
+                      claim,
+                    });
+                    select("claim:" + claim.claim_id);
+                  }}
+                />
               </div>
               <Inspector
                 data={data}
                 selection={nav.selection}
                 onSelect={select}
+                localClaim={localClaim}
               />
             </div>
             <footer className="page-footer">
