@@ -155,7 +155,17 @@ def test_openapi_has_strict_report_and_only_get_routes(client):
     assert schema["components"]["schemas"]["ExplanationReport"]["additionalProperties"] is False
     assert all(
         set(route)
-        == ({"post"} if name in {"/console/models/capabilities", "/console/selection"} else {"get"})
+        == (
+            {"post"}
+            if name
+            in {
+                "/console/models/capabilities",
+                "/console/selection",
+                "/console/agent/rehearse",
+                "/console/agent/investigate",
+            }
+            else {"get"}
+        )
         for name, route in schema["paths"].items()
     )
 

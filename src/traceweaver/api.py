@@ -11,6 +11,9 @@ from fastapi.responses import JSONResponse
 from pydantic import BeforeValidator, ValidationError
 from starlette.concurrency import run_in_threadpool
 
+from traceweaver.agent import run_agent
+from traceweaver.agent_models import AgentInvestigationReport, AgentRequest, AgentScopeRequest
+from traceweaver.agent_rehearsal import run_rehearsal
 from traceweaver.config import Settings
 from traceweaver.console_selection import (
     CapabilityRequest,
@@ -79,6 +82,33 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             raise HTTPException(404, "Incident not found") from None
         except ToolError:
             raise HTTPException(503, "Selection context is incompatible") from None
+
+    async def agent_action(request, schema, function):
+        action = await bounded_action(request, schema)
+        try:
+            return await run_in_threadpool(single_action, function, config.database, action)
+        except IncidentNotFound:
+            raise HTTPException(404, "Incident not found") from None
+        except ToolError as exc:
+            if exc.code == "STALE_SNAPSHOT":
+                raise HTTPException(409, "Source changed; refresh before investigation") from None
+            raise HTTPException(503, "Agent context is incompatible") from None
+
+    @application.post(
+        "/console/agent/rehearse",
+        response_model=AgentInvestigationReport,
+        openapi_extra=action_contract(AgentScopeRequest),
+    )
+    async def agent_rehearse(request: Request):
+        return await agent_action(request, AgentScopeRequest, run_rehearsal)
+
+    @application.post(
+        "/console/agent/investigate",
+        response_model=AgentInvestigationReport,
+        openapi_extra=action_contract(AgentRequest),
+    )
+    async def agent_investigate(request: Request):
+        return await agent_action(request, AgentRequest, run_agent)
 
     @application.exception_handler(RequestValidationError)
     async def safe_request_validation(request, exc):

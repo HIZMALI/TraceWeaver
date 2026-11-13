@@ -8,8 +8,8 @@ Starting main a8f4ac502c8bb4eaefce8d6e448a273aa133a73e. Original worktree clean.
 | G1 | PASS | Actual native first-screen proof, larger type/core viewport; 62 unit / 36 real browser cases |
 | G2 | PASS | Strict agent 1.0 models + five actual parameterized native tools; 452 pytest passed |
 | G3 | PARTIAL | Controller/protocol PASS: 479 pytest. Genuine qwen3 native trace verified; final ID proposal rejected |
-| G4 | IN PROGRESS | Same-tool deterministic offline rehearsal and CLI |
-| G5 | PENDING | Explicit local agent panel and step-to-proof selection |
+| G4 | PASS | 492 pytest, fixed native plans, repeatable offline CLI |
+| G5 | PASS | 511 pytest / 80 frontend / 49 native browser tests; explicit actions and proof focus |
 | G6 | PENDING | Readable real screenshots and new judge story |
 | G7 | PENDING | Independent frozen scenario gold, native/protocol runner and corruption control |
 | G8 | PENDING | Preserve historical study and rigorous limitations note |
@@ -60,3 +60,11 @@ validator. All four intents, canonical repeatability, stale-source rejection, ev
 and separate explicit CLI verified. Full pytest: 492 passed in 48.35s; Ruff clean.
 Resume: G0/G1/G2/G4 passed; G3 live final admission partial. Next: G5 UI/routes, frozen G7 suite,
 native browser captures, independent wheel and release artifacts. No user-store writes.
+
+G5 PASS: strict same-origin agent POSTs share the existing capability/selection in-flight lock.
+Initial UI remains GET-only; installed model and confirmation are explicit. Native step selection
+focuses authoritative paths/inspector. Full 511 pytest in 52.65s, 80 frontend, 49 native browser
+cases in 39.2s. Expanded-panel axe, keyboard, tablet, phone and reflow passed. Five new genuine
+screenshots captured and visually inspected; original screenshots/stores/gold unchanged.
+G7 expectations froze at 9c49bf7 before runner implementation/execution; normalize new suite
+bytes to repository LF before first run so the separate digest survives Git checkout. No labels changed.

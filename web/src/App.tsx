@@ -19,6 +19,8 @@ import type { Bundle, Claim, Incident, Options, Path, Time } from "./contracts";
 import { edgeTypes } from "./contracts";
 import { GraphCanvas } from "./GraphCanvas";
 import { LocalSelection } from "./LocalSelection";
+import { AgentPanel } from "./AgentPanel";
+import type { AgentStep } from "./agent-contracts";
 import { ProofFocus } from "./ProofFocus";
 import {
   candidateKey,
@@ -185,11 +187,13 @@ function Inspector({
   selection,
   onSelect,
   localClaim,
+  agentStep,
 }: {
   data: Loaded;
   selection: string;
   onSelect: (s: string) => void;
   localClaim?: Claim | null;
+  agentStep?: AgentStep | null;
 }) {
   const { bundle: b, graph } = data;
   const i = b.investigation;
@@ -211,12 +215,15 @@ function Inspector({
   );
   const node = graph.nodes.find((n) => kind === "node" && n.id === id),
     edge = graph.edges.find((e) => kind === "edge" && e.id === id);
-  const paths = localClaim
-      ? localClaim.citations.flatMap((c) =>
-          c.graph_path ? [c.graph_path] : [],
-        )
-      : selectionPaths(b, selection),
-    exists = !!localClaim || selectionExists(b, graph, selection);
+  const paths = agentStep
+      ? agentStep.result.graph_paths
+      : localClaim
+        ? localClaim.citations.flatMap((c) =>
+            c.graph_path ? [c.graph_path] : [],
+          )
+        : selectionPaths(b, selection),
+    exists =
+      !!agentStep || !!localClaim || selectionExists(b, graph, selection);
   const linked = b.explanation.claims.filter((c) =>
     node
       ? c.referenced_entity_ids.includes(node.id) ||
@@ -229,6 +236,24 @@ function Inspector({
   );
   return (
     <aside className="inspector card" aria-label="Proof inspector">
+      {agentStep && (
+        <section
+          className="agent-step-proof"
+          aria-label="Selected native tool step"
+        >
+          <h2>
+            Tool step {agentStep.step_number}: {agentStep.tool_name}
+          </h2>
+          <p>
+            {agentStep.subject_ids.join(" · ")} · {agentStep.result.status}
+          </p>
+          <p>
+            Actual stored edges below. Step selection is transient; no causal
+            conclusion.
+          </p>
+          <PathList paths={agentStep.result.graph_paths} onSelect={onSelect} />
+        </section>
+      )}
       <header className="panel-title">
         <h2 className="panel-heading">
           <ShieldCheck size={16} /> Proof inspector
@@ -734,6 +759,11 @@ function DetailPanel({
 }
 
 export function App() {
+  const [stepSelected, setStepSelected] = useState<{
+    source: string;
+    selection: string;
+    step: AgentStep;
+  } | null>(null);
   const [localSelected, setLocalSelected] = useState<{
     source: string;
     claim: Claim;
@@ -821,6 +851,7 @@ export function App() {
     setNav(next);
   }
   function select(s: string) {
+    setStepSelected(null);
     navigate({ ...nav, selection: s, warnings: [] });
     if (innerWidth < 900) setMobileView("inspector");
   }
@@ -843,11 +874,21 @@ export function App() {
     nav.selection === "claim:" + localSelected.claim.claim_id
       ? localSelected.claim
       : null;
-  const paths = localClaim
-    ? localClaim.citations.flatMap((c) => (c.graph_path ? [c.graph_path] : []))
-    : data
-      ? selectionPaths(data.bundle, nav.selection)
-      : [];
+  const agentStep =
+    data &&
+    stepSelected?.source === data.bundle.source_fingerprint &&
+    stepSelected.selection === nav.selection
+      ? stepSelected.step
+      : null;
+  const paths = agentStep
+    ? agentStep.result.graph_paths
+    : localClaim
+      ? localClaim.citations.flatMap((c) =>
+          c.graph_path ? [c.graph_path] : [],
+        )
+      : data
+        ? selectionPaths(data.bundle, nav.selection)
+        : [];
   const i = data?.bundle.investigation,
     e = data?.bundle.explanation;
   const activeTab = (name: string) => setMobileView(name);
@@ -1364,21 +1405,33 @@ export function App() {
                     select("claim:" + claim.claim_id);
                   }}
                 />
-                <details className="agent-intro card" id="investigation-steps">
-                  <summary>Agent investigation (local) · Experimental</summary>
-                  <p>
-                    Investigation steps are distinct from local claim selection.
-                    The default view is deterministic, offline and not
-                    AI-generated. Local AI requires explicit model choice and
-                    confirmation.
-                  </p>
-                </details>
+                <AgentPanel
+                  key={data.bundle.source_fingerprint}
+                  bundle={data.bundle}
+                  onStep={(step) => {
+                    const selection = "node:" + step.subject_ids[0];
+                    select(selection);
+                    setStepSelected({
+                      source: data.bundle.source_fingerprint,
+                      selection,
+                      step,
+                    });
+                  }}
+                  onClaim={(claim) => {
+                    setLocalSelected({
+                      source: data.bundle.source_fingerprint,
+                      claim,
+                    });
+                    select("claim:" + claim.claim_id);
+                  }}
+                />
               </div>
               <Inspector
                 data={data}
                 selection={nav.selection}
                 onSelect={select}
                 localClaim={localClaim}
+                agentStep={agentStep}
               />
             </div>
             <footer className="page-footer">

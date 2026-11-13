@@ -1794,3 +1794,67 @@ dialog p {
     font-size: 12px;
   }
 }
+
+.agent-panel {
+  padding: 20px;
+  margin-top: 16px;
+}
+.agent-panel h2 {
+  font-size: 18px;
+}
+.agent-panel label {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0;
+}
+.agent-panel select {
+  max-width: 100%;
+  padding: 10px;
+}
+.agent-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 14px 0;
+}
+.agent-steps {
+  padding-left: 24px;
+}
+.agent-steps li {
+  padding: 10px 0;
+}
+.agent-steps button {
+  width: 100%;
+  text-align: left;
+  display: grid;
+  gap: 7px;
+  padding: 14px;
+}
+.agent-panel details {
+  margin-top: 12px;
+}
+.agent-panel pre {
+  max-width: 100%;
+  overflow: auto;
+  font-size: 12px;
+  max-height: 260px;
+}
+.agent-claim {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin-top: 10px;
+  padding: 12px;
+  line-height: 1.5;
+}
+.agent-step-proof {
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+  overflow-wrap: anywhere;
+}
+.agent-step-proof h2 {
+  font-size: 16px;
+}
+.agent-report p {
+  overflow-wrap: anywhere;
+}

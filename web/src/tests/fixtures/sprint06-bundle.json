@@ -1,0 +1,989 @@
+{
+  "contract_version": "1.0",
+  "source_fingerprint": "d05166378e55098b88a4c71e69095cc206e075031a3e46ce1a5643f70c1b5520",
+  "view_fingerprint": "03590c222dc9fcc0c3679f2996ab01471f9206af548ba0e409eb00f12b958bf4",
+  "read_only": true,
+  "investigation": {
+    "incident_id": "INC-001",
+    "is_demo": true,
+    "title": {
+      "text": "Payment API 5xx error spike",
+      "status": "RETURNED_TEXT"
+    },
+    "severity": {
+      "text": "high",
+      "status": "RETURNED_TEXT"
+    },
+    "status": {
+      "text": "investigating",
+      "status": "RETURNED_TEXT"
+    },
+    "incident_time": {
+      "utc": "2026-11-10T10:05:00Z",
+      "original": "2026-11-10T10:05:00Z",
+      "warning_code": null,
+      "original_withheld": false
+    },
+    "options": {
+      "pre_minutes": 120,
+      "post_minutes": 30,
+      "max_candidates": 100,
+      "max_evidence": 100
+    },
+    "investigation_status": "PARTIAL_CONTEXT",
+    "causal_conclusion": "NOT_ESTABLISHED",
+    "entity_kinds": {
+      "CHG-001": "Change",
+      "CHG-002": "Change",
+      "DEP-001": "Deployment",
+      "DEP-002": "Deployment",
+      "EVD-001": "Evidence",
+      "EVD-002": "Evidence",
+      "EVD-003": "Evidence",
+      "EVD-004": "Evidence",
+      "INC-001": "Incident",
+      "SVC-AUTH": "Service",
+      "SVC-PAYMENT": "Service"
+    },
+    "affected_services": [
+      {
+        "id": "SVC-PAYMENT",
+        "name": {
+          "text": "Payment API",
+          "status": "RETURNED_TEXT"
+        }
+      }
+    ],
+    "candidates": [
+      {
+        "deployment_id": "DEP-002",
+        "target_service_id": "SVC-PAYMENT",
+        "name": {
+          "text": "Payment response logging rollout",
+          "status": "RETURNED_TEXT"
+        },
+        "dependency_depth": 0,
+        "temporal_classification": "BEFORE",
+        "candidate_assessment": "INVESTIGATE",
+        "deployment_occurred_at": {
+          "utc": "2026-11-10T09:58:00Z",
+          "original": "2026-11-10T09:58:00Z",
+          "warning_code": null,
+          "original_withheld": false
+        },
+        "graph_paths": [
+          {
+            "node_ids": [
+              "INC-001",
+              "SVC-PAYMENT",
+              "DEP-002"
+            ],
+            "edges": [
+              {
+                "type": "AFFECTS",
+                "source_id": "INC-001",
+                "target_id": "SVC-PAYMENT",
+                "traversal_direction": "FORWARD"
+              },
+              {
+                "type": "TARGETS",
+                "source_id": "DEP-002",
+                "target_id": "SVC-PAYMENT",
+                "traversal_direction": "REVERSE"
+              }
+            ]
+          }
+        ],
+        "changes": [
+          {
+            "change_id": "CHG-002",
+            "name": {
+              "text": "Payment log sampling",
+              "status": "RETURNED_TEXT"
+            },
+            "graph_path": {
+              "node_ids": [
+                "INC-001",
+                "SVC-PAYMENT",
+                "DEP-002",
+                "CHG-002"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "INC-001",
+                  "target_id": "SVC-PAYMENT",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "DEP-002",
+                  "target_id": "SVC-PAYMENT",
+                  "traversal_direction": "REVERSE"
+                },
+                {
+                  "type": "INCLUDES_CHANGE",
+                  "source_id": "DEP-002",
+                  "target_id": "CHG-002",
+                  "traversal_direction": "FORWARD"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "deployment_id": "DEP-001",
+        "target_service_id": "SVC-AUTH",
+        "name": {
+          "text": "Auth token rotation rollout",
+          "status": "RETURNED_TEXT"
+        },
+        "dependency_depth": 1,
+        "temporal_classification": "BEFORE",
+        "candidate_assessment": "INVESTIGATE",
+        "deployment_occurred_at": {
+          "utc": "2026-11-10T09:55:00Z",
+          "original": "2026-11-10T09:55:00Z",
+          "warning_code": null,
+          "original_withheld": false
+        },
+        "graph_paths": [
+          {
+            "node_ids": [
+              "INC-001",
+              "SVC-PAYMENT",
+              "SVC-AUTH",
+              "DEP-001"
+            ],
+            "edges": [
+              {
+                "type": "AFFECTS",
+                "source_id": "INC-001",
+                "target_id": "SVC-PAYMENT",
+                "traversal_direction": "FORWARD"
+              },
+              {
+                "type": "DEPENDS_ON",
+                "source_id": "SVC-PAYMENT",
+                "target_id": "SVC-AUTH",
+                "traversal_direction": "FORWARD"
+              },
+              {
+                "type": "TARGETS",
+                "source_id": "DEP-001",
+                "target_id": "SVC-AUTH",
+                "traversal_direction": "REVERSE"
+              }
+            ]
+          }
+        ],
+        "changes": [
+          {
+            "change_id": "CHG-001",
+            "name": {
+              "text": "Token rotation configuration",
+              "status": "RETURNED_TEXT"
+            },
+            "graph_path": {
+              "node_ids": [
+                "INC-001",
+                "SVC-PAYMENT",
+                "SVC-AUTH",
+                "DEP-001",
+                "CHG-001"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "INC-001",
+                  "target_id": "SVC-PAYMENT",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "DEPENDS_ON",
+                  "source_id": "SVC-PAYMENT",
+                  "target_id": "SVC-AUTH",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "DEP-001",
+                  "target_id": "SVC-AUTH",
+                  "traversal_direction": "REVERSE"
+                },
+                {
+                  "type": "INCLUDES_CHANGE",
+                  "source_id": "DEP-001",
+                  "target_id": "CHG-001",
+                  "traversal_direction": "FORWARD"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_id": "EVD-001",
+        "is_demo": true,
+        "evidence_observed_at": {
+          "utc": "2026-11-10T10:05:00Z",
+          "original": "2026-11-10T10:05:00Z",
+          "warning_code": null,
+          "original_withheld": false
+        },
+        "temporal_classification": "AT_ONSET",
+        "observed_service_ids": [
+          "SVC-PAYMENT"
+        ],
+        "graph_paths": [
+          {
+            "node_ids": [
+              "INC-001",
+              "EVD-001",
+              "SVC-PAYMENT"
+            ],
+            "edges": [
+              {
+                "type": "HAS_EVIDENCE",
+                "source_id": "INC-001",
+                "target_id": "EVD-001",
+                "traversal_direction": "FORWARD"
+              },
+              {
+                "type": "OBSERVED_ON",
+                "source_id": "EVD-001",
+                "target_id": "SVC-PAYMENT",
+                "traversal_direction": "FORWARD"
+              }
+            ]
+          }
+        ],
+        "provenance_status": "TRACEABLE",
+        "verification_status": "SYNTHETIC",
+        "warnings": [],
+        "source_reference": "WITHHELD"
+      },
+      {
+        "evidence_id": "EVD-002",
+        "is_demo": true,
+        "evidence_observed_at": {
+          "utc": "2026-11-10T10:05:30Z",
+          "original": "2026-11-10T10:05:30Z",
+          "warning_code": null,
+          "original_withheld": false
+        },
+        "temporal_classification": "AFTER",
+        "observed_service_ids": [
+          "SVC-PAYMENT"
+        ],
+        "graph_paths": [
+          {
+            "node_ids": [
+              "INC-001",
+              "EVD-002",
+              "SVC-PAYMENT"
+            ],
+            "edges": [
+              {
+                "type": "HAS_EVIDENCE",
+                "source_id": "INC-001",
+                "target_id": "EVD-002",
+                "traversal_direction": "FORWARD"
+              },
+              {
+                "type": "OBSERVED_ON",
+                "source_id": "EVD-002",
+                "target_id": "SVC-PAYMENT",
+                "traversal_direction": "FORWARD"
+              }
+            ]
+          }
+        ],
+        "provenance_status": "TRACEABLE",
+        "verification_status": "SYNTHETIC",
+        "warnings": [],
+        "source_reference": "WITHHELD"
+      },
+      {
+        "evidence_id": "EVD-003",
+        "is_demo": true,
+        "evidence_observed_at": {
+          "utc": "2026-11-10T10:04:45Z",
+          "original": "2026-11-10T10:04:45Z",
+          "warning_code": null,
+          "original_withheld": false
+        },
+        "temporal_classification": "BEFORE",
+        "observed_service_ids": [
+          "SVC-AUTH"
+        ],
+        "graph_paths": [
+          {
+            "node_ids": [
+              "INC-001",
+              "EVD-003",
+              "SVC-AUTH"
+            ],
+            "edges": [
+              {
+                "type": "HAS_EVIDENCE",
+                "source_id": "INC-001",
+                "target_id": "EVD-003",
+                "traversal_direction": "FORWARD"
+              },
+              {
+                "type": "OBSERVED_ON",
+                "source_id": "EVD-003",
+                "target_id": "SVC-AUTH",
+                "traversal_direction": "FORWARD"
+              }
+            ]
+          }
+        ],
+        "provenance_status": "TRACEABLE",
+        "verification_status": "SYNTHETIC",
+        "warnings": [],
+        "source_reference": "WITHHELD"
+      },
+      {
+        "evidence_id": "EVD-004",
+        "is_demo": true,
+        "evidence_observed_at": {
+          "utc": "2026-11-10T10:06:00Z",
+          "original": "2026-11-10T10:06:00Z",
+          "warning_code": null,
+          "original_withheld": false
+        },
+        "temporal_classification": "AFTER",
+        "observed_service_ids": [
+          "SVC-AUTH"
+        ],
+        "graph_paths": [
+          {
+            "node_ids": [
+              "INC-001",
+              "EVD-004",
+              "SVC-AUTH"
+            ],
+            "edges": [
+              {
+                "type": "HAS_EVIDENCE",
+                "source_id": "INC-001",
+                "target_id": "EVD-004",
+                "traversal_direction": "FORWARD"
+              },
+              {
+                "type": "OBSERVED_ON",
+                "source_id": "EVD-004",
+                "target_id": "SVC-AUTH",
+                "traversal_direction": "FORWARD"
+              }
+            ]
+          }
+        ],
+        "provenance_status": "TRACEABLE",
+        "verification_status": "SYNTHETIC",
+        "warnings": [],
+        "source_reference": "WITHHELD"
+      }
+    ],
+    "contradictions": [],
+    "timeline": [
+      {
+        "kind": "DEPLOYMENT",
+        "entity_id": "DEP-001",
+        "target_service_id": "SVC-AUTH",
+        "timestamp": {
+          "utc": "2026-11-10T09:55:00Z",
+          "original": "2026-11-10T09:55:00Z",
+          "warning_code": null,
+          "original_withheld": false
+        },
+        "temporal_classification": "BEFORE"
+      },
+      {
+        "kind": "DEPLOYMENT",
+        "entity_id": "DEP-002",
+        "target_service_id": "SVC-PAYMENT",
+        "timestamp": {
+          "utc": "2026-11-10T09:58:00Z",
+          "original": "2026-11-10T09:58:00Z",
+          "warning_code": null,
+          "original_withheld": false
+        },
+        "temporal_classification": "BEFORE"
+      },
+      {
+        "kind": "EVIDENCE",
+        "entity_id": "EVD-003",
+        "target_service_id": null,
+        "timestamp": {
+          "utc": "2026-11-10T10:04:45Z",
+          "original": "2026-11-10T10:04:45Z",
+          "warning_code": null,
+          "original_withheld": false
+        },
+        "temporal_classification": "BEFORE"
+      },
+      {
+        "kind": "EVIDENCE",
+        "entity_id": "EVD-001",
+        "target_service_id": null,
+        "timestamp": {
+          "utc": "2026-11-10T10:05:00Z",
+          "original": "2026-11-10T10:05:00Z",
+          "warning_code": null,
+          "original_withheld": false
+        },
+        "temporal_classification": "AT_ONSET"
+      },
+      {
+        "kind": "INCIDENT",
+        "entity_id": "INC-001",
+        "target_service_id": null,
+        "timestamp": {
+          "utc": "2026-11-10T10:05:00Z",
+          "original": "2026-11-10T10:05:00Z",
+          "warning_code": null,
+          "original_withheld": false
+        },
+        "temporal_classification": "AT_ONSET"
+      },
+      {
+        "kind": "EVIDENCE",
+        "entity_id": "EVD-002",
+        "target_service_id": null,
+        "timestamp": {
+          "utc": "2026-11-10T10:05:30Z",
+          "original": "2026-11-10T10:05:30Z",
+          "warning_code": null,
+          "original_withheld": false
+        },
+        "temporal_classification": "AFTER"
+      },
+      {
+        "kind": "EVIDENCE",
+        "entity_id": "EVD-004",
+        "target_service_id": null,
+        "timestamp": {
+          "utc": "2026-11-10T10:06:00Z",
+          "original": "2026-11-10T10:06:00Z",
+          "warning_code": null,
+          "original_withheld": false
+        },
+        "temporal_classification": "AFTER"
+      }
+    ],
+    "evidence_gaps": [
+      {
+        "code": "STRUCTURED_SIGNAL_GAPS",
+        "count": 4,
+        "entity_ids": [
+          "EVD-001",
+          "EVD-002",
+          "EVD-003",
+          "EVD-004"
+        ],
+        "references_omitted": false
+      }
+    ],
+    "truncation": {
+      "candidates": false,
+      "evidence": false,
+      "affected_services": false,
+      "changes": false,
+      "observations": false,
+      "timeline": false,
+      "contradictions": false,
+      "provenance_warnings": false
+    },
+    "results_may_be_truncated": false
+  },
+  "explanation": {
+    "contract_version": "1.0",
+    "incident_id": "INC-001",
+    "is_demo": true,
+    "mode_requested": "DETERMINISTIC",
+    "mode_executed": "DETERMINISTIC",
+    "ai_generated_selection": false,
+    "model": null,
+    "explanation_status": "PARTIAL_CONTEXT",
+    "investigation_status": "PARTIAL_CONTEXT",
+    "causal_conclusion": "NOT_ESTABLISHED",
+    "investigation_fingerprint": "d05166378e55098b88a4c71e69095cc206e075031a3e46ce1a5643f70c1b5520",
+    "overview": "Deterministic mode; not AI-generated. Returned context contains 2 deployment/target pairs and 4 evidence records. Structured audit: 0 conflicts and 0 undetermined pairs. This is scoped review context; cause is not established.",
+    "claims": [
+      {
+        "claim_id": "C-2968a02ee7eef9f21ef9a1f4",
+        "claim_type": "INCIDENT_OBSERVED",
+        "statement": "Incident INC-001 is in the returned graph context; onset is 2026-11-10T10:05:00Z.",
+        "referenced_entity_ids": [
+          "INC-001"
+        ],
+        "citations": [
+          {
+            "kind": "INCIDENT",
+            "entity_ids": [
+              "INC-001"
+            ],
+            "graph_path": null,
+            "event_utc": "2026-11-10T10:05:00Z",
+            "temporal_classification": null,
+            "provenance_status": null,
+            "verification_status": null,
+            "source_ref": null,
+            "source_ref_withheld": false,
+            "classification": null,
+            "overlap_start": null,
+            "overlap_end": null,
+            "code": null,
+            "count": null
+          }
+        ],
+        "support_status": "SUPPORTED_BY_RETURNED_CONTEXT"
+      },
+      {
+        "claim_id": "C-3ba13a0d57afc325c65a5557",
+        "claim_type": "SERVICE_AFFECTED",
+        "statement": "Incident INC-001 has a returned AFFECTS link to service SVC-PAYMENT.",
+        "referenced_entity_ids": [
+          "INC-001",
+          "SVC-PAYMENT"
+        ],
+        "citations": [
+          {
+            "kind": "GRAPH_PATH",
+            "entity_ids": [
+              "INC-001",
+              "SVC-PAYMENT"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "INC-001",
+                "SVC-PAYMENT"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "INC-001",
+                  "target_id": "SVC-PAYMENT",
+                  "traversal_direction": "FORWARD"
+                }
+              ]
+            },
+            "event_utc": null,
+            "temporal_classification": null,
+            "provenance_status": null,
+            "verification_status": null,
+            "source_ref": null,
+            "source_ref_withheld": false,
+            "classification": null,
+            "overlap_start": null,
+            "overlap_end": null,
+            "code": null,
+            "count": null
+          }
+        ],
+        "support_status": "SUPPORTED_BY_RETURNED_CONTEXT"
+      },
+      {
+        "claim_id": "C-5f5585df4d6c614b8c4a3676",
+        "claim_type": "DEPLOYMENT_CONNECTED",
+        "statement": "Deployment DEP-001 is graph-connected to target SVC-AUTH; connection is not cause.",
+        "referenced_entity_ids": [
+          "DEP-001",
+          "SVC-AUTH"
+        ],
+        "citations": [
+          {
+            "kind": "GRAPH_PATH",
+            "entity_ids": [
+              "INC-001",
+              "SVC-PAYMENT",
+              "SVC-AUTH",
+              "DEP-001"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "INC-001",
+                "SVC-PAYMENT",
+                "SVC-AUTH",
+                "DEP-001"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "INC-001",
+                  "target_id": "SVC-PAYMENT",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "DEPENDS_ON",
+                  "source_id": "SVC-PAYMENT",
+                  "target_id": "SVC-AUTH",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "DEP-001",
+                  "target_id": "SVC-AUTH",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            },
+            "event_utc": null,
+            "temporal_classification": null,
+            "provenance_status": null,
+            "verification_status": null,
+            "source_ref": null,
+            "source_ref_withheld": false,
+            "classification": null,
+            "overlap_start": null,
+            "overlap_end": null,
+            "code": null,
+            "count": null
+          }
+        ],
+        "support_status": "SUPPORTED_BY_RETURNED_CONTEXT"
+      },
+      {
+        "claim_id": "C-dc3d071cd020904c5bbc2377",
+        "claim_type": "DEPLOYMENT_CONNECTED",
+        "statement": "Deployment DEP-002 is graph-connected to target SVC-PAYMENT; connection is not cause.",
+        "referenced_entity_ids": [
+          "DEP-002",
+          "SVC-PAYMENT"
+        ],
+        "citations": [
+          {
+            "kind": "GRAPH_PATH",
+            "entity_ids": [
+              "INC-001",
+              "SVC-PAYMENT",
+              "DEP-002"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "INC-001",
+                "SVC-PAYMENT",
+                "DEP-002"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "INC-001",
+                  "target_id": "SVC-PAYMENT",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "DEP-002",
+                  "target_id": "SVC-PAYMENT",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            },
+            "event_utc": null,
+            "temporal_classification": null,
+            "provenance_status": null,
+            "verification_status": null,
+            "source_ref": null,
+            "source_ref_withheld": false,
+            "classification": null,
+            "overlap_start": null,
+            "overlap_end": null,
+            "code": null,
+            "count": null
+          }
+        ],
+        "support_status": "SUPPORTED_BY_RETURNED_CONTEXT"
+      },
+      {
+        "claim_id": "C-137d0d5cc03effe27c154b25",
+        "claim_type": "DEPLOYMENT_BEFORE_ONSET",
+        "statement": "Deployment DEP-002 at 2026-11-10T09:58:00Z is BEFORE onset within the requested window; temporal precedence does not establish causation.",
+        "referenced_entity_ids": [
+          "DEP-002",
+          "SVC-PAYMENT"
+        ],
+        "citations": [
+          {
+            "kind": "GRAPH_PATH",
+            "entity_ids": [
+              "INC-001",
+              "SVC-PAYMENT",
+              "DEP-002"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "INC-001",
+                "SVC-PAYMENT",
+                "DEP-002"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "INC-001",
+                  "target_id": "SVC-PAYMENT",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "DEP-002",
+                  "target_id": "SVC-PAYMENT",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            },
+            "event_utc": null,
+            "temporal_classification": null,
+            "provenance_status": null,
+            "verification_status": null,
+            "source_ref": null,
+            "source_ref_withheld": false,
+            "classification": null,
+            "overlap_start": null,
+            "overlap_end": null,
+            "code": null,
+            "count": null
+          },
+          {
+            "kind": "TEMPORAL",
+            "entity_ids": [
+              "DEP-002",
+              "SVC-PAYMENT"
+            ],
+            "graph_path": null,
+            "event_utc": "2026-11-10T09:58:00Z",
+            "temporal_classification": "BEFORE",
+            "provenance_status": null,
+            "verification_status": null,
+            "source_ref": null,
+            "source_ref_withheld": false,
+            "classification": null,
+            "overlap_start": null,
+            "overlap_end": null,
+            "code": null,
+            "count": null
+          }
+        ],
+        "support_status": "SUPPORTED_BY_RETURNED_CONTEXT"
+      },
+      {
+        "claim_id": "C-54c4c370e92e2f2bc7f5d109",
+        "claim_type": "EVIDENCE_REPORTED",
+        "statement": "Evidence EVD-002 belongs to this incident: TRACEABLE metadata, SYNTHETIC source status. Source text is withheld.",
+        "referenced_entity_ids": [
+          "EVD-002"
+        ],
+        "citations": [
+          {
+            "kind": "EVIDENCE",
+            "entity_ids": [
+              "EVD-002"
+            ],
+            "graph_path": null,
+            "event_utc": null,
+            "temporal_classification": null,
+            "provenance_status": null,
+            "verification_status": null,
+            "source_ref": null,
+            "source_ref_withheld": false,
+            "classification": null,
+            "overlap_start": null,
+            "overlap_end": null,
+            "code": null,
+            "count": null
+          },
+          {
+            "kind": "GRAPH_PATH",
+            "entity_ids": [
+              "INC-001",
+              "EVD-002",
+              "SVC-PAYMENT"
+            ],
+            "graph_path": {
+              "node_ids": [
+                "INC-001",
+                "EVD-002",
+                "SVC-PAYMENT"
+              ],
+              "edges": [
+                {
+                  "type": "HAS_EVIDENCE",
+                  "source_id": "INC-001",
+                  "target_id": "EVD-002",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "OBSERVED_ON",
+                  "source_id": "EVD-002",
+                  "target_id": "SVC-PAYMENT",
+                  "traversal_direction": "FORWARD"
+                }
+              ]
+            },
+            "event_utc": null,
+            "temporal_classification": null,
+            "provenance_status": null,
+            "verification_status": null,
+            "source_ref": null,
+            "source_ref_withheld": false,
+            "classification": null,
+            "overlap_start": null,
+            "overlap_end": null,
+            "code": null,
+            "count": null
+          },
+          {
+            "kind": "PROVENANCE",
+            "entity_ids": [
+              "EVD-002"
+            ],
+            "graph_path": null,
+            "event_utc": null,
+            "temporal_classification": null,
+            "provenance_status": "TRACEABLE",
+            "verification_status": "SYNTHETIC",
+            "source_ref": null,
+            "source_ref_withheld": true,
+            "classification": null,
+            "overlap_start": null,
+            "overlap_end": null,
+            "code": null,
+            "count": null
+          }
+        ],
+        "support_status": "SUPPORTED_BY_RETURNED_CONTEXT"
+      },
+      {
+        "claim_id": "C-c55a48b473646cbdf146e26d",
+        "claim_type": "CONTEXT_GAP",
+        "statement": "Returned context reports STRUCTURED_SIGNAL_GAPS (count 4); review the scoped gap.",
+        "referenced_entity_ids": [
+          "EVD-001",
+          "EVD-002",
+          "EVD-003",
+          "EVD-004"
+        ],
+        "citations": [
+          {
+            "kind": "GAP",
+            "entity_ids": [
+              "EVD-001",
+              "EVD-002",
+              "EVD-003",
+              "EVD-004"
+            ],
+            "graph_path": null,
+            "event_utc": null,
+            "temporal_classification": null,
+            "provenance_status": null,
+            "verification_status": null,
+            "source_ref": null,
+            "source_ref_withheld": false,
+            "classification": null,
+            "overlap_start": null,
+            "overlap_end": null,
+            "code": "STRUCTURED_SIGNAL_GAPS",
+            "count": 4
+          }
+        ],
+        "support_status": "SUPPORTED_BY_RETURNED_CONTEXT"
+      },
+      {
+        "claim_id": "C-02c51c9fdd50a9a03b37c175",
+        "claim_type": "NO_CAUSAL_VERDICT",
+        "statement": "Causal conclusion is NOT_ESTABLISHED. Connected deployments are investigation candidates.",
+        "referenced_entity_ids": [
+          "INC-001"
+        ],
+        "citations": [
+          {
+            "kind": "GAP",
+            "entity_ids": [
+              "INC-001"
+            ],
+            "graph_path": null,
+            "event_utc": null,
+            "temporal_classification": null,
+            "provenance_status": null,
+            "verification_status": null,
+            "source_ref": null,
+            "source_ref_withheld": false,
+            "classification": null,
+            "overlap_start": null,
+            "overlap_end": null,
+            "code": "NO_CAUSAL_VERDICT",
+            "count": null
+          }
+        ],
+        "support_status": "SUPPORTED_BY_RETURNED_CONTEXT"
+      }
+    ],
+    "evidence_summary": {
+      "scope": "RETURNED_EVIDENCE",
+      "returned_candidates": 2,
+      "returned_evidence": 4,
+      "traceable_count": 4,
+      "incomplete_count": 0,
+      "invalid_count": 0,
+      "unverified_external_count": 0,
+      "not_evaluable_count": 4,
+      "conflict_count": 0,
+      "undetermined_count": 0
+    },
+    "uncertainties": [
+      {
+        "code": "STRUCTURED_SIGNAL_GAPS",
+        "entity_ids": [
+          "EVD-001",
+          "EVD-002",
+          "EVD-003",
+          "EVD-004"
+        ],
+        "count": 4,
+        "references_omitted": false
+      }
+    ],
+    "next_checks": [
+      "Resolve STRUCTURED_SIGNAL_GAPS for EVD-001, EVD-002, EVD-003, EVD-004: Structured signal comparisons cannot evaluate these observations."
+    ],
+    "limitations": [
+      "Cause is NOT_ESTABLISHED; graph connectivity and time order do not establish causation.",
+      "External source truth verification is NOT_PERFORMED; TRACEABLE is not authenticated.",
+      "Source prose and source references are withheld; stable graph IDs carry citation proof.",
+      "Only returned context is explained; alternate paths and omitted data may matter.",
+      "Row and output caps do not bound whole-store RAM or graph query cost.",
+      "Model selects IDs only; deterministic templates render factual statements.",
+      "Deterministic mode is not AI-generated and makes no model call."
+    ],
+    "truncation": {
+      "investigation": {
+        "candidates": false,
+        "evidence": false,
+        "affected_services": false,
+        "changes": false,
+        "observations": false,
+        "timeline": false,
+        "contradictions": false,
+        "provenance_warnings": false
+      },
+      "catalog": false,
+      "selected_subset": true,
+      "uncertainties": false,
+      "next_checks": false,
+      "model_offer": false
+    },
+    "demo_notice": "Synthetic demo data; no real incident or causal finding.",
+    "catalog_claim_count": 12,
+    "generated_claim_count": 12,
+    "validated_claim_count": 8,
+    "validated_citation_count": 11,
+    "rejection_codes": [],
+    "external_verification_status": "NOT_PERFORMED"
+  }
+}

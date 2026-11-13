@@ -113,9 +113,21 @@ def test_openapi_and_no_write_routes(client):
         "/console/incidents",
         "/console/models/capabilities",
         "/console/selection",
+        "/console/agent/rehearse",
+        "/console/agent/investigate",
     }
     assert all(
         set(path)
-        == ({"post"} if name in {"/console/models/capabilities", "/console/selection"} else {"get"})
+        == (
+            {"post"}
+            if name
+            in {
+                "/console/models/capabilities",
+                "/console/selection",
+                "/console/agent/rehearse",
+                "/console/agent/investigate",
+            }
+            else {"get"}
+        )
         for name, path in schema["paths"].items()
     )
