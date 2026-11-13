@@ -1,0 +1,378 @@
+{
+  "canonical_repeatability": {
+    "denominator": 18,
+    "passed": 18,
+    "ratio": 1.0,
+    "scope": "Successful native cases only; failures remain visible separately"
+  },
+  "cases": [
+    {
+      "id": "A01-direct",
+      "metrics": {
+        "abstained": false,
+        "citations": 5,
+        "edges": 3,
+        "repeatable": true,
+        "tools": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A02-dependent",
+      "metrics": {
+        "abstained": false,
+        "citations": 5,
+        "edges": 4,
+        "repeatable": true,
+        "tools": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A03-reverse-target",
+      "metrics": {
+        "abstained": false,
+        "citations": 5,
+        "edges": 4,
+        "repeatable": true,
+        "tools": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A04-included-change",
+      "metrics": {
+        "abstained": false,
+        "citations": 5,
+        "edges": 4,
+        "repeatable": true,
+        "tools": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A05-native-evidence",
+      "metrics": {
+        "abstained": false,
+        "citations": 4,
+        "edges": 2,
+        "repeatable": true,
+        "tools": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A06-conflict",
+      "metrics": {
+        "abstained": false,
+        "citations": 7,
+        "edges": 4,
+        "repeatable": true,
+        "tools": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A07-undetermined",
+      "metrics": {
+        "abstained": false,
+        "citations": 7,
+        "edges": 4,
+        "repeatable": true,
+        "tools": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A08-naive-time",
+      "metrics": {
+        "abstained": false,
+        "citations": 4,
+        "edges": 2,
+        "repeatable": true,
+        "tools": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A09-missing-reference",
+      "metrics": {
+        "abstained": false,
+        "citations": 4,
+        "edges": 2,
+        "repeatable": true,
+        "tools": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A10-orphan",
+      "metrics": {
+        "abstained": false,
+        "citations": 4,
+        "edges": 1,
+        "repeatable": true,
+        "tools": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A11-external",
+      "metrics": {
+        "abstained": false,
+        "citations": 7,
+        "edges": 2,
+        "repeatable": true,
+        "tools": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A12-shared-service-is-not-membership",
+      "metrics": {
+        "abstained": false,
+        "citations": 3,
+        "edges": 1,
+        "repeatable": true,
+        "tools": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A13-no-evidence",
+      "metrics": {
+        "abstained": true,
+        "citations": 4,
+        "edges": 1,
+        "repeatable": true,
+        "tools": 2
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A14-source-caps",
+      "metrics": {
+        "abstained": false,
+        "citations": 10,
+        "edges": 13,
+        "repeatable": true,
+        "tools": 4
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A15-three-hop",
+      "metrics": {
+        "abstained": false,
+        "citations": 5,
+        "edges": 5,
+        "repeatable": true,
+        "tools": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A16-four-hop-excluded",
+      "metrics": {
+        "abstained": false,
+        "citations": 3,
+        "edges": 1,
+        "repeatable": true,
+        "tools": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A17-missing-event",
+      "metrics": {
+        "abstained": false,
+        "citations": 4,
+        "edges": 2,
+        "repeatable": true,
+        "tools": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A18-malicious-metadata",
+      "metrics": {
+        "abstained": false,
+        "citations": 4,
+        "edges": 2,
+        "repeatable": true,
+        "tools": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A19-unknown-subject",
+      "metrics": {
+        "controlled_protocol": true,
+        "rejection_code": "AGENT_SUBJECT_REJECTED"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A20-write-tool",
+      "metrics": {
+        "controlled_protocol": true,
+        "rejection_code": "AGENT_TOOL_REJECTED"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A21-cypher-argument",
+      "metrics": {
+        "controlled_protocol": true,
+        "rejection_code": "AGENT_ARGUMENT_SCHEMA"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A22-url-argument",
+      "metrics": {
+        "controlled_protocol": true,
+        "rejection_code": "AGENT_ARGUMENT_SCHEMA"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A23-stale-snapshot",
+      "metrics": {
+        "controlled_protocol": true,
+        "rejection_code": "STALE_SNAPSHOT"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A24-fake-claim",
+      "metrics": {
+        "controlled_protocol": true,
+        "rejection_code": "UNKNOWN_CLAIM_ID"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A25-causal-prose",
+      "metrics": {
+        "controlled_protocol": true,
+        "rejection_code": "AGENT_FINISH_SCHEMA"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A26-oversized",
+      "metrics": {
+        "controlled_protocol": true,
+        "rejection_code": "AGENT_FINISH_LIMIT"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A27-deep-json",
+      "metrics": {
+        "controlled_protocol": true,
+        "rejection_code": "AGENT_FINISH_SCHEMA"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A28-duplicate-proposals",
+      "metrics": {
+        "controlled_protocol": true,
+        "rejection_code": "AGENT_REPEATED_ACTION"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A29-valid-parallel-constrained",
+      "metrics": {
+        "controlled_protocol": true,
+        "rejection_code": null
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A30-timeout",
+      "metrics": {
+        "controlled_protocol": true,
+        "rejection_code": "OLLAMA_TIMEOUT"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A31-unavailable",
+      "metrics": {
+        "controlled_protocol": true,
+        "rejection_code": "OLLAMA_CONNECTION_UNAVAILABLE"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A32-no-tools",
+      "metrics": {
+        "controlled_protocol": true,
+        "rejection_code": null
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A33-budget",
+      "metrics": {
+        "controlled_protocol": true,
+        "rejection_code": "AGENT_TOOL_BUDGET"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A34-fabricated-direction",
+      "metrics": {
+        "controlled_protocol": true,
+        "rejection_code": null
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "A35-no-cause-missing",
+      "metrics": {
+        "controlled_protocol": true,
+        "rejection_code": "MISSING_CAUSAL_CAUTION"
+      },
+      "status": "PASS"
+    }
+  ],
+  "causal_conclusion": "NOT_ESTABLISHED",
+  "citation_support": {
+    "denominator": 90,
+    "passed": 90,
+    "ratio": 1.0,
+    "scope": "Successful native cases only; failures remain visible separately"
+  },
+  "evidence_kind": "SYNTHETIC_NATIVE_AND_CONTROLLED_PROTOCOL",
+  "failed": 0,
+  "live_model_accuracy": null,
+  "native_cases": 18,
+  "native_edge_agreement": {
+    "denominator": 57,
+    "passed": 57,
+    "ratio": 1.0,
+    "scope": "Successful native cases only; failures remain visible separately"
+  },
+  "native_tool_admission": {
+    "denominator": 22,
+    "passed": 22,
+    "ratio": 1.0,
+    "scope": "Successful native cases only; failures remain visible separately"
+  },
+  "passed": 35,
+  "protocol_cases": 17,
+  "safe_abstention": {
+    "denominator": 1,
+    "passed": 1,
+    "ratio": 1.0,
+    "scope": "Successful native cases only; failures remain visible separately"
+  },
+  "source_truth_verified": false,
+  "suite_sha256": "dce5da3e7561029a8877fb03a9de86961509f728694b6c22e01155e82dfa6295",
+  "total": 35
+}

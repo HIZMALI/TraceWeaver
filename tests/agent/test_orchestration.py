@@ -99,6 +99,20 @@ def test_controlled_three_round_native_agent_returns_admitted_proof(database, mo
     )
 
 
+def test_explicit_model_abstention_does_not_claim_ai_selected_factual_statements(
+    database, monkeypatch
+):
+    scripted(
+        monkeypatch,
+        [call("get_incident_scope", "I000")],
+        finish=lambda body, _: {**body, "selected_claim_ids": [], "abstain": True},
+    )
+    report = run_agent(database, request(database))
+    assert report.agent_status == "ABSTAINED" and report.ai_directed_tools
+    assert not report.ai_generated_selection
+    assert [c.claim_type for c in report.validated_claims] == ["NO_CAUSAL_VERDICT"]
+
+
 def test_native_readers_close_before_every_provider_round(database, monkeypatch):
     action = request(database)
     active = []

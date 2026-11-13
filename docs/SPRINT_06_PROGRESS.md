@@ -10,11 +10,11 @@ Starting main a8f4ac502c8bb4eaefce8d6e448a273aa133a73e. Original worktree clean.
 | G3 | PARTIAL | Controller/protocol PASS: 479 pytest. Genuine qwen3 native trace verified; final ID proposal rejected |
 | G4 | PASS | 492 pytest, fixed native plans, repeatable offline CLI |
 | G5 | PASS | 511 pytest / 80 frontend / 49 native browser tests; explicit actions and proof focus |
-| G6 | PENDING | Readable real screenshots and new judge story |
-| G7 | PENDING | Independent frozen scenario gold, native/protocol runner and corruption control |
-| G8 | PENDING | Preserve historical study and rigorous limitations note |
-| G9 | PENDING | Expanded tests/security/performance/independent package |
-| G10 | PENDING | Release/fact check/draft/video plan and actual optional recording |
+| G6 | PASS | Six genuine captures visually inspected; new 115-second guide |
+| G7 | PASS | Frozen 35 cases passed; corrupt-gold copy failed nonzero as expected |
+| G8 | PASS | Historical source/results/erratum unchanged; new limitations note, no fair-study claim |
+| G9 | PASS locally | 518 Python / 80 frontend / 49 native browser; independent Node-free wheel verified |
+| G10 | IN PROGRESS | Release docs and real short clip prepared; public repo/license/final video remain owner actions |
 | G11 | PENDING | Final protected audit, full gates, local commits and report |
 
 Baseline evidence: .verification/sprint06/baseline.json, baseline-pytest.txt and owned
@@ -68,3 +68,25 @@ cases in 39.2s. Expanded-panel axe, keyboard, tablet, phone and reflow passed. F
 screenshots captured and visually inspected; original screenshots/stores/gold unchanged.
 G7 expectations froze at 9c49bf7 before runner implementation/execution; normalize new suite
 bytes to repository LF before first run so the separate digest survives Git checkout. No labels changed.
+
+G7: 18 native / 17 controlled protocol scenarios PASS; 57/57 native directed edge checks,
+90/90 admitted citation support checks, 22/22 positive native tool admissions, 18/18 canonical
+repeats, 1/1 explicitly no-evidence abstention. These synthetic denominators exclude failed cases
+and are not live-model/root-cause accuracy. Original gold bytes unchanged. Separate corrupted
+A01 expected endpoint yielded GOLD_NATIVE_EDGE / exit 15, original suite retained.
+G9: final full pytest 518 passed in 124.12s; Ruff/pip check/actionlint clean. Frontend 80 passed;
+49 actual native browser cases passed in 37.5s including the original 36; zero expanded-panel axe
+violations. Existing 420 cases retained; only two exact OpenAPI route/method assertions extended.
+Independent copied npm ci/build matched current asset bytes. Fresh external non-editable wheel,
+Node-free Python server and genuine browser four-tool rehearsal passed (8 claims/11 citations).
+Wheel SHA 976835f51a0dd0252f18df4892e7c19716aee6f4d17aaba0470e871e9504e7d0.
+Initial independent browser attempt failed because Playwright was imported before its browser-path
+environment was assigned; corrected runner ordering, reran clean install/browser successfully.
+No browser/model/tool installation. Original stores and all protected tracked artifacts unchanged.
+Actual qwen3 follow-up still unavailable; public safe aggregate/native trace is recorded separately.
+A genuine 7.28s silent test recording was captured and inspected at 2/4/7s; it is NOT a finished
+1–2 minute competition video. Six screenshots include actual unavailable capability state.
+Microprofile: 7 native rehearsal samples each on baseline/CASE/capped isolated stores; medians
+44.718/51.485/141.448ms; no memory/native-cost/speed-superiority promise. Old evaluations reran
+20/20 and 19/19 to new ignored output names. Platform/remote CI tracks remain unverified.
+Resume: runtime implementation tested; finish G10/G11 report/docs and final protected/Git audit.

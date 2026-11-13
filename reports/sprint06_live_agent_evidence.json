@@ -1,0 +1,187 @@
+{
+  "evidence_kind": "ACTUAL_LOCAL_PROVIDER_ATTEMPTS_NOT_AN_ACCURACY_BENCHMARK",
+  "observed_service_version": "0.40.16",
+  "observed_installed_models": [
+    "qwen3:8b",
+    "openweft-qwen3:8b"
+  ],
+  "availability": "Intermittent; latest explicit attempts refused connection. No daemon/model installed or started by this session.",
+  "accepted_final_live_result": false,
+  "attempts": [
+    {
+      "evidence_kind": "ACTUAL_LOCAL_PROVIDER_ATTEMPT",
+      "status": "MODEL_OUTPUT_REJECTED",
+      "model_requested": "qwen3:8b",
+      "model_executed": "qwen3:8b",
+      "model_interactions": 1,
+      "tool_names": [],
+      "ai_directed_tools": false,
+      "validated_claim_count": 0,
+      "rejection_codes": [
+        "AGENT_MULTI_TOOL_REJECTED"
+      ]
+    },
+    {
+      "evidence_kind": "ACTUAL_LOCAL_PROVIDER_ATTEMPT",
+      "status": "MODEL_OUTPUT_REJECTED",
+      "model_requested": "qwen3:8b",
+      "model_executed": "qwen3:8b",
+      "model_interactions": 2,
+      "tool_names": [
+        "trace_deployment"
+      ],
+      "ai_directed_tools": true,
+      "validated_claim_count": 0,
+      "rejection_codes": [
+        "AGENT_FINISH_SCHEMA"
+      ]
+    },
+    {
+      "evidence_kind": "ACTUAL_LOCAL_PROVIDER_ATTEMPT",
+      "status": "MODEL_OUTPUT_REJECTED",
+      "model_requested": "qwen3:8b",
+      "model_executed": "qwen3:8b",
+      "model_interactions": 3,
+      "tool_names": [
+        "trace_deployment"
+      ],
+      "ai_directed_tools": true,
+      "validated_claim_count": 0,
+      "rejection_codes": [
+        "AGENT_FINISH_SCHEMA"
+      ]
+    },
+    {
+      "evidence_kind": "ACTUAL_LOCAL_PROVIDER_ATTEMPT",
+      "status": "MODEL_UNAVAILABLE",
+      "model_requested": "qwen3:8b",
+      "model_executed": null,
+      "model_interactions": 0,
+      "tool_names": [],
+      "ai_directed_tools": false,
+      "validated_claim_count": 0,
+      "rejection_codes": [
+        "OLLAMA_CONNECTION_UNAVAILABLE"
+      ]
+    },
+    {
+      "evidence_kind": "ACTUAL_LOCAL_PROVIDER_ATTEMPT",
+      "status": "MODEL_UNAVAILABLE",
+      "model_requested": "qwen3:8b",
+      "model_executed": null,
+      "model_interactions": 0,
+      "tool_names": [],
+      "ai_directed_tools": false,
+      "validated_claim_count": 0,
+      "rejection_codes": [
+        "OLLAMA_CONNECTION_UNAVAILABLE"
+      ]
+    }
+  ],
+  "example_native_trace": {
+    "incident_id": "INC-001",
+    "source_fingerprint": "d05166378e55098b88a4c71e69095cc206e075031a3e46ce1a5643f70c1b5520",
+    "database_digest": "29b10010152ebf82fe61b7dd8eff71848f39963e58d7b7a56f0aecebf1150239",
+    "model_executed": "qwen3:8b",
+    "agent_status": "MODEL_OUTPUT_REJECTED",
+    "tool_trace": [
+      {
+        "step_number": 1,
+        "tool_name": "trace_deployment",
+        "parameters": {
+          "subject": "D000"
+        },
+        "subject_ids": [
+          "DEP-002",
+          "SVC-PAYMENT"
+        ],
+        "selected_by": "LOCAL_MODEL",
+        "native_query_count": 3,
+        "deferred_proposal_count": 0,
+        "result": {
+          "status": "RETURNED_CONTEXT",
+          "entity_ids": [
+            "CHG-002",
+            "DEP-002",
+            "INC-001",
+            "SVC-PAYMENT"
+          ],
+          "graph_paths": [
+            {
+              "node_ids": [
+                "INC-001",
+                "SVC-PAYMENT",
+                "DEP-002"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "INC-001",
+                  "target_id": "SVC-PAYMENT",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "DEP-002",
+                  "target_id": "SVC-PAYMENT",
+                  "traversal_direction": "REVERSE"
+                }
+              ]
+            },
+            {
+              "node_ids": [
+                "INC-001",
+                "SVC-PAYMENT",
+                "DEP-002",
+                "CHG-002"
+              ],
+              "edges": [
+                {
+                  "type": "AFFECTS",
+                  "source_id": "INC-001",
+                  "target_id": "SVC-PAYMENT",
+                  "traversal_direction": "FORWARD"
+                },
+                {
+                  "type": "TARGETS",
+                  "source_id": "DEP-002",
+                  "target_id": "SVC-PAYMENT",
+                  "traversal_direction": "REVERSE"
+                },
+                {
+                  "type": "INCLUDES_CHANGE",
+                  "source_id": "DEP-002",
+                  "target_id": "CHG-002",
+                  "traversal_direction": "FORWARD"
+                }
+              ]
+            }
+          ],
+          "records": [
+            {
+              "entity_id": "DEP-002",
+              "timestamp": {
+                "utc": "2026-11-10T09:58:00Z",
+                "original": "2026-11-10T09:58:00Z",
+                "warning_code": null,
+                "original_withheld": false
+              },
+              "temporal_classification": "BEFORE",
+              "provenance_status": null,
+              "verification_status": null
+            }
+          ],
+          "comparisons": [],
+          "gap_codes": [],
+          "truncated": false
+        },
+        "elapsed_ms": 5.418
+      }
+    ],
+    "admitted_claims": 0,
+    "admitted_citations": 0,
+    "causal_conclusion": "NOT_ESTABLISHED",
+    "external_verification_status": "NOT_PERFORMED"
+  },
+  "privacy": "No raw provider response, source prose, prompt or private path persisted."
+}

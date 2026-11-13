@@ -158,7 +158,7 @@ def make_report(
         model_executed=model_executed,
         agent_status=status,
         ai_directed_tools=any(s.selected_by == "LOCAL_MODEL" for s in steps),
-        ai_generated_selection=bool(provider and steps and claims),
+        ai_generated_selection=bool(provider and steps and claims and status != "ABSTAINED"),
         tool_trace=steps,
         validated_claims=claims,
         validated_citation_count=sum(len(c.citations) for c in claims),

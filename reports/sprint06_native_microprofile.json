@@ -1,0 +1,71 @@
+{
+  "environment": {
+    "python": "3.14.0",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "cpu": "Intel Core i9-11900K, 8 cores / 16 logical",
+    "ram_gib": 31.87
+  },
+  "method": "7 sequential same-process warm filesystem observations, perf_counter total rehearsal incl digest+native snapshot/tools/firewall; p95 at n=7 is max; no confidence or native cost guarantee; concurrent desktop activity uncontrolled. No model/network/browser timing.",
+  "cases": [
+    {
+      "profile": "baseline",
+      "stored_bytes": 73728,
+      "samples_ms": [
+        45.181,
+        44.08,
+        44.718,
+        45.343,
+        44.705,
+        44.757,
+        44.224
+      ],
+      "median_ms": 44.718,
+      "p95_nearest_rank_ms": 45.343,
+      "native_queries": 23,
+      "tools": 4,
+      "source_truncated": false,
+      "model_subjects_truncated": false,
+      "read_only_bytes_preserved": true
+    },
+    {
+      "profile": "sprint01",
+      "stored_bytes": 90112,
+      "samples_ms": [
+        51.432,
+        50.118,
+        53.86,
+        58.817,
+        56.179,
+        51.485,
+        50.772
+      ],
+      "median_ms": 51.485,
+      "p95_nearest_rank_ms": 58.817,
+      "native_queries": 23,
+      "tools": 4,
+      "source_truncated": false,
+      "model_subjects_truncated": true,
+      "read_only_bytes_preserved": true
+    },
+    {
+      "profile": "caps",
+      "stored_bytes": 462848,
+      "samples_ms": [
+        141.448,
+        133.38,
+        136.06,
+        147.062,
+        147.515,
+        153.077,
+        135.511
+      ],
+      "median_ms": 141.448,
+      "p95_nearest_rank_ms": 153.077,
+      "native_queries": 23,
+      "tools": 4,
+      "source_truncated": true,
+      "model_subjects_truncated": true,
+      "read_only_bytes_preserved": true
+    }
+  ]
+}

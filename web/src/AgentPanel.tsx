@@ -15,6 +15,18 @@ const capabilities = z.strictObject({
   status: z.enum(["AVAILABLE", "UNAVAILABLE"]),
   code: z.string().max(64).nullable(),
 });
+const purpose = {
+  get_incident_scope:
+    "Check native incident membership and affected-service scope.",
+  trace_deployment:
+    "Inspect a connected candidate's stored dependency and reverse TARGETS path.",
+  inspect_evidence:
+    "Inspect returned UTC, provenance metadata and observed-service membership.",
+  compare_observations:
+    "Check a structured same-context observation pair, including unknowns.",
+  inspect_gaps:
+    "Re-read the bounded investigation and expose remaining missing context.",
+};
 export function AgentPanel({
   bundle,
   onStep,
@@ -272,7 +284,7 @@ export function AgentPanel({
                     </button>
                     <p className="tiny">
                       {s.step_number < report.tool_trace.length
-                        ? "Next check uses the same guarded snapshot and remaining tool budget."
+                        ? `Next recorded check: ${purpose[report.tool_trace[s.step_number].tool_name]} This describes the tool's scope, not the model's private reasoning.`
                         : "Native checks ended. Review citations and remaining gaps; no causal verdict."}
                     </p>
                     <details>
