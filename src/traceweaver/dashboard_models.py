@@ -114,6 +114,10 @@ class DashboardInvestigation(StrictModel):
     options: InvestigationOptions
     investigation_status: Literal["READY_FOR_REVIEW", "PARTIAL_CONTEXT", "INSUFFICIENT_EVIDENCE"]
     causal_conclusion: Literal["NOT_ESTABLISHED"]
+    entity_kinds: Annotated[
+        dict[Identity, Literal["Incident", "Service", "Deployment", "Change", "Evidence"]],
+        Field(max_length=1000),
+    ]
     affected_services: Annotated[list[ViewService], Field(max_length=100)]
     candidates: Annotated[list[ViewCandidate], Field(max_length=100)]
     evidence: Annotated[list[ViewEvidence], Field(max_length=100)]

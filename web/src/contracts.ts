@@ -143,6 +143,12 @@ const investigation = z.strictObject({
   options: optionsSchema,
   investigation_status: status,
   causal_conclusion: z.literal("NOT_ESTABLISHED"),
+  entity_kinds: z
+    .record(
+      id,
+      z.enum(["Incident", "Service", "Deployment", "Change", "Evidence"]),
+    )
+    .refine((v) => Object.keys(v).length <= 1000),
   affected_services: z.array(z.strictObject({ id, name: label })).max(100),
   candidates: z.array(candidateSchema).max(100),
   evidence: z.array(evidence).max(100),
@@ -381,6 +387,49 @@ export function validateScope(b: Bundle): void {
     c.citations.forEach((x) => {
       if (x.graph_path && !permitted.has(pathKey(x.graph_path)))
         throw new Error("Citation path not in returned snapshot");
+      if (x.kind === "TEMPORAL") {
+        const candidate = i.candidates.find(
+          (v) =>
+            v.deployment_id === x.entity_ids[0] &&
+            v.target_service_id === x.entity_ids[1],
+        );
+        if (
+          !candidate ||
+          candidate.deployment_occurred_at.utc !== x.event_utc ||
+          candidate.temporal_classification !== x.temporal_classification
+        )
+          throw new Error("Citation time not in returned snapshot");
+      }
+      if (
+        x.kind === "INCIDENT" &&
+        (x.entity_ids[0] !== i.incident_id ||
+          x.event_utc !== i.incident_time.utc)
+      )
+        throw new Error("Citation incident not in returned snapshot");
+      if (x.kind === "EVIDENCE" || x.kind === "PROVENANCE") {
+        const evidence = i.evidence.find(
+          (v) => v.evidence_id === x.entity_ids[0],
+        );
+        if (
+          !evidence ||
+          (x.kind === "PROVENANCE" &&
+            (x.provenance_status !== evidence.provenance_status ||
+              x.verification_status !== evidence.verification_status))
+        )
+          throw new Error("Citation provenance not in returned snapshot");
+      }
+      if (
+        x.kind === "CONTRADICTION" &&
+        !i.contradictions.some(
+          (v) =>
+            canonical(v.evidence_ids) === canonical(x.entity_ids.slice(0, 2)) &&
+            v.service_id === x.entity_ids[2] &&
+            v.classification === x.classification &&
+            v.overlap_window.start === x.overlap_start &&
+            v.overlap_window.end === x.overlap_end,
+        )
+      )
+        throw new Error("Citation comparison not in returned snapshot");
     }),
   );
   if (

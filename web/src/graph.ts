@@ -1,4 +1,4 @@
-import { allPaths, type Bundle, type Path } from "./contracts";
+import { allPaths, pathKey, type Bundle, type Path } from "./contracts";
 
 export type Kind =
   "Incident" | "Service" | "Deployment" | "Change" | "Evidence";
@@ -37,6 +37,8 @@ export function graphFromBundle(b: Bundle): Graph {
   const i = b.investigation;
   const roles = new Map<string, { kind: Kind; name: string }>();
   function role(id: string, kind: Kind, name = id) {
+    if (!kind || i.entity_kinds[id] !== kind)
+      throw new Error("Native graph kind mismatch");
     const existing = roles.get(id);
     if (existing && existing.kind !== kind)
       throw new Error("Ambiguous graph identity");
@@ -55,18 +57,21 @@ export function graphFromBundle(b: Bundle): Graph {
       if (!roles.has(s)) role(s, "Service");
     });
   });
-  const paths = [
+  const rawPaths = [
     ...allPaths(b),
     ...b.explanation.claims.flatMap((c) =>
       c.citations.flatMap((x) => (x.graph_path ? [x.graph_path] : [])),
     ),
   ];
+  const paths = [
+    ...new Map(rawPaths.map((p) => [pathKey(p), p])).values(),
+  ].sort((a, b) => pathKey(a).localeCompare(pathKey(b), "en"));
   const edges = new Map<string, GraphEdge>();
   const included = new Set<string>();
   paths.forEach((p) => {
     p.node_ids.forEach((id) => {
       included.add(id);
-      if (!roles.has(id)) role(id, "Service");
+      if (!roles.has(id)) role(id, i.entity_kinds[id]);
     });
     p.edges.forEach((e) => {
       const key = edgeKey(e);
@@ -112,10 +117,14 @@ export function graphFromBundle(b: Bundle): Graph {
     return {
       id,
       ...r,
-      x: columns[r.kind] * 190,
+      x:
+        r.kind === "Evidence"
+          ? Math.floor(row / 6) * 190
+          : columns[r.kind] * 190,
       y:
         (r.kind === "Evidence" ? 240 : r.kind === "Incident" ? 100 : 0) +
-        row * 85,
+        (r.kind === "Evidence" ? row % 6 : row) *
+          (r.kind === "Evidence" ? 70 : 85),
     };
   });
   const allowed = new Set(nodes.map((n) => n.id));

@@ -39,7 +39,7 @@ def test_dashboard_is_actual_single_native_investigation_and_legacy_parity(datab
         )
 
 
-def test_one_real_connection_six_queries_same_thread_then_closed(database, monkeypatch):
+def test_one_real_connection_seven_queries_same_thread_then_closed(database, monkeypatch):
     events = []
 
     class Observed(GraphStore):
@@ -59,7 +59,7 @@ def test_one_real_connection_six_queries_same_thread_then_closed(database, monke
 
     monkeypatch.setattr("traceweaver.dashboard.GraphStore", Observed)
     dashboard(database, "INC-001")
-    assert [e[0] for e in events] == ["open"] + ["query"] * 6 + ["closed"]
+    assert [e[0] for e in events] == ["open"] + ["query"] * 7 + ["closed"]
     assert len({e[1] for e in events}) == 1
 
 
@@ -242,3 +242,36 @@ def test_bundle_json_is_stable_and_strict(database):
     data["root_cause"] = "forbidden"
     with pytest.raises(ValidationError):
         DashboardBundle.model_validate(data)
+
+
+def test_console_node_kinds_are_read_from_actual_native_labels(database):
+    b = dashboard(database, "INC-001")
+    assert b.investigation.entity_kinds["DEP-001"] == "Deployment"
+    assert b.investigation.entity_kinds["SVC-AUTH"] == "Service"
+    with GraphStore(database) as store:
+        for identity, kind in b.investigation.entity_kinds.items():
+            assert store.execute(
+                "MATCH (n {id:$id}) RETURN labels(n) AS labels", {"id": identity}
+            ) == [{"labels": [kind]}]
+
+
+def test_duplicate_ids_across_labels_cannot_be_collapsed_into_false_node(database):
+    with GraphStore(database, read_only=False) as store:
+        store.execute("CREATE (:Service {id:$id})", {"id": "DEP-001"})
+    with pytest.raises(ToolError) as error:
+        dashboard(database, "INC-001")
+    assert error.value.code == "DASHBOARD_AMBIGUOUS_IDENTITY"
+
+
+def test_stored_edge_with_invalid_intermediate_label_fails_closed(tmp_path):
+    database = tmp_path / "invalid-domain.rl"
+    with GraphStore(database, read_only=False) as store:
+        store.execute(
+            "CREATE (i:Incident {id:'I',demo:true,timestamp:'2026-11-12T10:00:00Z'})"
+            "-[:AFFECTS]->(a:Service {id:'A'})-[:DEPENDS_ON]->(:Evidence {id:'B'})"
+            "-[:DEPENDS_ON]->(c:Service {id:'C'})<-[:TARGETS]-"
+            "(:Deployment {id:'D',timestamp:'2026-11-12T09:00:00Z'})"
+        )
+    with pytest.raises(ToolError) as error:
+        dashboard(database, "I")
+    assert error.value.code == "DASHBOARD_INVALID_DOMAIN"

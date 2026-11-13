@@ -7,7 +7,9 @@ import {
   ReactFlow,
   type Node,
   type NodeProps,
+  type ReactFlowInstance,
 } from "@xyflow/react";
+import { useEffect, useState } from "react";
 import type { Graph } from "./graph";
 import { edgeKey } from "./graph";
 import type { Path } from "./contracts";
@@ -16,13 +18,29 @@ type ProofNode = Node<{ kind: string; name: string; entityId: string }>;
 function EntityNode({ data }: NodeProps<ProofNode>) {
   return (
     <div className={`entity-node kind-${data.kind.toLowerCase()}`}>
-      <Handle type="target" position={Position.Left} isConnectable={false} />
+      {[Position.Left, Position.Right, Position.Top, Position.Bottom].map(
+        (position) => (
+          <span key={position}>
+            <Handle
+              id={"target-" + position}
+              type="target"
+              position={position}
+              isConnectable={false}
+            />
+            <Handle
+              id={"source-" + position}
+              type="source"
+              position={position}
+              isConnectable={false}
+            />
+          </span>
+        ),
+      )}
       <span className="entity-kind">{data.kind}</span>
       <strong>{data.entityId}</strong>
       {data.name !== data.entityId && (
         <span className="entity-name">{data.name}</span>
       )}
-      <Handle type="source" position={Position.Right} isConnectable={false} />
     </div>
   );
 }
@@ -36,6 +54,22 @@ export function GraphCanvas({
   paths: Path[];
   onSelect: (s: string) => void;
 }) {
+  const [instance, setInstance] = useState<ReactFlowInstance<ProofNode> | null>(
+    null,
+  );
+  const selectionKey = paths.map((p) => p.node_ids.join("~")).join("|");
+  useEffect(() => {
+    if (!instance || !selectionKey) return;
+    const ids = new Set(selectionKey.split(/[~|]/));
+    void instance.fitView({
+      nodes: graph.nodes
+        .filter((n) => ids.has(n.id))
+        .map((n) => ({ id: n.id })),
+      padding: 0.35,
+      maxZoom: 1.25,
+      duration: 0,
+    });
+  }, [instance, selectionKey, graph.nodes]);
   const activeNodes = new Set(paths.flatMap((p) => p.node_ids)),
     activeEdges = new Set(paths.flatMap((p) => p.edges.map(edgeKey)));
   const nodes: ProofNode[] = graph.nodes.map((n) => ({
@@ -47,33 +81,68 @@ export function GraphCanvas({
     style: { opacity: activeNodes.size && !activeNodes.has(n.id) ? 0.22 : 1 },
     selected: activeNodes.has(n.id),
   }));
-  const edges = graph.edges.map((e) => ({
-    id: e.id,
-    source: e.source,
-    target: e.target,
-    label: e.type,
-    ariaLabel: `${e.type} stored ${e.source} to ${e.target}${e.reverse ? ", traversed in reverse" : ""}`,
-    markerEnd: {
-      type: MarkerType.ArrowClosed,
-      width: 16,
-      height: 16,
-      color: activeEdges.has(e.id) ? "#6de2cc" : "#70869a",
-    },
-    style: {
-      stroke: activeEdges.has(e.id) ? "#6de2cc" : "#70869a",
-      strokeWidth: activeEdges.has(e.id) ? 2.5 : 1.3,
-      opacity: activeEdges.size && !activeEdges.has(e.id) ? 0.18 : 1,
-    },
-    labelStyle: { fill: "#b9c9d7", fontSize: 9, fontWeight: 600 },
-    labelBgStyle: { fill: "#0f1822", fillOpacity: 0.95 },
-    labelBgPadding: [4, 3] as [number, number],
-  }));
+  const edges = graph.edges.map((e) => {
+    const source = graph.nodes.find((n) => n.id === e.source)!,
+      target = graph.nodes.find((n) => n.id === e.target)!;
+    const horizontal =
+      Math.abs(target.x - source.x) >= Math.abs(target.y - source.y);
+    const sourceSide = horizontal
+      ? target.x > source.x
+        ? "right"
+        : "left"
+      : target.y > source.y
+        ? "bottom"
+        : "top";
+    const targetSide = (
+      { right: "left", left: "right", bottom: "top", top: "bottom" } as const
+    )[sourceSide];
+    return {
+      id: e.id,
+      source: e.source,
+      target: e.target,
+      sourceHandle: "source-" + sourceSide,
+      targetHandle: "target-" + targetSide,
+      label: e.type,
+      ariaLabel: `${e.type} stored ${e.source} to ${e.target}${e.reverse ? ", traversed in reverse" : ""}`,
+      markerEnd: {
+        type: MarkerType.ArrowClosed,
+        width: 16,
+        height: 16,
+        color: activeEdges.has(e.id) ? "#6de2cc" : "#70869a",
+      },
+      style: {
+        stroke: activeEdges.has(e.id) ? "#6de2cc" : "#70869a",
+        strokeWidth: activeEdges.has(e.id) ? 2.5 : 1.3,
+        opacity: activeEdges.size && !activeEdges.has(e.id) ? 0.18 : 1,
+      },
+      labelStyle: { fill: "#b9c9d7", fontSize: 9, fontWeight: 600 },
+      labelBgStyle: { fill: "#0f1822", fillOpacity: 0.95 },
+      labelBgPadding: [4, 3] as [number, number],
+    };
+  });
   return (
     <div
       className="graph-canvas"
       aria-label="Returned directed graph"
       data-testid="graph-canvas"
     >
+      {paths.length > 0 && (
+        <button
+          className="focus-path-button"
+          onClick={() =>
+            void instance?.fitView({
+              nodes: graph.nodes
+                .filter((n) => activeNodes.has(n.id))
+                .map((n) => ({ id: n.id })),
+              padding: 0.35,
+              maxZoom: 1.25,
+              duration: 0,
+            })
+          }
+        >
+          Focus selected paths
+        </button>
+      )}
       {!graph.nodes.length ? (
         <div className="graph-empty">
           No paths match this view. Adjust visual filters; no relationships are
@@ -81,6 +150,7 @@ export function GraphCanvas({
         </div>
       ) : (
         <ReactFlow
+          onInit={setInstance}
           nodes={nodes}
           edges={edges}
           nodeTypes={nodeTypes}

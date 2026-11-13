@@ -20,6 +20,7 @@ try{
   await page.goto(base+'/?incident=INC-001');
   await page.getByTestId('causal-status').waitFor({state:'visible',timeout:15000});
   if(await page.getByTestId('causal-status').innerText()!=='NOT_ESTABLISHED')throw new Error('Causal contract failed');
+  await page.locator('.react-flow__edge').first().waitFor({timeout:15000});
   const edgeCount=await page.locator('.react-flow__edge').count();
   if(edgeCount<1)throw new Error('No real graph edges rendered');
   await mkdir(resolve(root,'.verification/overnight'),{recursive:true});

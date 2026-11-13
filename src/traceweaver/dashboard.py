@@ -25,6 +25,7 @@ from traceweaver.investigation import investigate
 from traceweaver.investigation_models import InvestigationOptions
 from traceweaver.local_files import canonical_json
 from traceweaver.queries import INCIDENT_LIST
+from traceweaver.schema import RELATIONSHIPS
 from traceweaver.storage import GraphStore
 from traceweaver.tool_errors import ToolError
 
@@ -76,7 +77,7 @@ def view_digest(view, explanation, source_fingerprint):
     ).hexdigest()
 
 
-def bundle_from_investigation(i, options):
+def bundle_from_investigation(i, options, entity_kinds=None):
     effective = {
         **i.window,
         "max_candidates": i.limits["max_candidates"],
@@ -102,6 +103,7 @@ def bundle_from_investigation(i, options):
         options=options,
         investigation_status=i.investigation_status,
         causal_conclusion=i.causal_conclusion,
+        entity_kinds=entity_kinds,
         affected_services=[
             ViewService(id=s["id"], name=display_label(s.get("name"))) for s in i.affected_services
         ],
@@ -182,7 +184,42 @@ def dashboard(database, incident_id, options=None):
     options = options or InvestigationOptions()
     with GraphStore(database) as store:
         investigation = investigate(store, incident_id, options)
-    return bundle_from_investigation(investigation, options)
+        kinds = read_entity_kinds(store, investigation)
+    return bundle_from_investigation(investigation, options, kinds)
+
+
+def read_entity_kinds(store, i):
+    paths = [p for c in i.candidates for p in c.graph_paths]
+    paths += [change.graph_path for c in i.candidates for change in c.changes]
+    paths += [p for e in i.evidence for p in e.graph_paths]
+    ids = {i.incident_id, *[s["id"] for s in i.affected_services]}
+    ids.update(value for p in paths for value in p.node_ids)
+    if len(ids) > 1000:
+        raise ToolError("DASHBOARD_IDENTITY_LIMIT", "Returned identity audit exceeds its bound.")
+    rows = store.execute(
+        "MATCH (n) WHERE n.id IN $ids RETURN n.id AS id, labels(n) AS labels "
+        "ORDER BY id LIMIT $limit",
+        {"ids": sorted(ids), "limit": len(ids) + 1},
+    )
+    kinds = {}
+    allowed = {"Incident", "Service", "Deployment", "Change", "Evidence"}
+    for row in rows:
+        if row["id"] in kinds or len(row["labels"]) != 1 or row["labels"][0] not in allowed:
+            raise ToolError(
+                "DASHBOARD_AMBIGUOUS_IDENTITY", "Returned graph identity is incompatible."
+            )
+        kinds[row["id"]] = row["labels"][0]
+    if set(kinds) != ids or kinds[i.incident_id] != "Incident":
+        raise ToolError("DASHBOARD_MISSING_IDENTITY", "Returned graph identity cannot be verified.")
+    for path in paths:
+        for edge in path.edges:
+            source, target = RELATIONSHIPS[edge.type]
+            if kinds[edge.source_id] != source or kinds[edge.target_id] != target:
+                raise ToolError(
+                    "DASHBOARD_INVALID_DOMAIN",
+                    "Stored graph labels contradict the directed schema.",
+                )
+    return kinds
 
 
 def console_incidents(database):
