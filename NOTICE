@@ -1,0 +1,15 @@
+TraceWeaver
+Copyright 2026 HIZMALI
+
+Original eligible project code, documentation and synthetic demonstration material
+are licensed under the Apache License, Version 2.0. The repository owner explicitly
+authorized this license. Development substantially used OpenAI Codex assistance.
+
+Third-party dependencies retain their own licenses and notices. See
+docs/DEPENDENCY_LICENSES.md and web/public/assets/third-party-licenses.txt;
+built console distributions also include the latter under /assets/.
+Python dependencies are separately installed, not relicensed or bundled by this notice.
+
+Relate and Neo4j names identify the integration and their respective owners;
+no organizer, vendor or model-provider endorsement is implied. Optional model
+weights, fonts, encoder executables and the final narrated video are not bundled.

@@ -3,10 +3,31 @@
 TraceWeaver is a read-only incident investigation console backed by real embedded Relate 1.0.0.
 All distributed records are synthetic. No account, API key, Docker, hosted graph or model is needed.
 
-## Local release folder: about 60 seconds to explore after prerequisites
+## Public source checkout
+
+Install existing prerequisites Python 3.11+ and Node 24+ first. Windows/Python 3.14 was verified
+locally; check GITHUB_CI_REPORT.md for actual hosted Windows/Ubuntu Python 3.11 results.
+
+```powershell
+git clone https://github.com/HIZMALI/TraceWeaver.git
+cd TraceWeaver
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements-dev.lock -e ".[dev]"
+.\scripts\start-judge-demo.ps1 -Build
+```
+
+The source command builds its own frontend; ignored environments, assets and binary caches are
+not provided by Git. Initial downloads require internet and are outside the 60-second tour.
+After building, `.\scripts\check-judge-demo.ps1` verifies the published synthetic store read-only.
+Open `http://127.0.0.1:8000/?incident=INC-001`. No seeding is needed and no user store is modified.
+
+## Optional local offline export: about 60 seconds to explore after prerequisites
 
 This session's local export is `.verification/sprint07/release-candidate` in the checkout.
-It is review material, not an uploaded release. The runtime wheels in that export were resolved
+It is local review material, absent from a public source clone and not an uploaded release.
+An owner can create a new reviewed export with `scripts/build_judge_wheel.py` and
+`scripts/stage_release.py` after building the frontend; never overwrite an existing bundle.
+The runtime wheels in the historical Sprint 07 export were resolved
 for **Windows x64 / Python 3.14**. Other Python/OS installations need compatible wheels; do not
 interpret an ABI3 package listing as a tested platform. Existing Python must be installed first.
 Network and Node are unnecessary for the exported folder's installation and server.

@@ -31,7 +31,7 @@ def main():
             source / "src",
             ignore=shutil.ignore_patterns("__pycache__", "*.pyc", "*.egg-info"),
         )
-        for name in ("pyproject.toml", "README.md"):
+        for name in ("pyproject.toml", "README.md", "LICENSE", "NOTICE"):
             shutil.copyfile(root / name, source / name)
         subprocess.run(
             [
@@ -62,6 +62,11 @@ def main():
         )
         assert "traceweaver/web_static/assets/third-party-licenses.txt" in names
         assert not any(n.endswith(".rl") for n in names)
+        metadata = next(n for n in names if n.endswith(".dist-info/METADATA"))
+        assert "License-Expression: Apache-2.0" in archive.read(metadata).decode()
+        for name in ("LICENSE", "NOTICE"):
+            packaged = next(n for n in names if n.endswith(".dist-info/licenses/" + name))
+            assert archive.read(packaged) == (root / name).read_bytes()
     print(
         json.dumps(
             {

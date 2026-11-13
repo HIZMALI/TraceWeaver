@@ -1,11 +1,59 @@
-# TraceWeaver
+# TraceWeaver — Graph-Verified AI Incident Investigator
 
-Sprint 07 local release candidate: start with the [60-second judge tour](docs/JUDGE_QUICK_START.md).
-Use **Explore the verified path** to inspect an actual stored Relate path; source truth and cause
-remain unestablished. The [115-second capture report](docs/VIDEO_CAPTURE_REPORT.md) describes the
-genuine offline MP4/WebM. See [current release/publication readiness](docs/SPRINT07_PUBLIC_READINESS.md)
-and the [Sprint 07 report](docs/SPRINT_07_RELEASE_REPORT.md). Historical sprint documents below are
-preserved as dated evidence. No public release, license decision or submission has occurred.
+Inspect connected incident evidence with **embedded Relate 1.0.0**, exact directed paths and a
+semantic citation firewall. Relate reads a persistent single-file `.rl` graph through bounded,
+parameterized Cypher. Six node labels and seven relationship types connect incidents, services,
+deployments, changes, evidence and alerts. Five allowlisted read-only research tools expose the
+stored relationships: this makes a candidate's actual multi-hop support inspectable beyond a log
+text match, without claiming universal retrieval superiority.
+
+**Synthetic demo / read-only / cause NOT_ESTABLISHED / external verification NOT_PERFORMED.**
+The default console and tool rehearsal are offline and not AI-generated. On INC-001 the explicit
+rehearsal executes four real tools and 23 native queries, producing eight admitted claims and eleven
+citations. **Explore the verified path** means an exact stored path, not authenticated source truth.
+
+## Judge quick start
+
+Already installed prerequisites: Python 3.11+ and Node 24+. Local Windows/Python 3.14 is verified;
+Windows/Ubuntu Python 3.11 hosted results are **NOT YET VERIFIED** until observed in the
+[CI report](docs/GITHUB_CI_REPORT.md). From a source checkout:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements-dev.lock -e ".[dev]"
+.\scripts\start-judge-demo.ps1 -Build
+```
+
+Open `http://127.0.0.1:8000/?incident=INC-001`. This is a local loopback console, not a hosted product.
+Select the starting path, compare DEP-002, inspect typed citations, then CASE-INC's one conflict and
+two UNDETERMINED pairs. Setup time depends on package downloads; the [60-second tour](docs/JUDGE_QUICK_START.md)
+starts after installation. Stop with Ctrl+C. No account, key, Docker, graph server or model is needed.
+
+The sole distributed graph is [the synthetic judge store](examples/judge-demo/traceweaver-demo.rl),
+**51 nodes / 67 relationships**, with its [manifest](examples/judge-demo/manifest.json).
+After building, run `.\scripts\check-judge-demo.ps1` for a read-only integrity check. Source installs
+build assets with Node; an already built wheel needs no Node at runtime. The separately generated
+Windows x64/Python 3.14 offline export is local review material, not a GitHub release attachment.
+
+## Release, license and disclosure
+
+Eligible original project material is licensed under **[Apache-2.0](LICENSE)** with [NOTICE](NOTICE).
+Third-party dependencies retain their own terms; see [dependency notices](docs/DEPENDENCY_LICENSES.md).
+Publication is gated by [the release audit](docs/PUBLIC_RELEASE_AUDIT.md); observed publication and
+platform status are recorded in [the release report](docs/PUBLIC_RELEASE_REPORT.md).
+
+Latest completed local baseline: **574 Python / 88 frontend / 54 native Chromium tests** and
+frozen suites **35/20/19**. These synthetic and controlled-protocol checks are not model accuracy or
+production reliability. Historical source-service qwen3:8b two-tool L3 succeeded in Sprint 06B;
+**a reliable live browser agent is NOT VERIFIED**. Optional Ollama is explicit, loopback-only and
+never downloads models. Historical success is not a promise of an interactive live AI demo.
+
+Development substantially used OpenAI Codex for implementation, tests, documentation and production
+automation. The local final English narration uses Kokoro af_heart synthetic speech; it does not
+represent the participant's voice or live inference inside the recorded application. Model/voice
+assets and narrated video are not bundled. **Video: pending upload.** No video URL is invented and
+no Devpost submission is performed. The owner's eligibility/rights review remains separate.
+Historical sprint documents below retain their dated results; current release status is above.
 
 ## Local investigation console
 
