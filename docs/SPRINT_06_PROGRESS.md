@@ -54,3 +54,9 @@ Live final admission remains PARTIAL; continue independent offline/UI/evaluation
 Resume: read this ledger/decisions, inspect git status, preserve user changes. Complete G1 then
 the strict native tool layer. No model pulls/installations or user-store writers. Browser mirrors
 are owned copies with environment/dependency junctions; never recursively delete their targets.
+
+G4 PASS: deterministic fixed plans use the same native tool functions and existing citation
+validator. All four intents, canonical repeatability, stale-source rejection, evidence abstention
+and separate explicit CLI verified. Full pytest: 492 passed in 48.35s; Ruff clean.
+Resume: G0/G1/G2/G4 passed; G3 live final admission partial. Next: G5 UI/routes, frozen G7 suite,
+native browser captures, independent wheel and release artifacts. No user-store writes.
