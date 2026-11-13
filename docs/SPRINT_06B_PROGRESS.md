@@ -13,8 +13,8 @@ contracts. Never modify protected historical documents/reports/gold/screenshots 
 | B4 | PASS | 566 full pytest in 65.77s; 518 retained + 48 new controlled/native cases; Ruff clean, no old tests changed |
 | B5 | PASS | Judge native CLI TRACE 23 queries/8 claims/11 citations; RECONCILE 27/9/15; native edges independently audited; isolated parameterized reads; evaluations 35/20/19 PASS |
 | B6 | PASS / L3 observed | After externally observed availability transition: genuine qwen3 scope then deployment, 13 native queries, 4 non-caution claims, 6 citations; no rejection |
-| B7 | PASS unchanged UI; capture deferred | Existing actual state/flags/proof UI retained; no frontend changes; final genuine installed-wheel capture planned as last bounded live verification |
-| B8 | PENDING | Complete regression, protected audit, fresh external Node-free wheel/browser |
+| B7 | PASS focused correction | Actual trial-3 timeout image inspected; transport-specific notice and transient proof reset tested with 86 frontend / 50 browser cases; no fourth live run |
+| B8 | PASS offline/package; live browser timed out | 567 Python / 86 frontend / 50 browser; 35/20/19; negative exit 15; final fresh external Node-free wheel/browser PASS, model not retried |
 | B9 | PENDING | Findings/report and observed local commits, no push/remote/license/service changes |
 
 Ignored evidence directory: .verification/sprint06b. baseline.json contains actual hashes of all
@@ -68,3 +68,23 @@ then separately selected/executed second tool. Exact native edges independently 
 bytes unchanged. Both AI flags true, PARTIAL_CONTEXT remains appropriate source status, no cause.
 At most one further scoped live action remains, reserved for independently installed-wheel UI.
 Never run a fourth trial or continue after any new connection failure. B8 full final gates next.
+
+Final live action 3: genuinely installed-wheel browser action timed out at 20023.387ms before
+native tool execution (7 snapshot queries, 1 chat, 0 claims/citations, both AI flags false).
+No fourth live action. Earlier source/service L3 remains genuine; do not turn it into browser L3
+or infer the exact historical schema root cause. Original failed connect and later transition
+remain distinct metadata. Genuine timeout screenshot is diagnostic evidence before UI refinements.
+Observed stale view defect: previous offline step focus remained beside the failed zero-tool AI
+report. New action-start callback clears transient tool/claim focus; notice distinguishes transport
+deadline, unavailable model, tool-only partial, abstention and accepted final, preserving API DTOs.
+One controlled timeout/native-snapshot browser case verifies failure classification and proof reset;
+it never contacts actual Ollama. Existing 518/80/49 cases untouched; final 567/86/50 pass.
+Final Python 567 in 69.15s, frontend 86, browser 50 in 50.5s. Ruff/pip/type/lint/build/actionlint
+pass. Frozen 35/20/19 evaluations pass again; copied bad gold still exits 15. Final non-editable
+wheel 305499 bytes SHA 4da66c34f6a2b8a03a4a73a7d1ad0ee4d328c77047269f83a07f9a3d89917bf3,
+external copied npm/build, import outside checkout, Node-free owned server, exact HTTP/wheel asset
+byte match and actual four-tool offline browser proof pass. Final install deliberately makes no
+model call (live trial budget exhausted). All original tracked artifacts except the four reviewed
+runtime source files match baseline; all original test bytes, stores/manifests/gold/history match.
+Next: commit verified focused UI/evidence, finish B9 report/final audit. Overall remains PARTIAL:
+L3 CLI achieved, historical field-level cause unresolved, genuine live browser result timed out.

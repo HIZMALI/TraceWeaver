@@ -1408,6 +1408,10 @@ export function App() {
                 <AgentPanel
                   key={data.bundle.source_fingerprint}
                   bundle={data.bundle}
+                  onActionStart={() => {
+                    setStepSelected(null);
+                    setLocalSelected(null);
+                  }}
                   onStep={(step) => {
                     const selection = "node:" + step.subject_ids[0];
                     select(selection);

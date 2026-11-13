@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
 import { requestJSON } from "./api";
+import { agentOutcome } from "./agent-outcome";
 import {
   intents,
   verifyAgent,
@@ -31,10 +32,12 @@ export function AgentPanel({
   bundle,
   onStep,
   onClaim,
+  onActionStart,
 }: {
   bundle: Bundle;
   onStep: (s: AgentStep) => void;
   onClaim: (c: Claim) => void;
+  onActionStart?: () => void;
 }) {
   const [open, setOpen] = useState(false),
     [intent, setIntent] = useState<(typeof intents)[number]>(
@@ -63,6 +66,7 @@ export function AgentPanel({
     )
       return;
     const current = new AbortController();
+    onActionStart?.();
     controller.current = current;
     inFlight.current = true;
     setBusy(true);
@@ -115,9 +119,7 @@ export function AgentPanel({
         setNotice(
           kind === "offline"
             ? "Deterministic native tool rehearsal · Offline · Not AI-generated."
-            : r.ai_generated_selection
-              ? "Local-model tools and final claim IDs admitted. Cause and source truth remain unestablished."
-              : `No accepted final AI selection: ${r.agent_status}. Executed native steps, if any, remain visible; no automatic fallback.`,
+            : agentOutcome(r),
         );
       }
     } catch (e) {

@@ -56,6 +56,33 @@
       "native_edges_independently_checked": 3,
       "database_digest": "29b10010152ebf82fe61b7dd8eff71848f39963e58d7b7a56f0aecebf1150239",
       "bytes_preserved": true
+    },
+    {
+      "evidence_kind": "GENUINE_QWEN_INSTALLED_WHEEL_BROWSER_ATTEMPT",
+      "trial": 3,
+      "status": "MODEL_OUTPUT_REJECTED",
+      "level": "L0",
+      "model": null,
+      "tool_names": [],
+      "native_queries": 7,
+      "model_interactions": 1,
+      "noncaution_claims": 0,
+      "total_claims": 0,
+      "citations": 0,
+      "ai_directed_tools": false,
+      "ai_generated_selection": false,
+      "codes": [
+        "OLLAMA_TIMEOUT"
+      ],
+      "warnings": [],
+      "elapsed_ms": 20023.387,
+      "source_fingerprint": "d05166378e55098b88a4c71e69095cc206e075031a3e46ce1a5643f70c1b5520",
+      "database_digest": "29b10010152ebf82fe61b7dd8eff71848f39963e58d7b7a56f0aecebf1150239",
+      "wheel_sha256": "f209a0039d09acc8283cdefbd712cce4b7ccecdf54e6988d7d27e6038bbac485",
+      "outside_checkout": true,
+      "node_on_server_path": false,
+      "bytes_preserved": true,
+      "initial_page_ai_calls": 0
     }
   ],
   "accepted_multistep_example": {
@@ -440,5 +467,9 @@
     "causal_conclusion": "NOT_ESTABLISHED",
     "external_verification_status": "NOT_PERFORMED"
   },
-  "privacy": "No raw prompt, provider content or thinking persisted; factual claims are accepted server templates."
+  "privacy": "No raw prompt, provider content or thinking persisted; factual claims are accepted server templates.",
+  "best_verified_level": "L3",
+  "latest_live_browser_result": "OLLAMA_TIMEOUT / L0; no native tools or admitted claims",
+  "historical_schema_root_cause": "UNRESOLVED; not reproduced in bounded current successful trials",
+  "further_live_trials": "NOT_PERFORMED; three-trial budget exhausted"
 }

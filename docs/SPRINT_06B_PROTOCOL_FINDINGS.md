@@ -124,7 +124,24 @@ ADMITTED. Result: **L3**, 4 non-caution / 5 total claims / 6 citations, both AI 
 Three stored directed edge tuples independently queried again; judge bytes unchanged. Warnings
 PARALLEL_PROPOSALS_CONSTRAINED and READ_PHASE_TEXT_NOT_USED remain visible, not hidden.
 
-One final bounded action is reserved for the independently installed-wheel browser route. Its
-separate actual result must be recorded; CLI L3 is not automatically browser L3. No fourth live
-trial is allowed. Public safe evidence is `reports/sprint06b_live_agent_evidence.json`; complete
+The third and final bounded action was attempted through the independently installed wheel and
+actual browser. It timed out before a native tool response: OLLAMA_TIMEOUT, 20023.387ms, one chat,
+7 initial native queries, zero tool steps/claims/citations, both AI flags false. The existing public
+status MODEL_OUTPUT_REJECTED is retained for compatibility; its specific transport code is not a
+schema failure. No fourth trial was attempted. CLI L3 is not browser L3. The installed browser
+offline four-tool rehearsal passed separately (8 claims/11 citations, no initial AI). Public safe evidence is `reports/sprint06b_live_agent_evidence.json`; complete
 structural metadata remains ignored, with no provider prose, thinking or raw prompt persistence.
+
+The genuine timeout screenshot also showed a previous deterministic rehearsal's selected tool
+proof still visible beside the new zero-tool AI report. This is a view-state defect, not a native
+query/model success. A focused UI correction clears transient tool/claim focus when a new agent
+action begins and labels transport timeout separately from schema rejection. It was verified
+with a clearly CONTROLLED provider timeout after actual native snapshot/HTTP/UI interaction; this
+is not a fourth live Qwen action. Preserve the genuine pre-refinement screenshot as diagnostic
+evidence, never label it successful live inference. Final validation/results are in the report.
+
+Final verification: 567 Python, 86 frontend and 50 browser tests passed. The controlled timeout
+case confirms stale native tool focus is cleared before the next action. Final installed-wheel
+offline browser passes; it intentionally does not spend a fourth live trial. No source validator,
+API report enum or provider deadline changed. Overall PARTIAL / best genuine L3, with the exact
+historical schema cause unresolved and live installed-browser timeout disclosed.
