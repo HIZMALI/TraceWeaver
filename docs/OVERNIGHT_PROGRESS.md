@@ -175,3 +175,6 @@ manifest, fixtures, saved examples and frozen reports/gold must remain byte-iden
 - G8 implementation/results commit: 79221f1. G9 tested implementation commit is recorded in the
   final mission report; the report is a subsequent documentation-only commit. Remote CI, Python
   3.11, Ubuntu, other browsers and a finished competition video remain UNVERIFIED / NOT PRODUCED.
+- Final tested implementation: ded79a07b948a5a10814e07fb639a34b8c3859ab. Final report/ledger
+  reference is a documentation-only follow-up; use git log -1 for its own commit ID. No work
+  remains running in the background. Public handoff: docs/OVERNIGHT_MISSION_REPORT.md.

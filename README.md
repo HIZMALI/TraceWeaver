@@ -52,6 +52,8 @@ Open [the local console](http://127.0.0.1:8000/?incident=INC-001). The existing 
 file is read without reseeding. Select INC-001, INC-002 or CASE-INC; inspect graph paths and
 server-admitted claims. NOT_ESTABLISHED and external truth NOT_PERFORMED remain explicit.
 The [overnight ledger](docs/OVERNIGHT_PROGRESS.md) distinguishes completed gates from remaining work.
+The [completed mission report](docs/OVERNIGHT_MISSION_REPORT.md) records actual tests, protected
+hashes, commits, screenshots, installed-wheel verification and the limited retrieval-study erratum.
 
 Verification from the repo root (development tools and project-scoped Chromium required):
 
