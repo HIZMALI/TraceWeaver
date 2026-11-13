@@ -5,6 +5,14 @@ Starting main: 0783201fb5d83c072fe215cf23135eb165a2213a. No user edits at start.
 
 ## Latest successful gate
 
+G6 PASS — 2026-11-13 01:15 UTC. 414 Python tests passed in 45.73s, Ruff/pip clean.
+Clean external npm ci/build succeeded with zero audit vulnerabilities and identical asset bytes.
+Fresh external non-editable wheel installation served the actual UI with Node absent from server
+PATH; Chromium rendered 14 native edges with no errors. Wheel c0ee1ff20d91d53935403e5735227b8ef6fe762e14a1c4b722e648da214ec46c.
+PowerShell source launcher and read-only check both actually ran; owned processes stopped.
+25 upstream frontend notices collected from installed runtime tree; no system tools installed.
+See RELEASE_READINESS.md and DEPENDENCY_LICENSES.md. Original graph files remain intact.
+
 G5 PASS — 2026-11-13 01:09 UTC. Full pytest 410 passed in 52.25s, followed by 29 focused
 selection tests (two additional thread-close/no-GET-provider cases included). Frontend 55 passed,
 lint/type/build passed, actual Playwright 28 passed in 29.8s. Ruff/pip check clean. A genuine
@@ -61,16 +69,16 @@ ignored .verification/overnight/baseline.json. Architecture decisions recorded b
 | G3 | PASS | 383 total tests; strict new-console Host/origin, safe errors, native read-only snapshot |
 | G4 | PASS | 28 actual browser scenarios, zero axe violations, six real captures and responsive checks |
 | G5 | PASS | Strict local POST actions, 29 protocol/native cases, actual qwen3:8b UI inference |
-| G6 | IN PROGRESS | Clean npm/wheel install, static assets and one-command launch/check |
-| G7 | PENDING | Judge guide, fact check, draft and screenshot pack |
+| G6 | PASS | External clean npm/wheel/browser, Node-free server, verified PowerShell launch/check |
+| G7 | IN PROGRESS | Judge guide, fact check, draft and screenshot pack |
 | G8 | PENDING | Independent fair retrieval comparison after P0/P1 pass |
 | G9 | PENDING | Full regression, measurements, protected-file/staged audit, final report |
 
 ## Resume instructions
 
 Read this ledger and OVERNIGHT_ARCHITECTURE_DECISIONS.md; inspect Git status before edits.
-Do not reset or overwrite existing work. Next action: G6 independent packaging/launch,
-then G7 presentation pack and optional fair G8 study. Current app is source-built and served by FastAPI
+Do not reset or overwrite existing work. Next action: G7 presentation pack, then fair G8 study,
+performance/final G9 regression. Current app is source-built and served by FastAPI
 at one loopback origin. Rebuild web after frontend edits. Browser files live in ignored
 .verification/overnight/browsers; web/e2e/smoke.mjs configures that path before importing Playwright.
 All tests that write graph data must use new OS temporary stores. The existing judge artifact,
@@ -113,3 +121,5 @@ manifest, fixtures, saved examples and frozen reports/gold must remain byte-iden
 - G3 commit: 6c55620. G4 adds real browser runner/scenarios, accessibility repairs and public captures.
 - G4 commit: 1044204. G5 adds console_selection, LocalSelection component, native/security and
   component cases, guarded dedicated POSTs, explicit AGENTS exception and real-model helper.
+- G5 commit: 70efbf3. G6 adds judge.py, source launcher/check scripts, license collector/notices,
+  installed-wheel browser helper, launcher cases and release/readme documentation.

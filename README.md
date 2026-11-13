@@ -2,6 +2,39 @@
 
 ## Local investigation console
 
+### Try in 2 minutes (after prerequisites)
+
+Windows: Python 3.11+ and Node 24+ must already be installed. No system tools are installed by
+the launcher. From a fresh checkout, create only the project environment, then build and launch:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements-dev.lock
+.\.venv\Scripts\python.exe -m pip install -e .
+.\scripts\start-judge-demo.ps1 -Build
+```
+
+Subsequent launch: `.\scripts\start-judge-demo.ps1`. Read-only self-check:
+`.\scripts\check-judge-demo.ps1`. Ctrl+C stops the foreground server. Choose another port with
+`-Port 8001` if needed. No store is created, seeded or replaced. The launcher verifies the exact
+published synthetic bundle and built console before serving on numeric loopback, without proxy trust.
+First package/browser installation time depends on the machine/network; “2 minutes” is a usage
+guide, not a measured clean-install duration. Python 3.14/Windows was exercised here; see release notes.
+
+Open [the local console](http://127.0.0.1:8000/?incident=INC-001): expect 2 candidate/target pairs,
+4 evidence records and NOT_ESTABLISHED. CASE-INC has 1 conflict and 2 undetermined pairs.
+Select records or typed claims for actual proof. Optional **Compare with local AI selection**
+probes installed models only on click; choose a model and confirm once. No Ollama is needed for
+the default view; no model is downloaded. Failures preserve offline results and carry no AI label.
+The single-origin launcher supports optional selection; Vite is for frontend development.
+
+Cross-platform after the same project build: `.venv/bin/python -m traceweaver.judge
+--bundle examples/judge-demo` (one command, on one line). After a built wheel is installed,
+`python -m traceweaver.judge --bundle /path/to/intact/judge-demo` needs no Node or checkout.
+The wheel contains web assets/fixtures, not a user store; supply the published synthetic bundle.
+See [release readiness](docs/RELEASE_READINESS.md),
+[dashboard contract](docs/DASHBOARD_CONTRACT.md) and [OSS notices](docs/DEPENDENCY_LICENSES.md).
+
 The React/TypeScript console consumes a coherent, privacy-conscious snapshot from real Relate.
 It shows actual stored arrows, typed claim citations, candidate/evidence records, UTC timeline,
 structured comparisons and gaps. It is read-only and deterministic by default.
@@ -12,7 +45,7 @@ With Node 24 and the project Python environment installed, build and run from th
 npm --prefix web ci
 npm --prefix web run build
 $env:TRACEWEAVER_DATABASE = './examples/judge-demo/traceweaver-demo.rl'
-.\.venv\Scripts\python.exe -m uvicorn traceweaver.api:app --host 127.0.0.1 --port 8000
+.\.venv\Scripts\python.exe -m uvicorn traceweaver.api:app --host 127.0.0.1 --port 8000 --no-proxy-headers
 ```
 
 Open [the local console](http://127.0.0.1:8000/?incident=INC-001). The existing synthetic judge
