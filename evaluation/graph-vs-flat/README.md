@@ -9,7 +9,7 @@ R12 is a missing-incident negative control; R14 is an unsupported-causality nega
 
 Both arms receive exactly the same two public synthetic fixture files: all node fields and all
 directed relationship triples/properties. Graph seed writes only a new temporary native store.
-Flat indexing makes one document per entity with all its properties and incident incoming/outgoing
+Flat indexing makes one document per entity with all its properties and its incoming/outgoing
 triples. No edge facts are hidden. It uses deterministic BM25-like lexical ranking, ID components
 and complete ID tokens, target label filter and fixed k=5 (candidate cap also bounds k). It does
 not get gold cardinality, expected IDs, graph outputs or expanded multi-hop neighborhoods.
@@ -34,3 +34,24 @@ ranking, excluding one-time indexing. Native proof rechecks/setup are outside ti
 Do not call first read machine-cold: seeding and caches have already run. No OS cache flush.
 Report hardware, procedure, medians and descriptive nearest-rank p95; no preselected speed win.
 Existing Sprint 02/03 gold/reports remain byte-identical. Generated study outputs belong only here.
+
+## Actual execution and review
+
+Freeze commit: 1c8d1fa. Gold hash:
+53e089d433a5f9de6c00105aa7837e1d9ae29016750ef6802f4cc0fde095db81.
+`run_study.py --output results.json --markdown RESULTS.md` produced the preserved first run.
+After the disclosed evaluation-only selector repair, the same frozen questions and unchanged
+lexical baseline produced results-selector-v1.1.json / RESULTS_SELECTOR_V1.1.md. Both outputs
+are retained. Reproduce from repository root using project Python and **new** output paths:
+
+```powershell
+.\.venv\Scripts\python.exe evaluation/graph-vs-flat/run_study.py --output .verification/overnight/retrieval-new.json --markdown .verification/overnight/retrieval-new.md
+```
+
+See ERRATA.md: one frozen question (R13) has an independently identified cap-order assumption
+error. It is neither rewritten nor silently counted as a product defect. Thirteen valid questions
+remain. Raw final counts including that invalid expectation are native 13/14 and lexical 2/14;
+do not advertise those as general accuracy. Full ID sets, precision/recall, native edge matches,
+first/warm timing summaries and null denominators are in the actual result JSON. Flat retrieval is
+much faster on this small in-memory corpus; native retrieval enforces the declared relational
+semantics. The baseline was not retuned after seeing results and no UI superiority panel was added.

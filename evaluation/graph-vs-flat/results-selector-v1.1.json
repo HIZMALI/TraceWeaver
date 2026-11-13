@@ -1,0 +1,1554 @@
+{
+  "cases": [
+    {
+      "expected_ids": [
+        "DEP-001",
+        "DEP-002"
+      ],
+      "flat": {
+        "ids": [
+          "DEP-001",
+          "DEP-003",
+          "DEP-002",
+          "CASE-DEP-NOCHANGE",
+          "CASE-DEP-UNRELATED"
+        ],
+        "metrics": {
+          "exact": false,
+          "fn": 0,
+          "fp": 3,
+          "precision": 0.4,
+          "recall": 1.0,
+          "tp": 2
+        },
+        "record_edge_facts": [
+          {
+            "source": "DEP-001",
+            "target": "SVC-AUTH",
+            "type": "TARGETS"
+          },
+          {
+            "source": "DEP-002",
+            "target": "SVC-PAYMENT",
+            "type": "TARGETS"
+          },
+          {
+            "source": "DEP-003",
+            "target": "SVC-NOTIFICATION",
+            "type": "TARGETS"
+          },
+          {
+            "source": "DEP-003",
+            "target": "SVC-QUEUE",
+            "type": "TARGETS"
+          },
+          {
+            "source": "DEP-001",
+            "target": "CHG-001",
+            "type": "INCLUDES_CHANGE"
+          },
+          {
+            "source": "DEP-002",
+            "target": "CHG-002",
+            "type": "INCLUDES_CHANGE"
+          },
+          {
+            "source": "DEP-003",
+            "target": "CHG-003",
+            "type": "INCLUDES_CHANGE"
+          },
+          {
+            "source": "CASE-DEP-NOCHANGE",
+            "target": "CASE-API",
+            "type": "TARGETS"
+          },
+          {
+            "source": "CASE-DEP-UNRELATED",
+            "target": "CASE-UNRELATED",
+            "type": "TARGETS"
+          }
+        ],
+        "timing": {
+          "first_read_ms": 0.0746,
+          "warm_median_ms": 0.0635,
+          "warm_n": 5,
+          "warm_p95_nearest_rank_ms": 0.0692
+        }
+      },
+      "graph": {
+        "expected_cap_matches": null,
+        "ids": [
+          "DEP-001",
+          "DEP-002"
+        ],
+        "matched_native_edges": [
+          {
+            "source": "INC-001",
+            "target": "SVC-PAYMENT",
+            "type": "AFFECTS"
+          },
+          {
+            "source": "SVC-PAYMENT",
+            "target": "SVC-AUTH",
+            "type": "DEPENDS_ON"
+          },
+          {
+            "source": "DEP-001",
+            "target": "SVC-AUTH",
+            "type": "TARGETS"
+          },
+          {
+            "source": "DEP-002",
+            "target": "SVC-PAYMENT",
+            "type": "TARGETS"
+          }
+        ],
+        "metrics": {
+          "exact": true,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "tp": 2
+        },
+        "source_truncated": false,
+        "timing": {
+          "first_read_ms": 4.1575,
+          "warm_median_ms": 3.8121,
+          "warm_n": 5,
+          "warm_p95_nearest_rank_ms": 4.1708
+        }
+      },
+      "id": "R01",
+      "question": "Which deployments are connected to incident INC-001 through affected services and dependencies?"
+    },
+    {
+      "expected_ids": [
+        "DEP-002"
+      ],
+      "flat": {
+        "ids": [
+          "DEP-001",
+          "DEP-003",
+          "DEP-002",
+          "CASE-DEP-NOCHANGE",
+          "CASE-DEP-UNRELATED"
+        ],
+        "metrics": {
+          "exact": false,
+          "fn": 0,
+          "fp": 4,
+          "precision": 0.2,
+          "recall": 1.0,
+          "tp": 1
+        },
+        "record_edge_facts": [
+          {
+            "source": "DEP-001",
+            "target": "SVC-AUTH",
+            "type": "TARGETS"
+          },
+          {
+            "source": "DEP-002",
+            "target": "SVC-PAYMENT",
+            "type": "TARGETS"
+          },
+          {
+            "source": "DEP-003",
+            "target": "SVC-NOTIFICATION",
+            "type": "TARGETS"
+          },
+          {
+            "source": "DEP-003",
+            "target": "SVC-QUEUE",
+            "type": "TARGETS"
+          },
+          {
+            "source": "DEP-001",
+            "target": "CHG-001",
+            "type": "INCLUDES_CHANGE"
+          },
+          {
+            "source": "DEP-002",
+            "target": "CHG-002",
+            "type": "INCLUDES_CHANGE"
+          },
+          {
+            "source": "DEP-003",
+            "target": "CHG-003",
+            "type": "INCLUDES_CHANGE"
+          },
+          {
+            "source": "CASE-DEP-NOCHANGE",
+            "target": "CASE-API",
+            "type": "TARGETS"
+          },
+          {
+            "source": "CASE-DEP-UNRELATED",
+            "target": "CASE-UNRELATED",
+            "type": "TARGETS"
+          }
+        ],
+        "timing": {
+          "first_read_ms": 0.0661,
+          "warm_median_ms": 0.0685,
+          "warm_n": 5,
+          "warm_p95_nearest_rank_ms": 0.0704
+        }
+      },
+      "graph": {
+        "expected_cap_matches": null,
+        "ids": [
+          "DEP-002"
+        ],
+        "matched_native_edges": [
+          {
+            "source": "INC-001",
+            "target": "SVC-PAYMENT",
+            "type": "AFFECTS"
+          },
+          {
+            "source": "DEP-002",
+            "target": "SVC-PAYMENT",
+            "type": "TARGETS"
+          }
+        ],
+        "metrics": {
+          "exact": true,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "tp": 1
+        },
+        "source_truncated": false,
+        "timing": {
+          "first_read_ms": 3.7595,
+          "warm_median_ms": 3.9044,
+          "warm_n": 5,
+          "warm_p95_nearest_rank_ms": 4.2537
+        }
+      },
+      "id": "R02",
+      "question": "Which deployment directly targets the affected service for INC-001 at dependency depth zero?"
+    },
+    {
+      "expected_ids": [
+        "CHG-001",
+        "CHG-002"
+      ],
+      "flat": {
+        "ids": [
+          "CHG-001",
+          "CASE-CHG-AFTER",
+          "CASE-CHG-BEFORE",
+          "CASE-CHG-INVALID",
+          "CASE-CHG-OFFSET"
+        ],
+        "metrics": {
+          "exact": false,
+          "fn": 1,
+          "fp": 4,
+          "precision": 0.2,
+          "recall": 0.5,
+          "tp": 1
+        },
+        "record_edge_facts": [
+          {
+            "source": "DEP-001",
+            "target": "CHG-001",
+            "type": "INCLUDES_CHANGE"
+          },
+          {
+            "source": "CASE-DEP-BEFORE",
+            "target": "CASE-CHG-BEFORE",
+            "type": "INCLUDES_CHANGE"
+          },
+          {
+            "source": "CASE-DEP-AFTER",
+            "target": "CASE-CHG-AFTER",
+            "type": "INCLUDES_CHANGE"
+          },
+          {
+            "source": "CASE-DEP-OFFSET",
+            "target": "CASE-CHG-OFFSET",
+            "type": "INCLUDES_CHANGE"
+          },
+          {
+            "source": "CASE-DEP-INVALID",
+            "target": "CASE-CHG-INVALID",
+            "type": "INCLUDES_CHANGE"
+          }
+        ],
+        "timing": {
+          "first_read_ms": 0.0575,
+          "warm_median_ms": 0.0586,
+          "warm_n": 5,
+          "warm_p95_nearest_rank_ms": 0.0618
+        }
+      },
+      "graph": {
+        "expected_cap_matches": null,
+        "ids": [
+          "CHG-001",
+          "CHG-002"
+        ],
+        "matched_native_edges": [
+          {
+            "source": "INC-001",
+            "target": "SVC-PAYMENT",
+            "type": "AFFECTS"
+          },
+          {
+            "source": "SVC-PAYMENT",
+            "target": "SVC-AUTH",
+            "type": "DEPENDS_ON"
+          },
+          {
+            "source": "DEP-001",
+            "target": "CHG-001",
+            "type": "INCLUDES_CHANGE"
+          },
+          {
+            "source": "DEP-002",
+            "target": "CHG-002",
+            "type": "INCLUDES_CHANGE"
+          },
+          {
+            "source": "DEP-001",
+            "target": "SVC-AUTH",
+            "type": "TARGETS"
+          },
+          {
+            "source": "DEP-002",
+            "target": "SVC-PAYMENT",
+            "type": "TARGETS"
+          }
+        ],
+        "metrics": {
+          "exact": true,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "tp": 2
+        },
+        "source_truncated": false,
+        "timing": {
+          "first_read_ms": 3.7558,
+          "warm_median_ms": 4.1,
+          "warm_n": 5,
+          "warm_p95_nearest_rank_ms": 4.2519
+        }
+      },
+      "id": "R03",
+      "question": "Which included changes are reached through candidate deployments for INC-001?"
+    },
+    {
+      "expected_ids": [
+        "EVD-001",
+        "EVD-002",
+        "EVD-003",
+        "EVD-004"
+      ],
+      "flat": {
+        "ids": [
+          "EVD-003",
+          "EVD-001",
+          "EVD-002",
+          "EVD-004",
+          "EVD-006"
+        ],
+        "metrics": {
+          "exact": false,
+          "fn": 0,
+          "fp": 1,
+          "precision": 0.8,
+          "recall": 1.0,
+          "tp": 4
+        },
+        "record_edge_facts": [
+          {
+            "source": "INC-001",
+            "target": "EVD-001",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "EVD-001",
+            "target": "SVC-PAYMENT",
+            "type": "OBSERVED_ON"
+          },
+          {
+            "source": "INC-001",
+            "target": "EVD-002",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "EVD-002",
+            "target": "SVC-PAYMENT",
+            "type": "OBSERVED_ON"
+          },
+          {
+            "source": "INC-001",
+            "target": "EVD-003",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "EVD-003",
+            "target": "SVC-AUTH",
+            "type": "OBSERVED_ON"
+          },
+          {
+            "source": "INC-001",
+            "target": "EVD-004",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "EVD-004",
+            "target": "SVC-AUTH",
+            "type": "OBSERVED_ON"
+          },
+          {
+            "source": "INC-002",
+            "target": "EVD-006",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "EVD-006",
+            "target": "SVC-QUEUE",
+            "type": "OBSERVED_ON"
+          }
+        ],
+        "timing": {
+          "first_read_ms": 0.085,
+          "warm_median_ms": 0.0844,
+          "warm_n": 5,
+          "warm_p95_nearest_rank_ms": 0.0893
+        }
+      },
+      "graph": {
+        "expected_cap_matches": null,
+        "ids": [
+          "EVD-001",
+          "EVD-002",
+          "EVD-003",
+          "EVD-004"
+        ],
+        "matched_native_edges": [
+          {
+            "source": "INC-001",
+            "target": "EVD-001",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "INC-001",
+            "target": "EVD-002",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "INC-001",
+            "target": "EVD-003",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "INC-001",
+            "target": "EVD-004",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "EVD-001",
+            "target": "SVC-PAYMENT",
+            "type": "OBSERVED_ON"
+          },
+          {
+            "source": "EVD-002",
+            "target": "SVC-PAYMENT",
+            "type": "OBSERVED_ON"
+          },
+          {
+            "source": "EVD-003",
+            "target": "SVC-AUTH",
+            "type": "OBSERVED_ON"
+          },
+          {
+            "source": "EVD-004",
+            "target": "SVC-AUTH",
+            "type": "OBSERVED_ON"
+          }
+        ],
+        "metrics": {
+          "exact": true,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "tp": 4
+        },
+        "source_truncated": false,
+        "timing": {
+          "first_read_ms": 3.827,
+          "warm_median_ms": 3.9712,
+          "warm_n": 5,
+          "warm_p95_nearest_rank_ms": 4.0622
+        }
+      },
+      "id": "R04",
+      "question": "Which evidence records have incident-owned HAS_EVIDENCE links from INC-001?"
+    },
+    {
+      "expected_ids": [
+        "CASE-DEP-BEFORE",
+        "CASE-DEP-NOCHANGE"
+      ],
+      "flat": {
+        "ids": [
+          "CASE-DEP-BEFORE",
+          "CASE-DEP-ONSET",
+          "DEP-001",
+          "DEP-003",
+          "CASE-DEP-NOCHANGE"
+        ],
+        "metrics": {
+          "exact": false,
+          "fn": 0,
+          "fp": 3,
+          "precision": 0.4,
+          "recall": 1.0,
+          "tp": 2
+        },
+        "record_edge_facts": [
+          {
+            "source": "DEP-001",
+            "target": "SVC-AUTH",
+            "type": "TARGETS"
+          },
+          {
+            "source": "DEP-003",
+            "target": "SVC-NOTIFICATION",
+            "type": "TARGETS"
+          },
+          {
+            "source": "DEP-003",
+            "target": "SVC-QUEUE",
+            "type": "TARGETS"
+          },
+          {
+            "source": "DEP-001",
+            "target": "CHG-001",
+            "type": "INCLUDES_CHANGE"
+          },
+          {
+            "source": "DEP-003",
+            "target": "CHG-003",
+            "type": "INCLUDES_CHANGE"
+          },
+          {
+            "source": "CASE-DEP-BEFORE",
+            "target": "CASE-AUTH",
+            "type": "TARGETS"
+          },
+          {
+            "source": "CASE-DEP-BEFORE",
+            "target": "CASE-CHG-BEFORE",
+            "type": "INCLUDES_CHANGE"
+          },
+          {
+            "source": "CASE-DEP-ONSET",
+            "target": "CASE-API",
+            "type": "TARGETS"
+          },
+          {
+            "source": "CASE-DEP-ONSET",
+            "target": "CASE-CHG-ONSET",
+            "type": "INCLUDES_CHANGE"
+          },
+          {
+            "source": "CASE-DEP-NOCHANGE",
+            "target": "CASE-API",
+            "type": "TARGETS"
+          }
+        ],
+        "timing": {
+          "first_read_ms": 0.0621,
+          "warm_median_ms": 0.0662,
+          "warm_n": 5,
+          "warm_p95_nearest_rank_ms": 0.0723
+        }
+      },
+      "graph": {
+        "expected_cap_matches": null,
+        "ids": [
+          "CASE-DEP-BEFORE",
+          "CASE-DEP-NOCHANGE"
+        ],
+        "matched_native_edges": [
+          {
+            "source": "CASE-INC",
+            "target": "CASE-API",
+            "type": "AFFECTS"
+          },
+          {
+            "source": "CASE-API",
+            "target": "CASE-AUTH",
+            "type": "DEPENDS_ON"
+          },
+          {
+            "source": "CASE-DEP-BEFORE",
+            "target": "CASE-AUTH",
+            "type": "TARGETS"
+          },
+          {
+            "source": "CASE-DEP-NOCHANGE",
+            "target": "CASE-API",
+            "type": "TARGETS"
+          }
+        ],
+        "metrics": {
+          "exact": true,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "tp": 2
+        },
+        "source_truncated": false,
+        "timing": {
+          "first_read_ms": 5.0566,
+          "warm_median_ms": 4.7411,
+          "warm_n": 5,
+          "warm_p95_nearest_rank_ms": 5.1381
+        }
+      },
+      "id": "R05",
+      "question": "Which connected deployments are BEFORE onset for CASE-INC in the default window?"
+    },
+    {
+      "expected_ids": [
+        "CASE-DEP-OFFSET",
+        "CASE-DEP-ONSET"
+      ],
+      "flat": {
+        "ids": [
+          "CASE-DEP-AFTER",
+          "CASE-DEP-ONSET",
+          "CASE-DEP-OFFSET",
+          "DEP-001",
+          "DEP-003"
+        ],
+        "metrics": {
+          "exact": false,
+          "fn": 0,
+          "fp": 3,
+          "precision": 0.4,
+          "recall": 1.0,
+          "tp": 2
+        },
+        "record_edge_facts": [
+          {
+            "source": "DEP-001",
+            "target": "SVC-AUTH",
+            "type": "TARGETS"
+          },
+          {
+            "source": "DEP-003",
+            "target": "SVC-NOTIFICATION",
+            "type": "TARGETS"
+          },
+          {
+            "source": "DEP-003",
+            "target": "SVC-QUEUE",
+            "type": "TARGETS"
+          },
+          {
+            "source": "DEP-001",
+            "target": "CHG-001",
+            "type": "INCLUDES_CHANGE"
+          },
+          {
+            "source": "DEP-003",
+            "target": "CHG-003",
+            "type": "INCLUDES_CHANGE"
+          },
+          {
+            "source": "CASE-DEP-AFTER",
+            "target": "CASE-AUTH",
+            "type": "TARGETS"
+          },
+          {
+            "source": "CASE-DEP-AFTER",
+            "target": "CASE-CHG-AFTER",
+            "type": "INCLUDES_CHANGE"
+          },
+          {
+            "source": "CASE-DEP-ONSET",
+            "target": "CASE-API",
+            "type": "TARGETS"
+          },
+          {
+            "source": "CASE-DEP-ONSET",
+            "target": "CASE-CHG-ONSET",
+            "type": "INCLUDES_CHANGE"
+          },
+          {
+            "source": "CASE-DEP-OFFSET",
+            "target": "CASE-API",
+            "type": "TARGETS"
+          },
+          {
+            "source": "CASE-DEP-OFFSET",
+            "target": "CASE-CHG-OFFSET",
+            "type": "INCLUDES_CHANGE"
+          }
+        ],
+        "timing": {
+          "first_read_ms": 0.0731,
+          "warm_median_ms": 0.0741,
+          "warm_n": 5,
+          "warm_p95_nearest_rank_ms": 0.0743
+        }
+      },
+      "graph": {
+        "expected_cap_matches": null,
+        "ids": [
+          "CASE-DEP-OFFSET",
+          "CASE-DEP-ONSET"
+        ],
+        "matched_native_edges": [
+          {
+            "source": "CASE-INC",
+            "target": "CASE-API",
+            "type": "AFFECTS"
+          },
+          {
+            "source": "CASE-DEP-OFFSET",
+            "target": "CASE-API",
+            "type": "TARGETS"
+          },
+          {
+            "source": "CASE-DEP-ONSET",
+            "target": "CASE-API",
+            "type": "TARGETS"
+          }
+        ],
+        "metrics": {
+          "exact": true,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "tp": 2
+        },
+        "source_truncated": false,
+        "timing": {
+          "first_read_ms": 4.6364,
+          "warm_median_ms": 4.7996,
+          "warm_n": 5,
+          "warm_p95_nearest_rank_ms": 4.9506
+        }
+      },
+      "id": "R06",
+      "question": "Which connected deployments occur AT_ONSET for CASE-INC after explicit-offset UTC normalization?"
+    },
+    {
+      "expected_ids": [
+        "CASE-DEP-AFTER"
+      ],
+      "flat": {
+        "ids": [
+          "CASE-DEP-AFTER",
+          "CASE-DEP-ONSET",
+          "DEP-001",
+          "DEP-003",
+          "CASE-DEP-NOCHANGE"
+        ],
+        "metrics": {
+          "exact": false,
+          "fn": 0,
+          "fp": 4,
+          "precision": 0.2,
+          "recall": 1.0,
+          "tp": 1
+        },
+        "record_edge_facts": [
+          {
+            "source": "DEP-001",
+            "target": "SVC-AUTH",
+            "type": "TARGETS"
+          },
+          {
+            "source": "DEP-003",
+            "target": "SVC-NOTIFICATION",
+            "type": "TARGETS"
+          },
+          {
+            "source": "DEP-003",
+            "target": "SVC-QUEUE",
+            "type": "TARGETS"
+          },
+          {
+            "source": "DEP-001",
+            "target": "CHG-001",
+            "type": "INCLUDES_CHANGE"
+          },
+          {
+            "source": "DEP-003",
+            "target": "CHG-003",
+            "type": "INCLUDES_CHANGE"
+          },
+          {
+            "source": "CASE-DEP-AFTER",
+            "target": "CASE-AUTH",
+            "type": "TARGETS"
+          },
+          {
+            "source": "CASE-DEP-AFTER",
+            "target": "CASE-CHG-AFTER",
+            "type": "INCLUDES_CHANGE"
+          },
+          {
+            "source": "CASE-DEP-ONSET",
+            "target": "CASE-API",
+            "type": "TARGETS"
+          },
+          {
+            "source": "CASE-DEP-ONSET",
+            "target": "CASE-CHG-ONSET",
+            "type": "INCLUDES_CHANGE"
+          },
+          {
+            "source": "CASE-DEP-NOCHANGE",
+            "target": "CASE-API",
+            "type": "TARGETS"
+          }
+        ],
+        "timing": {
+          "first_read_ms": 0.0708,
+          "warm_median_ms": 0.0703,
+          "warm_n": 5,
+          "warm_p95_nearest_rank_ms": 0.072
+        }
+      },
+      "graph": {
+        "expected_cap_matches": null,
+        "ids": [
+          "CASE-DEP-AFTER"
+        ],
+        "matched_native_edges": [
+          {
+            "source": "CASE-INC",
+            "target": "CASE-API",
+            "type": "AFFECTS"
+          },
+          {
+            "source": "CASE-API",
+            "target": "CASE-AUTH",
+            "type": "DEPENDS_ON"
+          },
+          {
+            "source": "CASE-DEP-AFTER",
+            "target": "CASE-AUTH",
+            "type": "TARGETS"
+          }
+        ],
+        "metrics": {
+          "exact": true,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "tp": 1
+        },
+        "source_truncated": false,
+        "timing": {
+          "first_read_ms": 4.5957,
+          "warm_median_ms": 4.7307,
+          "warm_n": 5,
+          "warm_p95_nearest_rank_ms": 4.8984
+        }
+      },
+      "id": "R07",
+      "question": "Which connected deployment is AFTER CASE-INC onset and cannot be a preceding trigger?"
+    },
+    {
+      "expected_ids": [
+        "CASE-DEP-INVALID"
+      ],
+      "flat": {
+        "ids": [
+          "DEP-001",
+          "DEP-003",
+          "CASE-DEP-NOCHANGE",
+          "CASE-DEP-UNRELATED",
+          "CASE-DEP-INVALID"
+        ],
+        "metrics": {
+          "exact": false,
+          "fn": 0,
+          "fp": 4,
+          "precision": 0.2,
+          "recall": 1.0,
+          "tp": 1
+        },
+        "record_edge_facts": [
+          {
+            "source": "DEP-001",
+            "target": "SVC-AUTH",
+            "type": "TARGETS"
+          },
+          {
+            "source": "DEP-003",
+            "target": "SVC-NOTIFICATION",
+            "type": "TARGETS"
+          },
+          {
+            "source": "DEP-003",
+            "target": "SVC-QUEUE",
+            "type": "TARGETS"
+          },
+          {
+            "source": "DEP-001",
+            "target": "CHG-001",
+            "type": "INCLUDES_CHANGE"
+          },
+          {
+            "source": "DEP-003",
+            "target": "CHG-003",
+            "type": "INCLUDES_CHANGE"
+          },
+          {
+            "source": "CASE-DEP-NOCHANGE",
+            "target": "CASE-API",
+            "type": "TARGETS"
+          },
+          {
+            "source": "CASE-DEP-UNRELATED",
+            "target": "CASE-UNRELATED",
+            "type": "TARGETS"
+          },
+          {
+            "source": "CASE-DEP-INVALID",
+            "target": "CASE-AUTH",
+            "type": "TARGETS"
+          },
+          {
+            "source": "CASE-DEP-INVALID",
+            "target": "CASE-CHG-INVALID",
+            "type": "INCLUDES_CHANGE"
+          }
+        ],
+        "timing": {
+          "first_read_ms": 0.0686,
+          "warm_median_ms": 0.0621,
+          "warm_n": 5,
+          "warm_p95_nearest_rank_ms": 0.0689
+        }
+      },
+      "graph": {
+        "expected_cap_matches": null,
+        "ids": [
+          "CASE-DEP-INVALID"
+        ],
+        "matched_native_edges": [
+          {
+            "source": "CASE-INC",
+            "target": "CASE-API",
+            "type": "AFFECTS"
+          },
+          {
+            "source": "CASE-API",
+            "target": "CASE-AUTH",
+            "type": "DEPENDS_ON"
+          },
+          {
+            "source": "CASE-DEP-INVALID",
+            "target": "CASE-AUTH",
+            "type": "TARGETS"
+          }
+        ],
+        "metrics": {
+          "exact": true,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "tp": 1
+        },
+        "source_truncated": false,
+        "timing": {
+          "first_read_ms": 4.7644,
+          "warm_median_ms": 4.7304,
+          "warm_n": 5,
+          "warm_p95_nearest_rank_ms": 4.8478
+        }
+      },
+      "id": "R08",
+      "question": "Which connected deployment has UNKNOWN event time in CASE-INC?"
+    },
+    {
+      "expected_ids": [
+        "CASE-E-ORPHAN"
+      ],
+      "flat": {
+        "ids": [
+          "CASE-E-WRONG-SERVICE",
+          "CASE-E-EARLY",
+          "CASE-E-LATE",
+          "CASE-E-DEGRADED",
+          "CASE-E-FAILED"
+        ],
+        "metrics": {
+          "exact": false,
+          "fn": 1,
+          "fp": 5,
+          "precision": 0.0,
+          "recall": 0.0,
+          "tp": 0
+        },
+        "record_edge_facts": [
+          {
+            "source": "CASE-INC",
+            "target": "CASE-E-FAILED",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "CASE-E-FAILED",
+            "target": "CASE-API",
+            "type": "OBSERVED_ON"
+          },
+          {
+            "source": "CASE-INC",
+            "target": "CASE-E-EARLY",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "CASE-E-EARLY",
+            "target": "CASE-API",
+            "type": "OBSERVED_ON"
+          },
+          {
+            "source": "CASE-INC",
+            "target": "CASE-E-LATE",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "CASE-E-LATE",
+            "target": "CASE-API",
+            "type": "OBSERVED_ON"
+          },
+          {
+            "source": "CASE-INC",
+            "target": "CASE-E-DEGRADED",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "CASE-E-DEGRADED",
+            "target": "CASE-API",
+            "type": "OBSERVED_ON"
+          },
+          {
+            "source": "CASE-INC",
+            "target": "CASE-E-WRONG-SERVICE",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "CASE-E-WRONG-SERVICE",
+            "target": "CASE-API",
+            "type": "OBSERVED_ON"
+          }
+        ],
+        "timing": {
+          "first_read_ms": 0.0987,
+          "warm_median_ms": 0.0969,
+          "warm_n": 5,
+          "warm_p95_nearest_rank_ms": 0.1034
+        }
+      },
+      "graph": {
+        "expected_cap_matches": null,
+        "ids": [
+          "CASE-E-ORPHAN"
+        ],
+        "matched_native_edges": [
+          {
+            "source": "CASE-INC",
+            "target": "CASE-E-ORPHAN",
+            "type": "HAS_EVIDENCE"
+          }
+        ],
+        "metrics": {
+          "exact": true,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "tp": 1
+        },
+        "source_truncated": false,
+        "timing": {
+          "first_read_ms": 4.9176,
+          "warm_median_ms": 4.6981,
+          "warm_n": 5,
+          "warm_p95_nearest_rank_ms": 4.7957
+        }
+      },
+      "id": "R09",
+      "question": "Which incident-scoped evidence is orphaned without an OBSERVED_ON service for CASE-INC?"
+    },
+    {
+      "expected_ids": [
+        "CASE-E-FAILED",
+        "CASE-E-HEALTHY"
+      ],
+      "flat": {
+        "ids": [
+          "CASE-E-HEALTHY",
+          "CASE-E-FAILED",
+          "CASE-E-EARLY",
+          "CASE-E-LATE",
+          "CASE-E-WRONG-SERVICE"
+        ],
+        "metrics": {
+          "exact": false,
+          "fn": 0,
+          "fp": 3,
+          "precision": 0.4,
+          "recall": 1.0,
+          "tp": 2
+        },
+        "record_edge_facts": [
+          {
+            "source": "CASE-INC",
+            "target": "CASE-E-HEALTHY",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "CASE-E-HEALTHY",
+            "target": "CASE-API",
+            "type": "OBSERVED_ON"
+          },
+          {
+            "source": "CASE-INC",
+            "target": "CASE-E-FAILED",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "CASE-E-FAILED",
+            "target": "CASE-API",
+            "type": "OBSERVED_ON"
+          },
+          {
+            "source": "CASE-INC",
+            "target": "CASE-E-EARLY",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "CASE-E-EARLY",
+            "target": "CASE-API",
+            "type": "OBSERVED_ON"
+          },
+          {
+            "source": "CASE-INC",
+            "target": "CASE-E-LATE",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "CASE-E-LATE",
+            "target": "CASE-API",
+            "type": "OBSERVED_ON"
+          },
+          {
+            "source": "CASE-INC",
+            "target": "CASE-E-WRONG-SERVICE",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "CASE-E-WRONG-SERVICE",
+            "target": "CASE-API",
+            "type": "OBSERVED_ON"
+          },
+          {
+            "source": "CASE-NO-TIME",
+            "target": "CASE-E-HEALTHY",
+            "type": "HAS_EVIDENCE"
+          }
+        ],
+        "timing": {
+          "first_read_ms": 0.1083,
+          "warm_median_ms": 0.1047,
+          "warm_n": 5,
+          "warm_p95_nearest_rank_ms": 0.1057
+        }
+      },
+      "graph": {
+        "expected_cap_matches": null,
+        "ids": [
+          "CASE-E-FAILED",
+          "CASE-E-HEALTHY"
+        ],
+        "matched_native_edges": [
+          {
+            "source": "CASE-INC",
+            "target": "CASE-E-FAILED",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "CASE-INC",
+            "target": "CASE-E-HEALTHY",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "CASE-E-FAILED",
+            "target": "CASE-API",
+            "type": "OBSERVED_ON"
+          },
+          {
+            "source": "CASE-E-HEALTHY",
+            "target": "CASE-API",
+            "type": "OBSERVED_ON"
+          }
+        ],
+        "metrics": {
+          "exact": true,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "tp": 2
+        },
+        "source_truncated": false,
+        "timing": {
+          "first_read_ms": 4.8785,
+          "warm_median_ms": 4.6699,
+          "warm_n": 5,
+          "warm_p95_nearest_rank_ms": 4.9164
+        }
+      },
+      "id": "R10",
+      "question": "Which two evidence records form the HEALTHY FAILED structured conflict on CASE-API for CASE-INC?"
+    },
+    {
+      "expected_ids": [
+        "CASE-E-DEGRADED",
+        "CASE-E-FAILED",
+        "CASE-E-HEALTHY"
+      ],
+      "flat": {
+        "ids": [
+          "CASE-E-DEGRADED",
+          "CASE-E-FAILED",
+          "CASE-E-HEALTHY",
+          "CASE-E-WRONG-SERVICE",
+          "CASE-E-EARLY"
+        ],
+        "metrics": {
+          "exact": false,
+          "fn": 0,
+          "fp": 2,
+          "precision": 0.6,
+          "recall": 1.0,
+          "tp": 3
+        },
+        "record_edge_facts": [
+          {
+            "source": "CASE-INC",
+            "target": "CASE-E-HEALTHY",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "CASE-E-HEALTHY",
+            "target": "CASE-API",
+            "type": "OBSERVED_ON"
+          },
+          {
+            "source": "CASE-INC",
+            "target": "CASE-E-FAILED",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "CASE-E-FAILED",
+            "target": "CASE-API",
+            "type": "OBSERVED_ON"
+          },
+          {
+            "source": "CASE-INC",
+            "target": "CASE-E-EARLY",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "CASE-E-EARLY",
+            "target": "CASE-API",
+            "type": "OBSERVED_ON"
+          },
+          {
+            "source": "CASE-INC",
+            "target": "CASE-E-DEGRADED",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "CASE-E-DEGRADED",
+            "target": "CASE-API",
+            "type": "OBSERVED_ON"
+          },
+          {
+            "source": "CASE-INC",
+            "target": "CASE-E-WRONG-SERVICE",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "CASE-E-WRONG-SERVICE",
+            "target": "CASE-API",
+            "type": "OBSERVED_ON"
+          },
+          {
+            "source": "CASE-NO-TIME",
+            "target": "CASE-E-HEALTHY",
+            "type": "HAS_EVIDENCE"
+          }
+        ],
+        "timing": {
+          "first_read_ms": 0.0993,
+          "warm_median_ms": 0.0954,
+          "warm_n": 5,
+          "warm_p95_nearest_rank_ms": 0.0956
+        }
+      },
+      "graph": {
+        "expected_cap_matches": null,
+        "ids": [
+          "CASE-E-DEGRADED",
+          "CASE-E-FAILED",
+          "CASE-E-HEALTHY"
+        ],
+        "matched_native_edges": [
+          {
+            "source": "CASE-INC",
+            "target": "CASE-E-DEGRADED",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "CASE-INC",
+            "target": "CASE-E-FAILED",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "CASE-INC",
+            "target": "CASE-E-HEALTHY",
+            "type": "HAS_EVIDENCE"
+          },
+          {
+            "source": "CASE-E-DEGRADED",
+            "target": "CASE-API",
+            "type": "OBSERVED_ON"
+          },
+          {
+            "source": "CASE-E-FAILED",
+            "target": "CASE-API",
+            "type": "OBSERVED_ON"
+          },
+          {
+            "source": "CASE-E-HEALTHY",
+            "target": "CASE-API",
+            "type": "OBSERVED_ON"
+          }
+        ],
+        "metrics": {
+          "exact": true,
+          "fn": 0,
+          "fp": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "tp": 3
+        },
+        "source_truncated": false,
+        "timing": {
+          "first_read_ms": 4.907,
+          "warm_median_ms": 4.7743,
+          "warm_n": 5,
+          "warm_p95_nearest_rank_ms": 5.0002
+        }
+      },
+      "id": "R11",
+      "question": "Which evidence owned by CASE-INC observes availability on CASE-API?"
+    },
+    {
+      "expected_ids": [],
+      "flat": {
+        "ids": [],
+        "metrics": {
+          "exact": true,
+          "fn": 0,
+          "fp": 0,
+          "precision": null,
+          "recall": null,
+          "tp": 0
+        },
+        "record_edge_facts": [],
+        "timing": {
+          "first_read_ms": 0.0015,
+          "warm_median_ms": 0.0013,
+          "warm_n": 5,
+          "warm_p95_nearest_rank_ms": 0.0016
+        }
+      },
+      "graph": {
+        "expected_cap_matches": null,
+        "ids": [],
+        "matched_native_edges": [],
+        "metrics": {
+          "exact": true,
+          "fn": 0,
+          "fp": 0,
+          "precision": null,
+          "recall": null,
+          "tp": 0
+        },
+        "source_truncated": false,
+        "timing": {
+          "first_read_ms": 2.2265,
+          "warm_median_ms": 2.1453,
+          "warm_n": 5,
+          "warm_p95_nearest_rank_ms": 2.2531
+        }
+      },
+      "id": "R12",
+      "question": "Which deployments are connected to incident DOES-NOT-EXIST?"
+    },
+    {
+      "expected_ids": [
+        "DEP-002"
+      ],
+      "flat": {
+        "ids": [
+          "DEP-001"
+        ],
+        "metrics": {
+          "exact": false,
+          "fn": 1,
+          "fp": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "tp": 0
+        },
+        "record_edge_facts": [
+          {
+            "source": "DEP-001",
+            "target": "SVC-AUTH",
+            "type": "TARGETS"
+          },
+          {
+            "source": "DEP-001",
+            "target": "CHG-001",
+            "type": "INCLUDES_CHANGE"
+          }
+        ],
+        "timing": {
+          "first_read_ms": 0.0738,
+          "warm_median_ms": 0.0732,
+          "warm_n": 5,
+          "warm_p95_nearest_rank_ms": 0.0746
+        }
+      },
+      "graph": {
+        "expected_cap_matches": true,
+        "ids": [
+          "DEP-001"
+        ],
+        "matched_native_edges": [
+          {
+            "source": "INC-001",
+            "target": "SVC-PAYMENT",
+            "type": "AFFECTS"
+          },
+          {
+            "source": "SVC-PAYMENT",
+            "target": "SVC-AUTH",
+            "type": "DEPENDS_ON"
+          },
+          {
+            "source": "DEP-001",
+            "target": "SVC-AUTH",
+            "type": "TARGETS"
+          }
+        ],
+        "metrics": {
+          "exact": false,
+          "fn": 1,
+          "fp": 1,
+          "precision": 0.0,
+          "recall": 0.0,
+          "tp": 0
+        },
+        "source_truncated": true,
+        "timing": {
+          "first_read_ms": 3.7194,
+          "warm_median_ms": 3.871,
+          "warm_n": 5,
+          "warm_p95_nearest_rank_ms": 3.9763
+        }
+      },
+      "id": "R13",
+      "question": "With candidate cap one, which deployment is returned first for INC-001 under the documented depth-first ordering?"
+    },
+    {
+      "expected_ids": [],
+      "flat": {
+        "ids": [],
+        "metrics": {
+          "exact": true,
+          "fn": 0,
+          "fp": 0,
+          "precision": null,
+          "recall": null,
+          "tp": 0
+        },
+        "record_edge_facts": [],
+        "timing": {
+          "first_read_ms": 0.0018,
+          "warm_median_ms": 0.0016,
+          "warm_n": 5,
+          "warm_p95_nearest_rank_ms": 0.0017
+        }
+      },
+      "graph": {
+        "expected_cap_matches": null,
+        "ids": [],
+        "matched_native_edges": [],
+        "metrics": {
+          "exact": true,
+          "fn": 0,
+          "fp": 0,
+          "precision": null,
+          "recall": null,
+          "tp": 0
+        },
+        "source_truncated": false,
+        "timing": {
+          "first_read_ms": 4.4701,
+          "warm_median_ms": 4.1883,
+          "warm_n": 5,
+          "warm_p95_nearest_rank_ms": 4.5189
+        }
+      },
+      "id": "R14",
+      "question": "Which deployment is a proven cause of INC-001?"
+    }
+  ],
+  "fixture_sha256": {
+    "demo_incidents.json": "0128f7337cef8549c20a7f4dcb740638dde16f99862785df1bf79b93f2ee0658",
+    "sprint01_cases.json": "ca573fa094c6b9eb3142bc06d93e21721bfe25697bcf2b4532327295946acc14"
+  },
+  "flat_exact_cases": 2,
+  "gold_sha256": "53e089d433a5f9de6c00105aa7837e1d9ae29016750ef6802f4cc0fde095db81",
+  "graph_exact_cases": 13,
+  "method": "Same public node fields/all edge facts; structured native selectors vs BM25-like unjoined records. First read plus five repeated reads; setup/index/proof audit excluded. See README for intent asymmetry.",
+  "native_counts": {
+    "node_count": 51,
+    "relationship_count": 67
+  },
+  "os": "Windows-11-10.0.26200-SP0",
+  "processor": "Intel64 Family 6 Model 167 Stepping 1, GenuineIntel",
+  "python": "3.14.0",
+  "recorded_utc": "2026-11-13T01:27:11.737362+00:00",
+  "selector_revision": "1.1",
+  "study_version": "1.0"
+}

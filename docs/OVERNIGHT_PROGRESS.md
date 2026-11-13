@@ -5,6 +5,19 @@ Starting main: 0783201fb5d83c072fe215cf23135eb165a2213a. No user edits at start.
 
 ## Latest successful gate
 
+G8 PASS WITH DISCLOSED STUDY LIMIT — 2026-11-13 01:35 UTC. Fourteen questions were frozen in
+1c8d1fa before either arm ran; actual same-input 51/67 native vs BM25-like record study executed.
+First raw output native 12/14, flat 2/14 preserved. R11 exposed a new evaluation-selector missing
+structured-service consistency check; fixed, native raw result 13/14. R13's frozen depth-first
+cap assumption contradicts unchanged pre-existing query ordering (ID before LIMIT). Gold remains
+unchanged; ERRATA identifies that invalid question, with its raw mismatch preserved. Thirteen
+valid frozen questions remain; native exact sets match all thirteen, flat matches negative controls
+and has partial/extra hits detailed per case. No accuracy/superiority panel or universal claim.
+Flat is faster: median of per-question warm medians 0.0694ms vs native 4.4291ms; declared setup/
+intent asymmetry applies. Three new actual/native/metric tests pass, Ruff clean. First new token
+unit assertion incorrectly expected an underscore token; corrected to the frozen tokenizer's
+documented component tokens. Baseline constants/tokenization/expected IDs were not retuned.
+
 G7 PASS — 2026-11-13 01:23 UTC. Added the actual 110-second judge flow, fact-check mapping,
 English unsubmitted Devpost draft and LOCAL_PERFORMANCE.md. Seven genuine captures support the
 storyboard; no video claimed. Three new native scales (14/17, 92/121, 332/441 stored nodes/edges)
@@ -79,14 +92,14 @@ ignored .verification/overnight/baseline.json. Architecture decisions recorded b
 | G5 | PASS | Strict local POST actions, 29 protocol/native cases, actual qwen3:8b UI inference |
 | G6 | PASS | External clean npm/wheel/browser, Node-free server, verified PowerShell launch/check |
 | G7 | PASS | Timed genuine demo/storyboard, fact check/draft/screenshots and actual local measurements |
-| G8 | IN PROGRESS | Freeze independent questions before running fair graph-vs-flat study |
-| G9 | PENDING | Full regression, measurements, protected-file/staged audit, final report |
+| G8 | PASS | Actual frozen study; R13 invalid assumption retained/disclosed, thirteen eligible questions |
+| G9 | IN PROGRESS | Full regression/evaluations, final wheel/browser, protected audit and report |
 
 ## Resume instructions
 
 Read this ledger and OVERNIGHT_ARCHITECTURE_DECISIONS.md; inspect Git status before edits.
-Do not reset or overwrite existing work. Next action: freeze G8 independent gold before execution,
-then run/report study and final G9 regression/package rebuild. Current app is source-built and served by FastAPI
+Do not reset or overwrite existing work. Next action: G9 full regression, both old evaluations,
+final package/browser verification, protected/staged audit and final report. Current app is source-built and served by FastAPI
 at one loopback origin. Rebuild web after frontend edits. Browser files live in ignored
 .verification/overnight/browsers; web/e2e/smoke.mjs configures that path before importing Playwright.
 All tests that write graph data must use new OS temporary stores. The existing judge artifact,
@@ -136,3 +149,6 @@ manifest, fixtures, saved examples and frozen reports/gold must remain byte-iden
 - G7 commit: cf1ec55. G8 preparation: 14 independent questions/expected IDs and fairness design
   authored from fixture literals before implementing/executing the new runner. Commit this freeze
   first; do not derive expectations from predictions or change old gold.
+- G8 freeze commit: 1c8d1fa. New runner and both actual result versions, explicit ERRATA and
+  native tests are separate from original Sprint 02/03 evaluations. No runtime application
+  analyzer or API was changed for this study.
