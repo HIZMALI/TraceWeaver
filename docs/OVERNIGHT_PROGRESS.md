@@ -133,3 +133,6 @@ manifest, fixtures, saved examples and frozen reports/gold must remain byte-iden
   installed-wheel browser helper, launcher cases and release/readme documentation.
 - G6 commit: 1372bdc. G7 adds presentation documents and finite native browser-scale runner;
   license collector's trailing blank-line diff warning was corrected before this gate.
+- G7 commit: cf1ec55. G8 preparation: 14 independent questions/expected IDs and fairness design
+  authored from fixture literals before implementing/executing the new runner. Commit this freeze
+  first; do not derive expectations from predictions or change old gold.
