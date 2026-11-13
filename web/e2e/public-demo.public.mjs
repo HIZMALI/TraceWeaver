@@ -9,6 +9,9 @@ test.beforeEach(async ({ page, baseURL }) => {
     foreign = [],
     posts = [];
   page.on("pageerror", (e) => errors.push(e.message));
+  page.on("console", (message) => {
+    if (message.type() === "error") errors.push(message.text());
+  });
   page.on("request", (r) => {
     if (new URL(r.url()).origin !== baseURL)
       foreign.push(new URL(r.url()).origin);

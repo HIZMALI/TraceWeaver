@@ -6,6 +6,19 @@ Incident reviews span services, dependency chains, deployments, changes and conf
 TraceWeaver brings that context into a read-only investigation workspace with inspectable citations.
 It helps identify what to investigate next while keeping uncertainty visible.
 
+## Live Demo
+
+**[Launch TraceWeaver](https://traceweaver-demo.onrender.com/?incident=INC-001)** — no account or installation required.
+
+- **INC-001:** explore the verified path, compare DEP-001 / DEP-002, then inspect a claim's citations.
+  Under investigation steps, rehearse four real tools / 23 native queries without a model.
+- **CASE-INC → Observations:** inspect one structured conflict and two UNDETERMINED comparisons.
+
+The hosted app queries the actual embedded Relate graph. All data is **synthetic and read-only**;
+causation remains NOT_ESTABLISHED. Local Ollama and AI controls are disabled in the hosted view.
+Render Free sleeps after 15 idle minutes; the first request can take about a minute to wake it.
+See [public deployment and security limits](docs/PUBLIC_DEMO.md).
+
 ## Why Relate
 
 **Embedded Relate 1.0.0 is the actual data engine.** Parameterized Cypher traverses a persistent,
@@ -62,7 +75,7 @@ python -m venv .venv
 .\scripts\start-judge-demo.ps1 -Build
 ```
 
-Open **http://127.0.0.1:8000/?incident=INC-001**. This is your local console, not a hosted demo.
+Open **http://127.0.0.1:8000/?incident=INC-001** for the local console.
 Stop with Ctrl+C. Subsequent launches use `.\scripts\start-judge-demo.ps1`; choose another free
 port with `-Port 8001`. The launcher verifies the existing synthetic bundle and never seeds it.
 
