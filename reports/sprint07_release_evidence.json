@@ -1,0 +1,298 @@
+{
+  "scope": "Sprint 07 observed local evidence; publication not performed",
+  "initial_head": "96bedcc4b5032ec1853f6866a56c3f11241436ee",
+  "branch": "main",
+  "environment": {
+    "python": "3.14.0",
+    "relate": "1.0.0",
+    "node": "24.13.1",
+    "npm": "11.8.0",
+    "browser": "158.0.8127.18",
+    "os": "Windows 11 build 26200"
+  },
+  "tests": {
+    "python": {
+      "preserved": 567,
+      "new": 7,
+      "total_passed": 574,
+      "final_seconds": 99.37
+    },
+    "frontend": {
+      "preserved": 86,
+      "new": 2,
+      "total_passed": 88
+    },
+    "native_playwright": {
+      "preserved": 50,
+      "new": 4,
+      "total_passed": 54
+    }
+  },
+  "evaluations": {
+    "graph": {
+      "passed": 20,
+      "failed": 0,
+      "report_sha256": "fd83bf32fc0a9cc946b47910d764e6fd8bc414c930125ba0ecb552bcbb411011"
+    },
+    "explanation": {
+      "passed": 19,
+      "failed": 0,
+      "report_sha256": "e0e92bbc77e6911583d21a83314c760786bf0c804c19c09a34bb123d316ca383"
+    },
+    "agent": {
+      "passed": 35,
+      "failed": 0,
+      "report_sha256": "1c052622d20cb746ec2121de2e7610bd789010e80a66b3cb80948d2422e7f3fb"
+    }
+  },
+  "bad_gold_control": {
+    "exit_code": 15,
+    "failed": 1,
+    "code": "GOLD_NATIVE_EDGE",
+    "frozen_gold_unchanged": true
+  },
+  "quality": {
+    "ruff": "PASS",
+    "pip_check": "PASS",
+    "typecheck": "PASS",
+    "frontend_lint": "PASS",
+    "frontend_build": "PASS_WITH_EXISTING_USE_CLIENT_WARNINGS",
+    "actionlint": "PASS 1.7.12",
+    "diff_check": "PASS"
+  },
+  "integrity": {
+    "original_tracked_files": 241,
+    "authorized_changes": [
+      ".github/workflows/ci.yml",
+      "README.md",
+      "scripts/test_browser_sprint06.mjs",
+      "web/src/GraphCanvas.tsx",
+      "web/src/ProofFocus.tsx"
+    ],
+    "all_other_original_hashes_unchanged": true,
+    "historical_screenshots": 15,
+    "historical_videos": 1,
+    "stores": {
+      "data/traceweaver.rl": {
+        "sha256": "3bdf4ffa20ec647120780ad769832f04b51d418c33ed78d83751d0586220fbf3",
+        "bytes": 73728,
+        "node_count": 21,
+        "relationship_count": 27
+      },
+      "examples/judge-demo/traceweaver-demo.rl": {
+        "sha256": "29b10010152ebf82fe61b7dd8eff71848f39963e58d7b7a56f0aecebf1150239",
+        "bytes": 110592,
+        "node_count": 51,
+        "relationship_count": 67
+      }
+    }
+  },
+  "protected_manifest_and_gold": {
+    "examples/judge-demo/manifest.json": "50bdfbf4f700aedd13b099cc8cb5224141ccdd3c917fd32f2373be6187741aab",
+    "evaluation/cases.json": "6749145aa8e28937bc74aa8d3b53ec00fe0651d29b0cadc39ce6fd5547f4cef8",
+    "evaluation/explanation_cases.json": "e716b63860712d9aaef23ac2b8a61b2bb77c225ce0359d8a36749cd65d2224cb",
+    "evaluation/sprint06_agent_cases.json": "dce5da3e7561029a8877fb03a9de86961509f728694b6c22e01155e82dfa6295"
+  },
+  "independent_install": {
+    "status": "PASS",
+    "outside_checkout": true,
+    "non_editable": true,
+    "node_on_server_path": false,
+    "fresh_source_setup": true,
+    "source_browser": {
+      "browser": "158.0.8127.18",
+      "initial_posts": 0,
+      "native_edges": 14,
+      "offline_tools": [
+        "get_incident_scope",
+        "trace_deployment",
+        "inspect_evidence",
+        "inspect_gaps"
+      ],
+      "offline_queries": 23,
+      "offline_claims": 8,
+      "offline_citations": 11,
+      "live": {
+        "status": "NOT_RUN",
+        "level": null
+      },
+      "posts": [
+        "/console/agent/rehearse"
+      ],
+      "page_errors": 0,
+      "foreign_requests": 0
+    },
+    "wheel_sha256": "77ba04b14d7044806e8b22eba28daf3c1afdee71980e95d64c6b664521bc0bd5",
+    "check": {
+      "artifact_sha256": "29b10010152ebf82fe61b7dd8eff71848f39963e58d7b7a56f0aecebf1150239",
+      "built_console": true,
+      "database_engine": "relate",
+      "graph_counts": {
+        "node_count": 51,
+        "relationship_count": 67
+      },
+      "incidents": [
+        {
+          "candidates": 2,
+          "causal_conclusion": "NOT_ESTABLISHED",
+          "evidence": 4,
+          "id": "INC-001"
+        },
+        {
+          "candidates": 6,
+          "causal_conclusion": "NOT_ESTABLISHED",
+          "evidence": 11,
+          "id": "CASE-INC"
+        }
+      ],
+      "model_invoked": false,
+      "read_only": true,
+      "status": "PASS"
+    },
+    "browser": {
+      "browser": "158.0.8127.18",
+      "initial_posts": 0,
+      "native_edges": 14,
+      "offline_tools": [
+        "get_incident_scope",
+        "trace_deployment",
+        "inspect_evidence",
+        "inspect_gaps"
+      ],
+      "offline_queries": 23,
+      "offline_claims": 8,
+      "offline_citations": 11,
+      "live": {
+        "status": "NOT_RUN",
+        "level": null
+      },
+      "posts": [
+        "/console/agent/rehearse"
+      ],
+      "page_errors": 0,
+      "foreign_requests": 0
+    },
+    "failure_copies": {
+      "missing": {
+        "status": 503,
+        "generic": true,
+        "fallback": false
+      },
+      "corrupt": {
+        "status": 503,
+        "generic": true,
+        "fallback": false
+      },
+      "locked": {
+        "status": 503,
+        "generic": true,
+        "fallback": false
+      }
+    },
+    "bundle_bytes_unchanged": true
+  },
+  "wheel": {
+    "filename": "traceweaver-0.1.0-py3-none-any.whl",
+    "bytes": 305534,
+    "sha256": "77ba04b14d7044806e8b22eba28daf3c1afdee71980e95d64c6b664521bc0bd5",
+    "video_wheel_sha256": "696c2c010b56157960abe6b796201c8d7f471dd69d92404915d3543ba298f4ee",
+    "video_console_assets_identical_to_final": true
+  },
+  "video": {
+    "status": "PASS_LOCALLY_REVIEWED_NOT_UPLOADED",
+    "final_seconds": 115.0,
+    "mp4_codec": "H264",
+    "mp4_size": [
+      1920,
+      1080
+    ],
+    "fps": 25,
+    "audio": "NONE",
+    "captions": "ENGLISH_EXPLANATORY_FOOTER",
+    "reviewed_seconds": [
+      2,
+      18,
+      31,
+      43,
+      56,
+      69,
+      80,
+      93,
+      103,
+      112
+    ],
+    "raw_webm_seconds": 122.72,
+    "trimmed_webm_seconds": 115.0,
+    "files": {
+      "traceweaver-judge-115s-1080p.mp4": {
+        "bytes": 5290900,
+        "sha256": "f8b4b322024f2c023a2410a9b18ac27180c9934014883317d0a6a9e66d1723b4"
+      },
+      "traceweaver-judge-115s.webm": {
+        "bytes": 26089629,
+        "sha256": "39b14e707c33454dbbb30a59ebf75c6b470af90d90de6c90d132c60659156ad5"
+      },
+      "native-judge-demo.webm": {
+        "bytes": 27531745,
+        "sha256": "de07a5f8c251a57787423812f5dda54123d736b08b033d1cec0d0d47e686ceee"
+      }
+    }
+  },
+  "ollama_preflight": {
+    "phase": "connect",
+    "probed_at": "2026-11-13T14:08:34.637148+00:00",
+    "request_count": 1,
+    "reachable": false,
+    "daemon_version": null,
+    "requested_model": "qwen3:8b",
+    "eligible_model_installed": null,
+    "model_capabilities": "NOT_QUERIED",
+    "live_gate": "BLOCKED_DEPENDENCY",
+    "failure_class": "TIMEOUT",
+    "elapsed_ms": 2006.851
+  },
+  "new_live_model_actions": 0,
+  "platform": {
+    "windows_python314": "PASS",
+    "python311_runtime": "NOT_RUN",
+    "ubuntu_runtime": "NOT_RUN",
+    "remote_ci": "UNVERIFIED"
+  },
+  "staging": {
+    "files": 25,
+    "payload_bytes": 13922257,
+    "manifest_sha256": "af4ba99733a7b6bc0ce0d320b81815a4e2b37dfcd5db73632c44d2c4511ac135",
+    "offline_launcher_install_and_check": "PASS",
+    "tampered_copy": {
+      "exit_code": 1,
+      "rejected_before_install": true,
+      "original_export_unchanged": true
+    }
+  },
+  "privacy_screening": {
+    "scope": "Working tracked and new nonignored text plus staged distribution/wheel text. No guarantee of secret absence. No historical rewrite.",
+    "files_screened": 260,
+    "source_findings": {
+      "personal_path_files": [],
+      "credential_pattern_files": [],
+      "unexpected_binary_files": []
+    },
+    "stage_findings": [],
+    "stage_payloads": 25,
+    "stage_bytes": 13922257,
+    "manifest_sha256": "af4ba99733a7b6bc0ce0d320b81815a4e2b37dfcd5db73632c44d2c4511ac135"
+  },
+  "publication": {
+    "license": "OWNER_PENDING",
+    "git_push": "NOT_DONE",
+    "devpost_submission": "NOT_DONE",
+    "video_upload": "NOT_DONE"
+  },
+  "limits": [
+    "Historical AGENT_FINISH_SCHEMA field-level root cause unresolved",
+    "Current browser L3 not run because fresh fixed-loopback version timed out",
+    "Synthetic and controlled-protocol evaluation is not model accuracy",
+    "Graph-versus-flat retains 13-valid-question erratum",
+    "Pattern screening cannot guarantee absence of secrets"
+  ]
+}
