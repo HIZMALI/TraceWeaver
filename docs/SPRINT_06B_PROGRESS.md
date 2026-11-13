@@ -7,15 +7,15 @@ contracts. Never modify protected historical documents/reports/gold/screenshots 
 | Gate | Status | Evidence / next action |
 | --- | --- | --- |
 | B0 | PASS | Clean main 8702efa; hashes/native counts match; 98 agent, 35 evaluation, 518 full Python (60.67s), 80 frontend; Ruff/pip/type/lint clean |
-| B1 | PASS; dependency blocked | One version GET timed out in 2016.04ms; no process/listener observed; no tags/show/chat or restart/pull |
-| B2 | PASS controlled; live cause unresolved | Safe opt-in phase/shape diagnostics; official docs read; historical aggregate cannot determine actual old field failure |
-| B3 | PASS independent hardening; live repair unverified | Real caps-store offered-set mismatch closed; invalid Unicode safely rejected; explicit final schema grounded, no validator/budget relaxation |
-| B4 | PASS | 566 full pytest in 65.77s; 518 retained + 48 new controlled/native cases; Ruff clean, no old tests changed |
+| B1 | PASS, observed transition | Initial TIMEOUT; later explicit UI tags + bounded version recheck 0.40.16; no restart/pull/polling |
+| B2 | PARTIAL historical; diagnostics PASS | Safe opt-in phase/shape diagnostics; official docs read; historical aggregate cannot determine actual old field failure |
+| B3 | PASS independent hardening; historical cause unresolved | Real caps-store offered-set mismatch closed; invalid Unicode safely rejected; explicit final schema grounded, no validator/budget relaxation |
+| B4 | PASS | Final 567 pytest in 69.15s; 518 retained + 49 new controlled/native cases; Ruff clean, original tests untouched |
 | B5 | PASS | Judge native CLI TRACE 23 queries/8 claims/11 citations; RECONCILE 27/9/15; native edges independently audited; isolated parameterized reads; evaluations 35/20/19 PASS |
 | B6 | PASS / L3 observed | After externally observed availability transition: genuine qwen3 scope then deployment, 13 native queries, 4 non-caution claims, 6 citations; no rejection |
 | B7 | PASS focused correction | Actual trial-3 timeout image inspected; transport-specific notice and transient proof reset tested with 86 frontend / 50 browser cases; no fourth live run |
 | B8 | PASS offline/package; live browser timed out | 567 Python / 86 frontend / 50 browser; 35/20/19; negative exit 15; final fresh external Node-free wheel/browser PASS, model not retried |
-| B9 | PENDING | Findings/report and observed local commits, no push/remote/license/service changes |
+| B9 | PASS, final documentation closure | All requested documents; source implementation 2a2154e tested; final protected/native/Git audit and no remote |
 
 Ignored evidence directory: .verification/sprint06b. baseline.json contains actual hashes of all
 initially tracked artifacts and read-only graph counts. No baseline discrepancy found. Existing
@@ -87,4 +87,15 @@ byte match and actual four-tool offline browser proof pass. Final install delibe
 model call (live trial budget exhausted). All original tracked artifacts except the four reviewed
 runtime source files match baseline; all original test bytes, stores/manifests/gold/history match.
 Next: commit verified focused UI/evidence, finish B9 report/final audit. Overall remains PARTIAL:
-L3 CLI achieved, historical field-level cause unresolved, genuine live browser result timed out.
+L3 source-service probe achieved, historical field-level cause unresolved, genuine live browser result timed out.
+
+Completion checkpoint: verified implementation 2a2154e804370b7a7c7ef52c723168056c703b0a.
+567 Python / 86 frontend / 50 browser and final frozen 35/20/19 plus negative control all pass.
+Final external wheel CLI also passes, four native tools/8 claims/11 citations/no model. Final
+original native store counts and file bytes match baseline. All requested 06B documents complete.
+Overall PARTIAL / best genuine live L3: exact historical final-schema cause unresolved; installed
+live-browser attempt 3 timed out. Three live actions total; no fourth, no further queued probes.
+Resume only under a future bounded task: inspect main/status/report; preserve all data/history;
+use safe metadata to discriminate a recurring schema error and verify installed browser when
+existing Ollama is stable. Do not reinterpret controlled timeout tests, old screenshot focus or
+source-service L3 as successful browser inference. No push, license, daemon/model/system changes authorized.

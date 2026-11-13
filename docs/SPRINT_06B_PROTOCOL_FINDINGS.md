@@ -128,7 +128,7 @@ The third and final bounded action was attempted through the independently insta
 actual browser. It timed out before a native tool response: OLLAMA_TIMEOUT, 20023.387ms, one chat,
 7 initial native queries, zero tool steps/claims/citations, both AI flags false. The existing public
 status MODEL_OUTPUT_REJECTED is retained for compatibility; its specific transport code is not a
-schema failure. No fourth trial was attempted. CLI L3 is not browser L3. The installed browser
+schema failure. No fourth trial was attempted. source-service L3 is not browser L3. The installed browser
 offline four-tool rehearsal passed separately (8 claims/11 citations, no initial AI). Public safe evidence is `reports/sprint06b_live_agent_evidence.json`; complete
 structural metadata remains ignored, with no provider prose, thinking or raw prompt persistence.
 
