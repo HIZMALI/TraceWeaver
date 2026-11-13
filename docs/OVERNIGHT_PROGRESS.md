@@ -178,3 +178,16 @@ manifest, fixtures, saved examples and frozen reports/gold must remain byte-iden
 - Final tested implementation: ded79a07b948a5a10814e07fb639a34b8c3859ab. Final report/ledger
   reference is a documentation-only follow-up; use git log -1 for its own commit ID. No work
   remains running in the background. Public handoff: docs/OVERNIGHT_MISSION_REPORT.md.
+
+
+## Sprint 06 continuation (2026-11-13)
+
+Native read-only agent tools, fixed offline rehearsal, explicit guarded UI actions and a new
+frozen evaluation were implemented on existing main. Final local tests: 518 Python, 80 frontend,
+49 native Playwright; original stores/manifest/gold/reports/screenshots retained. Genuine qwen3
+selected trace_deployment, but final ID admission failed; subsequent service checks unavailable.
+Overall PARTIAL, no accepted final live AI result claimed. Independent Node-free installed wheel
+and browser/CLI rehearsal passed. Six new screenshots and a genuine 7.28s silent test clip exist;
+owner still needs the final narrated video/public source/license decisions. No push/submission,
+model installation, reset or system change. See docs/SPRINT_06_REPORT.md and
+docs/SPRINT_06_PROGRESS.md for exact evidence, local commits, blockers and resume steps.

@@ -7,15 +7,15 @@ Starting main a8f4ac502c8bb4eaefce8d6e448a273aa133a73e. Original worktree clean.
 | G0 | PASS | 420 pytest / 58 frontend / 36 native Chromium baseline; protected hashes match |
 | G1 | PASS | Actual native first-screen proof, larger type/core viewport; 62 unit / 36 real browser cases |
 | G2 | PASS | Strict agent 1.0 models + five actual parameterized native tools; 452 pytest passed |
-| G3 | PARTIAL | Controller/protocol PASS: 479 pytest. Genuine qwen3 native trace verified; final ID proposal rejected |
+| G3 | BLOCKED final live admission | Controller/protocol PASS: 479 pytest. Genuine qwen3 native trace verified; final ID proposal rejected |
 | G4 | PASS | 492 pytest, fixed native plans, repeatable offline CLI |
 | G5 | PASS | 511 pytest / 80 frontend / 49 native browser tests; explicit actions and proof focus |
 | G6 | PASS | Six genuine captures visually inspected; new 115-second guide |
 | G7 | PASS | Frozen 35 cases passed; corrupt-gold copy failed nonzero as expected |
 | G8 | PASS | Historical source/results/erratum unchanged; new limitations note, no fair-study claim |
 | G9 | PASS locally | 518 Python / 80 frontend / 49 native browser; independent Node-free wheel verified |
-| G10 | IN PROGRESS | Release docs and real short clip prepared; public repo/license/final video remain owner actions |
-| G11 | PENDING | Final protected audit, full gates, local commits and report |
+| G10 | PASS local artifacts | All requested release docs; six genuine images and inspected short clip; publication/license/final video owner-pending |
+| G11 | PASS with known blocker | Tested implementation 6ef7def; final protected/main/ancestor audit and documentation closure |
 
 Baseline evidence: .verification/sprint06/baseline.json, baseline-pytest.txt and owned
 baseline-browser/.verification/sprint06-browser.txt. Old screenshots were written only in the
@@ -90,3 +90,16 @@ Microprofile: 7 native rehearsal samples each on baseline/CASE/capped isolated s
 44.718/51.485/141.448ms; no memory/native-cost/speed-superiority promise. Old evaluations reran
 20/20 and 19/19 to new ignored output names. Platform/remote CI tracks remain unverified.
 Resume: runtime implementation tested; finish G10/G11 report/docs and final protected/Git audit.
+
+Final checkpoint: all authorized local implementation/artifacts complete. Full final tests are
+518 Python / 80 frontend / 49 actual native Playwright. Overall PARTIAL solely because accepted
+live AI final claim admission remains blocked; actual model-selected native trace was verified.
+G10 documents/report and append-only historical-ledger continuation prepared. Installed wheel CLI
+also verified outside checkout with Node absent from PATH. No publication, remote, new license,
+model download or system installation. Six genuine screenshot files and 7.28s silent supplemental
+recording are checked in; final 1–2 minute narrated video remains an owner action.
+Resume after this checkpoint: inspect main/Git status and SPRINT_06_REPORT. Preserve data and all
+historical artifacts. Resolve local Ollama availability/final schema admission using bounded safe
+metadata, never raw provider persistence or weakened firewall; rerun affected/full gates after
+runtime changes. Owner decides license/public source/video/submission. Do not run waits/retries to
+fill time or infer permission to push. This checkpoint does not schedule background work.

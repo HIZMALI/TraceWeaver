@@ -70,3 +70,22 @@ Explicit local actions reuse exact Host/Origin/port and bounded-body checks plus
 lock. GET/load/refresh never infer. Offline DETERMINISTIC_TOOL_REHEARSAL uses the identical real
 tools with both AI flags false. Client abort need not stop daemon computation. Final request/total
 budgets and actual observed availability are documented with the orchestration gate and report.
+
+## Explicit HTTP and CLI actions
+
+POST `/console/agent/rehearse` accepts AgentScopeRequest; POST `/console/agent/investigate`
+accepts AgentRequest. Both return strict AgentInvestigationReport 1.0 and share the same lock as
+capabilities/legacy claim selection. Exact application/json, 2048-byte body, depth four, duplicate
+field rejection, two-second body read, numeric loopback client/Host and exact Origin/port apply.
+Initial source mismatch returns safe HTTP 409; unknown incident 404; incompatible graph 503;
+concurrent action 429. Provider failures after source creation are explicit typed report statuses.
+GETs remain unchanged/deterministic; no query argument enables inference. No raw body is echoed.
+
+The separate traceweaver-agent / `python -m traceweaver.agent_cli` entry point selects either
+`--rehearse` or `--model <eligible-ID> --confirm-local`. `--canonical` is offline only. Rehearsal
+plans run two to four tools with a 30-second between-tool guard, using the existing deterministic
+selector only over claims supported by actual executed results. Model abstention does not set
+ai_generated_selection merely because the mandatory server-authored caution was appended.
+The browser verifies strict shape, canonical digest, current incident/options/fingerprint,
+actual returned path/record/comparison membership and exact citation counts before proof focus.
+Step focus is transient; URL reload retains a native node selection, never a fictional prior run.
