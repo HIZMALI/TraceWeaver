@@ -5,6 +5,14 @@ Starting main: 0783201fb5d83c072fe215cf23135eb165a2213a. No user edits at start.
 
 ## Latest successful gate
 
+G7 PASS — 2026-11-13 01:23 UTC. Added the actual 110-second judge flow, fact-check mapping,
+English unsubmitted Devpost draft and LOCAL_PERFORMANCE.md. Seven genuine captures support the
+storyboard; no video claimed. Three new native scales (14/17, 92/121, 332/441 stored nodes/edges)
+were actually rendered seven times each; capped display 300/399, no page errors. Corrected
+process-tree memory measurement after detecting Windows virtualenv shim-only sampling, then reran.
+Ruff/frontend lint and diff checks clean. License collector now removes only trailing blank lines;
+the earlier G6 wheel remains historical evidence and the final package will be rebuilt/rechecked.
+
 G6 PASS — 2026-11-13 01:15 UTC. 414 Python tests passed in 45.73s, Ruff/pip clean.
 Clean external npm ci/build succeeded with zero audit vulnerabilities and identical asset bytes.
 Fresh external non-editable wheel installation served the actual UI with Node absent from server
@@ -70,15 +78,15 @@ ignored .verification/overnight/baseline.json. Architecture decisions recorded b
 | G4 | PASS | 28 actual browser scenarios, zero axe violations, six real captures and responsive checks |
 | G5 | PASS | Strict local POST actions, 29 protocol/native cases, actual qwen3:8b UI inference |
 | G6 | PASS | External clean npm/wheel/browser, Node-free server, verified PowerShell launch/check |
-| G7 | IN PROGRESS | Judge guide, fact check, draft and screenshot pack |
-| G8 | PENDING | Independent fair retrieval comparison after P0/P1 pass |
+| G7 | PASS | Timed genuine demo/storyboard, fact check/draft/screenshots and actual local measurements |
+| G8 | IN PROGRESS | Freeze independent questions before running fair graph-vs-flat study |
 | G9 | PENDING | Full regression, measurements, protected-file/staged audit, final report |
 
 ## Resume instructions
 
 Read this ledger and OVERNIGHT_ARCHITECTURE_DECISIONS.md; inspect Git status before edits.
-Do not reset or overwrite existing work. Next action: G7 presentation pack, then fair G8 study,
-performance/final G9 regression. Current app is source-built and served by FastAPI
+Do not reset or overwrite existing work. Next action: freeze G8 independent gold before execution,
+then run/report study and final G9 regression/package rebuild. Current app is source-built and served by FastAPI
 at one loopback origin. Rebuild web after frontend edits. Browser files live in ignored
 .verification/overnight/browsers; web/e2e/smoke.mjs configures that path before importing Playwright.
 All tests that write graph data must use new OS temporary stores. The existing judge artifact,
@@ -123,3 +131,5 @@ manifest, fixtures, saved examples and frozen reports/gold must remain byte-iden
   component cases, guarded dedicated POSTs, explicit AGENTS exception and real-model helper.
 - G5 commit: 70efbf3. G6 adds judge.py, source launcher/check scripts, license collector/notices,
   installed-wheel browser helper, launcher cases and release/readme documentation.
+- G6 commit: 1372bdc. G7 adds presentation documents and finite native browser-scale runner;
+  license collector's trailing blank-line diff warning was corrected before this gate.

@@ -32,7 +32,7 @@ Cross-platform after the same project build: `.venv/bin/python -m traceweaver.ju
 --bundle examples/judge-demo` (one command, on one line). After a built wheel is installed,
 `python -m traceweaver.judge --bundle /path/to/intact/judge-demo` needs no Node or checkout.
 The wheel contains web assets/fixtures, not a user store; supply the published synthetic bundle.
-See [release readiness](docs/RELEASE_READINESS.md),
+See [release readiness](docs/RELEASE_READINESS.md), [demo guide](docs/JUDGE_DEMO_GUIDE.md),
 [dashboard contract](docs/DASHBOARD_CONTRACT.md) and [OSS notices](docs/DEPENDENCY_LICENSES.md).
 
 The React/TypeScript console consumes a coherent, privacy-conscious snapshot from real Relate.

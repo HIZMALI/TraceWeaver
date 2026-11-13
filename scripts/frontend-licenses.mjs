@@ -17,5 +17,5 @@ async function visit(name){
 for(const name of Object.keys(manifest.dependencies))await visit(name);
 const entries=[...seen.values()].sort((a,b)=>a.name.localeCompare(b.name,'en'));
 await mkdir(resolve(web,'public/assets'),{recursive:true});
-await writeFile(resolve(web,'public/assets/third-party-licenses.txt'),entries.map(e=>`${e.name} ${e.version} (${e.license})\n${'='.repeat(72)}\n${e.notices.join('\n')}\n`).join('\n'),'utf8');
+await writeFile(resolve(web,'public/assets/third-party-licenses.txt'),entries.map(e=>`${e.name} ${e.version} (${e.license})\n${'='.repeat(72)}\n${e.notices.join('\n')}\n`).join('\n').trimEnd()+'\n','utf8');
 console.log(JSON.stringify(entries.map(({name,version,license})=>({name,version,license})),null,2));
