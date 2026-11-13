@@ -97,4 +97,3 @@ npm --prefix web run test:e2e
 Choose new report names; existing output requires explicit overwrite. The browser wrapper sends
 historical screenshot writes into an owned ignored directory and tests current source. Sprint 06
 browser tests deliberately recapture only the new `docs/screenshots/sprint06` files.
-

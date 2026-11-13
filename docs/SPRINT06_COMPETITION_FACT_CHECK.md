@@ -33,4 +33,3 @@ New gold: `dce5da3e7561029a8877fb03a9de86961509f728694b6c22e01155e82dfa6295`.
 TRACEABLE never means VERIFIED; digests establish byte equality only. Always finish with
 NOT_ESTABLISHED / NOT_PERFORMED. Historical graph-versus-flat raw totals must not be marketed as
 accuracy or runtime superiority; see the unchanged erratum and new research limitations note.
-

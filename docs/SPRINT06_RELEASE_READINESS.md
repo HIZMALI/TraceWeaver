@@ -34,4 +34,3 @@ Representative paths remain partial even without source truncation. No causal in
 automatic remediation, external truth verification or production accuracy claim exists.
 
 See `SPRINT06_COMPETITION_FACT_CHECK.md` for current official sources and unresolved rule wording.
-

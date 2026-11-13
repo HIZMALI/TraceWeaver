@@ -31,4 +31,3 @@ SHA-256: `73c93ea0ce85ef955f8742a781b871e6863a8cb036dd53825fff4ff928b5e1a9`.
 Recording command: `node scripts/record_sprint06.mjs`. It preserves an existing recording and
 refuses overwrite; use a separately named owner recording. No music, voice track or third-party
 media were added. Existing FFmpeg/Chromium were reused; no system tool/model was installed.
-

@@ -26,4 +26,3 @@ Six genuine screenshots are in `screenshots/sprint06`; the sixth shows the actua
 capability state. The 7.28-second silent browser test recording is a supplemental execution clip,
 not this finished narrated 115-second presentation. Follow `SPRINT06_VIDEO_PLAN.md` for the owner
 recording. Local loopback URLs cannot be visited remotely by judges.
-

@@ -52,4 +52,3 @@ version. Owner must review rights/attribution for source, models, data and the o
 Owner completion fields: public GitHub/setup URL; selected license; original accessible 1–2 minute
 demo URL; team/eligibility details; organizer clarification if needed. See release readiness and
 competition fact check. No URL placeholders should be presented as a working public deployment.
-
