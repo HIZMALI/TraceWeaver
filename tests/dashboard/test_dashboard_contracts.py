@@ -19,6 +19,12 @@ from traceweaver.storage import GraphStore
 from traceweaver.tool_errors import ToolError
 
 
+@pytest.fixture
+def client(database):
+    with TestClient(create_app(Settings(database=database)), base_url="http://127.0.0.1") as value:
+        yield value
+
+
 def test_dashboard_is_actual_single_native_investigation_and_legacy_parity(database):
     with GraphStore(database) as store:
         source = investigate(store, "INC-001")
@@ -206,7 +212,7 @@ def test_unavailable_store_is_generic_without_creation(tmp_path, contents):
     path = tmp_path / "private-location.rl"
     if contents:
         path.write_bytes(contents)
-    with TestClient(create_app(Settings(database=path))) as client:
+    with TestClient(create_app(Settings(database=path)), base_url="http://127.0.0.1") as client:
         r = client.get("/incidents/INC-001/dashboard")
         assert r.status_code == 503
         assert str(tmp_path) not in r.text

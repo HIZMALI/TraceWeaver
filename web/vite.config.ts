@@ -8,7 +8,7 @@ export default defineConfig({
     proxy: {
       "/incidents": { target: "http://127.0.0.1:8000", changeOrigin: true },
       "/health": "http://127.0.0.1:8000",
-      "/console": "http://127.0.0.1:8000",
+      "/console": { target: "http://127.0.0.1:8000", changeOrigin: true },
     },
   },
   build: {

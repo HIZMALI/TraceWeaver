@@ -4,6 +4,8 @@ import logging
 from typing import Annotated
 
 from fastapi import FastAPI, HTTPException, Query
+from fastapi.exception_handlers import request_validation_exception_handler
+from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from pydantic import BeforeValidator, ValidationError
 
@@ -14,6 +16,7 @@ from traceweaver.explanation import explain
 from traceweaver.explanation_models import ExplanationReport
 from traceweaver.investigation import investigate
 from traceweaver.investigation_models import Investigation, InvestigationOptions
+from traceweaver.local_console import LocalConsoleBoundary, console_path
 from traceweaver.models import Health, IncidentContext, IncidentSummary
 from traceweaver.queries import IncidentNotFound, incident_context, list_incidents
 from traceweaver.storage import GraphStore, StorageError
@@ -31,6 +34,13 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     application = FastAPI(
         title="TraceWeaver", version="0.1.0", description="Read-only graph incident context"
     )
+    application.add_middleware(LocalConsoleBoundary)
+
+    @application.exception_handler(RequestValidationError)
+    async def safe_request_validation(request, exc):
+        if console_path(request.url.path):
+            return JSONResponse(status_code=422, content={"detail": "Invalid console request"})
+        return await request_validation_exception_handler(request, exc)
 
     @application.exception_handler(StorageError)
     async def unavailable_handler(request, exc):
@@ -42,7 +52,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     @application.exception_handler(Exception)
     async def unexpected_handler(request, exc):
-        logger.error("Unexpected TraceWeaver request failure", exc_info=exc)
+        if console_path(request.url.path):
+            logger.error("Unexpected console request failure: %s", type(exc).__name__)
+        else:
+            logger.error("Unexpected TraceWeaver request failure", exc_info=exc)
         return JSONResponse(status_code=500, content={"detail": "Internal server error"})
 
     # A synchronous handler runs its entire with block in one worker thread. A yielded

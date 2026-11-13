@@ -5,6 +5,13 @@ Starting main: 0783201fb5d83c072fe215cf23135eb165a2213a. No user edits at start.
 
 ## Latest successful gate
 
+G3 PASS — 2026-11-13 01:00 UTC. Full pytest: 383 passed in 56.45s; Ruff clean.
+46 added native/dashboard/local-boundary cases now protect the console. New routes reject
+alternate/duplicate Hosts and cross-origin reads without affecting legacy API contracts.
+Generic 422 errors never echo private input. Actual Chromium/native smoke reran successfully.
+Single-worker read-only ownership, immutable data checks and safe metadata projection pass.
+See DASHBOARD_CONTRACT.md for the exact boundary and privacy limitations.
+
 G2 PASS — 2026-11-13 00:54 UTC. Full Python suite: 366 passed in 45.95s. Frontend:
 48 unit cases passed; typecheck/build/lint passed. Actual Chromium smoke: 14 INC-001 edges,
 CASE-INC comparisons, no page errors. Every displayed kind is now checked with one bounded
@@ -30,8 +37,8 @@ ignored .verification/overnight/baseline.json. Architecture decisions recorded b
 | G0 | PASS | Native baseline, protected hashes, source/contracts inspected, decision note |
 | G1 | PASS | Actual native snapshot console, type/lint/build and Chromium smoke; 363 Python tests |
 | G2 | PASS | 48 frontend cases, 29 native dashboard cases, real arrows/labels and browser smoke |
-| G3 | IN PROGRESS | Strict privacy/snapshot/error/read-only guards and local-host boundary |
-| G4 | PENDING | Actual browser tests, responsive/a11y/adversarial review, real screenshots |
+| G3 | PASS | 383 total tests; strict new-console Host/origin, safe errors, native read-only snapshot |
+| G4 | IN PROGRESS | Actual Playwright scenarios, responsive/a11y/adversarial review, real screenshots |
 | G5 | PENDING | Explicit secure local-only model action, genuine installed model if available |
 | G6 | PENDING | Clean npm/wheel install, static assets and one-command launch/check |
 | G7 | PENDING | Judge guide, fact check, draft and screenshot pack |
@@ -41,8 +48,8 @@ ignored .verification/overnight/baseline.json. Architecture decisions recorded b
 ## Resume instructions
 
 Read this ledger and OVERNIGHT_ARCHITECTURE_DECISIONS.md; inspect Git status before edits.
-Do not reset or overwrite existing work. Next action: G3 local-host/snapshot/privacy hardening,
-then actual G4 Playwright suite. Current app is source-built and served by FastAPI
+Do not reset or overwrite existing work. Next action: fix/run actual G4 Playwright suite,
+then G5 guarded optional local selection. Current app is source-built and served by FastAPI
 at one loopback origin. Rebuild web after frontend edits. Browser files live in ignored
 .verification/overnight/browsers; web/e2e/smoke.mjs configures that path before importing Playwright.
 All tests that write graph data must use new OS temporary stores. The existing judge artifact,
@@ -80,3 +87,5 @@ manifest, fixtures, saved examples and frozen reports/gold must remain byte-iden
   fields only on PROVENANCE, while EVIDENCE still requires actual source membership.
 - G2 browser smoke initially sampled the DOM before edges mounted; now waits for a real edge.
   Passing output above was rerun after the fix. No failed run was counted as PASS.
+- G2 commit: d93625e. G3 adds local_console boundary, new native Host/privacy tests,
+  safe request errors and developer console proxy adjustment. No old tests changed.
