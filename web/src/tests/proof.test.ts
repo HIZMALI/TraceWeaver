@@ -25,7 +25,7 @@ import {
   navigationURL,
   utcText,
 } from "../navigation";
-import { boundedJSON, requestJSON } from "../api";
+import { boundedJSON, requestJSON, getBundle } from "../api";
 
 const inc = () => bundleSchema.parse(structuredClone(incInput));
 const cases = () => bundleSchema.parse(structuredClone(caseInput));
@@ -259,6 +259,27 @@ describe("returned graph and selection", () => {
   });
 });
 describe("bounded navigation, time and transport", () => {
+  it.each([
+    ["INC-001", { ...defaults, max_evidence: 1 }, incInput, false],
+    ["INC-001", defaults, caseInput, false],
+    ["INC-001", defaults, incInput, true],
+  ] as const)(
+    "binds coherent native response to requested incident/options %#",
+    async (id, options, body, valid) => {
+      vi.stubGlobal(
+        "fetch",
+        vi.fn().mockResolvedValue(new Response(JSON.stringify(body))),
+      );
+      try {
+        const response = getBundle(id, options, new AbortController().signal);
+        if (valid)
+          expect((await response).investigation.incident_id).toBe("INC-001");
+        else await expect(response).rejects.toThrow("requested");
+      } finally {
+        vi.unstubAllGlobals();
+      }
+    },
+  );
   it("defaults to the actual documented demo", () => {
     expect(parseNavigation("")).toEqual({
       incident: "INC-001",

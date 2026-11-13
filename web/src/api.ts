@@ -85,10 +85,19 @@ export const getBundle = async (
   incident: string,
   options: Options,
   signal: AbortSignal,
-) =>
-  verifyBundle(
+) => {
+  const bundle = await verifyBundle(
     await requestJSON(
       `/incidents/${encodeURIComponent(incident)}/dashboard?${new URLSearchParams(Object.entries(options).map(([k, v]) => [k, String(v)]))}`,
       signal,
     ),
   );
+  if (
+    bundle.investigation.incident_id !== incident ||
+    (Object.keys(options) as (keyof Options)[]).some(
+      (k) => bundle.investigation.options[k] !== options[k],
+    )
+  )
+    throw new Error("Response does not match requested incident/options");
+  return bundle;
+};

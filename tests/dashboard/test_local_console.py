@@ -1,10 +1,38 @@
 import hashlib
+import json
+import subprocess
+import sys
 
 import pytest
 from fastapi.testclient import TestClient
 
 from traceweaver.api import create_app
 from traceweaver.config import Settings
+from traceweaver.storage import GraphStore
+
+
+def test_new_dashboard_real_cross_process_writer_lock_is_generic(database):
+    script = """
+import json,sys
+from fastapi.testclient import TestClient
+from traceweaver.api import create_app
+from traceweaver.config import Settings
+with TestClient(create_app(Settings(database=sys.argv[1])),base_url='http://127.0.0.1') as c:
+ r=c.get('/incidents/INC-001/dashboard')
+ print(json.dumps({'status':r.status_code,'body':r.json()}))
+"""
+    with GraphStore(database, read_only=False):
+        result = subprocess.run(
+            [sys.executable, "-c", script, str(database)],
+            capture_output=True,
+            text=True,
+            timeout=20,
+            check=True,
+        )
+    assert json.loads(result.stdout) == {
+        "status": 503,
+        "body": {"detail": "Graph database unavailable"},
+    }
 
 
 @pytest.mark.parametrize(

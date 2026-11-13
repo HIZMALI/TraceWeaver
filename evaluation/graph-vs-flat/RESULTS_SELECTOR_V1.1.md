@@ -7,7 +7,7 @@
 
 Same public node fields/all edge facts; structured native selectors vs BM25-like unjoined records. First read plus five repeated reads; setup/index/proof audit excluded. See README for intent asymmetry.
 
-Gold SHA-256: `53e089d433a5f9de6c00105aa7837e1d9ae29016750ef6802f4cc0fde095db81`. Native store: {'node_count': 51, 'relationship_count': 67}. 
+Gold SHA-256: `53e089d433a5f9de6c00105aa7837e1d9ae29016750ef6802f4cc0fde095db81`. Native store: {'node_count': 51, 'relationship_count': 67}.
 Exact ID sets: graph 13/14; flat 2/14.
 
 No production/general accuracy or root-cause claim. Empty denominators are null in JSON.

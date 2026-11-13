@@ -132,6 +132,18 @@ def test_post_size_rejected_before_provider(local_client, monkeypatch):
     assert r.status_code == 413 and not calls
 
 
+def test_malformed_excessive_length_header_is_bounded_before_integer_parse(
+    local_client, monkeypatch
+):
+    calls = provider(monkeypatch)
+    response = local_client.post(
+        "/console/models/capabilities",
+        content="{}",
+        headers={"origin": BASE, "content-type": "application/json", "content-length": "9" * 5000},
+    )
+    assert response.status_code == 413 and not calls
+
+
 def test_capabilities_only_admit_eligible_installed_tags(local_client, monkeypatch):
     calls = provider(monkeypatch)
     r = local_client.post(
@@ -251,6 +263,24 @@ def test_new_action_gets_never_call_provider(local_client, monkeypatch):
     assert local_client.get("/console/models/capabilities").status_code == 405
     assert local_client.get("/console/selection?mode=ollama").status_code == 405
     assert not calls
+
+
+def test_openapi_documents_exact_bounded_action_models(local_client):
+    paths = local_client.get("/openapi.json").json()["paths"]
+    action = paths["/console/selection"]["post"]["requestBody"]["content"]["application/json"][
+        "schema"
+    ]
+    assert action["additionalProperties"] is False
+    assert set(action["required"]) == {
+        "incident_id",
+        "options",
+        "source_fingerprint",
+        "model_id",
+        "confirmed",
+    }
+    assert action["properties"]["confirmed"]["const"] is True
+    assert action["properties"]["options"]["properties"]["pre_minutes"]["maximum"] == 1440
+    assert "$defs" not in json.dumps(action) and "$ref" not in json.dumps(action)
 
 
 def test_worker_reader_closes_before_any_provider_request(local_client, database, monkeypatch):

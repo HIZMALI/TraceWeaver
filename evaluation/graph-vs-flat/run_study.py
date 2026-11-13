@@ -296,7 +296,7 @@ def markdown(report):
         "",
         report["method"],
         "",
-        f"Gold SHA-256: `{report['gold_sha256']}`. Native store: {report['native_counts']}. ",
+        f"Gold SHA-256: `{report['gold_sha256']}`. Native store: {report['native_counts']}.",
         f"Exact ID sets: graph {report['graph_exact_cases']}/14; "
         f"flat {report['flat_exact_cases']}/14.",
         "",
@@ -345,8 +345,8 @@ def main():
     if args.output.exists() or args.markdown.exists():
         parser.error("Choose new output paths; existing reports are never overwritten")
     report = run_study()
-    args.output.write_text(canonical_json(report), encoding="utf8")
-    args.markdown.write_text(markdown(report), encoding="utf8")
+    args.output.write_text(canonical_json(report), encoding="utf8", newline="\n")
+    args.markdown.write_text(markdown(report), encoding="utf8", newline="\n")
     print(
         json.dumps(
             {

@@ -58,12 +58,36 @@ class SelectionResult(StrictModel):
     explanation: ExplanationReport
 
 
+def action_contract(schema):
+    """Document the same strict model used after bounded parsing, without eager body parsing."""
+    document = schema.model_json_schema()
+    definitions = document.pop("$defs", {})
+
+    def inline(value):
+        if isinstance(value, list):
+            return [inline(item) for item in value]
+        if isinstance(value, dict):
+            if "$ref" in value:
+                return inline(definitions[value["$ref"].removeprefix("#/$defs/")])
+            return {key: inline(item) for key, item in value.items()}
+        return value
+
+    return {
+        "requestBody": {
+            "required": True,
+            "content": {"application/json": {"schema": inline(document)}},
+        }
+    }
+
+
 async def bounded_action(request: Request, schema):
     types = request.headers.getlist("content-type")
     lengths = request.headers.getlist("content-length")
     if types != ["application/json"] or request.headers.get("content-encoding"):
         raise HTTPException(415, "Bounded application/json required")
-    if len(lengths) > 1 or (lengths and (not lengths[0].isdigit() or int(lengths[0]) > 2048)):
+    if len(lengths) > 1 or (
+        lengths and (len(lengths[0]) > 4 or not lengths[0].isdigit() or int(lengths[0]) > 2048)
+    ):
         raise HTTPException(413, "Console action exceeds size limit")
 
     async def read():
@@ -94,7 +118,7 @@ def installed_models():
                 for e in models
                 if isinstance(e, dict)
                 and valid_model_id(e.get("name"))
-            and not PRIVATE.search(e["name"])
+                and not PRIVATE.search(e["name"])
                 and type(e.get("size")) is int
                 and e["size"] > 0
                 and not any(k.startswith("remote_") for k in e)

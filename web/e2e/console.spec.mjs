@@ -259,8 +259,12 @@ test("insufficient evidence abstains using a real isolated Relate store", async 
 });
 test("actual high degree store visibly discloses caps", async ({ page }) => {
   await open(page, "EV-CAPS", "http://127.0.0.1:8769");
-  await expect(page.locator(".scope-banner")).toContainText("Source caps reached");
-  await expect(page.locator(".graph-footer")).toContainText("Display cap omitted");
+  await expect(page.locator(".scope-banner")).toContainText(
+    "Source caps reached",
+  );
+  await expect(page.locator(".graph-footer")).toContainText(
+    "Display cap omitted",
+  );
   expect(await page.locator(".react-flow__node").count()).toBeLessThanOrEqual(
     300,
   );
@@ -283,6 +287,9 @@ test("help dialog manages keyboard focus and escape", async ({ page }) => {
   await expect(page.getByRole("dialog")).toBeVisible();
   await page.keyboard.press("Escape");
   await expect(page.getByRole("dialog")).not.toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "About this console" }),
+  ).toBeFocused();
 });
 test("axe desktop has no accessibility violations", async ({ page }) => {
   await open(page);
@@ -329,4 +336,121 @@ test("200 percent equivalent reflow retains readable controls", async ({
       () => document.documentElement.scrollWidth <= innerWidth + 1,
     ),
   ).toBe(true);
+});
+
+test("INC-002 uses its own native dependency and deployment scope", async ({
+  page,
+}) => {
+  await open(page, "INC-002");
+  await expect(
+    page.getByRole("button", { name: "Inspect candidate DEP-003 on SVC-NOTIFICATION", exact:true }),
+  ).toBeVisible();
+  await expect(page.getByRole("button", {name:"Inspect candidate DEP-003 on SVC-QUEUE",exact:true})).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: /Inspect candidate DEP-001/ }),
+  ).toHaveCount(0);
+});
+test("incident search filters returned navigation without altering selected graph", async ({
+  page,
+}) => {
+  await open(page);
+  await page
+    .getByRole("textbox", { name: "Search returned incidents" })
+    .fill("CASE-INC");
+  const nav = page.getByRole("navigation", { name: "Returned incidents" });
+  await expect(nav.getByRole("button")).toHaveCount(1);
+  await expect(page.locator(".react-flow__edge")).toHaveCount(14);
+  await page
+    .getByRole("textbox", { name: "Search returned incidents" })
+    .fill("");
+  await expect(nav.getByRole("button")).toHaveCount(5);
+});
+test("undetermined comparison is selectable and stays separate from confirmed conflict", async ({
+  page,
+}) => {
+  await open(page, "CASE-INC");
+  await page.getByRole("tab", { name: /Observations/ }).click();
+  await page
+    .getByRole("button", { name: /Inspect UNDETERMINED/ })
+    .first()
+    .click();
+  await expect(
+    page.getByRole("region", { name: "Selected comparison" }),
+  ).toContainText("UNDETERMINED");
+});
+test("missing-source evidence stays incomplete and withholds reference", async ({
+  page,
+}) => {
+  await open(page, "CASE-INC");
+  await page.getByRole("tab", { name: /Evidence/ }).click();
+  await page
+    .getByRole("button", {
+      name: "Inspect evidence CASE-E-MISSING-SOURCE",
+      exact: true,
+    })
+    .click();
+  await expect(
+    page.getByRole("region", { name: "Selected evidence" }),
+  ).toContainText("INCOMPLETE");
+  await expect(
+    page.getByRole("region", { name: "Selected evidence" }),
+  ).toContainText("Source reference withheld");
+});
+test("phone drawer selects a genuine incident then closes", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await open(page);
+  await page
+    .getByRole("button", { name: "Toggle incident navigation" })
+    .click();
+  const nav = page.getByRole("navigation", { name: "Returned incidents" });
+  await expect(nav).toBeInViewport();
+  await nav.getByRole("button").filter({ hasText: "CASE-INC" }).click();
+  await expect(nav).not.toBeInViewport();
+  await expect(page.locator("h1")).toHaveText(
+    "Synthetic Sprint 01 investigation specimen",
+  );
+});
+test("reduced motion preference retains proof and disables transitions", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await open(page);
+  await page.getByRole("button", { name: /Inspect candidate DEP-001/ }).click();
+  await expect(
+    page.getByRole("region", { name: "Selected candidate" }),
+  ).toBeVisible();
+  expect(
+    await page
+      .getByRole("button", { name: "Focus selected paths" })
+      .evaluate((e) => getComputedStyle(e).transitionDuration),
+  ).toBe("0s");
+});
+test("normal proof exploration sends no external source requests", async ({
+  page,
+}) => {
+  const external = [];
+  page.on("request", (r) => {
+    if (!r.url().startsWith("http://127.0.0.1:8765/")) external.push(r.url());
+  });
+  await open(page);
+  await page.getByRole("tab", { name: /Evidence/ }).click();
+  await page
+    .getByRole("button", { name: "Inspect evidence EVD-001", exact: true })
+    .click();
+  await expect(
+    page.getByRole("region", { name: "Selected evidence" }),
+  ).toBeVisible();
+  expect(external).toEqual([]);
+  await expect(page.locator('a[href^="http"]')).toHaveCount(0);
+});
+test("zoom and fit controls preserve actual graph topology", async ({
+  page,
+}) => {
+  await open(page);
+  await page.getByRole("button", { name: /^zoom in$/i }).click();
+  await page.getByRole("button", { name: /^fit view$/i }).click();
+  await expect(page.locator(".react-flow__edge")).toHaveCount(14);
+  await expect(page.locator(".react-flow__node")).toHaveCount(11);
 });

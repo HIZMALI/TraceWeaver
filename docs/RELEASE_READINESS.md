@@ -9,7 +9,7 @@ user store, judge binary/manifest and frozen Sprint 02/03 artifacts are preserve
 - Clean copied frontend outside checkout: `npm ci` (194 packages, audit zero vulnerabilities),
   `npm run build` with the committed lock. Built asset bytes matched checkout build byte-for-byte.
 - `.venv/Scripts/python -m pip wheel . --no-deps --wheel-dir .verification/overnight/wheels`.
-  Actual wheel SHA-256 `c0ee1ff20d91d53935403e5735227b8ef6fe762e14a1c4b722e648da214ec46c`.
+  Initial G6 wheel SHA-256 `c0ee1ff20d91d53935403e5735227b8ef6fe762e14a1c4b722e648da214ec46c`.
 - Fresh Python 3.14 virtual environment outside repository, non-editable install with existing
   requirements-dev.lock as constraints. No PYTHONPATH dependency or checkout imports. pip check clean.
 - Wheel contains index, JS/CSS, upstream notices and fixtures. It contains no user database.
@@ -17,7 +17,7 @@ user store, judge binary/manifest and frozen Sprint 02/03 artifacts are preserve
   CASE-INC 6/11. Server process PATH deliberately omitted Node. HTTP index/assets/health worked.
 - Actual Chromium 158.0.8127.18 rendered the installed wheel: 14 native edges, NOT_ESTABLISHED,
   zero page errors. Owned server stopped; copied graph bytes remained identical.
-- The built console includes 555.43 kB JS (172.15 kB gzip) and 37.41 kB CSS (7.92 kB gzip).
+- The final built console includes 555.61 kB JS (172.19 kB gzip) and 37.41 kB CSS (7.92 kB gzip).
   Client-only dependency directive warnings remain in Vite output; no SSR compatibility claim.
 
 The local wheel is an ignored verification artifact, not a published release. Rebuilding the wheel
@@ -26,6 +26,16 @@ See README for source setup and `scripts/start-judge-demo.ps1 -Build`. Subsequen
 neither Node nor Ollama. `scripts/check-judge-demo.ps1` verifies source/manifest/logical graph,
 assets and representative native snapshots without writes. Supply the existing bundle when running
 `python -m traceweaver.judge --bundle <directory>` from a wheel.
+
+### Final clean build
+
+Use `python scripts/build_judge_wheel.py --output <new-directory>` after the frontend build.
+It uses the invoking project Python, a fresh owned temporary source copy and an isolated build.
+It preserves existing output wheels and checks one JS/CSS generation, upstream notices and no .rl.
+This avoids setuptools retaining old hashed assets under an existing ignored build/lib directory.
+The final wheel is 273,904 bytes, SHA-256
+`102a805a564ad420c626b6d3442a1f24eec9293f32ffd32eabaccd8e8659c41f`.
+Final independent installation/browser results are recorded in the mission report.
 
 ## Explicit limitations
 

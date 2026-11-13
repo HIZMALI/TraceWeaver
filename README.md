@@ -53,6 +53,20 @@ file is read without reseeding. Select INC-001, INC-002 or CASE-INC; inspect gra
 server-admitted claims. NOT_ESTABLISHED and external truth NOT_PERFORMED remain explicit.
 The [overnight ledger](docs/OVERNIGHT_PROGRESS.md) distinguishes completed gates from remaining work.
 
+Verification from the repo root (development tools and project-scoped Chromium required):
+
+```powershell
+.\.venv\Scripts\python.exe -m ruff check .
+.\.venv\Scripts\python.exe -m pytest -q
+npm --prefix web run typecheck
+npm --prefix web run lint
+npm --prefix web test
+npm --prefix web run build
+$env:PLAYWRIGHT_BROWSERS_PATH = Join-Path (Get-Location) '.verification/overnight/browsers'
+node web/node_modules/@playwright/test/cli.js install chromium
+npm --prefix web run test:e2e
+```
+
 **Graph-Verified AI Incident Investigator**
 
 Sprint 00: Foundation, Real Relate Integration & Technical Verification
@@ -530,14 +544,18 @@ Python 3.11**. Local Windows verification does not establish that remote CI pass
   integrity, reproducible synthetic evaluation, and a packaged judge store.
 - **Sprint 03 — Implemented and locally verified:** read-only explanations, citation firewall,
   separate frozen explanation evaluation, and optional real local Ollama claim selection.
-- **Sprint 04 — Planned:** visual evidence/citation dashboard and a short judge demonstration,
-  with an actual Relate path and optional local model selection.
-- **Later:** investigation UI and visualization, only when separately scoped.
+- **Sprint 04 — Implemented and locally verified:** connected graph/citation console, timeline,
+  scoped uncertainty, responsive records, native snapshot integrity and accessible path lists.
+- **Sprint 05 preview — Implemented and locally verified:** actual browser regression/captures,
+  guarded explicit local model comparison, independent wheel/launcher, judge presentation pack,
+  local performance measurements and a disclosed limited retrieval study.
+- **Later:** broader platform verification, genuine reviewed video and owner-led public submission.
 
 ## Limitations
 
-- No causal inference, remediation, external ingestion connector, dashboard, cloud AI service, or
-  production authentication is implemented through Sprint 03. Local AI selection is optional.
+- No causal inference, remediation, external ingestion connector, cloud AI service or production
+  authentication is implemented. The read-only local dashboard and local AI selection are scoped
+  separately from those future capabilities.
 - The legacy `context` endpoint keeps its original topology-only behavior. The new investigation
   endpoint classifies times but does not infer causes or rank causality. Shared dependencies may
   connect candidate deployments across incidents; evidence still requires that incident's HAS_EVIDENCE.
@@ -575,8 +593,9 @@ Python 3.11**. Local Windows verification does not establish that remote CI pass
 
 ## AI-assisted development disclosure
 
-Sprints 00 through 03 were implemented and tested with OpenAI Codex assistance. The assistant generated and
+Sprints 00 through the overnight 04/05 preview were implemented and tested with OpenAI Codex assistance. The assistant generated and
 reviewed code, fixtures, tests, and documentation, and executed local verification commands.
-Only explicit CLI Ollama mode calls a local model; default CLI and HTTP explanations use no model.
+Explicit CLI Ollama mode or a confirmed guarded local console POST can call the local model.
+Default CLI, ordinary page loads and every legacy HTTP GET explanation use no model.
 Synthetic evidence and connected graph paths
 must never be presented as verified real-world root causes.

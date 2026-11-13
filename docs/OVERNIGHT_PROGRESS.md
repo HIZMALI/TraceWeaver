@@ -5,6 +5,25 @@ Starting main: 0783201fb5d83c072fe215cf23135eb165a2213a. No user edits at start.
 
 ## Latest successful gate
 
+G9 PASS — 2026-11-13 01:49 UTC. Final complete pytest: 420 passed in 51.56s (337 original +
+83 additions), zero failures/skips. Ruff/pip/actionlint clean. Frontend type/lint/build pass;
+58 unit cases and 36 actual Playwright cases pass (42.9s, zero unexpected/skipped/flaky).
+Old graph evaluation 20/20 and explanation evaluation 19/19 rerun to new ignored output paths.
+Final fresh-source wheel 273904 bytes, SHA-256 102a805a564ad420c626b6d3442a1f24eec9293f32ffd32eabaccd8e8659c41f,
+independently installed non-editably outside checkout: Node-free server, actual Chromium/native
+14-edge UI, no page errors. Both original stores and all original docs/fixtures/gold/reports
+remain byte-identical; only seven authorized pre-existing files changed, plus new sprint files.
+Final audit checks local links/staging/private patterns. No owned test ports remain listening.
+
+G9 repairs: bind browser response to requested incident/options; strict POST OpenAPI body schemas
+without eager unbounded parsing; excessive length-header bound; actual new-route writer lock test.
+Added eight browser scenarios (INC-002's two legitimate DEP-003 target pairs, search, undetermined,
+missing source, phone drawer, reduced motion, no external requests, zoom/fit). New INC-002 test
+initially assumed a single deployment/target pair; changed to assert both actual pairs explicitly.
+Repeated in-place setuptools builds retained old hashed assets; a fresh-copy wheel builder now
+checks exactly one JS/CSS generation. Final package verification reran after the fix. Markdown
+trailing whitespace was removed and future study output uses explicit LF. No legacy gold changed.
+
 G8 PASS WITH DISCLOSED STUDY LIMIT — 2026-11-13 01:35 UTC. Fourteen questions were frozen in
 1c8d1fa before either arm ran; actual same-input 51/67 native vs BM25-like record study executed.
 First raw output native 12/14, flat 2/14 preserved. R11 exposed a new evaluation-selector missing
@@ -93,13 +112,14 @@ ignored .verification/overnight/baseline.json. Architecture decisions recorded b
 | G6 | PASS | External clean npm/wheel/browser, Node-free server, verified PowerShell launch/check |
 | G7 | PASS | Timed genuine demo/storyboard, fact check/draft/screenshots and actual local measurements |
 | G8 | PASS | Actual frozen study; R13 invalid assumption retained/disclosed, thirteen eligible questions |
-| G9 | IN PROGRESS | Full regression/evaluations, final wheel/browser, protected audit and report |
+| G9 | PASS | 420/58/36, 20/20 + 19/19 evaluations, final clean wheel/native browser and protected audit |
 
 ## Resume instructions
 
 Read this ledger and OVERNIGHT_ARCHITECTURE_DECISIONS.md; inspect Git status before edits.
-Do not reset or overwrite existing work. Next action: G9 full regression, both old evaluations,
-final package/browser verification, protected/staged audit and final report. Current app is source-built and served by FastAPI
+Do not reset or overwrite existing work. Implementation and checks are complete. Next action is
+read OVERNIGHT_MISSION_REPORT.md, inspect clean main and launch the judge demo when needed.
+There is no ongoing background development/server. Current app is source-built and served by FastAPI
 at one loopback origin. Rebuild web after frontend edits. Browser files live in ignored
 .verification/overnight/browsers; web/e2e/smoke.mjs configures that path before importing Playwright.
 All tests that write graph data must use new OS temporary stores. The existing judge artifact,
@@ -152,3 +172,6 @@ manifest, fixtures, saved examples and frozen reports/gold must remain byte-iden
 - G8 freeze commit: 1c8d1fa. New runner and both actual result versions, explicit ERRATA and
   native tests are separate from original Sprint 02/03 evaluations. No runtime application
   analyzer or API was changed for this study.
+- G8 implementation/results commit: 79221f1. G9 tested implementation commit is recorded in the
+  final mission report; the report is a subsequent documentation-only commit. Remote CI, Python
+  3.11, Ubuntu, other browsers and a finished competition video remain UNVERIFIED / NOT PRODUCED.

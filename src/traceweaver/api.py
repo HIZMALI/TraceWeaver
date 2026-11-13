@@ -17,6 +17,7 @@ from traceweaver.console_selection import (
     CapabilityResult,
     SelectionRequest,
     SelectionResult,
+    action_contract,
     bounded_action,
     installed_models,
     select_local,
@@ -56,12 +57,20 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         finally:
             selection_lock.release()
 
-    @application.post("/console/models/capabilities", response_model=CapabilityResult)
+    @application.post(
+        "/console/models/capabilities",
+        response_model=CapabilityResult,
+        openapi_extra=action_contract(CapabilityRequest),
+    )
     async def local_capabilities(request: Request):
         await bounded_action(request, CapabilityRequest)
         return await run_in_threadpool(single_action, installed_models)
 
-    @application.post("/console/selection", response_model=SelectionResult)
+    @application.post(
+        "/console/selection",
+        response_model=SelectionResult,
+        openapi_extra=action_contract(SelectionRequest),
+    )
     async def local_selection(request: Request):
         action = await bounded_action(request, SelectionRequest)
         try:

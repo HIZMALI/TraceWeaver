@@ -14,7 +14,7 @@ The view fingerprint covers the privacy projection, explanation and source finge
 Digests check shared content; they do not authenticate a source or establish external truth.
 There is no database writer, model call or external source fetch in these GET routes.
 
-The browser accepts strict bounded DTOs, verifies scope/digest before displaying them and
+The browser accepts strict bounded DTOs, verifies requested incident/options plus scope/digest before displaying them and
 discards stale/aborted responses. Unknown selection IDs show a warning and no ghost proof.
 Only actual returned paths and affected-service citations produce displayed relationships.
 Arrows use persisted source/target; TARGETS may be traversed in REVERSE, separately labelled.
@@ -45,6 +45,8 @@ Both require exact application/json, at most 2048 bytes, shallow duplicate-free 
 two-second body deadline. Exact numeric loopback Host/port and Origin and local client are
 mandatory. No cookies, credentials, CORS or forwarding-header trust. One in-flight local action
 per application process; multiple server workers are unsupported for this single-user demo.
+OpenAPI publishes the same strict inline request schemas; manual bounded parsing occurs before
+Pydantic validation, so documenting request bodies does not enable eager unbounded JSON parsing.
 Use the packaged single-origin launcher for UI selection; the Vite proxy does not rewrite Origin.
 
 Selection rereads the native graph and checks the exact source fingerprint before inference;
